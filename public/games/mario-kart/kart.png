@@ -1,0 +1,2915 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  locale="en-us"
+  data-eshop-lang="en"
+  data-eshop-country="us,ca"
+>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mario Kart™ 8 Deluxe for Nintendo Switch™ – Official Site</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=1">
+
+  <meta property="og:title" content="Mario Kart™ 8 Deluxe for Nintendo Switch™ – Official Site">
+  <meta property="og:description" content="Add a total of 48 more courses and 8 additional characters to the Mario Kart 8 Deluxe game as paid DLC.">
+  <meta property="og:image" content="https://mariokart8.nintendo.com/assets/img/share-fb.jpg">
+  <meta property="og:url" content="https://mariokart8.nintendo.com">
+  <meta property="og:type" content="website">
+  <meta property="fb:app_id" content="775678255785283">
+  <meta name="google-site-verification" content="lcC2m3GxLFXRpw4s4cKbn8Q6jDs8zHPXp9CC1xHn70c">
+  <meta name="msvalidate.01" content="CD9A42A71E67EDC970DE6AD9919B5D79">
+  <meta name="description" content="Add a total of 48 more courses and 8 additional characters to the Mario Kart 8 Deluxe game as paid DLC.">
+  <meta name="twitter:title" content="Mario Kart™ 8 Deluxe for Nintendo Switch™ – Official Site">
+  <meta name="twitter:description" content="Add a total of 48 more courses and 8 additional characters to the Mario Kart 8 Deluxe game as paid DLC. https://mariokart8.nintendo.com">
+  <meta name="twitter:image" content="https://mariokart8.nintendo.com/assets/img/share-tw.jpg">
+
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/global/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="assets/img/global/favicon.ico" />
+  <link rel="canonical" href="https://mariokart8.nintendo.com">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+  
+  <link rel="stylesheet" href="//media.nintendo.com/share/nclood/stable/en-us/bundles/microsite.css">
+
+
+
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        nclood.CookieConsent('eec62c8e-a036-4d3b-8eaa-abf640c9580f');
+      }, false);
+    </script>
+
+</head>
+
+<body class="en">
+  <noscript>
+    <iframe src="https://bs.serving-sys.com/BurstingPipe?
+    cn=ot&amp;
+    onetagid=6567&amp;
+    ns=1&amp;
+    activityValues=$$Value=[Value]&amp;OrderID=[OrderID]&amp;Session=[Session]&amp;ProductID=[ProductID]&amp;ProductInfo=[ProductInfo]&amp;Quantity=[Quantity]$$&amp;
+    retargetingValues=$$$$&amp;
+    dynamicRetargetingValues=$$$$&amp;
+    acp=$$$$&amp;"
+    style="display:none;width:0px;height:0px"></iframe>
+  </noscript>
+
+
+
+
+
+  <!-- NOA NAV -->
+  <div class="nclood-nav-wrapper">
+    <nclood-micro-nav></nclood-micro-nav>
+  </div>
+  <!-- END: NOA NAV -->
+
+  <div id="site" style="opacity:0;">
+
+<nav id="page-nav">
+    <div class="glow"></div>
+    <div id="access-btns">
+        <button class="motion-toggle" data-metric="{ eVars: { 60: 'reduce motion' }, events: [77] }">
+            <span class="reduce">
+                <span class="icon pause"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11"><path class="shape" d="M0,0H3.25V11H0ZM7.75,0H11V11H7.75Z" fill="#fff" fill-rule="evenodd"/></svg>			</span>
+                Reduce Motion
+            </span>
+            <span class="enable hide">
+                <span class="icon play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13"><path class="shape" d="M6.9,1.4a5.55,5.55,0,0,1,5.5,5.5,5.55,5.55,0,0,1-5.5,5.5A5.55,5.55,0,0,1,1.4,6.9,5.55,5.55,0,0,1,6.9,1.4m0-1a6.5,6.5,0,1,0,6.5,6.5A6.49,6.49,0,0,0,6.9.4Z" transform="translate(-0.4 -0.4)" fill="#fff"/><polygon class="shape" points="4.5 10.6 4.5 2.8 10.3 6.7 4.5 10.6" fill="#fff"/></svg></span>Enable Motion
+            </span>
+        </button>        
+        <button class="skip nav-tab" data-subsection-id="hero">
+            <span>Skip to Content</span>
+        </button>
+    </div>
+
+    <button id="menu-btn" aria-label="Menu">
+        <img id="icon" class="lazyload" data-src="assets/img/global/nav-icon-hamburger.png" alt="" aria-hidden="true" />
+        <span class="label">
+            Menu
+        </span>
+    </button>
+    <button class="close-btn" aria-label="Close menu">
+    </button>
+    <ul id="nav-menu">
+        <div id="bg"></div>
+            <li>
+                <a href="booster-course-pass" class="nav-item" data-metric="{ eVars: { 60: 'main nav:booster course pass' }, events: [77] }">
+                    <span>Booster Course Pass</span>
+                </a>
+            </li>
+        <li>
+            <button id="nav-drivers" class="nav-item" data-metric="{ eVars: { 60: 'main nav:characters' }, events: [77] }">
+                <span>Characters</span>
+            </button>
+        </li>
+        <li>
+            <button id="nav-courses" class="nav-item" data-metric="{ eVars: { 60: 'main nav:courses' }, events: [77] }">
+                <span>Courses</span>
+            </button>
+        </li>
+        <li>
+            <button id="nav-items" class="nav-item" data-metric="{ eVars: { 60: 'main nav:items' }, events: [77] }">
+                <span>Items</span>
+            </button>
+        </li>
+        <li>
+            <button id="nav-battle" class="nav-item" data-metric="{ eVars: { 60: 'main nav:battle modes' }, events: [77] }">
+                <span>Battle Modes</span>
+            </button>
+        </li>
+        <li>
+            <button id="nav-buy" class="nav-item floodlightTrackedBtn" data-metric="{ eVars: { 60: 'main nav:buy now', 12: 'MARIO KART 8 DELUXE' }, events: [77, 14] }">
+                <span>Buy Now</span>
+            </button>
+        </li> 
+    </ul>
+</nav>
+<div class="banner">
+
+    <a class="banner__logo-switch" href="https://www.nintendo.com/switch/" target="_blank">
+      <img src="assets/img/hero/logo_switch.jpg" alt="Nintendo Switch logo" />
+    </a>
+
+  <div class="banner__inner">
+
+    <div class="banner__icon">
+<svg height="51" viewBox="0 0 33 51" width="33" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <linearGradient id="a" x1="27.979339%" x2="72.020661%" y1="0%" y2="100%">
+    <stop offset="0" stop-color="#ffd645"/>
+    <stop offset=".367679196" stop-color="#ffb22e"/>
+    <stop offset=".781031469" stop-color="#ffd183"/>
+    <stop offset="1" stop-color="#e49e26"/>
+  </linearGradient>
+  <path d="m17.9856018 16.6892907c-.0277472-.021228-.0578066-.0378663-.0855538-.0585206.0427769-.0608156.0861319-.1193363.1294869-.1795781-.0156078.079175-.0300595.15835-.0439331.2380987m11.7000692-13.59515391c2.1209266-2.00060356 3.4961472-3.09413679 3.4961472-3.09413679-3.0071028 2.0390436-5.6621629 4.16873686-8.0096916 6.3357227-3.511755-3.31272868-9.8733786-1.86405533-13.250444.62077805-.9671055.71200143-2.30417371 1.68562467-2.77529804 2.85661173-.81449592 2.02412652 2.44175354 1.88757832 3.63257084 1.88872582 2.3793224.0017212 4.7014162-.6219255 6.8610732-1.5720257.3271858-.14343305 2.3035957-1.27598006 3.876515-2.2082946-2.6920564 2.6701488-4.934377 5.3770165-6.8026884 8.024216-3.7499184-1.6219404-8.92534922.4979994-11.60006365 3.0568442-.83761859.8009299-1.99664224 1.899053-2.30301757 3.0551231-.52893099 1.9977348 2.57066243 1.3993324 3.71060988 1.2277865 2.27758264-.3430918 4.42278804-1.2587681 6.37202874-2.4538519.1439386-.0883547.6393418-.4555432 1.2648099-.9317408-1.3434269 2.2811585-2.4203651 4.4756835-3.2828406 6.5153008-4.05340337-.8714989-8.22877885 2.5875315-9.82539896 5.7797764-.48152953.9621486-1.15150879 2.2840272-1.03705159 3.4378023.1976988 1.9948662 2.77529803.6334001 3.73951322.1778569 1.9261181-.9105127 3.54123635-2.3190248 4.88697553-3.9363754.069368-.0837649.2479906-.3407968.48499793-.6919208-.41736413 1.3396643-.73241046 2.5496651-.97115199 3.6036108-4.05282534 1.8129932-4.9742636 7.7838223-3.99559675 11.5239814.277472 1.0614042.65263726 2.5255683 1.48274099 3.3196135 1.43418338 1.3735144 2.4030231-1.4406411 2.80015489-2.4532782.79368553-2.0218316 1.04109806-4.2054557.95959066-6.3609669-.01792007-.4658704-.61332873-4.4687987-.86363159-5.7602695.74801825-2.4142643 1.66656616-4.7390264 2.69436866-6.9725652-.0421988 1.706279.3422155 3.4177216 1.0000554 4.7309942.4439552.8869897 1.0491909 2.1113339 1.994908 2.6799023 1.6359286.9833767 2.1411589-1.6293989 2.3706514-2.5766305.4589849-1.8915945.3531987-3.8417096-.0728364-5.7166658-.1104108-.4853773-1.8544379-5.2926779-1.9399917-5.2479268-.0757268.0401612-.1404702.0895022-.2138847.1325321.9659494-1.6414474 1.9764099-3.2088832 3.0071028-4.7005865.2526151-.2048223.4451113-.366041.5682395-.4761976-.3711188 2.5290108.2335389 5.3339866 1.2890886 7.2732009.5150574.9455103 1.2174084 2.2518981 2.2076366 2.8175979 1.7122334.9787868 2.0070474-1.9162649 2.1602351-2.9684895.3057973-2.1021541.043355-4.2341423-.5323994-6.2640062-.121394-.4274303-1.5480625-3.9151473-2.1232388-5.1808001 2.1307537-2.66498524 4.2175743-4.96278198 6.0512018-6.84347554-1.4937243 2.8686601-1.3769548 6.89109534-.3780556 9.59624174.3884608 1.0527983.9168137 2.5054878 1.8261125 3.2266689 1.5723414 1.2467197 2.237118-1.7269334 2.5249952-2.8021072.5745983-2.1469052.5890499-4.4005246.2792062-6.59045969-.0734145-.51980121-1.2942912-5.32251195-1.5642484-6.07811702" fill="url(#a)" fill-rule="evenodd" transform="matrix(1 0 0 -1 0 50.504348)"/>
+</svg>    </div>
+
+    <div class="banner__content">
+      <h2 class="banner__heading">Mario Kart 8 Deluxe — Booster Course Pass: All 48 courses out now!</h2>
+      <a href="booster-course-pass/" class="btn-pink btn-buy">Learn more<span class='visually-hidden'> about the Mario Kart 8 Deluxe — Booster Course Pass</span></a>
+    </div>
+
+    <div class="banner__icon banner__icon--right">
+<svg height="51" viewBox="0 0 33 51" width="33" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <linearGradient id="a" x1="27.979339%" x2="72.020661%" y1="0%" y2="100%">
+    <stop offset="0" stop-color="#ffd645"/>
+    <stop offset=".367679196" stop-color="#ffb22e"/>
+    <stop offset=".781031469" stop-color="#ffd183"/>
+    <stop offset="1" stop-color="#e49e26"/>
+  </linearGradient>
+  <path d="m17.9856018 16.6892907c-.0277472-.021228-.0578066-.0378663-.0855538-.0585206.0427769-.0608156.0861319-.1193363.1294869-.1795781-.0156078.079175-.0300595.15835-.0439331.2380987m11.7000692-13.59515391c2.1209266-2.00060356 3.4961472-3.09413679 3.4961472-3.09413679-3.0071028 2.0390436-5.6621629 4.16873686-8.0096916 6.3357227-3.511755-3.31272868-9.8733786-1.86405533-13.250444.62077805-.9671055.71200143-2.30417371 1.68562467-2.77529804 2.85661173-.81449592 2.02412652 2.44175354 1.88757832 3.63257084 1.88872582 2.3793224.0017212 4.7014162-.6219255 6.8610732-1.5720257.3271858-.14343305 2.3035957-1.27598006 3.876515-2.2082946-2.6920564 2.6701488-4.934377 5.3770165-6.8026884 8.024216-3.7499184-1.6219404-8.92534922.4979994-11.60006365 3.0568442-.83761859.8009299-1.99664224 1.899053-2.30301757 3.0551231-.52893099 1.9977348 2.57066243 1.3993324 3.71060988 1.2277865 2.27758264-.3430918 4.42278804-1.2587681 6.37202874-2.4538519.1439386-.0883547.6393418-.4555432 1.2648099-.9317408-1.3434269 2.2811585-2.4203651 4.4756835-3.2828406 6.5153008-4.05340337-.8714989-8.22877885 2.5875315-9.82539896 5.7797764-.48152953.9621486-1.15150879 2.2840272-1.03705159 3.4378023.1976988 1.9948662 2.77529803.6334001 3.73951322.1778569 1.9261181-.9105127 3.54123635-2.3190248 4.88697553-3.9363754.069368-.0837649.2479906-.3407968.48499793-.6919208-.41736413 1.3396643-.73241046 2.5496651-.97115199 3.6036108-4.05282534 1.8129932-4.9742636 7.7838223-3.99559675 11.5239814.277472 1.0614042.65263726 2.5255683 1.48274099 3.3196135 1.43418338 1.3735144 2.4030231-1.4406411 2.80015489-2.4532782.79368553-2.0218316 1.04109806-4.2054557.95959066-6.3609669-.01792007-.4658704-.61332873-4.4687987-.86363159-5.7602695.74801825-2.4142643 1.66656616-4.7390264 2.69436866-6.9725652-.0421988 1.706279.3422155 3.4177216 1.0000554 4.7309942.4439552.8869897 1.0491909 2.1113339 1.994908 2.6799023 1.6359286.9833767 2.1411589-1.6293989 2.3706514-2.5766305.4589849-1.8915945.3531987-3.8417096-.0728364-5.7166658-.1104108-.4853773-1.8544379-5.2926779-1.9399917-5.2479268-.0757268.0401612-.1404702.0895022-.2138847.1325321.9659494-1.6414474 1.9764099-3.2088832 3.0071028-4.7005865.2526151-.2048223.4451113-.366041.5682395-.4761976-.3711188 2.5290108.2335389 5.3339866 1.2890886 7.2732009.5150574.9455103 1.2174084 2.2518981 2.2076366 2.8175979 1.7122334.9787868 2.0070474-1.9162649 2.1602351-2.9684895.3057973-2.1021541.043355-4.2341423-.5323994-6.2640062-.121394-.4274303-1.5480625-3.9151473-2.1232388-5.1808001 2.1307537-2.66498524 4.2175743-4.96278198 6.0512018-6.84347554-1.4937243 2.8686601-1.3769548 6.89109534-.3780556 9.59624174.3884608 1.0527983.9168137 2.5054878 1.8261125 3.2266689 1.5723414 1.2467197 2.237118-1.7269334 2.5249952-2.8021072.5745983-2.1469052.5890499-4.4005246.2792062-6.59045969-.0734145-.51980121-1.2942912-5.32251195-1.5642484-6.07811702" fill="url(#a)" fill-rule="evenodd" transform="matrix(1 0 0 -1 0 50.504348)"/>
+</svg>    </div>
+
+  </div>
+
+</div>
+    <div class="overflow-wrap">
+<div id="hero">
+      <div id="char-container">
+        <div id="hero-mario"></div>
+        <div id="hero-peach"></div>
+        <div id="hero-bowser"></div>
+        <div id="hero-group"></div>
+        <div id="hero-lakitu"></div>
+      </div>
+      <div class="max-w-container">
+        <h1><img id="logo-mk8" src="assets/img/global/logo-mk8.png" alt="Mario Kart 8 Deluxe"/></h1>
+        
+        <button class="trailer-cta" data-vid-content="video-content-trailer" aria-label="Mario Kart 8 Deluxe Trailer">
+            <img src="assets/img/hero/trailer-thumb.png" alt="" aria-hidden="true" />
+            <video id="trailer-video" autoplay muted loop playsinline src="assets/video/hero/trailer_7sec_loop.mp4"></video>
+            <div class="play-btn"></div>
+        </button>
+        <button id="info">
+          <img id="box-art" class="floodlightTrackedBtn" src="assets/img/hero/box-art.png" alt="" aria-hidden="true" data-metric="{ eVars: { 60: 'hero: box art: buy now', 12: 'MARIO KART 8 DELUXE' }, events: [77, 14] }" />
+          <p class="btn-pink floodlightTrackedBtn" data-metric="{ eVars: { 60: 'hero: cta: buy now', 12: 'MARIO KART 8 DELUXE' }, events: [77, 14] }">
+            Buy now
+          </p>
+      </a>
+      </div>
+      <div id="scroll-cta">
+        SCROLL
+        <div id="arrow"></div>
+      </div>
+      
+      
+    </div>    
+      <section id="top">
+        <div class="angled-shots angled-down" data-dir="left">
+          <img class="lazyload" data-src="assets/img/courses/mushroom_01-lg.jpg" alt="" aria-hidden="true" />
+          <img class="lazyload" data-src="assets/img/courses/mushroom_02-lg.jpg" alt="" aria-hidden="true" />
+          <img class="lazyload" data-src="assets/img/courses/mushroom_03-lg.jpg" alt="" aria-hidden="true" />
+          <img class="lazyload" data-src="assets/img/courses/mushroom_04-lg.jpg" alt="" aria-hidden="true" />
+          <img class="lazyload" data-src="assets/img/courses/flower_01-lg.jpg" alt="" aria-hidden="true" />
+          <img class="lazyload" data-src="assets/img/courses/flower_02-lg.jpg" alt="" aria-hidden="true" />
+          <img class="lazyload" data-src="assets/img/courses/flower_03-lg.jpg" alt="" aria-hidden="true" />
+          <img class="lazyload" data-src="assets/img/courses/flower_04-lg.jpg" alt="" aria-hidden="true" />
+        </div>
+        <div class="max-w-container">
+          <div class="animated-chars scroll-anim-char">          
+            <img id="top-mario" src="assets/img/top/char_mario.png" alt="" aria-hidden="true" />
+            <img class="lazyload" id="top-blooper" data-src="assets/img/top/char_blooper.png" alt="" aria-hidden="true" />
+            <div id="inkling-temp" class="temp-responsive-img">
+              <img class="lazyload" id="inkling" src="assets/img/global/blank.gif" data-src="assets/img/top/char_inkling.png" alt="" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+
+        <div class="max-w-content">
+          <h2 class="black h2">Race anytime, anywhere!</h2>
+          <h3 class="black h3">Hit the road with the definitive version of <span class="nowrap">Mario Kart 8</span>.</h3>
+        </div>
+      </section>
+
+<section id="drivers">
+      <div class="angled-shots angled-up" data-dir="right">
+        <img class="lazyload" data-src="assets/img/courses/star_01-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/star_02-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/star_03-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/star_04-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/special_01-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/special_02-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/special_03-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/special_04-lg.jpg" alt="" aria-hidden="true" />
+      </div>
+
+      <div class="max-w-container">
+        <img class="course-logo lazyload" data-src="assets/img/drivers/course-logo-zelda.png" alt="" aria-hidden="true" />
+        <div id="link-container">
+          <div id="link-temp" class="temp-responsive-img">
+            <img id="link-anim" class="scroll-anim-char lazyload" src="assets/img/global/blank.gif" data-src="assets/img/drivers/char_link.png" alt="" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+      <div class="max-w-content">
+        <div class="text">
+          <h2 class="white h2">Biggest Mario Kart <span class="nowrap">roster ever</span></h2>
+          <h3 class="white h3">The Mario Kart 8 Deluxe game has 42 characters to choose from—the biggest roster in the series!</h3>
+        </div>
+        <button class="skip" data-section-id="courses">
+            <span class="text">
+                <span>Skip characters</span>
+            </span>
+        </button>
+        <ul id="driver-grid">
+          <li id="mario" class="driver">
+            <button aria-label="Mario"><img class="lazyload" data-src="assets/img/drivers/mario_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="luigi" class="driver">
+            <button aria-label="Luigi"><img class="lazyload" data-src="assets/img/drivers/luigi_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="peach" class="driver">
+            <button aria-label="Peach"><img class="lazyload" data-src="assets/img/drivers/peach_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="daisy" class="driver">
+            <button aria-label="Daisy"><img class="lazyload" data-src="assets/img/drivers/daisy_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="rosalina" class="driver">
+            <button aria-label="Rosalina"><img class="lazyload" data-src="assets/img/drivers/rosalina_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="tanookiMario" class="driver">
+            <button aria-label="Tanooki Mario"><img class="lazyload" data-src="assets/img/drivers/tanukiMario_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="catPeach" class="driver">
+            <button aria-label="Cat Peach"><img class="lazyload" data-src="assets/img/drivers/catPeach_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="yoshi" class="driver">
+            <button aria-label="Yoshi"><img class="lazyload" data-src="assets/img/drivers/yoshi_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="toad" class="driver">
+            <button aria-label="Toad"><img class="lazyload" data-src="assets/img/drivers/toad_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="koopa" class="driver">
+            <button aria-label="Koopa Troopa"><img class="lazyload" data-src="assets/img/drivers/koopa_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="shyguy" class="driver">
+            <button aria-label="Shy Guy"><img class="lazyload" data-src="assets/img/drivers/shyguy_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="lakitu" class="driver">
+            <button aria-label="Lakitu"><img class="lazyload" data-src="assets/img/drivers/lakitu_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="toadette" class="driver">
+            <button aria-label="Toadette"><img class="lazyload" data-src="assets/img/drivers/toadette_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="kingBoo" class="driver">
+            <button aria-label="King Boo"><img class="lazyload" data-src="assets/img/drivers/kingBoo_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="babyMario" class="driver">
+            <button aria-label="Baby Mario"><img class="lazyload" data-src="assets/img/drivers/babyMario_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="babyLuigi" class="driver">
+            <button aria-label="Baby Luigi"><img class="lazyload" data-src="assets/img/drivers/babyLuigi_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="babyPeach" class="driver">
+            <button aria-label="Baby Peach"><img class="lazyload" data-src="assets/img/drivers/babyPeach_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="babyDaisy" class="driver">
+            <button aria-label="Baby Daisy"><img class="lazyload" data-src="assets/img/drivers/babyDaisy_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="babyRosalina" class="driver">
+            <button aria-label="Baby Rosalina"><img class="lazyload" data-src="assets/img/drivers/babyRosalina_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="metalMario" class="driver">
+            <button aria-label="Metal Mario"><img class="lazyload" data-src="assets/img/drivers/metalMario_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="goldPeach" class="driver">
+            <button aria-label="Pink Gold Peach"><img class="lazyload" data-src="assets/img/drivers/goldPeach_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="wario" class="driver">
+            <button aria-label="Wario"><img class="lazyload" data-src="assets/img/drivers/wario_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="waluigi" class="driver">
+            <button aria-label="Waluigi"><img class="lazyload" data-src="assets/img/drivers/waluigi_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="dk" class="driver">
+            <button aria-label="Donkey Kong"><img class="lazyload" data-src="assets/img/drivers/dk_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="bowser" class="driver">
+            <button aria-label="Bowser"><img class="lazyload" data-src="assets/img/drivers/bowser_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="dryBones" class="driver">
+            <button aria-label="Dry Bones"><img class="lazyload" data-src="assets/img/drivers/dryBones_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="bowserJr" class="driver">
+            <button aria-label="Bowser Jr."><img class="lazyload" data-src="assets/img/drivers/koopaJr_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="dryBowser" class="driver">
+            <button aria-label="Dry Bowser"><img class="lazyload" data-src="assets/img/drivers/boneKoopa_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="lemmy" class="driver">
+            <button aria-label="Lemmy"><img class="lazyload" data-src="assets/img/drivers/lemmy_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="larry" class="driver">
+            <button aria-label="Larry"><img class="lazyload" data-src="assets/img/drivers/larry_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="wendy" class="driver">
+            <button aria-label="Wendy"><img class="lazyload" data-src="assets/img/drivers/wendy_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="ludwig" class="driver">
+            <button aria-label="Ludwig"><img class="lazyload" data-src="assets/img/drivers/ludwig_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="iggy" class="driver">
+            <button aria-label="Iggy"><img class="lazyload" data-src="assets/img/drivers/iggy_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="roy" class="driver">
+            <button aria-label="Roy"><img class="lazyload" data-src="assets/img/drivers/roy_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="morton" class="driver">
+            <button aria-label="Morton"><img class="lazyload" data-src="assets/img/drivers/morton_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="splatoonG" class="driver">
+            <button aria-label="Inkling Girl"><img class="lazyload" data-src="assets/img/drivers/splatoonG_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="splatoonB" class="driver">
+            <button aria-label="Inkling Boy"><img class="lazyload" data-src="assets/img/drivers/splatoonB_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="link" class="driver">
+            <button aria-label="Link"><img class="lazyload" data-src="assets/img/drivers/link_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="animalB" class="driver">
+            <button aria-label="Villager"><img class="lazyload" data-src="assets/img/drivers/animalB_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="animalG" class="driver">
+            <button aria-label="Villager"><img class="lazyload" data-src="assets/img/drivers/animalG_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="isabelle" class="driver">
+            <button aria-label="Isabelle"><img class="lazyload" data-src="assets/img/drivers/isabelle_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="mii" class="driver">
+            <button aria-label="Mii Character"><img class="lazyload" data-src="assets/img/drivers/mii_th.png" alt="" aria-hidden="true" /></button>
+          </li>
+        </ul>
+      </div>
+    </section>
+ <section id="courses">
+      <div class="angled-shots angled-down" data-dir="left">
+        <img class="lazyload" data-src="assets/img/courses/shell_01-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/shell_02-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/shell_03-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/shell_04-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/banana_01-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/banana_02-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/banana_03-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/banana_04-lg.jpg" alt="" aria-hidden="true" />
+      </div>
+
+      <div class="max-w-container">
+        <img class="course-logo lazyload" data-src="assets/img/courses/course-logo-leaf.png" alt="" aria-hidden="true" />
+        <div id="isabelle-container">
+          <div id="isabelle-temp" class="temp-responsive-img">
+            <img id="isabelle-anim" class="scroll-anim-char lazyload" src="assets/img/global/blank.gif" data-src="assets/img/courses/char_isabelle.png" alt="" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-content">
+        <div class="text">
+          <h2 class="black h2">Tons of tracks</h2>
+          <h3 class="black h3">Race for the cup on 48 courses, including ones inspired by <span class="nowrap">Excite Bike&trade;</span> and the <span class="nowrap">Legend of Zelda&trade;</span> series.</h3>
+        </div>
+        <button class="skip" data-section-id="items">
+          <span class="text">
+            <span>Skip tracks</span>
+          </span>
+        </button>
+        <div id="course-grid">
+          <button class="skip" data-subsection-id="flower-cup">
+            <span class="text">
+              <span>Skip to Flower Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/mushroom_icon.png" alt="" aria-hidden="true" />
+              <h4>Mushroom Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="mario-kart-stadium"><button><div class="ylw-hdr"><h5>Mario Kart Stadium</h5></div><img class="thumb lazyload" data-src="assets/img/courses/mushroom_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="water-park"><button><div class="ylw-hdr"><h5>Water Park</h5></div><img class="thumb lazyload" data-src="assets/img/courses/mushroom_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="sweet-sweet-canyon"><button><div class="ylw-hdr"><h5>Sweet Sweet Canyon</h5></div><img class="thumb lazyload" data-src="assets/img/courses/mushroom_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="thwomp-ruins"><button><div class="ylw-hdr"><h5>Thwomp Ruins</h5></div><img data-label="Thwomp Ruins" class="thumb lazyload" data-src="assets/img/courses/mushroom_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="flower-cup" class="skip" data-subsection-id="star-cup">
+            <span class="text">
+              <span>Skip to Star Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/flower_icon.png" alt="" aria-hidden="true" />
+              <h4>Flower Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="mario-circuit"><button><div class="ylw-hdr"><h5>Mario Circuit</h5></div><img class="thumb lazyload" data-src="assets/img/courses/flower_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="toad-harbor"><button><div class="ylw-hdr"><h5>Toad Harbor</h5></div><img class="thumb lazyload" data-src="assets/img/courses/flower_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="twisted-mansion" ><button><div class="ylw-hdr"><h5>Twisted Mansion</h5></div><img class="thumb lazyload" data-src="assets/img/courses/flower_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="shy-guy-falls"><button><div class="ylw-hdr"><h5>Shy Guy Falls</h5></div><img class="thumb lazyload" data-src="assets/img/courses/flower_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="star-cup" class="skip" data-subsection-id="special-cup">
+            <span class="text">
+              <span>Skip to Special Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/star_icon.png" alt="" aria-hidden="true" />
+              <h4>Star Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="sunshine-airport"><button><div class="ylw-hdr"><h5>Sunshine Airport</h5></div><img class="thumb lazyload" data-src="assets/img/courses/star_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="dolphin-shoals"><button><div class="ylw-hdr"><h5>Dolphin Shoals</h5></div><img class="thumb lazyload" data-src="assets/img/courses/star_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="electrodrome"><button><div class="ylw-hdr"><h5>Electrodrome</h5></div><img  class="thumb lazyload" data-src="assets/img/courses/star_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="mount-wario"><button><div class="ylw-hdr"><h5>Mount Wario</h5></div><img class="thumb lazyload" data-src="assets/img/courses/star_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="special-cup" class="skip" data-subsection-id="shell-cup">
+            <span class="text">
+              <span>Skip to Shell Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/special_icon.png" alt="" aria-hidden="true" />
+              <h4>Special Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="cloudtop-cruise"><button><div class="ylw-hdr"><h5>Cloudtop Cruise</h5></div><img class="thumb lazyload" data-src="assets/img/courses/special_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="bone-dry-dunes"><button><div class="ylw-hdr"><h5>Bone Dry Dunes</h5></div><img class="thumb lazyload" data-src="assets/img/courses/special_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="bowsers-castle"><button><div class="ylw-hdr"><h5>Bowser's Castle</h5></div><img class="thumb lazyload" data-src="assets/img/courses/special_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="rainbow-road"><button><div class="ylw-hdr"><h5>Rainbow Road</h5></div><img class="thumb lazyload" data-src="assets/img/courses/special_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="shell-cup" class="skip" data-subsection-id="banana-cup">
+            <span class="text">
+              <span>Skip to Banana Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/shell_icon.png" alt="" aria-hidden="true" />
+              <h4>Shell Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="moo-moo-meadows-wii"><button><div class="ylw-hdr"><h5><span class='capitalize'>Wii</span> Moo Moo Meadows</h5></div><img class="thumb lazyload" data-src="assets/img/courses/shell_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="mario-circuit-game-boy-advance"><button><div class="ylw-hdr"><h5>GBA Mario Circuit</h5></div><img class="thumb lazyload" data-src="assets/img/courses/shell_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="cheep-cheep-beach-nintendo-ds" ><button><div class="ylw-hdr"><h5>DS Cheep Cheep Beach</h5></div><img class="thumb lazyload" data-src="assets/img/courses/shell_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="toads-turnpike-nintendo-64" ><button><div class="ylw-hdr"><h5>N64 Toad's Turnpike</h5></div><img class="thumb lazyload" data-src="assets/img/courses/shell_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="banana-cup" class="skip" data-subsection-id="leaf-cup">
+            <span class="text">
+              <span>Skip to Leaf Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/banana_icon.png" alt="" aria-hidden="true" />
+              <h4>Banana Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="dry-dry-desert-nintendo-gamecube"><button><div class="ylw-hdr"><h5>GCN Dry Dry Desert</h5></div><img class="thumb lazyload" data-src="assets/img/courses/banana_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="donut-plains-3-super-nes" ><button><div class="ylw-hdr"><h5>SNES Donut Plains 3</h5></div><img class="thumb lazyload" data-src="assets/img/courses/banana_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="royal-raceway-nintendo-64" ><button><div class="ylw-hdr"><h5>N64 Royal Raceway</h5></div><img class="thumb lazyload" data-src="assets/img/courses/banana_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="dk-jungle-nintendo-3ds" ><button><div class="ylw-hdr"><h5>3DS DK Jungle</h5></div><img class="thumb lazyload" data-src="assets/img/courses/banana_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="leaf-cup" class="skip" data-subsection-id="lightning-cup">
+            <span class="text">
+              <span>Skip to Lightning Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/leaf_icon.png" alt="" aria-hidden="true" />
+              <h4>Leaf Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="wario-stadium-nintendo-ds"><button><div class="ylw-hdr"><h5>DS Wario Stadium</h5></div><img class="thumb lazyload" data-src="assets/img/courses/leaf_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="sherbet-land-nintendo-gamecube"><button><div class="ylw-hdr"><h5>GCN Sherbet Land</h5></div><img  class="thumb lazyload" data-src="assets/img/courses/leaf_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="music-park-nintendo-3ds"><button><div class="ylw-hdr"><h5>3DS Music Park</h5></div><img class="thumb lazyload" data-src="assets/img/courses/leaf_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="yoshi-valley-nintendo-64"><button><div class="ylw-hdr"><h5>N64 Yoshi Valley</h5></div><img class="thumb lazyload" data-src="assets/img/courses/leaf_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="lightning-cup" class="skip" data-subsection-id="egg-cup">
+            <span class="text">
+              <span>Skip to Egg Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/lightning_icon.png" alt="" aria-hidden="true" />
+              <h4>Lightning Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="tick-tock-clock-nintendo-ds"><button><div class="ylw-hdr"><h5>DS Tick Tock Clock</h5></div><img class="thumb lazyload" data-src="assets/img/courses/lightning_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="piranha-plant-slide-nintendo-3ds"><button><div class="ylw-hdr"><h5>3DS Piranha Plant Slide</h5></div><img  class="thumb lazyload" data-src="assets/img/courses/lightning_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="grumble-volcano-wii" ><button><div class="ylw-hdr"><h5><span class='capitalize'>Wii</span> Grumble Volcano</h5></div><img class="thumb lazyload" data-src="assets/img/courses/lightning_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="rainbow-road-nintendo-64"><button><div class="ylw-hdr"><h5>N64 Rainbow Road</h5></div><img class="thumb lazyload" data-src="assets/img/courses/lightning_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="egg-cup" class="skip" data-subsection-id="triforce-cup">
+            <span class="text">
+              <span>Skip to Triforce Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/egg_icon.png" alt="" aria-hidden="true" />
+              <h4>Egg Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="yoshis-circuit-nintendo-gamecube" ><button><div class="ylw-hdr"><h5>GCN Yoshi’s Circuit</h5></div><img class="thumb lazyload" data-src="assets/img/courses/egg_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="excitebike-arena" ><button><div class="ylw-hdr"><h5>Excitebike Arena</h5></div><img class="thumb lazyload" data-src="assets/img/courses/egg_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="dragon-driftway"><button><div class="ylw-hdr"><h5>Dragon Driftway</h5></div><img class="thumb lazyload" data-src="assets/img/courses/egg_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="mute-city"><button><div class="ylw-hdr"><h5>Mute City</h5></div><img class="thumb lazyload" data-src="assets/img/courses/egg_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="triforce-cup" class="skip" data-subsection-id="crossing-cup">
+            <span class="text">
+              <span>Skip to Crossing Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/triforce_icon.png" alt="" aria-hidden="true" />
+              <h4>Triforce Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="warios-gold-mine-wii"><button><div class="ylw-hdr"><h5><span class='capitalize'>Wii</span> Wario's Gold Mine</h5></div><img class="thumb lazyload" data-src="assets/img/courses/triforce_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="rainbow-road-super-nes"><button><div class="ylw-hdr"><h5>SNES Rainbow Road</h5></div><img class="thumb lazyload" data-src="assets/img/courses/triforce_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="ice-ice-outpost"><button><div class="ylw-hdr"><h5>Ice Ice Outpost</h5></div><img class="thumb lazyload" data-src="assets/img/courses/triforce_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="hyrule-circuit"><button><div class="ylw-hdr"><h5>Hyrule Circuit</h5></div><img class="thumb lazyload" data-src="assets/img/courses/triforce_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button id="crossing-cup" class="skip" data-subsection-id="bell-cup">
+            <span class="text">
+              <span>Skip to Bell Cup</span>
+            </span>
+          </button>
+          <div class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/crossing_icon.png" alt="" aria-hidden="true" />
+              <h4>Crossing Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="baby-park-nintendo-gamecube"><button><div class="ylw-hdr"><h5>GCN Baby Park</h5></div><img class="thumb lazyload" data-src="assets/img/courses/crossing_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="cheese-land-game-boy-advance"><button><div class="ylw-hdr"><h5>GBA Cheese Land</h5></div><img class="thumb lazyload" data-src="assets/img/courses/crossing_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="wild-woods"><button><div class="ylw-hdr"><h5>Wild Woods</h5></div><img class="thumb lazyload" data-src="assets/img/courses/crossing_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="animal-crossing"><button><div class="ylw-hdr"><h5>Animal Crossing</h5></div><img class="thumb lazyload" data-src="assets/img/courses/crossing_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+          <button class="skip" data-section-id="items">
+            <span class="text">
+              <span>Skip to items</span>
+            </span>
+          </button>
+          <div id="bell-cup" class="cup">
+            <div class="icon">
+              <img class="lazyload" data-src="assets/img/courses/bell_icon.png" alt="" aria-hidden="true" />
+              <h4>Bell Cup</h4>
+            </div>
+            <ul class="thumb-set">
+              <li id="neo-bowser-city-nintendo-3ds"><button><div class="ylw-hdr"><h5>3DS Neo Bowser City</h5></div><img class="thumb lazyload" data-src="assets/img/courses/bell_01.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="ribbon-road-game-boy-advance" ><button><div class="ylw-hdr"><h5>GBA Ribbon Road</h5></div><img class="thumb lazyload" data-src="assets/img/courses/bell_02.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="super-bell-subway" ><button><div class="ylw-hdr"><h5>Super Bell Subway</h5></div><img class="thumb lazyload" data-src="assets/img/courses/bell_03.jpg" alt="" aria-hidden="true" /></button></li>
+              <li id="big-blue" ><button><div class="ylw-hdr"><h5>Big Blue</h5></div><img class="thumb lazyload" data-src="assets/img/courses/bell_04.jpg" alt="" aria-hidden="true" /></button></li>
+            </ul>
+          </div>
+        </div>
+        <!-- END: COURSE GRID -->
+
+      
+<div id="booster-courses" class="booster-courses">
+
+  <div class="booster-courses__pattern booster-courses__pattern-top"></div>
+
+  <div class="booster-courses__inner">
+    <div class="booster-courses__content">
+
+      <img
+        class="booster-courses__logo"
+        src="../assets/img/booster/logos/mk8-booster-logo-white.png"
+        srcset="../assets/img/booster/logos/mk8-booster-logo-white.png 1x,
+          ../assets/img/booster/logos/mk8-booster-logo-white-2x.png 2x"
+        alt="Mario Kart 8 Deluxe — Booster Course Pass"
+      />
+
+      <!-- BURST -->
+      <div class="main-header__burst burst">
+        <p class="burst__content txt-center txt-body-larger txt-weight-black">
+          <!--
+          <img
+            class="block center burst__number"
+            src="assets&#x2F;img/booster/header/wave-6-en.svg"
+            alt="Wave 2"
+          />
+          -->
+          <span class="block txt-center txt-bold txt-italic txt-uppercase txt-body-larger txt-bold">
+            All 48 additional courses have now been added!
+          </span>
+        </p>
+      </div>
+
+
+      <div class="booster-courses__box">
+        <h3 class="booster-courses__heading">Add a total of 48 more courses and 8 additional characters to the Mario Kart 8 Deluxe game as paid DLC.*</h3>
+        <a href="booster-course-pass" class="btn-pink booster-courses__btn">Learn more<span class='visually-hidden'> about the Mario Kart 8 Deluxe — Booster Course Pass</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="booster-courses__pattern booster-courses__pattern-bottom"></div>
+
+  <img
+    class="booster-courses__image"
+    src="assets&#x2F;img/home/boosterpass-characters.png"
+    srcset="assets&#x2F;img/home/boosterpass-characters.png 1x,
+      assets&#x2F;img/home/boosterpass-characters-2x.png 2x"
+    alt=""
+  />
+
+</div>
+        <div id="gameplay">
+          <div id="steering">
+            <div class="check-header">
+              <h2 class="text">Smart steering</h2>
+            </div>
+            <div class="temp-responsive-img">
+              <img class="screen lazyload"  src="assets/img/global/blank.gif" data-src="assets/img/courses/gameplay-steering.png" alt="Mario drives his kart dangerously close to the edge but stays on the track." />
+            </div>
+            <h3>Mario Kart 8 Deluxe has new options to help out rookie racers, like <span class="nowrap">Smart Steering.</span></h3>
+          </div>
+          <div id="attack">
+            <div class="check-header">
+              <h2 class="text">200<span class="lowercase">cc</span> Time Trials</h2>
+            </div>
+            <div class="temp-responsive-img">
+                <img class="screen lazyload" src="assets/img/global/blank.gif" data-src="assets/img/courses/gameplay-attack.png" alt="Closeup of in-game menu option to go from 150cc to 200cc in Solo Race." />
+              </div>
+            <h3>Do you have the need for speed? Try to beat your best time in the insanely fast <span class="nowrap">200cc mode.</span></h3>
+          </div>
+          <div id="wireless">
+            <div class="check-header">
+              <h2 class="text">Wireless Play</h2>
+            </div>
+            <div class="temp-responsive-img">
+                <img class="screen lazyload" src="assets/img/global/blank.gif" data-src="assets/img/courses/gameplay-wireless.png" alt="" aria-hidden="true" />
+              </div>
+            <h3>Kick the party into high gear with up to eight players in local wireless multiplayer.</h3>
+          </div>
+          <div id="online">
+            <div class="check-header">
+              <h2 class="text">Online Play</h2>
+            </div>
+            <div class="temp-responsive-img">
+                <img class="screen lazyload" src="assets/img/global/blank.gif" data-src="assets/img/courses/gameplay-online.png" alt="" aria-hidden="true" />
+              </div>
+            <h3>Up to 12 players can race online! </h3>
+            <h4 class="small">With a paid Nintendo Switch Online membership, you can play the Grand Prix, VS Race, and Battle modes online—and you can match with up to 12 friends. </h4>
+            <h4 class="small">Plus, you can access voice chat with friends and cloud backup for your save data.</h4>
+            <h4 class="small">Don’t have a <a href="https://www.nintendo.com/switch/online-service/" target="_blank">Nintendo Switch Online</a> membership yet? Go to Nintendo eShop on your device and sign up for a free 7-day trial or become a member today.</h4>
+          </div>
+        </div>
+      </div>
+    </section>    
+ <section id="items">
+      <div class="angled-shots angled-up" data-dir="right">
+        <img class="lazyload" data-src="assets/img/courses/leaf_01-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/leaf_02-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/leaf_03-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/leaf_04-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/lightning_01-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/lightning_02-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/lightning_03-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/lightning_04-lg.jpg" alt="" aria-hidden="true" />
+      </div>
+
+      <div class="max-w-container">
+        <img class="course-logo lazyload" data-src="assets/img/items/course-logo-bell.png" alt="" aria-hidden="true" />
+        <div id="babyR-container">
+          <div id="babyR-temp" class="temp-responsive-img">
+            <img id="babyR" class="scroll-anim-char lazyload" src="assets/img/global/blank.gif" data-src="assets/img/items/char_babyR.png" alt="" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-content">
+        <div class="text">
+          <h2 class="white h2">Pack a punch with <span class="nowrap">power-ups!</span></h2>
+          <h3 class="white h3">Get the edge on the competition with 23 powerful items. You can even hold two items at a time!</h3>
+        </div>
+        <button class="skip" data-section-id="battle">
+            <span class="text">
+                <span>Skip items</span>
+            </span>
+        </button>
+        <ul id="item-grid">
+          <li id="banana" class="item">
+              <button aria-label="Banana item, Will send anyone who hits it into a spin."><img class="lazyload" data-src="assets/img/items/th_peel.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="multiBanana" class="item">
+              <button aria-label="Triple Bananas item, Three Bananas that spin around your vehicle."><img class="lazyload" data-src="assets/img/items/th_multiPeel.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="greenShell" class="item">
+              <button aria-label="Green Shell item, travels in a straight line and knock over the first driver they hit."><img class="lazyload" data-src="assets/img/items/th_greenShell.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="multiGreenShell" class="item">
+              <button aria-label="Triple Green Shells item, Three Green Shells that spin around your vehicle. "><img class="lazyload" data-src="assets/img/items/th_multiGreenShell.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="redShell" class="item">
+              <button aria-label="Red Shell item, locks on and pursues the vehicle in front of you, knocking over the first driver they hit. "><img class="lazyload" data-src="assets/img/items/th_redShell.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="multiRedShell" class="item">
+              <button aria-label="Triple Red Shells item, Three Red Shells that spin around your vehicle. "><img class="lazyload" data-src="assets/img/items/th_multiRedShell.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="spinyShell" class="item">
+              <button aria-label="Spiny Shell item, Pursues the driver in 1st place, knocking over any other vehicles it hits along the way. This one won’t stop until it catches the leader!"><img class="lazyload" data-src="assets/img/items/th_blueShell.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="bobomb" class="item">
+              <button aria-label="Bob-omb item, explodes a short time after use or on impact with a vehicle."><img class="lazyload" data-src="assets/img/items/th_bomb.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="mushroom" class="item">
+              <button aria-label="Mushroom item, Gives you a brief speed boost. "><img class="lazyload" data-src="assets/img/items/th_mushroom.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="multiMushroom" class="item">
+              <button aria-label="Triple Mushrooms item, Three Mushrooms that spin around your vehicle. Press [L] to use one of them for a brief speed boost. "><img class="lazyload" data-src="assets/img/items/th_mushroomGroup.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="goldMushroom" class="item">
+              <button aria-label="Golden Mushroom item, For a short time, allows you to use a Mushroom every you press [L]."><img class="lazyload" data-src="assets/img/items/th_goldMushroom.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="bulletBill" class="item">
+              <button aria-label="Bullet Bill item, Temporarily transforms you into a Bullet Bill, making you zoom automatically toward the finish line while knocking over any vehicle you make contact with."><img class="lazyload" data-src="assets/img/items/th_bullet.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="blooper" class="item">
+              <button aria-label="Blooper item, Squirts ink on the vehicles ahead of you, briefly obscuring the drivers’ views. "><img class="lazyload" data-src="assets/img/items/th_ink.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="lightning" class="item">
+              <button aria-label="Lightning item, Strikes all opponents with lightning, causing them to lose their items. It also temporarily shrinks them, reducing their speed. "><img class="lazyload" data-src="assets/img/items/th_lightning.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="superStar" class="item">
+              <button aria-label="Super Star item, Makes you temporarily invincible and increases your speed. Any vehicle you hit will be knocked over. "><img class="lazyload" data-src="assets/img/items/th_star.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="fireFlower" class="item">
+              <button aria-label="Fire Flower item, Lets you throw fireballs for a short time by pressing [L]. Any vehicle you hit will spin out of control. "><img class="lazyload" data-src="assets/img/items/th_fireflower.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="boomerang" class="item">
+              <button aria-label="Boomerang Flower item, The boomerang can be thrown up to three times. Any driver it hits will spin out of control. "><img class="lazyload" data-src="assets/img/items/th_boomerang.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="piranhaPlant" class="item">
+              <button aria-label="Piranha Plant item, Attaches temporarily to the front of the vehicle. When the Piranha Plant bites at something, the momentum of its lunge provides a slight speed boost. "><img class="lazyload" data-src="assets/img/items/th_piranha.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="superHorn" class="item">
+              <button aria-label="Super Horn item, sends nearby vehicles and items flying with an ear-splitting honk. "><img class="lazyload" data-src="assets/img/items/th_horn.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="crazyEight" class="item">
+              <button aria-label="Crazy Eight item, Eight items that orbit your vehicle. Press [L] to use the one closest to the front at that moment. "><img class="lazyload" data-src="assets/img/items/th_eight.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="coin" class="item">
+              <button aria-label="Coin item, Gives you two extra coins. The more coins you have, the faster your vehicle will go. "><img class="lazyload" data-src="assets/img/items/th_coin.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="feather" class="item new">
+              <button aria-label="Feather item, Launches your vehicle into the air, avoiding bananas and shells. Hit an opponent during a jump to steal one of their balloons. "><img class="lazyload" data-src="assets/img/items/th_feather.png" alt="" aria-hidden="true" /></button>
+          </li>
+          <li id="boo" class="item new">
+              <button aria-label="Boo item, Makes your vehicle temporarily ghostly, allowing you to pass through bananas and shells. You might also steal an item from one of your opponents. "><img class="lazyload" data-src="assets/img/items/th_ghost.png" alt="" aria-hidden="true" /></button>
+          </li>
+        </ul>
+        <!-- END: ITEM-GRID -->
+
+      </div>
+    </section>
+  <section id="battle">
+      <div class="angled-shots angled-down" data-dir="left">
+        <img class="lazyload" data-src="assets/img/courses/egg_01-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/egg_02-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/egg_03-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/egg_04-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/crossing_01-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/crossing_02-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/crossing_03-lg.jpg" alt="" aria-hidden="true" />
+        <img class="lazyload" data-src="assets/img/courses/crossing_04-lg.jpg" alt="" aria-hidden="true" />
+      </div>      
+
+      <div class="max-w-container">
+        <img class="course-logo lazyload" data-src="assets/img/battle/course-logo-egg.png" alt="" aria-hidden="true" />
+        <div id="babies-container">
+          <div class="temp-responsive-img">
+            <img id="babies" class="scroll-anim-char lazyload" src="assets/img/global/blank.gif" data-src="assets/img/battle/char_babies.png" alt="" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-content">
+        <div class="text">
+          <h2 class="black h2">Bigger, better <span class="nowrap">Battle Mode</span></h2>
+          <h3 class="black h3">With five types of battles, there are more ways than ever to wreck <span class="nowrap">the competition.</span></h3>
+        </div>
+
+        <!-- BATTLE MODE CAROUSEL -->
+        <div id="mode-gallery" class="gallery">
+            <div class="content">
+                <ul class="slides">
+                    <li id="balloonBattle" class="slide active" data-vid-id="43NTFsYTE6gnnLpSfpm34z-juD0O857P">
+                        <button class="content" aria-label="Play video">
+                            <img class="on lazyload" data-src="assets/img/battle/mode-screen-balloon.jpg" alt="" aria-hidden="true" />
+                        </button>
+                        <div class="label">
+                            <div class="label-content">
+                                <img class="lazyload" data-src="assets/img/battle/mode-icon-balloon.png" alt="" aria-hidden="true" /> 
+                                <h4 class="top-label">
+                                Balloon Battle
+                                </h4>
+                                <h5 class="bottom-label">
+                                Earn points by popping opposing <span class="nowrap">characters’ balloons.</span>
+                                </h5>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="bobombBlast" class="slide " data-vid-id="NiNTFsYTE6YZv-VmY2H5E0zinRIlymfW">
+                        <button class="content" aria-label="Play video">
+                            <img class="on lazyload" data-src="assets/img/battle/mode-screen-bomb.jpg" alt="" aria-hidden="true" />
+                        </button>
+                        <div class="label">
+                        <div class="label-content">
+                            <img class="lazyload" data-src="assets/img/battle/mode-icon-bomb.png" alt="" aria-hidden="true" /> 
+                            <h4 class="top-label">
+                            Bob-omb Blast
+                            </h4>
+                            <h5 class="bottom-label">
+                            Blast away your enemies and try to pop the most balloons while only <span class="nowrap">using Bob-ombs.</span>
+                            </h5>
+                        </div>
+                        </div>
+                    </li>
+                    <li id="renegadeRoundUp" class="slide  " data-vid-id="41NTFsYTE6owoUxqCpncTDPclASfSd5L">
+                        <button class="content" aria-label="Play video">
+                            <img class="on lazyload" data-src="assets/img/battle/mode-screen-renegade.jpg" alt="" aria-hidden="true" />
+                        </button>
+                        <div class="label">
+                        <div class="label-content">
+                            <img class="lazyload" data-src="assets/img/battle/mode-icon-piranha.png" alt="" aria-hidden="true" /> 
+                            <h4 class="top-label">
+                            Renegade Roundup
+                            </h4>
+                            <h5 class="bottom-label">
+                            Play a game of cops vs. robbers as one team tries to put the other in jail using <span class="nowrap">Piranha Plants.</span>
+                            </h5>
+                        </div>
+                        </div>
+                    </li>
+                    <li id="coinRunners" class="slide  " data-vid-id="4zNTFsYTE6E4E1LlcLkVJniVbN5YodKy">
+                        <button class="content" aria-label="Play video">
+                            <img class="on lazyload" data-src="assets/img/battle/mode-screen-coin.jpg" alt="" aria-hidden="true" />
+                        </button>
+                        <div class="label">
+                        <div class="label-content">
+                            <img class="lazyload" data-src="assets/img/battle/mode-icon-coin.png" alt="" aria-hidden="true" /> 
+                            <h4 class="top-label">
+                            Coin Runners
+                            </h4>
+                            <h5 class="bottom-label">
+                            Collect as many coins as possible before time <span class="nowrap">runs out.</span>
+                            </h5>
+                        </div>
+                        </div>
+                    </li>
+                    <li id="shineThief" class="slide  " data-vid-id="45NTFsYTE6Afuc3NNeQhAs_vAoySL8ie">
+                        <button class="content" aria-label="Play video">
+                            <img class="on lazyload" data-src="assets/img/battle/mode-screen-shine.jpg" alt="" aria-hidden="true" />
+                        </button>
+                        <div class="label">
+                        <div class="label-content">
+                            <img class="lazyload" data-src="assets/img/battle/mode-icon-shine.png" alt="" aria-hidden="true" /> 
+                            <h4 class="top-label">
+                            Shine Thief
+                            </h4>
+                            <h5 class="bottom-label">
+                            Try to hold the Shine Sprite for a count of 20 before time <span class="nowrap">runs out.</span>
+                            </h5>
+                        </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- GALLERY ARROW NAV -->
+                <button class="arrow left" aria-label="Previous battle mode"></button>
+                <button class="arrow right" aria-label="Next battle mode"></button>
+            </div> 
+        </div>
+        <!-- END: BATTLE MODE CAROUSEL -->
+
+     
+        <div class="check-header">
+            <h2 class="text">Eight cool Battle Mode courses</span>
+        </div>
+      </div>
+      
+      <ul class="courses-list max-w-content">
+        <li>
+            <div class="ylw-hdr">
+                <h3>Battle Stadium</h3>
+            </div>
+            <img src="assets/img/battlecourse/battlestadium.jpg" alt="The Battle Stadium course is set in a stadium and features an anti-gravity ring." aria-hidden="true" />
+        </li>
+        <li>
+            <div class="ylw-hdr">
+                <h3>Sweet Sweet Kingdom</h3>
+            </div>
+            <img src="assets/img/battlecourse/sweetkingdom.jpg" alt="The Sweet Sweet Kingdom course is filled with desserts and pastries." aria-hidden="true" />
+        </li>
+        <li>
+            <div class="ylw-hdr">
+                <h3>Dragon Palace</h3>
+            </div>
+            <img src="assets/img/battlecourse/dragonpalace.jpg" alt="The Dragon Palace course is set in a courtyard and pagoda." aria-hidden="true" />
+        </li>
+        <li>
+            <div class="ylw-hdr">
+                <h3>Lunar Colony</h3>
+            </div>
+            <img src="assets/img/battlecourse/lunarcolony.jpg" alt="The Lunar Colony course is set on the moon." aria-hidden="true" />
+        </li>
+        <li>
+            <div class="ylw-hdr">
+                <h3>Wuhu Town</h3>
+            </div>
+            <img src="assets/img/battlecourse/wuhutown.jpg" alt="The 3DS Wuhu Town course takes place in the town from Wuhu Island." aria-hidden="true" />
+        </li>
+        <li>
+            <div class="ylw-hdr">
+                <h3>Luigi's Mansion</h3>
+            </div>
+            <img src="assets/img/battlecourse/luigismansion.jpg" alt="The Nintendo GameCube Luigi's Mansion course is set in a haunted mansion." aria-hidden="true" />
+        </li>
+        <li>
+            <div class="ylw-hdr">
+                <h3>Battle Course 1</h3>
+            </div>
+            <img src="assets/img/battlecourse/battlecourse1.jpg" alt="The SNES Battle Course 1 course takes place on a Mario Kart racetrack." aria-hidden="true" />
+        </li>
+        <li>
+            <div class="ylw-hdr">
+                <h3>Urchin Underpass</h3>
+            </div>
+            <img src="assets/img/battlecourse/urchinunderpass.jpg" alt="The Urchin Underpass course is inspired by the Turf War map from the Splatoon game." aria-hidden="true" />
+        </li>
+      </ul>
+
+    </section>
+<section id="buy" class="buyblade">
+    <div class="max-w-content">
+        <img src="assets/img/buy/box-art.png" id="buy-art" alt="" aria-hidden="true" />
+        <div class="content">
+            
+            <h2 class="h3">BUY NOW</h2>
+
+            <div>
+                <h3>Digital edition</h3>
+                <p class="buyblade__digital-desc">Buy the digital version and download it directly to your system! </p>
+                <p id="prices" class="prices">
+                    <span id="logged-in-digital-price"></span>
+                    <span id="us-digital-price" class="us-price nowrap">$59.99 USD /</span> <span id="ca-digital-price" class="ca-price nowrap">$84.99 CAD</span>
+                </p>
+                <div>
+                    
+                    <a href="https://ec.nintendo.com/title_purchase_confirm?title=70010000000153" title="Nintendo.com. Opens in a new window." target="_blank" data-metric="{ eVars: { 24: 'us: digital: mario kart 8 deluxe' }, events: [35] }" class="btn-pink">BUY NOW</a>
+                    
+                        
+                </div>
+            </div>
+
+            <div class="wishlist">
+                <button
+                    class="wishlist-button"
+                    data-nsuid="70010000000153"
+                    data-remove-text="Remove from Wish List"
+                    data-add-text="Add to Wish List"
+                >
+                    <div class="wishlist-button__icon">
+                        <svg
+                        class="heart-spark"
+                        viewBox="0 0 54 54"
+                        height="24"
+                        width="24"
+                        fill="currentColor"
+                        stroke="currentColor"
+                        role="presentation"
+                        aria-hidden="true"
+                        >
+                            <g class="hearts">
+                                <path
+                                    class="heart heart-outline"
+                                    d="M27,38.9c-0.4,0-0.6-0.1-0.8-0.4L16.7,29c-1.8-1.8-2.7-3.8-2.7-6c0-4.4,3.5-8,7.9-8c1.9,0,3.7,0.8,5.1,2.3c1.4-1.4,3.2-2.3,5.1-2.3c4.4,0,7.9,3.6,7.9,8c0,2.6-1.5,4.6-2.7,6.1l-9.5,9.4C27.6,38.8,27.2,38.9,27,38.9z M21.9,17.5c-3.1,0-5.6,2.5-5.6,5.6c0,1.9,1.1,3.3,2,4.3l8.6,8.7l8.5-8.6c1.4-1.5,2.1-3,2.1-4.4c0-3.1-2.5-5.6-5.6-5.6c-1.5,0-3,1-4.1,2.5c-0.5,0.6-1.4,0.6-1.9,0C24.9,18.4,23.5,17.5,21.9,17.5z"
+                                />
+                                <path
+                                    class="heart heart-filled"
+                                    d="M32.1,15.1c-1.9,0-3.7,0.8-5.1,2.3c-1.4-1.4-3.2-2.3-5.1-2.3c-4.4,0-7.9,3.6-7.9,8c0,2.1,0.9,4.2,2.7,6l9.5,9.5c0.2,0.2,0.5,0.4,0.8,0.4c0.2,0,0.6-0.1,0.8-0.4l9.5-9.4c1.2-1.4,2.7-3.5,2.7-6.1C40,18.7,36.5,15.1,32.1,15.1z"
+                                />
+                            </g>
+                            <g class="sparks">
+                                <path class="spark" d="M 27 8 L 27 0" stroke-width="2" />
+                                <path class="spark" d="M 27 46 L 27 54" stroke-width="2" />
+                                <path
+                                    class="spark"
+                                    transform="matrix(0.7071 0.7071 -0.7071 0.7071 19.9584 -28.1838)"
+                                    d="M 44 14 L 44 6"
+                                    stroke-width="2"
+                                />
+                                <path
+                                    class="spark"
+                                    transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 24.1421 10)"
+                                    d="M 10 6 L 10 14"
+                                    stroke-width="2"
+                                />
+                                <path
+                                    class="spark"
+                                    transform="matrix(4.547455e-11 1 -1 4.547455e-11 77 -23)"
+                                    d="M 50 31 L 50 23"
+                                    stroke-width="2"
+                                />
+                                <path
+                                    class="spark"
+                                    transform="matrix(-9.049490e-11 1 -1 -9.049490e-11 31 23)"
+                                    d="M 4 23 L 4 31"
+                                    stroke-width="2"
+                                />
+                                <path
+                                    class="spark"
+                                    transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 106.2254 44)"
+                                    d="M 44 48 L 44 40"
+                                    stroke-width="2"
+                                />
+                                <path
+                                    class="spark"
+                                    transform="matrix(0.7071 0.7071 -0.7071 0.7071 34.0416 5.8162)"
+                                    d="M 10 40 L 10 48"
+                                    stroke-width="2"
+                                />
+                            </g>
+                        </svg>
+                    </div>
+                    <span class="wishlist-button__text">Add to Wish List</span>
+                </button>
+            </div>
+
+            <div class="vouchers">
+                <div class="vouchers__grid">
+                    <img
+                        src="assets/img/buy/nintendo-vouchers.png"
+                        srcset="assets/img/buy/nintendo-vouchers.png 1x, assets/img/buy/nintendo-vouchers-2x.png 2x"
+                        class="lazyload"
+                        alt="Nintendo Switch game vouchers" />
+                    <p class="vouchers__title">Save on two digital games in the game voucher catalog (Nintendo Switch 2 games not included)</p>
+                </div>
+
+                <p class="vouchers__body">Members can buy a pair of Nintendo Switch Game Vouchers* and redeem each one for a digital game in the voucher catalog to score savings! Vouchers can be purchased through January 30, 2026 11:59 PM PT.  Vouchers cannot be redeemed for games exclusive to the Nintendo Switch 2.</p>
+                <p class="vouchers__body"><strong>Buy now, use later</strong></p>
+                <p class="vouchers__body">Vouchers are redeemable for 12 months from the date of purchase and don’t have to be used at the same time.</p>
+                <a href="https://www.nintendo.com/store/products/nintendo-switch-game-vouchers/" target="_blank" class="btn-pink">Learn more</a>
+            </div>
+            
+            <div class="retail">
+                <h3>Physical edition</h3>
+                <p class="retail__desc">Select your location to get started:</span></p>
+                <div class="buy-container en-us">
+
+                    <a href="https://www.nintendo.com/store/products/mario-kart-8-deluxe-105275/?sid=fa79bf5a18def5f7be553946e31a9de1__al" class="btn-pink" aria-label="Select US My Nintendo Store">USA <img data-src="assets/img/buy/flag-usa.png" class="lazyload" alt="" aria-hidden="true" /></a>
+                    <a href="https://www.nintendo.com/en-ca/store/products/mario-kart-8-deluxe-can-105276/?sid=c9f589238479b24a37fb26e308eab431__al" class="btn-pink" aria-label="Select Canada My Nintendo Store">CANADA <img data-src="assets/img/buy/flag-canada.png" class="lazyload" alt="" aria-hidden="true" /></a>
+
+                    
+                </div>
+            </div>
+            
+        </div> 
+    </div>
+</section>
+<section class="booster-buy" id="booster-buy">
+  <div class="booster-buy__inner">
+    <div class="booster-buy__left">
+      <img
+        class="booster-buy__logo"
+        src="assets/img/home/mk8-booster-logo.png"
+        srcset="assets/img/home/mk8-booster-logo.png 1x,
+          assets/img/home/mk8-booster-logo-2x.png 2x"
+        alt="Mario Kart 8 Deluxe — Booster Course Pass"
+      />
+      <h3 class="booster-buy__heading">Buy the Mario Kart 8 Deluxe — Booster Course Pass from Nintendo.com. Choose the option that’s right for you.</h3>
+    </div>
+    <div class="booster-buy__right">
+
+      <div class="booster-buy__group">
+        <h4 class="booster-buy__heading">Full game + DLC</h4>
+        <p class="booster-buy__body">Buy the digital version of the game and the paid DLC add-on in one convenient bundle.</p>
+        <p id="prices" class="booster-buy__prices">
+          <span
+            class="dlc-price"
+            data-dlc-type="bundle"
+            data-nsuid="70070000016659"
+          >
+            $84.98 USD / $112.98 CAD
+          </span>
+        </p>
+
+        <div class="booster-buy__buttons">
+          <a href="https:&#x2F;&#x2F;ec.nintendo.com&#x2F;bundle_purchase_confirm?bundle=70070000016659" class="btn-pink">Buy now</a>
+        </div>
+      </div>
+
+      <div class="booster-buy__group">
+        <h4 class="booster-buy__heading">DLC only</h4>
+        <p class="booster-buy__body">Buy the paid DLC add-on to go along with the full game (physical or digital) you already own.</p>
+        <p id="prices" class="booster-buy__prices">
+          <span
+            class="dlc-price"
+            data-dlc-type="standalone"
+            data-nsuid="70070000013723"
+          >
+            $24.99 USD / $32.99 CAD
+          </span>
+        </p>
+
+        <div class="booster-buy__buttons">
+          <a href="https:&#x2F;&#x2F;ec.nintendo.com&#x2F;bundle_purchase_confirm?bundle=70070000013723" class="btn-pink">Buy now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="booster-buy__nso">
+    <div class="booster-buy__card">
+      <img
+        src="..&#x2F;assets&#x2F;img/global/nso-online.svg"
+        alt="Nintendo Switch Online + Expansion Pack"
+      />
+      <p>Access the courses at no additional cost with a paid Nintendo Switch Online + Expansion Pack membership.</p>
+      <a href="https:&#x2F;&#x2F;ec.nintendo.com&#x2F;bundle_purchase_confirm?bundle=70070000013723" class="btn-pink">Download</a>
+      <p class="booster-buy__legal">If you do not have a Nintendo Switch Online + Expansion Pack membership, learn how to <a href='https://www.nintendo.com/switch/online/nintendo-switch-online/expansion-pack/'>sign up</a>.</p>
+    </div>
+  </div>
+</section>
+<div id="nso">
+  <div class="max-w-content flex">
+      <div class="description">
+          <img id="nso-logo" data-src="assets/img/buy/logo-nso.png" class="lazyload" alt="Nintendo Switch Online"/>
+          <p>Get even more from your game with a Nintendo Switch Online membership.</p>
+          <p>This paid service gives you access to online play, a selection of NES™ games, cloud backup for your save data in compatible games, and more.</p>
+          <a href="https://www.nintendo.com/switch/online-service/" target="_blank">Learn more about Nintendo Switch Online and sign up</a>
+      </div>
+      <div class="features">
+          <p>This game supports:</p>
+          <div class="flex">
+              <a href="https://www.nintendo.com/switch/online-service/online-play/" title="Online Play" target="_blank">
+                  <figure>
+                      <img data-src="assets/img/buy/icon-online-play.png" class="lazyload" alt="Online Play"/>
+                      <figcaption>
+                              <span class="nowrap">Online Play</span>
+                      </figcaption>
+                  </figure>
+              </a>
+              <a href="https://www.nintendo.com/switch/online-service/save-data-cloud/" title="Save Data Cloud" target="_blank">
+                  <figure>
+                      <img data-src="assets/img/buy/icon-save-cloud-data.png" class="lazyload" alt="Save Data Cloud"/>
+                      <figcaption>
+                              <span class="nowrap">
+                                  Save Data Cloud
+                              </span>
+                      </figcaption>
+                  </figure>
+              </a>
+          </div>
+      </div>
+  </div>
+  <div class="border-rainbow"></div>
+</div>    
+
+ <!-- SITE FOOTER -->
+    <footer id="footer">
+      <div class="footer-btns">
+        
+        <a href="https://en-americas-support.nintendo.com/app/answers/detail/a_id/26098" target="_blank">
+          <div id="customer-support-wrapper">
+            <div id="content">
+              Customer Support
+            </div>
+          </div>
+        </a>
+        
+      </div>
+      
+      <!-- NOA FOOTER -->
+      <nclood-footer color="light" esrb="e" esrb-descriptors="Comic Mischief" logo-amiibo="true" interest-based-ads="true"></nclood-footer>
+      <!-- END: NOA FOOTER --> 
+
+      <p class="online legal">
+        Internet access required for online features. For more info, go to <a href="https://en-americas-support.nintendo.com/app/answers/detail/a_id/26098" target="_blank">support.nintendo.com</a>.
+      </p>
+      <div class="nso-online legal">
+        <a class="nso-logo" href="https://www.nintendo.com/switch/online-service/">
+          <img src="/assets/img/global/nso-online.svg" alt="Nintendo Switch Online" />
+        </a>
+        <div class="nso-online-item">
+          <p class="legal">
+            *<a href="https://www.nintendo.com/switch/online-service/" target="_blank">Nintendo Switch Online membership </a>(sold separately) and Nintendo Account required for online features. Not available in all countries. Internet access required for online features. <a href="https://accounts.nintendo.com/term/eula/US?lang=en-US">Terms apply</a>.
+          </p>
+        </div>
+      </div>
+      <p class="legal">
+        **Paid Nintendo Switch Online membership required at the time of purchase and redemption of Nintendo Switch Game Vouchers. Nintendo Switch Game Vouchers must be redeemed within 12 months from purchase date, have no cash value, and cannot be transferred, returned, or redeemed for cash. Each Nintendo Switch Game Voucher may be redeemed for one game offered as part of the catalog. To receive promotional value, Nintendo Switch Game Vouchers must be redeemed for two games with a cumulative price that is higher than the purchase price of the Nintendo Switch Game Vouchers. Nintendo Switch Game Vouchers may not be combined with any other sale, discount, or promotional offer unless otherwise specified.
+      </p>
+      <p class="legal">
+        &copy; 2017 Nintendo. Mario Kart and Nintendo Switch are trademarks of Nintendo.
+      </p>
+      <p class="legal">
+        Additional games, systems, and accessories may be required for multiplayer mode. Sold separately.
+      </p>
+      <p class="legal">
+        Game, system, and amiibo figures sold separately. Figures shown not actual size and designs may vary. Compatibility and functionality of amiibo may vary per game. Visit <a href="https://amiibo.com" target="_blank">amiibo.com</a> for specific details on how each <span class="nowrap">amiibo works.</span>
+      </p>
+    </footer>    </div>
+    <!-- END: .overflow-wrap -->
+  </div>
+  <!-- END: #site -->
+
+<div class="modal" aria-hidden="true">
+    <div class="bg"></div>
+    <div class="content-wrap">
+        <button class="btn-global btn-close" aria-label="close video" js-first-focus="true"></button>
+        <div class="content video-content" id="video-content-trailer">
+            <div class="vid-wrapper" video-id="h3cWI1YTE6-SpjZxHJKyXVNCl4cNT773" video-name="trailer"></div>
+        </div>
+        <div class="content" id="items-content">
+<div id="item-gallery" class="gallery" data-ivc-threshold="0">
+    <div class="text-wrap2">
+        <div class="text carousel-label">
+            <p class="top-label">
+                Banana
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Triple Bananas
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Green Shell
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Triple Green Shells
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Red Shell
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Triple Red Shells
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Spiny Shell
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Bob-omb
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Mushroom
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Triple Mushrooms
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Golden Mushroom
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Bullet Bill
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Blooper
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Lightning
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Super Star
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Fire Flower
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Boomerang Flower
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Piranha Plant
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Super Horn
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Crazy Eight
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Coin
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Feather
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="top-label">
+                Boo
+            </p>
+        </div>
+    </div>
+    <div class="content">
+        <ul class="slides">
+            <li data-slide-id="banana" class="slide">
+                <img class="on lazyload" data-src="assets/img/items/banana.png" alt="Banana item, Will send anyone who hits it into a spin." />
+            </li>
+            <li data-slide-id="multiBanana" class="slide">
+                <img class="on lazyload" data-src="assets/img/items/multiBanana.png" alt="Triple Bananas item, Three Bananas that spin around your vehicle." />
+            </li>
+            <li data-slide-id="greenShell" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/greenShell.png" alt="Green Shell item, travels in a straight line and knock over the first driver they hit." />
+            </li>
+            <li data-slide-id="multiGreenShell" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/multiGreenShell.png" alt="Triple Green Shells item, Three Green Shells that spin around your vehicle. " />
+            </li>
+            <li data-slide-id="redShell" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/redShell.png" alt="Red Shell item, locks on and pursues the vehicle in front of you, knocking over the first driver they hit. " />
+            </li>
+            <li data-slide-id="multiRedShell" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/multiRedShell.png" alt="Triple Red Shells item, Three Red Shells that spin around your vehicle. " />
+            </li>
+            <li data-slide-id="spinyShell" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/blueShell.png" alt="Spiny Shell item, Pursues the driver in 1st place, knocking over any other vehicles it hits along the way. This one won’t stop until it catches the leader!" />
+            </li>
+            <li data-slide-id="bobomb" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/bomb.png" alt="Bob-omb item, explodes a short time after use or on impact with a vehicle." />
+            </li>
+            <li data-slide-id="mushroom" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/mushroom.png" alt="Mushroom item, Gives you a brief speed boost. " />
+            </li>
+            <li data-slide-id="multiMushroom" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/multiMushroom.png" alt="Triple Mushrooms item, Three Mushrooms that spin around your vehicle. Press [L] to use one of them for a brief speed boost. " />
+            </li>
+            <li data-slide-id="goldMushroom" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/goldMushroom.png" alt="Golden Mushroom item, For a short time, allows you to use a Mushroom every you press [L]." />
+            </li>
+            <li data-slide-id="bulletBill" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/bullet.png" alt="Bullet Bill item, Temporarily transforms you into a Bullet Bill, making you zoom automatically toward the finish line while knocking over any vehicle you make contact with." />
+            </li>
+            <li data-slide-id="blooper" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/blooper.png" alt="Blooper item, Squirts ink on the vehicles ahead of you, briefly obscuring the drivers’ views. " />
+            </li>
+            <li data-slide-id="lightning" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/lightning.png" alt="Lightning item, Strikes all opponents with lightning, causing them to lose their items. It also temporarily shrinks them, reducing their speed. " />
+            </li>
+            <li data-slide-id="superStar" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/star.png" alt="Super Star item, Makes you temporarily invincible and increases your speed. Any vehicle you hit will be knocked over. " />
+            </li>
+            <li data-slide-id="fireFlower" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/fireFlower.png" alt="Fire Flower item, Lets you throw fireballs for a short time by pressing [L]. Any vehicle you hit will spin out of control. " />
+            </li>
+            <li data-slide-id="boomerang" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/boomerang.png" alt="Boomerang Flower item, The boomerang can be thrown up to three times. Any driver it hits will spin out of control. " />
+            </li>
+            <li data-slide-id="piranhaPlant" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/piranha.png" alt="Piranha Plant item, Attaches temporarily to the front of the vehicle. When the Piranha Plant bites at something, the momentum of its lunge provides a slight speed boost. " />
+            </li>
+            <li data-slide-id="superHorn" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/horn.png" alt="Super Horn item, sends nearby vehicles and items flying with an ear-splitting honk. " />
+            </li>
+            <li data-slide-id="crazyEight" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/eight.png" alt="Crazy Eight item, Eight items that orbit your vehicle. Press [L] to use the one closest to the front at that moment. " />
+            </li>
+            <li data-slide-id="coin" class="slide ">
+                <img class="on lazyload" data-src="assets/img/items/coin.png" alt="Coin item, Gives you two extra coins. The more coins you have, the faster your vehicle will go. " />
+            </li>
+            <li data-slide-id="feather" class="slide video" data-vid-id="xuNTFsYTE6NVGHP0Olj5L5e_cUUjnJCO">
+                <nclood-video video-id="xuNTFsYTE6NVGHP0Olj5L5e_cUUjnJCO" name="feather-video" autoplay="true"></nclood-video>
+                <img class="on lazyload" data-src="assets/img/items/feather.png" alt="Feather item, Launches your vehicle into the air, avoiding bananas and shells. Hit an opponent during a jump to steal one of their balloons. " />
+            </li>
+            <li data-slide-id="boo" class="slide video" data-vid-id="xsNTFsYTE6TiSYwtTNEOmz5DxvhoiZnP">
+                <nclood-video video-id="xsNTFsYTE6TiSYwtTNEOmz5DxvhoiZnP" name="feather-video" autoplay="true"></nclood-video>
+                <img class="on lazyload" data-src="assets/img/items/ghost.png" alt="Boo item, Makes your vehicle temporarily ghostly, allowing you to pass through bananas and shells. You might also steal an item from one of your opponents. " />
+            </li>  
+        </ul>
+        <!-- GALLERY ARROW NAV -->
+        <button class="arrow left" aria-label="Previous"></button>
+        <button class="arrow right" aria-label="Next"></button>
+    </div> 
+
+    <!-- GALLERY TEXT FOR EACH slide -->
+    <div class="text-wrap">
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Will send anyone who hits it into <span class="nowrap">a spin.</span>
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Three Bananas that spin around <span class="nowrap">your vehicle.</span>
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Green Shells travel in a straight line and knock over the first driver <span class="nowrap">they hit.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Three Green Shells that spin around <span class="nowrap">your vehicle.</span>
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Red Shells lock on and pursue the vehicle in front of you, knocking over the first driver <span class="nowrap">they hit.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Three Red Shells that spin around <span class="nowrap">your vehicle.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Pursues the driver in 1st place, knocking over any other vehicles it hits along the way. This one won’t stop until it catches <span class="nowrap">the leader!</span>
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Bob-ombs explode a short time after use or on impact with <span class="nowrap">a vehicle.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Gives you a brief speed boost.
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Three Mushrooms that spin around your vehicle. Press [L] to use one of them for a brief <span class="nowrap">speed boost.</span>
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                For a short time, allows you to use a Mushroom every you <span class="nowrap">press [L].</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Temporarily transforms you into a Bullet Bill, making you zoom automatically toward the finish line while knocking over any vehicle you make <span class="nowrap">contact with.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Squirts ink on the vehicles ahead of you, briefly obscuring the <span class="nowrap">drivers’ views.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Strikes all opponents with lightning, causing them to lose their items. It also temporarily shrinks them, reducing <span class="nowrap">their speed.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Makes you temporarily invincible and increases your speed. Any vehicle you hit will be <span class="nowrap">knocked over.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Lets you throw fireballs for a short time by pressing [L]. Any vehicle you hit will spin out <span class="nowrap">of control.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                The boomerang can be thrown up to three times. Any driver it hits will spin out <span class="nowrap">of control.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Attaches temporarily to the front of the vehicle. When the Piranha Plant bites at something, the momentum of its lunge provides a slight <span class="nowrap">speed boost.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Sends nearby vehicles and items flying with an <span class="nowrap">ear-splitting honk.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Eight items that orbit your vehicle. Press [L] to use the one closest to the front at <span class="nowrap">that moment.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Gives you two extra coins. The more coins you have, the faster your vehicle <span class="nowrap">will go.</span>
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Launches your vehicle into the air, avoiding bananas and shells. Hit an opponent during a jump to steal one of <span class="nowrap">their balloons.</span> 
+            </p>
+        </div>
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Makes your vehicle temporarily ghostly, allowing you to pass through bananas and shells. You might also steal an item from one of <span class="nowrap">your opponents.</span> 
+            </p>
+        </div>
+	</div>
+</div>        </div>
+        <div class="content" id="drivers-content">
+<div id="drivers-gallery" class="gallery" data-ivc-threshold="0">
+    <div class="content">
+        <ul class="slides">
+           <li data-slide-id="mario" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/mario_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="luigi" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/luigi_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="peach" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/peach_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="daisy" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/daisy_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="rosalina" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/rosalina_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="tanookiMario" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/tanukMario_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="catPeach" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/catPeach_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="yoshi" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/yoshi_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="toad" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/toad_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="koopa" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/koopa_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="shyguy" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/shyguy_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="lakitu" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/lakitu_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="toadette" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/toadette_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="kingBoo" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/kingBoo_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="babyMario" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/babyMario_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="babyLuigi" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/babyLuigi_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="babyPeach" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/babyPeach_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="babyDaisy" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/babyDaisy_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="babyRosalina" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/babyRosalina_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="metalMario" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/metalMario_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="goldPeach" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/goldPeach_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="wario" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/wario_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="waluigi" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/waluigi_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="dk" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/dk_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="bowser" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/bowser_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="dryBones" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/dryBones_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="bowserJr" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/koopaJr_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="dryBowser" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/boneKoopa_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="lemmy" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/lemmy_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="larry" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/larry_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="wendy" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/wendy_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="ludwig" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/ludwig_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="iggy" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/iggy_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="roy" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/roy_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="morton" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/morton_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="splatoonG" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/splatoonG_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="splatoonB" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/splatoonB_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="link" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/link_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="animalB" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/animalB_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="animalG" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/animalG_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="isabelle" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/isabelle_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+            <li data-slide-id="mii" class="slide">
+                <img class="on lazyload" data-src="assets/img/drivers/mii_screen.jpg"  alt="" aria-hidden="true" />
+            </li>
+        </ul>
+        <!-- GALLERY ARROW NAV -->
+        <button class="arrow left" aria-label="Previous character"></button>
+        <button class="arrow right" aria-label="Next character"></button>
+    </div> 
+
+    <!-- GALLERY TEXT FOR EACH slide -->
+    <div class="text-wrap labels">
+        <div class="text carousel-label">
+            <div class="bottom-label">
+                <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/mario_th.png" alt="" />
+                    <div class="check-header">
+                      <p class="name" >Mario</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                </div>
+                <div class="video" tabindex="-1">
+                    <video loop muted preload="none">
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Mario_H264_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/luigi_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Luigi</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted preload="none">
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Luigi_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/peach_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Peach</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted preload="none">
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Peach_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/daisy_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Daisy</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted preload="none">
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Daisy_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/rosalina_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Rosalina</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Rosalina_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/tanukiMario_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Tanooki Mario</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_TanookiMario_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/catPeach_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Cat Peach</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_CatPeach_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/yoshi_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Yoshi</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Yoshi_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/toad_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Toad</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Toad_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/koopa_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Koopa Troopa</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_KoopaTroopa_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/shyguy_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Shy Guy</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_ShyGuy_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/lakitu_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Lakitu</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Lakitu_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/toadette_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Toadette</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Toadette_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/kingBoo_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >King Boo</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_KingBoo_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/babyMario_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Baby Mario</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_BabyMario_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/babyLuigi_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Baby Luigi</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_BabyLuigi_H264_1.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/babyPeach_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Baby Peach</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_BabyPeach_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/babyDaisy_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Baby Daisy</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_BabyDaisy_H264_1_1.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/babyRosalina_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Baby Rosalina</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_BabyRosalina_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/metalMario_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Metal Mario</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_MetalMario_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/goldPeach_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Pink Gold Peach</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_PinkGoldPeach_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/wario_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Wario</p>
+                    </div>
+                    <p class="type">
+                     Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Wario_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/waluigi_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Waluigi</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Waluigi_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/dk_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Donkey Kong</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_DonkeyKong_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/bowser_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Bowser</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Bowser_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/dryBones_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Dry Bones</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_DryBones_H264_1.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/koopaJr_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Bowser Jr.</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_BowserJr_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/boneKoopa_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Dry Bowser</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_DryBowser_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/lemmy_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Lemmy</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Lemmy_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/larry_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Larry</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Larry_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/wendy_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Wendy</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Wendy_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/ludwig_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Ludwig</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Ludwig_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/iggy_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Iggy</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Iggy_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/roy_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Roy</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Roy_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/morton_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Morton</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Morton_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/splatoonG_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Inkling Girl</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_InklingGirl_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/splatoonB_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Inkling Boy</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_InklingBoy_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/link_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Link</p>
+                    </div>
+                    <p class="type">
+                     Weight Class: Heavy
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Link_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/animalB_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Villager</p>
+                    </div>
+                    <p class="type">
+                     Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_VillagerBoy_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/animalG_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Villager</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Medium
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_VillagerGirl_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/isabelle_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Isabelle</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Light
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Isabelle_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div class="text carousel-label">
+                <div class="bottom-label">
+                  <div class="info">
+                    <img aria-hidden="true" class="head lazyload" data-src="assets/img/drivers/mii_th.png" alt="" />
+                    <div class="check-header">
+                        <p class="name" >Mii Character</p>
+                    </div>
+                    <p class="type">
+                      Weight Class: Varies
+                    </p>
+                  </div>
+                  <div class="video" tabindex="-1">
+                    <video loop muted>
+                      <source data-src="assets/video/drivers/Switch_MK8DX_Microsite_Characters_Mii_H264_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+	</div>
+</div>        </div>
+        <div class="content" id="courses-content">
+<div id="course-gallery" class="gallery" data-ivc-threshold="0">
+    <div class="content">
+        <ul class="slides">
+            <li data-slide-id="mario-kart-stadium" class="slide " data-section="mushroom" data-vid-id="c5NzFsYTE6ozvpyKW8JwGHCZL7HEZpHx">
+                <img class="on lazyload" data-src="assets/img/courses/mushroom_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="water-park" class="slide " data-section="mushroom" data-vid-id="pkNzFsYTE6KlFBbaOtnQGL8I5rq8Iu8S">
+                <img class="on lazyload" data-src="assets/img/courses/mushroom_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="sweet-sweet-canyon" class="slide " data-section="mushroom" data-vid-id="pmNzFsYTE6Zlu_lSLs3mn8p4JWTDFMWj">
+                <img class="on lazyload" data-src="assets/img/courses/mushroom_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="thwomp-ruins" class="slide " data-section="mushroom" data-vid-id="piNzFsYTE6k2mHwvOmbC7x3aLBCOt6NW">
+                <img class="on lazyload" data-src="assets/img/courses/mushroom_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="mario-circuit" class="slide " data-section="flower" data-vid-id="tnNjFsYTE6MdPjx3akM3-bC5bgLC-JKA">
+                <img class="on lazyload" data-src="assets/img/courses/flower_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="toad-harbor" class="slide " data-section="flower" data-vid-id="ltNjFsYTE6YaUU8e1t6fZOlvujEMTP-h">
+                <img class="on lazyload" data-src="assets/img/courses/flower_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="twisted-mansion" class="slide " data-section="flower" data-vid-id="BzNjFsYTE6J1difnq5CtREzWF1qiEFdS">
+                <img class="on lazyload" data-src="assets/img/courses/flower_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="shy-guy-falls" class="slide " data-section="flower" data-vid-id="lrNjFsYTE6bW5HEyNfV2cIRfZlRc81WC">
+                <img class="on lazyload" data-src="assets/img/courses/flower_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="sunshine-airport" class="slide " data-section="star" data-vid-id="EyODFsYTE6skzlD3R7hMAbfYZq-bLU5a">
+                <img class="on lazyload" data-src="assets/img/courses/star_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="dolphin-shoals" class="slide " data-section="star" data-vid-id="EwODFsYTE6tJuSdsIX4hQJh2MHpXQlvx">
+                <img class="on lazyload" data-src="assets/img/courses/star_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="electrodrome" class="slide " data-section="star" data-vid-id="E0ODFsYTE6t0jOiH2FQYASyqJ5cg5n8e">
+                <img class="on lazyload" data-src="assets/img/courses/star_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="mount-wario" class="slide " data-section="star" data-vid-id="F4NzFsYTE6hZSCo0YbewlFagKAwQC0oD">
+                <img class="on lazyload" data-src="assets/img/courses/star_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="cloudtop-cruise" class="slide " data-section="special"  data-vid-id="FyNzFsYTE6z8mNVV5hRM11BD6j0An2dj">
+                <img class="on lazyload" data-src="assets/img/courses/special_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="bone-dry-dunes" class="slide " data-section="special" data-vid-id="ZwNzFsYTE6kOnt6oJCoUfNNxd21xGN3S">
+                <img class="on lazyload" data-src="assets/img/courses/special_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="bowsers-castle" class="slide " data-section="special" data-vid-id="F0NzFsYTE6ObY9ciPyEU7UTG2wF40HBb">
+                <img class="on lazyload" data-src="assets/img/courses/special_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="rainbow-road" class="slide " data-section="special" data-vid-id="czNzFsYTE6aa7gQVz9TpTwyNrD9ezf26">
+                <img class="on lazyload" data-src="assets/img/courses/special_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="moo-moo-meadows-wii" class="slide " data-section="shell" data-vid-id="ZsNzFsYTE6t3HSOa-mvSNYtIlNkmAlm6">
+                <img class="on lazyload" data-src="assets/img/courses/shell_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="mario-circuit-game-boy-advance" class="slide " data-section="shell" data-vid-id="poNzFsYTE65DK8NOTm96v9_0qyqhp7Fw">
+                <img class="on lazyload" data-src="assets/img/courses/shell_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="cheep-cheep-beach-nintendo-ds" class="slide " data-section="shell" data-vid-id="pqNzFsYTE6qLQGWDe-5QAUZMm33VW8qA">
+                <img class="on lazyload" data-src="assets/img/courses/shell_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="toads-turnpike-nintendo-64" class="slide " data-section="shell" data-vid-id="ZuNzFsYTE6gxqQ1WQZc60K4zVpwmiG2X">
+                <img class="on lazyload" data-src="assets/img/courses/shell_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="dry-dry-desert-nintendo-gamecube" class="slide " data-section="banana" data-vid-id="xqNTFsYTE677U_bSJj0Wj3pHwMYwYcg4">
+                <img class="on lazyload" data-src="assets/img/courses/banana_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="donut-plains-3-super-nes" class="slide " data-section="banana" data-vid-id="xoNTFsYTE6c-qRz55m4WsgeKUsQcp4Fy">
+                <img class="on lazyload" data-src="assets/img/courses/banana_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="royal-raceway-nintendo-64" class="slide " data-section="banana" data-vid-id="hyNTFsYTE6Qnk6buRKZfqD05sJcBdh5V">
+                <img class="on lazyload" data-src="assets/img/courses/banana_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="dk-jungle-nintendo-3ds" class="slide " data-section="banana" data-vid-id="hwNTFsYTE68jN2HpkN63t2vVKNh1oBW_">
+                <img class="on lazyload" data-src="assets/img/courses/banana_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="wario-stadium-nintendo-ds" class="slide " data-section="leaf" data-vid-id="cxNzFsYTE68jur6so5qNQUWr6wDN6S0-">
+                <img class="on lazyload" data-src="assets/img/courses/leaf_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="sherbet-land-nintendo-gamecube" class="slide " data-section="leaf" data-vid-id="BxNjFsYTE6D73t0_VQHs9PcfFb36oAwe">
+                <img class="on lazyload" data-src="assets/img/courses/leaf_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="music-park-nintendo-3ds" class="slide " data-section="leaf" data-vid-id="lvNjFsYTE65g78cZO-NRluXhSCAdRZMT">
+                <img class="on lazyload" data-src="assets/img/courses/leaf_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="yoshi-valley-nintendo-64" class="slide " data-section="leaf" data-vid-id="B3NjFsYTE6IQPGhS9oVBfu7GbWavmtxn">
+                <img class="on lazyload" data-src="assets/img/courses/leaf_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="tick-tock-clock-nintendo-ds" class="slide " data-section="lightning" data-vid-id="c3NzFsYTE6pDaKBt3YopnKEwXix5OGM5">
+                <img class="on lazyload" data-src="assets/img/courses/lightning_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="piranha-plant-slide-nintendo-3ds" class="slide " data-section="lightning" data-vid-id="c1NzFsYTE6t5XzBv4tv8BeyRCyvKI1Gh">
+                <img class="on lazyload" data-src="assets/img/courses/lightning_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="grumble-volcano-wii" class="slide " data-section="lightning" data-vid-id="d5NjFsYTE6wqdQn6odYZ6Ht9VETQAT0p">
+                <img class="on lazyload" data-src="assets/img/courses/lightning_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="rainbow-road-nintendo-64" class="slide " data-section="lightning" data-vid-id="F2NzFsYTE6B9lQPEShOGPKyWHzgIxRw-">
+                <img class="on lazyload" data-src="assets/img/courses/lightning_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="yoshis-circuit-nintendo-gamecube" class="slide " data-section="egg" data-vid-id="tlNjFsYTE6AnBCrnvZI4QJ5uNtIZD5t8">
+                <img class="on lazyload" data-src="assets/img/courses/egg_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="excitebike-arena" class="slide " data-section="egg" data-vid-id="tjNjFsYTE61Q6H6ru81B_Xol-ZzVZ2lO">
+                <img class="on lazyload" data-src="assets/img/courses/egg_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="dragon-driftway" class="slide " data-section="egg" data-vid-id="ZhNjFsYTE6LxcVZ_2xZAJlfEhEXD04KU">
+                <img class="on lazyload" data-src="assets/img/courses/egg_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="mute-city" class="slide " data-section="egg" data-vid-id="lpNjFsYTE60goje_egYYBGK1gW2FRtmy">
+                <img class="on lazyload" data-src="assets/img/courses/egg_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="warios-gold-mine-wii" class="slide " data-section="triforce" data-vid-id="RjODFsYTE6c9UVmkzVoVYbmiXF99FBP4">
+                <img class="on lazyload" data-src="assets/img/courses/triforce_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="rainbow-road-super-nes" class="slide " data-section="triforce" data-vid-id="BndWxuYTE6unMOpjNhXHt6-5RyiPqKzt">
+                <img class="on lazyload" data-src="assets/img/courses/triforce_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="ice-ice-outpost" class="slide " data-section="triforce" data-vid-id="Q4ODFsYTE6915Ps6SqFH685X1z3iwjXg">
+                <img class="on lazyload" data-src="assets/img/courses/triforce_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="hyrule-circuit" class="slide " data-section="triforce" data-vid-id="Q2ODFsYTE6qqVli7GXLe8BYOWuSOkpjM">
+                <img class="on lazyload" data-src="assets/img/courses/triforce_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="baby-park-nintendo-gamecube" class="slide " data-section="crossing" data-vid-id="cwNjFsYTE6T_CS12Cg6kjDSqJi_cXKbz">
+                <img class="on lazyload" data-src="assets/img/courses/crossing_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="cheese-land-game-boy-advance" class="slide " data-section="crossing" data-vid-id="Y0NjFsYTE6bTecN3ajhH0ylkldsjzft9">
+                <img class="on lazyload" data-src="assets/img/courses/crossing_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="wild-woods" class="slide " data-section="crossing" data-vid-id="Y2NjFsYTE6plP82MZzdNZA8O5ctsVhiK">
+                <img class="on lazyload" data-src="assets/img/courses/crossing_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="animal-crossing" class="slide " data-section="crossing" data-vid-id="cyNjFsYTE67ry5pkKmRx7cBeaHrPPZJc">
+                <img class="on lazyload" data-src="assets/img/courses/crossing_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="neo-bowser-city-nintendo-3ds" class="slide " data-section="bell" data-vid-id="d2NTFsYTE6hZxkScFji4wrvpXJGce5I0">
+                <img class="on lazyload" data-src="assets/img/courses/bell_01-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="ribbon-road-game-boy-advance" class="slide " data-section="bell" data-vid-id="d4NTFsYTE64cAUSv28e34G694oz8STdx">
+                <img class="on lazyload" data-src="assets/img/courses/bell_02-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="super-bell-subway" class="slide " data-section="bell" data-vid-id="d0NTFsYTE6u9CD9sS3iuLbzYUzxHi743">
+                <img class="on lazyload" data-src="assets/img/courses/bell_03-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+            <li data-slide-id="big-blue" class="slide " data-section="bell" data-vid-id="Y4NjFsYTE61c9RPhLGk4ucRXCZFYfUmA">
+                <img class="on lazyload" data-src="assets/img/courses/bell_04-lg.jpg"  alt="" aria-hidden="true"/>
+            </li>
+        </ul>
+        <!-- GALLERY ARROW NAV -->
+        <button class="arrow left" aria-label="Previous"></button>
+        <button class="arrow right" aria-label="Next"></button>
+    </div> 
+
+    <!-- GALLERY TEXT FOR EACH slide -->
+    <div class="text-wrap">
+        <div class="text carousel-label">
+            <p class="bottom-label">
+                Mario Kart Stadium
+            </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Water Park
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Sweet Sweet Canyon
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Thwomp Ruins
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Mario Circuit
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Toad Harbor
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Twisted Mansion
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Shy Guy Falls
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Sunshine Airport
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Dolphin Shoals
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Electrodrome
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Mount Wario
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Cloudtop Cruise
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Bone Dry Dunes
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Bowser's Castle
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Rainbow Road
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            <span class='capitalize'>Wii</span> Moo Moo Meadows
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            GBA Mario Circuit
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            DS Cheep Cheep Beach
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            N64 Toad's Turnpike
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            GCN Dry Dry Desert
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            SNES Donut Plains 3
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            N64 Royal Raceway
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            3DS DK Jungle
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            DS Wario Stadium
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            GCN Sherbet Land
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            3DS Music Park
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            N64 Yoshi Valley
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            DS Tick Tock Clock
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            3DS Piranha Plant Slide
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            <span class='capitalize'>Wii</span> Grumble Volcano
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            N64 Rainbow Road
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            GCN Yoshi’s Circuit
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Excitebike Arena
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Dragon Driftway
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Mute City
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            <span class='capitalize'>Wii</span> Wario's Gold Mine
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            SNES Rainbow Road
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Ice Ice Outpost
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Hyrule Circuit
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            GCN Baby Park
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            GBA Cheese Land
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Wild Woods
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Animal Crossing
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            3DS Neo Bowser City
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            GBA Ribbon Road
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Super Bell Subway
+        </p>
+        </div>
+        <div class="text carousel-label">
+        <p class="bottom-label">
+            Big Blue
+        </p>
+        </div>
+	</div>
+</div>        </div>
+    </div>
+</div>
+
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="assets/css/home.css" rel="stylesheet" />
+  <link href="assets/css/mod-gallery.css" rel="stylesheet" />
+  <link href="assets/css/modal.css" rel="stylesheet" />
+  
+  
+
+  <script type="text/javascript" src="//media.nintendo.com/share/nclood/stable/en-us/bundles/all.min.js"></script>
+
+
+
+  <script type="text/javascript" src="assets/js/libs/lazysizes.min.js"></script>
+  <script type="text/javascript" src="assets/js/libs/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="assets/js/mk8d-site.js"></script>
+  <script type="module" src="https://code.nintendo.com/web-components/styled-button/styled-button.js"></script>
+
+</body>
+</html>
