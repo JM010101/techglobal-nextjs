@@ -31,25 +31,6 @@ const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchBlogPosts = async () => {
-      try {
-        const response = await fetch('/api/blog?limit=6');
-        const data = await response.json();
-        if (data.success) {
-          setBlogPosts(data.data);
-        }
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
-        setBlogPosts(sampleBlogPosts);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlogPosts();
-  }, []);
-
   const sampleBlogPosts: BlogPost[] = [
     {
       id: '1',
@@ -220,6 +201,25 @@ const Blog = () => {
       isFeatured: false
     }
   ];
+
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        const response = await fetch('/api/blog?limit=6');
+        const data = await response.json();
+        if (data.success) {
+          setBlogPosts(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+        setBlogPosts(sampleBlogPosts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogPosts();
+  }, [sampleBlogPosts]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);

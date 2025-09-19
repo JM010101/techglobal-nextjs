@@ -22,7 +22,7 @@ const WordleGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
   useEffect(() => {
     const randomWord = words[Math.floor(Math.random() * words.length)];
     setTargetWord(randomWord);
-  }, []);
+  }, [words]);
 
   const checkGuess = (guess: string) => {
     const newGuesses = [...guesses, guess];
@@ -38,7 +38,7 @@ const WordleGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
     setCurrentGuess('');
   };
 
-  const getLetterStatus = (letter: string, position: number, guess: string) => {
+  const getLetterStatus = (letter: string, position: number) => {
     if (targetWord[position] === letter) return 'correct';
     if (targetWord.includes(letter)) return 'present';
     return 'absent';
@@ -72,7 +72,7 @@ const WordleGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
             <div key={rowIndex} className="flex gap-2 justify-center">
               {[...Array(5)].map((_, colIndex) => {
                 const letter = guesses[rowIndex]?.[colIndex] || '';
-                const status = guesses[rowIndex] ? getLetterStatus(letter, colIndex, guesses[rowIndex]) : '';
+                const status = guesses[rowIndex] ? getLetterStatus(letter, colIndex) : '';
                 return (
                   <div
                     key={colIndex}

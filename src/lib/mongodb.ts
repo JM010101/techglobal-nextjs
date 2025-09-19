@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 // Import environment configuration
 if (typeof window === 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require('../../env-config.js');
 }
 
@@ -50,5 +51,6 @@ async function connectDB() {
 export default connectDB;
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   var mongoose: any;
 }

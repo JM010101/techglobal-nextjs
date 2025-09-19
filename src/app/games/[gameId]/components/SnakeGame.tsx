@@ -70,7 +70,7 @@ const SnakeGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpd
   useEffect(() => {
     const gameLoop = setInterval(moveSnake, 150);
     return () => clearInterval(gameLoop);
-  }, [direction, gameStarted, gameOver]);
+  }, [direction, gameStarted, gameOver, moveSnake]);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {

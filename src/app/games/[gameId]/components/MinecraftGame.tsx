@@ -98,7 +98,7 @@ const MinecraftGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScor
             <div className="mb-4">
               <h3 className="text-lg font-semibold mb-2">Inventory</h3>
               <div className="space-y-2">
-                {blockTypes.slice(1).map((block, index) => (
+                {blockTypes.slice(1).map((block) => (
                   <div
                     key={block.id}
                     className={`p-3 rounded cursor-pointer border-2 ${

@@ -33,7 +33,7 @@ const CTA = () => {
             viewport={{ once: true }}
             className="text-xl lg:text-2xl text-blue-100 mb-8 leading-relaxed"
           >
-            Let's discuss your project and see how our global team of experts can help you achieve your goals with cutting-edge technology solutions.
+            Let&apos;s discuss your project and see how our global team of experts can help you achieve your goals with cutting-edge technology solutions.
           </motion.p>
 
           <motion.div

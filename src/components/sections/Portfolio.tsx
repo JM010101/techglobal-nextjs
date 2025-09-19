@@ -35,27 +35,6 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     { id: 'Blockchain', label: 'Blockchain' },
   ];
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch('/api/projects');
-        const data = await response.json();
-        if (data.success && data.data && data.data.length > 0) {
-          setProjects(data.data);
-        } else {
-          setProjects(sampleProjects);
-        }
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-        setProjects(sampleProjects);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
   const sampleProjects: Project[] = [
     {
       id: '1',
@@ -675,6 +654,27 @@ const Portfolio = ({ limit }: PortfolioProps) => {
       featured: true
     }
   ];
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        const data = await response.json();
+        if (data.success && data.data && data.data.length > 0) {
+          setProjects(data.data);
+        } else {
+          setProjects(sampleProjects);
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        setProjects(sampleProjects);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, [sampleProjects]);
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 

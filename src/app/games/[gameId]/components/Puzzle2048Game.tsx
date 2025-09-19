@@ -17,10 +17,6 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
     }
   }, [gameOver, score, onScoreUpdate]);
 
-  useEffect(() => {
-    initializeBoard();
-  }, []);
-
   const initializeBoard = () => {
     const newBoard = Array(4).fill(null).map(() => Array(4).fill(0));
     addRandomTile(newBoard);
@@ -30,6 +26,10 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
     setGameWon(false);
     setGameOver(false);
   };
+
+  useEffect(() => {
+    initializeBoard();
+  }, [initializeBoard]);
 
   const addRandomTile = (board: number[][]) => {
     const emptyCells: [number, number][] = [];
@@ -148,7 +148,7 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [board, gameOver]);
+  }, [board, gameOver, handleMove]);
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

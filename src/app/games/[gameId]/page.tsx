@@ -1,9 +1,6 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
 
 // Import game components
 import MinecraftGame from './components/MinecraftGame';

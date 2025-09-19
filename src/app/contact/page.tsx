@@ -60,7 +60,7 @@ const ContactPage = () => {
         setSubmitStatus('error');
         setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
       setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
     } finally {
@@ -140,7 +140,7 @@ const ContactPage = () => {
               Get In <span className="text-yellow-400">Touch</span>
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 leading-relaxed mb-8">
-              Ready to start your next project? We're here to help you 
+              Ready to start your next project? We&apos;re here to help you 
               bring your ideas to life with cutting-edge technology.
             </p>
             <motion.a
@@ -500,7 +500,7 @@ const ContactPage = () => {
               Ready to Start Your Project?
             </h2>
             <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Let's discuss your ideas and turn them into reality. 
+              Let&apos;s discuss your ideas and turn them into reality. 
               Our team is ready to help you achieve your goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

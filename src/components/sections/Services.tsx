@@ -48,7 +48,7 @@ const Services = () => {
     { id: 'Support & Maintenance', label: 'Support' },
   ];
 
-  const iconMap: { [key: string]: any } = {
+  const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
     'Laptop': Laptop,
     'Smartphone': Smartphone,
     'Brain': Brain,
@@ -60,26 +60,6 @@ const Services = () => {
     'Users': Users,
     'Headphones': Headphones,
   };
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await fetch('/api/services');
-        const data = await response.json();
-        if (data.success) {
-          setServices(data.data);
-        }
-      } catch (error) {
-        console.error('Error fetching services:', error);
-        // Fallback to sample data
-        setServices(sampleServices);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, []);
 
   const sampleServices: Service[] = [
     {
@@ -144,6 +124,26 @@ const Services = () => {
       technologies: ['Python', 'SQL', 'Tableau', 'Power BI']
     }
   ];
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch('/api/services');
+        const data = await response.json();
+        if (data.success) {
+          setServices(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching services:', error);
+        // Fallback to sample data
+        setServices(sampleServices);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, [sampleServices]);
 
   const filteredServices = activeCategory === 'all' 
     ? services 

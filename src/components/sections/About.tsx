@@ -150,7 +150,7 @@ const About = () => {
           viewport={{ once: true }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
         >
-          {stats.map((stat, index) => {
+          {stats.map((stat) => {
             const Icon = stat.icon;
             return (
               <motion.div
@@ -199,7 +199,7 @@ const About = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {values.map((value, index) => {
+          {values.map((value) => {
             const Icon = value.icon;
             return (
               <motion.div
@@ -230,7 +230,7 @@ const About = () => {
               Why Choose TechGlobal Solutions?
             </h3>
             <p className="text-lg lg:text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Unlike large agencies, you'll work directly with our experts. No middlemen, no communication gaps - just direct access to the talent.
+              Unlike large agencies, you&apos;ll work directly with our experts. No middlemen, no communication gaps - just direct access to the talent.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">

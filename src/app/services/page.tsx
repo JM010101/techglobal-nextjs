@@ -72,7 +72,7 @@ const ServicesPage = () => {
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 leading-relaxed mb-8">
               Comprehensive IT solutions tailored to your business needs. 
-              From concept to deployment, we've got you covered.
+              From concept to deployment, we&apos;ve got you covered.
             </p>
             <motion.a
               href="#services"

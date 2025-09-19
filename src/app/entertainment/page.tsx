@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Gamepad2, 
-  Zap, 
   Star, 
   Timer, 
   Brain, 
@@ -14,10 +13,7 @@ import {
   Target,
   Sparkles,
   X,
-  RotateCcw,
-  Square,
-  Circle,
-  Triangle
+  RotateCcw
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -26,7 +22,7 @@ interface Game {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   image: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   category: string;
@@ -255,10 +251,6 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
     { shape: [[1, 1, 0], [0, 1, 1]], name: 'Scarf', color: '#FF9800' }  // Z-piece (scarf)
   ];
 
-  useEffect(() => {
-    initializeBoard();
-  }, []);
-
   const initializeBoard = () => {
     const newBoard = Array(20).fill(null).map(() => Array(10).fill(0));
     setBoard(newBoard);
@@ -267,6 +259,10 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
     setGameStarted(false);
     setLinesCleared(0);
   };
+
+  useEffect(() => {
+    initializeBoard();
+  }, [initializeBoard]);
 
   const spawnPiece = () => {
     const randomPiece = fashionPieces[Math.floor(Math.random() * fashionPieces.length)];
@@ -355,7 +351,7 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
     }, 500);
     
     return () => clearInterval(gameLoop);
-  }, [piecePosition, currentPiece, gameStarted, gameOver]);
+  }, [piecePosition, currentPiece, gameStarted, gameOver, isValidPosition, placePiece]);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -371,7 +367,7 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [gameStarted]);
+  }, [gameStarted, movePiece, placePiece]);
 
   const getPieceColor = (piece: number[][]) => {
     const pieceIndex = fashionPieces.findIndex(fp => 
@@ -706,7 +702,7 @@ const MarioKartGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScor
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [gameStarted]);
+  }, [gameStarted, handleKeyPress]);
 
   const startGame = () => {
     setGameStarted(true);
@@ -1114,12 +1110,6 @@ const EntertainmentPage = () => {
   }, [isClient]);
 
   // Memoized score update functions
-  const updateMinecraftScore = useCallback((score: number) => updateLeaderboard('minecraft', score), [updateLeaderboard]);
-  const updateFashionTetrisScore = useCallback((score: number) => updateLeaderboard('fashion-tetris', score), [updateLeaderboard]);
-  const updateRobloxScore = useCallback((score: number) => updateLeaderboard('roblox', score), [updateLeaderboard]);
-  const updateMarioKartScore = useCallback((score: number) => updateLeaderboard('mario-kart', score), [updateLeaderboard]);
-  const updateSimsScore = useCallback((score: number) => updateLeaderboard('sims', score), [updateLeaderboard]);
-  const updateLoveNikkiScore = useCallback((score: number) => updateLeaderboard('love-nikki', score), [updateLeaderboard]);
 
   const openGame = (gameId: string) => {
     setSelectedGame(gameId);
@@ -1172,7 +1162,7 @@ const EntertainmentPage = () => {
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Discover the most popular and engaging games of 2025. From creative sandboxes to fashion shows, 
-              there's something for everyone to enjoy!
+              there&apos;s something for everyone to enjoy!
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               {[

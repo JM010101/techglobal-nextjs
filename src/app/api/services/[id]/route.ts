@@ -4,12 +4,13 @@ import Service from '@/lib/models/Service';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
 
-    const service = await Service.findById(params.id);
+    const { id } = await params;
+    const service = await Service.findById(id);
 
     if (!service) {
       return NextResponse.json(
@@ -33,13 +34,14 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
 
+    const { id } = await params;
     const body = await request.json();
-    const service = await Service.findByIdAndUpdate(params.id, body, {
+    const service = await Service.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true
     });
@@ -66,12 +68,13 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
 
-    const service = await Service.findByIdAndDelete(params.id);
+    const { id } = await params;
+    const service = await Service.findByIdAndDelete(id);
 
     if (!service) {
       return NextResponse.json(

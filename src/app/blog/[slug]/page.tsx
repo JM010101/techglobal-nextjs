@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, Eye, Heart, ArrowLeft, Share2, User } from 'lucide-react';
+import { Calendar, Clock, Heart, ArrowLeft, Share2, User } from 'lucide-react';
 import Link from 'next/link';
 
 interface BlogPost {
@@ -409,7 +409,7 @@ const BlogPostPage = () => {
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Article Not Found</h1>
-            <p className="text-gray-600 mb-8">The article you're looking for doesn't exist.</p>
+            <p className="text-gray-600 mb-8">The article you&apos;re looking for doesn&apos;t exist.</p>
             <Link href="/blog" className="btn-primary">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog

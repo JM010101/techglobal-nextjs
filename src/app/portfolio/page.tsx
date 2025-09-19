@@ -298,7 +298,7 @@ const PortfolioPage = () => {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </p>
                 <div>
                   <div className="font-semibold text-gray-900">{testimonial.name}</div>

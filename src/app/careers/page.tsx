@@ -12,7 +12,6 @@ import {
   Code, 
   Globe, 
   Heart, 
-  Zap,
   Upload,
   Search,
   Filter,
@@ -20,9 +19,7 @@ import {
   CheckCircle,
   ArrowRight,
   X,
-  Calendar,
   Award,
-  Coffee,
   Laptop,
   Plane
 } from 'lucide-react';
@@ -725,7 +722,7 @@ const CareersPage = () => {
                     <p className="text-slate-500 text-sm">{testimonial.location}</p>
                   </div>
                 </div>
-                <p className="text-slate-600 leading-relaxed italic">"{testimonial.quote}"</p>
+                <p className="text-slate-600 leading-relaxed italic">&quot;{testimonial.quote}&quot;</p>
                 <div className="flex mt-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />

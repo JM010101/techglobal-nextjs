@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -13,7 +13,7 @@ const LoveNikkiGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScor
   });
   const [style, setStyle] = useState(0);
   const [currentChallenge, setCurrentChallenge] = useState<string | null>(null);
-  const [wardrobe, setWardrobe] = useState({
+  const [wardrobe] = useState({
     hair: ['long-blonde', 'short-brown', 'curly-red', 'straight-black'],
     dresses: ['elegant-blue', 'casual-pink', 'formal-black', 'party-gold'],
     shoes: ['heels-black', 'sneakers-white', 'boots-brown', 'sandals-beige'],

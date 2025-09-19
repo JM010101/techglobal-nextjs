@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category');
     const featured = searchParams.get('featured');
 
-    let query: any = {};
+    const query: Record<string, unknown> = {};
     
     if (category && category !== 'all') {
       query.category = category;

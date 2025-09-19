@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { Globe, Users, Award, Heart, Target, Lightbulb } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const About = () => {
   const [isClient, setIsClient] = useState(false);
@@ -90,9 +91,9 @@ const About = () => {
                   thrive in the digital age.
                 </p>
                 <p>
-                  Today, under Adam's leadership, we continue to push the boundaries of what's possible, 
+                  Today, under Adam&apos;s leadership, we continue to push the boundaries of what&apos;s possible, 
                   combining diverse perspectives and expertise to create solutions that not only 
-                  meet today's needs but anticipate tomorrow's challenges.
+                  meet today&apos;s needs but anticipate tomorrow&apos;s challenges.
                 </p>
               </div>
             </motion.div>
@@ -104,18 +105,22 @@ const About = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative"
               >
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop&auto=format&q=85"
                   alt="Our Global Team"
+                  width={1200}
+                  height={800}
                   className="w-full h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/20"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent rounded-2xl"></div>
               </motion.div>
             ) : (
               <div className="relative">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop&auto=format&q=85"
                   alt="Our Global Team"
+                  width={1200}
+                  height={800}
                   className="w-full h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/20"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent rounded-2xl"></div>
@@ -248,9 +253,11 @@ const About = () => {
                   className="card p-8 text-center hover-lift group"
                 >
                   <div className="relative mb-6">
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
+                      width={128}
+                      height={128}
                       className="w-32 h-32 rounded-full mx-auto object-cover shadow-2xl group-hover:scale-110 transition-all duration-500 border-4 border-white/20"
                     />
                     <div className="absolute -bottom-2 -right-2 text-2xl">
@@ -288,9 +295,11 @@ const About = () => {
                   className="card p-8 text-center hover-lift group"
                 >
                   <div className="relative mb-6">
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
+                      width={128}
+                      height={128}
                       className="w-32 h-32 rounded-full mx-auto object-cover shadow-2xl group-hover:scale-110 transition-all duration-500 border-4 border-white/20"
                     />
                     <div className="absolute -bottom-2 -right-2 text-2xl">
@@ -427,7 +436,7 @@ const About = () => {
             </p>
             <div className="mt-10">
               <span className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 bg-clip-text text-transparent" style={{ fontFamily: "'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 800, letterSpacing: '0.02em' }}>
-                "Innovation Without Borders"
+                &quot;Innovation Without Borders&quot;
               </span>
             </div>
           </motion.div>

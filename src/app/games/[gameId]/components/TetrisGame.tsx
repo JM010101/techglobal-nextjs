@@ -123,7 +123,7 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
     }, 500);
     
     return () => clearInterval(gameLoop);
-  }, [piecePosition, currentPiece, gameStarted, gameOver]);
+  }, [piecePosition, currentPiece, gameStarted, gameOver, isValidPosition, placePiece]);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -139,7 +139,7 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [gameStarted]);
+  }, [gameStarted, movePiece, placePiece]);
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

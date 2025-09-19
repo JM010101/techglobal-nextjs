@@ -33,7 +33,7 @@ const SimsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpda
 
   const performActivity = (activity: string) => {
     setSim(prev => {
-      let newSim = { ...prev };
+      const newSim = { ...prev };
       
       switch (activity) {
         case 'Watch TV':

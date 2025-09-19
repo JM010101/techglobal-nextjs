@@ -24,7 +24,7 @@ const Hero = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [rotatingTexts.length]);
 
   const stats = [
     { icon: Globe, value: '15+', label: 'Countries Served' },
@@ -499,7 +499,7 @@ const Hero = () => {
               {/* Video Info Overlay */}
               <div className="absolute bottom-6 left-6 text-white">
                 <h3 className="text-xl font-bold mb-2">Global IT Freelancing Revolution</h3>
-                <p className="text-sm opacity-90">Discover how we're transforming businesses worldwide</p>
+                <p className="text-sm opacity-90">Discover how we&apos;re transforming businesses worldwide</p>
               </div>
             </motion.div>
           </motion.div>

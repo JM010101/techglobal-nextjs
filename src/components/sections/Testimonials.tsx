@@ -159,7 +159,7 @@ const Testimonials = () => {
             viewport={{ once: true }}
             className="section-subtitle"
           >
-            Don't just take our word for it - hear from our satisfied clients around the world
+            Don&apos;t just take our word for it - hear from our satisfied clients around the world
           </motion.p>
         </div>
 
@@ -179,7 +179,7 @@ const Testimonials = () => {
               <div className="relative">
                 <Quote className="w-8 h-8 text-blue-600 mb-4 opacity-20" />
                 <p className="text-gray-700 leading-relaxed mb-6 italic">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
                 
                 {/* Rating */}

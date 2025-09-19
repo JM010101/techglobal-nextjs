@@ -31,7 +31,7 @@ const SudokuGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
   }, [gameWon]);
 
   const generateSudoku = () => {
-    const newBoard = Array(9).fill(null).map(() => Array(9).fill(0));
+    Array(9).fill(null).map(() => Array(9).fill(0));
     
     // Fill some cells with numbers (easy puzzle)
     const clues = [

@@ -21,7 +21,7 @@ interface Game {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   image: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   category: string;
@@ -115,12 +115,6 @@ const EntertainmentPage = () => {
   }, [isClient]);
 
   // Memoized score update functions
-  const updateMinecraftScore = useCallback((score: number) => updateLeaderboard('minecraft', score), [updateLeaderboard]);
-  const updateFallGuysScore = useCallback((score: number) => updateLeaderboard('fall-guys', score), [updateLeaderboard]);
-  const updateRobloxScore = useCallback((score: number) => updateLeaderboard('roblox', score), [updateLeaderboard]);
-  const updateMarioKartScore = useCallback((score: number) => updateLeaderboard('mario-kart', score), [updateLeaderboard]);
-  const updateSimsScore = useCallback((score: number) => updateLeaderboard('sims', score), [updateLeaderboard]);
-  const updateLoveNikkiScore = useCallback((score: number) => updateLeaderboard('love-nikki', score), [updateLeaderboard]);
 
   const openGameInNewWindow = (gameId: string) => {
     const gameWindow = window.open(
@@ -156,10 +150,6 @@ const EntertainmentPage = () => {
     }
   };
 
-  const renderGame = () => {
-    // No longer render games as modals - they open in new windows
-    return null;
-  };
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-100">
@@ -178,7 +168,7 @@ const EntertainmentPage = () => {
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Discover the most popular and engaging games of 2025. From creative sandboxes to fashion shows, 
-              there's something for everyone to enjoy!
+              there&apos;s something for everyone to enjoy!
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               {[

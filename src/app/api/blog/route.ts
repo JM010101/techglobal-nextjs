@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get('featured');
     const limit = searchParams.get('limit');
 
-    let query: any = { isPublished: true };
+    const query: Record<string, unknown> = { isPublished: true };
     
     if (category && category !== 'all') {
       query.category = category;

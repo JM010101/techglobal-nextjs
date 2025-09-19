@@ -27,26 +27,6 @@ const Team = () => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchTeamMembers = async () => {
-      try {
-        const response = await fetch('/api/team');
-        const data = await response.json();
-        if (data.success) {
-          setTeamMembers(data.data);
-        }
-      } catch (error) {
-        console.error('Error fetching team members:', error);
-        // Fallback to sample data
-        setTeamMembers(sampleTeamMembers);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTeamMembers();
-  }, []);
-
   const sampleTeamMembers: TeamMember[] = [
     {
       id: '1',
@@ -149,6 +129,26 @@ const Team = () => {
       }
     }
   ];
+
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        const response = await fetch('/api/team');
+        const data = await response.json();
+        if (data.success) {
+          setTeamMembers(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching team members:', error);
+        // Fallback to sample data
+        setTeamMembers(sampleTeamMembers);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeamMembers();
+  }, [sampleTeamMembers]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
