@@ -209,6 +209,8 @@ const Blog = () => {
         const data = await response.json();
         if (data.success) {
           setBlogPosts(data.data);
+        } else {
+          setBlogPosts(sampleBlogPosts);
         }
       } catch (error) {
         console.error('Error fetching blog posts:', error);
@@ -219,7 +221,7 @@ const Blog = () => {
     };
 
     fetchBlogPosts();
-  }, [sampleBlogPosts]);
+  }, []); // Removed sampleBlogPosts from dependency array
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);

@@ -137,6 +137,8 @@ const Team = () => {
         const data = await response.json();
         if (data.success) {
           setTeamMembers(data.data);
+        } else {
+          setTeamMembers(sampleTeamMembers);
         }
       } catch (error) {
         console.error('Error fetching team members:', error);
@@ -148,7 +150,7 @@ const Team = () => {
     };
 
     fetchTeamMembers();
-  }, [sampleTeamMembers]);
+  }, []); // Removed sampleTeamMembers from dependency array
 
   const containerVariants = {
     hidden: { opacity: 0 },

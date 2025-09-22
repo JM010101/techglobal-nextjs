@@ -674,7 +674,7 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     };
 
     fetchProjects();
-  }, [sampleProjects]);
+  }, []); // Removed sampleProjects from dependency array
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 

@@ -132,6 +132,8 @@ const Services = () => {
         const data = await response.json();
         if (data.success) {
           setServices(data.data);
+        } else {
+          setServices(sampleServices);
         }
       } catch (error) {
         console.error('Error fetching services:', error);
@@ -143,7 +145,7 @@ const Services = () => {
     };
 
     fetchServices();
-  }, [sampleServices]);
+  }, []); // Removed sampleServices from dependency array
 
   const filteredServices = activeCategory === 'all' 
     ? services 
