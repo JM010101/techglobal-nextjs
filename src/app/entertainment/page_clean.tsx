@@ -34,7 +34,7 @@ const games: Game[] = [
     title: 'Minecraft Creative',
     description: 'Build, explore, and create in an infinite sandbox world. Let your imagination run wild with endless blocks and tools.',
     icon: Gamepad2,
-    image: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=300&fit=crop&auto=format&q=80',
+    image: 'https://img.freepik.com/free-photo/minecraft-game-concept_23-2149074816.jpg',
     difficulty: 'Easy',
     category: 'Sandbox'
   },
@@ -43,7 +43,7 @@ const games: Game[] = [
     title: 'Fall Guys',
     description: 'Race through hilarious obstacle courses with colorful characters. Last one standing wins the crown!',
     icon: Zap,
-    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&auto=format&q=80',
+    image: 'https://img.freepik.com/free-photo/fall-guys-game-concept_23-2149074817.jpg',
     difficulty: 'Medium',
     category: 'Party'
   },
@@ -52,7 +52,7 @@ const games: Game[] = [
     title: 'Roblox World',
     description: 'Explore thousands of games and create your own adventures. Customize your avatar and join friends in virtual worlds.',
     icon: Star,
-    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop&auto=format&q=80',
+    image: 'https://img.freepik.com/free-photo/roblox-game-concept_23-2149074818.jpg',
     difficulty: 'Easy',
     category: 'Social'
   },
@@ -61,7 +61,7 @@ const games: Game[] = [
     title: 'Mario Kart Racing',
     description: 'Race with iconic characters like Princess Peach and Mario. Use power-ups and drift your way to victory!',
     icon: Timer,
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format&q=80',
+    image: 'https://img.freepik.com/free-photo/mario-kart-game-concept_23-2149074819.jpg',
     difficulty: 'Medium',
     category: 'Racing'
   },
@@ -70,7 +70,7 @@ const games: Game[] = [
     title: 'The Sims Life',
     description: 'Create and control virtual people in a life simulation. Build homes, pursue careers, and live your dream life.',
     icon: Brain,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&auto=format&q=80',
+    image: 'https://img.freepik.com/free-photo/sims-game-concept_23-2149074820.jpg',
     difficulty: 'Easy',
     category: 'Simulation'
   },
@@ -79,7 +79,7 @@ const games: Game[] = [
     title: 'Love Nikki Fashion',
     description: 'Design stunning outfits and style beautiful characters. Compete in fashion shows and unlock exclusive clothing.',
     icon: Star,
-    image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop&auto=format&q=80',
+    image: 'https://img.freepik.com/free-photo/love-nikki-game-concept_23-2149074821.jpg',
     difficulty: 'Easy',
     category: 'Fashion'
   }
@@ -252,7 +252,7 @@ const EntertainmentPage = () => {
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.src = 'https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=400&h=300&fit=crop&auto=format&q=80';
+                            target.src = 'https://img.freepik.com/free-photo/gaming-concept_23-2149074822.jpg';
                           }}
                         />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

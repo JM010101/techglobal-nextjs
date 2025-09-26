@@ -107,7 +107,7 @@ const About = () => {
             className="relative"
           >
             <Image
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
+              src="https://media.gettyimages.com/id/1206800967/photo/diverse-group-of-professionals-working-together-in-modern-office.jpg"
               alt="Our Global Team"
               width={600}
               height={500}

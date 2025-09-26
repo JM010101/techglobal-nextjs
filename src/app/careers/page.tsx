@@ -236,7 +236,7 @@ const CareersPage = () => {
       name: 'Sarah Chen',
       role: 'Senior Full-Stack Developer',
       location: 'Singapore',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/portrait-happy-employee_23-2149074823.jpg',
       quote: 'Working at TechGlobal has been incredible. The remote-first culture allows me to balance work and family while working on challenging projects with amazing people from around the world.'
     },
     {
@@ -250,7 +250,7 @@ const CareersPage = () => {
       name: 'Elena Rodriguez',
       role: 'UI/UX Designer',
       location: 'Barcelona, Spain',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/portrait-happy-employee_23-2149074824.jpg',
       quote: 'The creative freedom and collaborative environment at TechGlobal is unmatched. Every project is a new adventure, and the team always supports innovative design solutions.'
     }
   ];

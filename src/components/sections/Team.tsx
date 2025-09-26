@@ -6,7 +6,8 @@ import { Linkedin, Github, Twitter, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
 interface TeamMember {
-  id: string;
+  id?: string;
+  _id?: string;
   name: string;
   role: string;
   country: string;
@@ -33,13 +34,13 @@ const Team = () => {
       id: '1',
       name: 'Adam Wong',
       role: 'Full-Stack Developer',
-      country: 'Singapore',
-      flag: '🇸🇬',
+      country: 'Hong Kong',
+      flag: '🇭🇰',
       imageUrl: '/images/team/adam-wong.jpg',
       bio: 'Expert in React, Node.js, and cloud architecture with 8+ years of experience building scalable web applications.',
       skills: ['React', 'Node.js', 'AWS', 'MongoDB'],
       experience: '8+ years',
-      education: 'Computer Science, National University of Singapore',
+      education: 'Computer Science, University of Hong Kong',
       socialLinks: {
         linkedin: '#',
         github: '#',
@@ -48,48 +49,31 @@ const Team = () => {
     },
     {
       id: '2',
-      name: 'Elena Petrov',
-      role: 'AI Solutions Architect',
-      country: 'Russia',
-      flag: '🇷🇺',
-      imageUrl: '/images/team/ai-expert.png',
-      bio: 'Leading AI expert specializing in machine learning, natural language processing, and intelligent automation systems.',
-      skills: ['Python', 'TensorFlow', 'OpenAI', 'MLOps'],
-      experience: '10+ years',
-      education: 'AI/ML, Moscow Institute of Physics and Technology',
-      socialLinks: {
-        linkedin: '#',
-        github: '#',
-        twitter: '#'
-      }
-    },
-    {
-      id: '3',
-      name: 'Marco Silva',
+      name: 'Chen Wei',
       role: 'Backend Development Lead',
-      country: 'Brazil',
-      flag: '🇧🇷',
+      country: 'China',
+      flag: '🇨🇳',
       imageUrl: '/images/team/backend-expert.png',
       bio: 'Backend architecture specialist with expertise in microservices, API development, and system optimization.',
       skills: ['Node.js', 'Python', 'Docker', 'Kubernetes'],
       experience: '9+ years',
-      education: 'Computer Engineering, University of São Paulo',
+      education: 'Computer Engineering, Tsinghua University',
       socialLinks: {
         linkedin: '#',
         github: '#'
       }
     },
     {
-      id: '4',
-      name: 'Claude Dubois',
+      id: '3',
+      name: 'Sakura Nakamura',
       role: 'AI Research Scientist',
-      country: 'France',
-      flag: '🇫🇷',
+      country: 'Japan',
+      flag: '🇯🇵',
       imageUrl: '/images/team/claude expert.png',
       bio: 'AI research scientist focused on advanced machine learning algorithms and natural language processing innovations.',
       skills: ['Deep Learning', 'NLP', 'Computer Vision', 'Research'],
       experience: '7+ years',
-      education: 'AI Research, École Polytechnique',
+      education: 'AI Research, University of Tokyo',
       socialLinks: {
         linkedin: '#',
         github: '#',
@@ -97,7 +81,7 @@ const Team = () => {
       }
     },
     {
-      id: '5',
+      id: '4',
       name: 'Yuki Tanaka',
       role: 'Data Analytics Expert',
       country: 'Japan',
@@ -113,49 +97,32 @@ const Team = () => {
       }
     },
     {
-      id: '6',
-      name: 'Hans Mueller',
+      id: '5',
+      name: 'Priya Sharma',
       role: 'Database Manager',
-      country: 'Germany',
-      flag: '🇩🇪',
+      country: 'India',
+      flag: '🇮🇳',
       imageUrl: '/images/team/database manager.png',
       bio: 'Database architecture expert specializing in data modeling, performance optimization, and data security.',
       skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Data Modeling'],
       experience: '8+ years',
-      education: 'Computer Science, TU Munich',
+      education: 'Computer Science, IIT Delhi',
       socialLinks: {
         linkedin: '#',
         github: '#'
       }
     },
     {
-      id: '7',
-      name: 'Sofia Andersson',
-      role: 'Game Designer',
-      country: 'Sweden',
-      flag: '🇸🇪',
-      imageUrl: '/images/team/game-designer.png',
-      bio: 'Creative game designer with expertise in game mechanics, user experience design, and interactive storytelling.',
-      skills: ['Unity', 'Game Design', '3D Modeling', 'User Research'],
-      experience: '6+ years',
-      education: 'Game Design, KTH Royal Institute of Technology',
-      socialLinks: {
-        linkedin: '#',
-        portfolio: '#',
-        twitter: '#'
-      }
-    },
-    {
-      id: '8',
-      name: 'Carlos Rodriguez',
+      id: '6',
+      name: 'Marcus Tan',
       role: 'Mobile App Specialist',
-      country: 'Spain',
-      flag: '🇪🇸',
+      country: 'Singapore',
+      flag: '🇸🇬',
       imageUrl: '/images/team/mobile-app-expert.png',
       bio: 'Mobile development expert with deep knowledge of React Native, Flutter, and native iOS/Android development.',
       skills: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
       experience: '6+ years',
-      education: 'Computer Engineering, Universidad Politécnica de Madrid',
+      education: 'Computer Engineering, National University of Singapore',
       socialLinks: {
         linkedin: '#',
         github: '#',
@@ -163,8 +130,42 @@ const Team = () => {
       }
     },
     {
+      id: '7',
+      name: 'Li Mei',
+      role: 'AI Solutions Architect',
+      country: 'China',
+      flag: '🇨🇳',
+      imageUrl: '/images/team/ai-expert.png',
+      bio: 'Leading AI expert specializing in machine learning, natural language processing, and intelligent automation systems.',
+      skills: ['Python', 'TensorFlow', 'OpenAI', 'MLOps'],
+      experience: '10+ years',
+      education: 'AI/ML, Peking University',
+      socialLinks: {
+        linkedin: '#',
+        github: '#',
+        twitter: '#'
+      }
+    },
+    {
+      id: '8',
+      name: 'Aria Lim',
+      role: 'Game Designer',
+      country: 'Singapore',
+      flag: '🇸🇬',
+      imageUrl: '/images/team/game-designer.png',
+      bio: 'Creative game designer with expertise in game mechanics, user experience design, and interactive storytelling.',
+      skills: ['Unity', 'Game Design', '3D Modeling', 'User Research'],
+      experience: '6+ years',
+      education: 'Game Design, Nanyang Technological University',
+      socialLinks: {
+        linkedin: '#',
+        portfolio: '#',
+        twitter: '#'
+      }
+    },
+    {
       id: '9',
-      name: 'Aisha Al-Rashid',
+      name: 'Ahmed Al-Rashid',
       role: 'Web Designer',
       country: 'UAE',
       flag: '🇦🇪',
@@ -185,8 +186,11 @@ const Team = () => {
     const fetchTeamMembers = async () => {
       try {
         const response = await fetch('/api/team');
+        if (!response.ok) {
+          throw new Error('API response not ok');
+        }
         const data = await response.json();
-        if (data.success) {
+        if (data.success && data.data && data.data.length > 0) {
           setTeamMembers(data.data);
         } else {
           setTeamMembers(sampleTeamMembers);
@@ -200,6 +204,11 @@ const Team = () => {
       }
     };
 
+    // Use sample team members immediately
+    setTeamMembers(sampleTeamMembers);
+    setLoading(false);
+    
+    // Optionally try to fetch from API in background
     fetchTeamMembers();
   }, [sampleTeamMembers]);
 
@@ -273,9 +282,9 @@ const Team = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {teamMembers.map((member) => (
+          {teamMembers.map((member, index) => (
             <motion.div
-              key={member.id}
+              key={member.id || member._id || `team-member-${index}`}
               variants={itemVariants}
               className="team-card group"
             >
@@ -287,6 +296,7 @@ const Team = () => {
                     width={144}
                     height={144}
                     className="w-full h-full object-cover"
+                    unoptimized
                   />
                 </div>
                 <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-lg">
@@ -381,7 +391,7 @@ const Team = () => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-600 mb-2">6</div>
+                <div className="text-4xl font-bold text-blue-600 mb-2">9</div>
                 <div className="text-lg font-semibold text-gray-900 mb-1">Countries</div>
                 <div className="text-gray-600">Diverse perspectives</div>
               </div>

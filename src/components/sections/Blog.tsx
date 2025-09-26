@@ -40,12 +40,12 @@ const Blog = () => {
       excerpt: 'How diverse, global teams create better software solutions and drive innovation in the tech industry.',
       category: 'Business',
       featuredImage: {
-        url: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop&auto=format',
+        url: 'https://thumbs.dreamstime.com/b/diverse-team-professionals-working-together-modern-office-232345678.jpg',
         alt: 'Cross-Cultural Development Teams'
       },
       author: {
         name: 'Marco Rossi',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face&auto=format',
+        avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074779.jpg',
         title: 'Data Analytics Expert'
       },
       publishedAt: '2024-12-10',
@@ -61,12 +61,12 @@ const Blog = () => {
       excerpt: 'Exploring how artificial intelligence is revolutionizing the way we build and maintain web applications.',
       category: 'AI & Machine Learning',
       featuredImage: {
-        url: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop&auto=format',
+        url: 'https://thumbs.dreamstime.com/b/artificial-intelligence-concept-robot-hand-human-232345679.jpg',
         alt: 'AI in Web Development'
       },
       author: {
         name: 'Sarah Johnson',
-        avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=50&h=50&fit=crop&crop=face&auto=format',
+        avatar: 'https://img.freepik.com/free-photo/portrait-young-businesswoman_23-2149074778.jpg',
         title: 'AI Solutions Architect'
       },
       publishedAt: '2024-12-15',
@@ -82,12 +82,12 @@ const Blog = () => {
       excerpt: 'Best practices for designing and implementing cloud solutions that can grow with your business.',
       category: 'Cloud & DevOps',
       featuredImage: {
-        url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop&auto=format',
+        url: 'https://thumbs.dreamstime.com/b/cloud-computing-technology-concept-232345680.jpg',
         alt: 'Cloud Infrastructure'
       },
       author: {
         name: 'Hans Mueller',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face&auto=format',
+        avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074780.jpg',
         title: 'Enterprise Systems Lead'
       },
       publishedAt: '2024-12-12',
@@ -103,12 +103,12 @@ const Blog = () => {
       excerpt: 'Why mobile-first design is crucial for modern web applications and how to implement it effectively.',
       category: 'Web Development',
       featuredImage: {
-        url: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop&auto=format',
+        url: 'https://thumbs.dreamstime.com/b/mobile-app-development-concept-232345681.jpg',
         alt: 'Mobile-First Design'
       },
       author: {
         name: 'Yuki Tanaka',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face&auto=format',
+        avatar: 'https://img.freepik.com/free-photo/portrait-young-businesswoman_23-2149074781.jpg',
         title: 'UX/UI Designer'
       },
       publishedAt: '2024-12-10',
@@ -124,12 +124,12 @@ const Blog = () => {
       excerpt: 'How blockchain is transforming enterprise applications and creating new opportunities for businesses.',
       category: 'Blockchain',
       featuredImage: {
-        url: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop&auto=format',
+        url: 'https://thumbs.dreamstime.com/b/blockchain-technology-concept-232345682.jpg',
         alt: 'Blockchain Technology'
       },
       author: {
         name: 'Alex Chen',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face&auto=format',
+        avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074782.jpg',
         title: 'Full-Stack Developer'
       },
       publishedAt: '2024-12-08',
@@ -145,12 +145,12 @@ const Blog = () => {
       excerpt: 'Essential security practices every developer should implement to protect applications and user data.',
       category: 'Security',
       featuredImage: {
-        url: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&auto=format',
+        url: 'https://thumbs.dreamstime.com/b/cybersecurity-concept-digital-security-232345683.jpg',
         alt: 'Cybersecurity'
       },
       author: {
         name: 'Priya Patel',
-        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=50&h=50&fit=crop&crop=face&auto=format',
+        avatar: 'https://img.freepik.com/free-photo/portrait-young-businesswoman_23-2149074783.jpg',
         title: 'Mobile App Specialist'
       },
       publishedAt: '2024-12-05',
@@ -166,12 +166,12 @@ const Blog = () => {
       excerpt: 'Practical approaches to leveraging data analytics for business growth, even with limited resources.',
       category: 'Data Analytics',
       featuredImage: {
-        url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+        url: 'https://thumbs.dreamstime.com/b/big-data-analytics-concept-232345684.jpg',
         alt: 'Big Data Strategies'
       },
       author: {
         name: 'Marco Rossi',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face',
+        avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074784.jpg',
         title: 'Data Analytics Expert'
       },
       publishedAt: '2024-12-05',
@@ -187,12 +187,12 @@ const Blog = () => {
       excerpt: 'Exploring how edge computing is revolutionizing IoT applications and enabling real-time processing at the source.',
       category: 'Technology Trends',
       featuredImage: {
-        url: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop',
+        url: 'https://thumbs.dreamstime.com/b/edge-computing-iot-concept-232345685.jpg',
         alt: 'Edge Computing in IoT'
       },
       author: {
         name: 'Hans Mueller',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop&crop=face',
+        avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074785.jpg',
         title: 'Enterprise Systems Lead'
       },
       publishedAt: '2024-12-01',
@@ -207,8 +207,11 @@ const Blog = () => {
     const fetchBlogPosts = async () => {
       try {
         const response = await fetch('/api/blog?limit=6');
+        if (!response.ok) {
+          throw new Error('API response not ok');
+        }
         const data = await response.json();
-        if (data.success) {
+        if (data.success && data.data && data.data.length > 0) {
           setBlogPosts(data.data);
         } else {
           setBlogPosts(sampleBlogPosts);
@@ -221,6 +224,11 @@ const Blog = () => {
       }
     };
 
+    // Use sample blog posts immediately
+    setBlogPosts(sampleBlogPosts);
+    setLoading(false);
+    
+    // Optionally try to fetch from API in background
     fetchBlogPosts();
   }, [sampleBlogPosts]);
 

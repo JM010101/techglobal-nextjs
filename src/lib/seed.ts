@@ -7,13 +7,13 @@ const sampleTeamMembers = [
   {
     name: 'Adam Wong',
     role: 'Full-Stack Developer',
-    country: 'Singapore',
-    flag: '🇸🇬',
+    country: 'Hong Kong',
+    flag: '🇭🇰',
     imageUrl: '/images/team/adam-wong.jpg',
     bio: 'Expert in React, Node.js, and cloud architecture with 8+ years of experience building scalable web applications.',
     skills: ['React', 'Node.js', 'AWS', 'MongoDB'],
     experience: '8+ years',
-    education: 'Computer Science, National University of Singapore',
+    education: 'Computer Science, University of Hong Kong',
     socialLinks: {
       linkedin: '#',
       github: '#',
@@ -22,32 +22,15 @@ const sampleTeamMembers = [
     isActive: true
   },
   {
-    name: 'Elena Petrov',
-    role: 'AI Solutions Architect',
-    country: 'Russia',
-    flag: '🇷🇺',
-    imageUrl: '/images/team/ai-expert.png',
-    bio: 'Leading AI expert specializing in machine learning, natural language processing, and intelligent automation systems.',
-    skills: ['Python', 'TensorFlow', 'OpenAI', 'MLOps'],
-    experience: '10+ years',
-    education: 'AI/ML, Moscow Institute of Physics and Technology',
-    socialLinks: {
-      linkedin: '#',
-      github: '#',
-      twitter: '#'
-    },
-    isActive: true
-  },
-  {
-    name: 'Marco Silva',
+    name: 'Chen Wei',
     role: 'Backend Development Lead',
-    country: 'Brazil',
-    flag: '🇧🇷',
+    country: 'China',
+    flag: '🇨🇳',
     imageUrl: '/images/team/backend-expert.png',
     bio: 'Backend architecture specialist with expertise in microservices, API development, and system optimization.',
     skills: ['Node.js', 'Python', 'Docker', 'Kubernetes'],
     experience: '9+ years',
-    education: 'Computer Engineering, University of São Paulo',
+    education: 'Computer Engineering, Tsinghua University',
     socialLinks: {
       linkedin: '#',
       github: '#'
@@ -55,15 +38,15 @@ const sampleTeamMembers = [
     isActive: true
   },
   {
-    name: 'Claude Dubois',
+    name: 'Sakura Nakamura',
     role: 'AI Research Scientist',
-    country: 'France',
-    flag: '🇫🇷',
+    country: 'Japan',
+    flag: '🇯🇵',
     imageUrl: '/images/team/claude expert.png',
     bio: 'AI research scientist focused on advanced machine learning algorithms and natural language processing innovations.',
     skills: ['Deep Learning', 'NLP', 'Computer Vision', 'Research'],
     experience: '7+ years',
-    education: 'AI Research, École Polytechnique',
+    education: 'AI Research, University of Tokyo',
     socialLinks: {
       linkedin: '#',
       github: '#',
@@ -88,15 +71,15 @@ const sampleTeamMembers = [
     isActive: true
   },
   {
-    name: 'Hans Mueller',
+    name: 'Priya Sharma',
     role: 'Database Manager',
-    country: 'Germany',
-    flag: '🇩🇪',
+    country: 'India',
+    flag: '🇮🇳',
     imageUrl: '/images/team/database manager.png',
     bio: 'Database architecture expert specializing in data modeling, performance optimization, and data security.',
     skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Data Modeling'],
     experience: '8+ years',
-    education: 'Computer Science, TU Munich',
+    education: 'Computer Science, IIT Delhi',
     socialLinks: {
       linkedin: '#',
       github: '#'
@@ -104,32 +87,15 @@ const sampleTeamMembers = [
     isActive: true
   },
   {
-    name: 'Sofia Andersson',
-    role: 'Game Designer',
-    country: 'Sweden',
-    flag: '🇸🇪',
-    imageUrl: '/images/team/game-designer.png',
-    bio: 'Creative game designer with expertise in game mechanics, user experience design, and interactive storytelling.',
-    skills: ['Unity', 'Game Design', '3D Modeling', 'User Research'],
-    experience: '6+ years',
-    education: 'Game Design, KTH Royal Institute of Technology',
-    socialLinks: {
-      linkedin: '#',
-      portfolio: '#',
-      twitter: '#'
-    },
-    isActive: true
-  },
-  {
-    name: 'Carlos Rodriguez',
+    name: 'Marcus Tan',
     role: 'Mobile App Specialist',
-    country: 'Spain',
-    flag: '🇪🇸',
+    country: 'Singapore',
+    flag: '🇸🇬',
     imageUrl: '/images/team/mobile-app-expert.png',
     bio: 'Mobile development expert with deep knowledge of React Native, Flutter, and native iOS/Android development.',
     skills: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
     experience: '6+ years',
-    education: 'Computer Engineering, Universidad Politécnica de Madrid',
+    education: 'Computer Engineering, National University of Singapore',
     socialLinks: {
       linkedin: '#',
       github: '#',
@@ -138,7 +104,41 @@ const sampleTeamMembers = [
     isActive: true
   },
   {
-    name: 'Aisha Al-Rashid',
+    name: 'Li Mei',
+    role: 'AI Solutions Architect',
+    country: 'China',
+    flag: '🇨🇳',
+    imageUrl: '/images/team/ai-expert.png',
+    bio: 'Leading AI expert specializing in machine learning, natural language processing, and intelligent automation systems.',
+    skills: ['Python', 'TensorFlow', 'OpenAI', 'MLOps'],
+    experience: '10+ years',
+    education: 'AI/ML, Peking University',
+    socialLinks: {
+      linkedin: '#',
+      github: '#',
+      twitter: '#'
+    },
+    isActive: true
+  },
+  {
+    name: 'Aria Lim',
+    role: 'Game Designer',
+    country: 'Singapore',
+    flag: '🇸🇬',
+    imageUrl: '/images/team/game-designer.png',
+    bio: 'Creative game designer with expertise in game mechanics, user experience design, and interactive storytelling.',
+    skills: ['Unity', 'Game Design', '3D Modeling', 'User Research'],
+    experience: '6+ years',
+    education: 'Game Design, Nanyang Technological University',
+    socialLinks: {
+      linkedin: '#',
+      portfolio: '#',
+      twitter: '#'
+    },
+    isActive: true
+  },
+  {
+    name: 'Ahmed Al-Rashid',
     role: 'Web Designer',
     country: 'UAE',
     flag: '🇦🇪',

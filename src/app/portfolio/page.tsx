@@ -13,7 +13,7 @@ const PortfolioPage = () => {
     {
       title: 'E-Commerce Platform',
       description: 'A full-stack e-commerce solution with advanced features',
-      image: 'https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?w=800&h=600&fit=crop&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/ecommerce-platform-concept_23-2149074812.jpg',
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       category: 'Web Development',
       link: '#'
@@ -21,7 +21,7 @@ const PortfolioPage = () => {
     {
       title: 'AI-Powered Chatbot',
       description: 'Intelligent customer service automation system',
-      image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?w=800&h=600&fit=crop&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/ai-customer-service-concept_23-2149074813.jpg',
       technologies: ['Python', 'TensorFlow', 'OpenAI', 'FastAPI'],
       category: 'AI & ML',
       link: '#'
@@ -29,7 +29,7 @@ const PortfolioPage = () => {
     {
       title: 'Mobile Banking App',
       description: 'Secure and user-friendly mobile banking application',
-      image: 'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?w=800&h=600&fit=crop&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/mobile-banking-app-concept_23-2149074814.jpg',
       technologies: ['React Native', 'Node.js', 'PostgreSQL', 'AWS'],
       category: 'Mobile Development',
       link: '#'
@@ -37,7 +37,7 @@ const PortfolioPage = () => {
     {
       title: 'Blockchain Supply Chain',
       description: 'Transparent supply chain management system',
-      image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?w=800&h=600&fit=crop&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/blockchain-supply-chain-concept_23-2149074815.jpg',
       technologies: ['Ethereum', 'Solidity', 'Web3.js', 'React'],
       category: 'Blockchain',
       link: '#'

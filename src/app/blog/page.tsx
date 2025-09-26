@@ -13,7 +13,7 @@ const BlogPage = () => {
     {
       title: 'The Future of AI in Web Development',
       excerpt: 'Exploring how artificial intelligence is revolutionizing the way we build and maintain web applications.',
-      image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?w=800&h=600&fit=crop&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/ai-web-development-concept_23-2149074825.jpg',
       author: 'Dr. Sarah Chen',
       date: '2024-01-15',
       category: 'AI & Machine Learning',
@@ -23,7 +23,7 @@ const BlogPage = () => {
     {
       title: 'Building Scalable Cloud Infrastructure',
       excerpt: 'Best practices for designing and implementing cloud solutions that can grow with your business.',
-      image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?w=800&h=600&fit=crop&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/cloud-solutions-concept_23-2149074826.jpg',
       author: 'Michael Rodriguez',
       date: '2024-01-12',
       category: 'Cloud & DevOps',
@@ -33,7 +33,7 @@ const BlogPage = () => {
     {
       title: 'Mobile-First Design Principles',
       excerpt: 'Why mobile-first design is crucial for modern web applications and how to implement it effectively.',
-      image: 'https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?w=800&h=600&fit=crop&auto=format&q=85',
+      image: 'https://img.freepik.com/free-photo/mobile-first-design-concept_23-2149074827.jpg',
       author: 'Emma Johnson',
       date: '2024-01-10',
       category: 'Web Development',

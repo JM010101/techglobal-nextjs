@@ -4,15 +4,9 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { Globe, Users, Award, Heart, Target, Lightbulb } from 'lucide-react';
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const About = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const values = [
     {
@@ -98,34 +92,22 @@ const About = () => {
               </div>
             </motion.div>
             
-            {isClient ? (
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop&auto=format&q=85"
-                  alt="Our Global Team"
-                  width={1200}
-                  height={800}
-                  className="w-full h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/20"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent rounded-2xl"></div>
-              </motion.div>
-            ) : (
-              <div className="relative">
-                <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop&auto=format&q=85"
-                  alt="Our Global Team"
-                  width={1200}
-                  height={800}
-                  className="w-full h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/20"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent rounded-2xl"></div>
-              </div>
-            )}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <Image
+                src="https://media.gettyimages.com/id/1206800967/photo/diverse-group-of-professionals-working-together-in-modern-office.jpg"
+                alt="Our Global Team"
+                width={1200}
+                height={800}
+                className="w-full h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/20"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent rounded-2xl"></div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -183,7 +165,7 @@ const About = () => {
           >
             <h2 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 mb-8" style={{ fontFamily: "'Space Grotesk', 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 900, letterSpacing: '-0.03em' }}>Meet Our Global Team</h2>
             <p className="text-2xl lg:text-3xl xl:text-4xl text-slate-600 max-w-5xl mx-auto leading-relaxed" style={{ fontFamily: "'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600, letterSpacing: '-0.02em' }}>
-              Led by Adam Wong from Singapore, nine passionate experts from around the world, united by innovation
+              Led by Adam Wong from Hong Kong, nine passionate experts from around the world, united by innovation
             </p>
           </motion.div>
 
@@ -191,61 +173,87 @@ const About = () => {
             {[
               {
                 name: 'Adam Wong',
-                role: 'Founder & Tech Architect',
+                role: 'Full-Stack Developer',
                 country: 'Hong Kong',
                 flag: '🇭🇰',
                 image: '/images/team/adam-wong.jpg',
-                bio: 'Hiring manager, team leader, and full-stack developer with extensive experience in tech architecture. Leading global teams to deliver innovative solutions.',
-                skills: ['Leadership', 'Full-Stack', 'Architecture', 'Team Building']
+                bio: 'Expert in React, Node.js, and cloud architecture with 8+ years of experience building scalable web applications.',
+                skills: ['React', 'Node.js', 'AWS', 'MongoDB']
               },
               {
-                name: 'Alex Chen',
-                role: 'Backend Systems Architect',
+                name: 'Chen Wei',
+                role: 'Backend Development Lead',
                 country: 'China',
                 flag: '🇨🇳',
                 image: '/images/team/backend-expert.png',
-                bio: 'Senior backend engineer specializing in microservices architecture, database optimization, and scalable server infrastructure. Expert in building robust APIs and distributed systems.',
-                skills: ['Node.js', 'Python', 'PostgreSQL', 'Docker']
+                bio: 'Backend architecture specialist with expertise in microservices, API development, and system optimization.',
+                skills: ['Node.js', 'Python', 'Docker', 'Kubernetes']
               },
               {
-                name: 'Dr. Sarah Chen',
-                role: 'Chief AI Research Scientist',
-                country: 'USA',
-                flag: '🇺🇸',
-                image: '/images/team/ai-expert.png',
-                bio: 'Leading AI research scientist with 10+ years of experience in machine learning, deep learning, and artificial intelligence. Specializes in developing cutting-edge AI solutions for enterprise applications.',
-                skills: ['Machine Learning', 'Deep Learning', 'Neural Networks', 'AI Research']
+                name: 'Sakura Nakamura',
+                role: 'AI Research Scientist',
+                country: 'Japan',
+                flag: '🇯🇵',
+                image: '/images/team/claude expert.png',
+                bio: 'AI research scientist focused on advanced machine learning algorithms and natural language processing innovations.',
+                skills: ['Deep Learning', 'NLP', 'Computer Vision', 'Research']
               },
               {
-                name: 'Marco Rossi',
+                name: 'Yuki Tanaka',
                 role: 'Data Analytics Expert',
-                country: 'Italy',
-                flag: '🇮🇹',
+                country: 'Japan',
+                flag: '🇯🇵',
                 image: '/images/team/data-expert.png',
                 bio: 'Data science specialist with expertise in big data analytics, business intelligence, and predictive modeling.',
                 skills: ['Python', 'SQL', 'Tableau', 'Power BI']
               },
               {
-                name: 'Priya Patel',
-                role: 'Mobile App Expert',
+                name: 'Priya Sharma',
+                role: 'Database Manager',
                 country: 'India',
                 flag: '🇮🇳',
+                image: '/images/team/database manager.png',
+                bio: 'Database architecture expert specializing in data modeling, performance optimization, and data security.',
+                skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Data Modeling']
+              },
+              {
+                name: 'Marcus Tan',
+                role: 'Mobile App Specialist',
+                country: 'Singapore',
+                flag: '🇸🇬',
                 image: '/images/team/mobile-app-expert.png',
-                bio: 'Senior mobile app developer with 8+ years of experience in cross-platform and native mobile development. Specializes in creating high-performance mobile applications for iOS and Android platforms.',
+                bio: 'Mobile development expert with deep knowledge of React Native, Flutter, and native iOS/Android development.',
                 skills: ['React Native', 'Flutter', 'Swift', 'Kotlin']
               },
               {
-                name: 'Yuki Tanaka',
-                role: 'Game Designer & Developer',
-                country: 'Japan',
-                flag: '🇯🇵',
+                name: 'Li Mei',
+                role: 'AI Solutions Architect',
+                country: 'China',
+                flag: '🇨🇳',
+                image: '/images/team/ai-expert.png',
+                bio: 'Leading AI expert specializing in machine learning, natural language processing, and intelligent automation systems.',
+                skills: ['Python', 'TensorFlow', 'OpenAI', 'MLOps']
+              },
+              {
+                name: 'Aria Lim',
+                role: 'Game Designer',
+                country: 'Singapore',
+                flag: '🇸🇬',
                 image: '/images/team/game-designer.png',
-                bio: 'Creative game designer and developer with expertise in Unity, Unreal Engine, and interactive storytelling. Specializes in creating immersive gaming experiences and game mechanics.',
-                skills: ['Unity', 'Unreal Engine', 'C#', 'Game Design']
+                bio: 'Creative game designer with expertise in game mechanics, user experience design, and interactive storytelling.',
+                skills: ['Unity', 'Game Design', '3D Modeling', 'User Research']
+              },
+              {
+                name: 'Ahmed Al-Rashid',
+                role: 'Web Designer',
+                country: 'UAE',
+                flag: '🇦🇪',
+                image: '/images/team/Web designer.png',
+                bio: 'Creative web designer with a focus on user experience, interface design, and creating beautiful, functional digital products.',
+                skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping']
               }
             ].map((member, index) => (
-              isClient ? (
-                <motion.div
+              <motion.div
                   key={member.name}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -259,6 +267,7 @@ const About = () => {
                       width={128}
                       height={128}
                       className="w-32 h-32 rounded-full mx-auto object-cover shadow-2xl group-hover:scale-110 transition-all duration-500 border-4 border-white/20"
+                      unoptimized
                     />
                     <div className="absolute -bottom-2 -right-2 text-2xl">
                       {member.flag}
@@ -289,54 +298,10 @@ const About = () => {
                     ))}
                   </div>
                 </motion.div>
-              ) : (
-                <div
-                  key={member.name}
-                  className="card p-8 text-center hover-lift group"
-                >
-                  <div className="relative mb-6">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={128}
-                      height={128}
-                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-2xl group-hover:scale-110 transition-all duration-500 border-4 border-white/20"
-                    />
-                    <div className="absolute -bottom-2 -right-2 text-2xl">
-                      {member.flag}
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3" style={{ fontFamily: "'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 700, letterSpacing: '0.02em' }}>
-                    {member.name}
-                  </h3>
-                  
-                  <div className="text-indigo-600 font-semibold mb-4 text-lg" style={{ fontFamily: "'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600 }}>
-                    {member.role}
-                  </div>
-                  
-                  <p className="text-slate-600 text-base leading-relaxed mb-6" style={{ fontFamily: "'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 400, letterSpacing: '-0.01em' }}>
-                    {member.bio}
-                  </p>
-                  
-                  <div className="flex flex-wrap justify-center gap-3">
-                    {member.skills.map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 text-sm font-semibold rounded-full border border-indigo-200/50"
-                        style={{ fontFamily: "'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600 }}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )
             ))}
           </div>
 
-          {isClient ? (
-            <motion.div
+          <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -368,7 +333,6 @@ const About = () => {
                 </p>
               </div>
             </div>
-          )}
         </div>
       </section>
 
@@ -378,7 +342,7 @@ const About = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
-              return isClient ? (
+              return (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -396,21 +360,6 @@ const About = () => {
                     {stat.label}
                   </div>
                 </motion.div>
-              ) : (
-                <div
-                  key={stat.label}
-                  className="text-center"
-                >
-                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
               );
             })}
           </div>

@@ -129,8 +129,11 @@ const Services = () => {
     const fetchServices = async () => {
       try {
         const response = await fetch('/api/services');
+        if (!response.ok) {
+          throw new Error('API response not ok');
+        }
         const data = await response.json();
-        if (data.success) {
+        if (data.success && data.data && data.data.length > 0) {
           setServices(data.data);
         } else {
           setServices(sampleServices);
@@ -144,6 +147,11 @@ const Services = () => {
       }
     };
 
+    // Use sample services immediately
+    setServices(sampleServices);
+    setLoading(false);
+    
+    // Optionally try to fetch from API in background
     fetchServices();
   }, [sampleServices]);
 

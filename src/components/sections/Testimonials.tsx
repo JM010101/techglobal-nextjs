@@ -23,7 +23,7 @@ const Testimonials = () => {
       company: 'TechStart Inc.',
       position: 'Satisfied Client',
       quote: 'TechGlobal Solutions transformed our business with their innovative approach. Their global team brought fresh perspectives that we never would have considered locally.',
-      imageUrl: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074802.jpg',
       rating: 5,
       project: 'E-Commerce Platform'
     },
@@ -33,7 +33,7 @@ const Testimonials = () => {
       company: 'DataCorp',
       position: 'Happy Customer',
       quote: 'The AI solutions they delivered exceeded our expectations. Their expertise in machine learning and data analytics helped us make data-driven decisions that increased our revenue by 40%.',
-      imageUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074803.jpg',
       rating: 5,
       project: 'AI Analytics Dashboard'
     },
@@ -43,7 +43,7 @@ const Testimonials = () => {
       company: 'FinanceFlow',
       position: 'Valued Client',
       quote: 'Working with TechGlobal was a game-changer. Their mobile app development expertise and attention to security gave us the confidence to launch our banking app successfully.',
-      imageUrl: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074804.jpg',
       rating: 5,
       project: 'Mobile Banking App'
     },
@@ -53,7 +53,7 @@ const Testimonials = () => {
       company: 'CloudTech Solutions',
       position: 'Trusted Partner',
       quote: 'Their cloud migration strategy saved us thousands of dollars in infrastructure costs. The 24/7 support from their global team ensures our systems run smoothly around the clock.',
-      imageUrl: 'https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074805.jpg',
       rating: 5,
       project: 'Cloud Infrastructure'
     },
@@ -63,7 +63,7 @@ const Testimonials = () => {
       company: 'Blockchain Ventures',
       position: 'Loyal Client',
       quote: 'TechGlobal\'s blockchain expertise helped us launch our DeFi platform ahead of schedule. Their innovative approach and global perspective gave us a competitive edge.',
-      imageUrl: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074806.jpg',
       rating: 5,
       project: 'DeFi Platform'
     },
@@ -73,7 +73,7 @@ const Testimonials = () => {
       company: 'IoT Innovations',
       position: 'Pleased Customer',
       quote: 'Their IoT solutions revolutionized our manufacturing process. The real-time monitoring and predictive maintenance features have reduced downtime by 60%.',
-      imageUrl: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074807.jpg',
       rating: 5,
       project: 'IoT Manufacturing System'
     },
@@ -83,7 +83,7 @@ const Testimonials = () => {
       company: 'Digital Marketing Pro',
       position: 'Delighted Client',
       quote: 'TechGlobal\'s digital marketing solutions transformed our online presence. Their data-driven approach increased our conversion rates by 150% in just 3 months.',
-      imageUrl: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074808.jpg',
       rating: 5,
       project: 'Digital Marketing Campaign'
     },
@@ -93,7 +93,7 @@ const Testimonials = () => {
       company: 'E-Commerce Solutions',
       position: 'Impressed Client',
       quote: 'Their e-commerce platform development exceeded all our expectations. The seamless user experience and robust payment integration helped us scale to 10x our previous sales.',
-      imageUrl: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074809.jpg',
       rating: 5,
       project: 'E-Commerce Platform'
     },
@@ -103,7 +103,7 @@ const Testimonials = () => {
       company: 'HealthTech Innovations',
       position: 'Grateful Client',
       quote: 'The mobile health app they developed for us has been downloaded over 1 million times. Their attention to user experience and security made all the difference.',
-      imageUrl: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074810.jpg',
       rating: 5,
       project: 'Health Monitoring App'
     },
@@ -113,7 +113,7 @@ const Testimonials = () => {
       company: 'FinTech Solutions',
       position: 'Satisfied Customer',
       quote: 'Their blockchain integration for our financial platform was flawless. The security and transparency features they implemented gave our users complete confidence.',
-      imageUrl: 'https://images.pexels.com/photos/1040882/pexels-photo-1040882.jpeg?w=200&h=200&fit=crop&crop=face&auto=format&q=85',
+      imageUrl: 'https://img.freepik.com/free-photo/portrait-happy-customer_23-2149074811.jpg',
       rating: 5,
       project: 'Blockchain Payment System'
     }

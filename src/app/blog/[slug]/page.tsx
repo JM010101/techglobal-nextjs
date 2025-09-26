@@ -75,19 +75,19 @@ const BlogPostPage = () => {
               <p>Use modern collaboration tools like Slack, Microsoft Teams, or Discord to maintain constant communication. Video calls help build personal connections despite physical distance.</p>
               
               <h2>Real-World Success Stories</h2>
-              <p>Our global team at TechGlobal Solutions has successfully delivered projects for clients across six continents. By combining the technical expertise of our developers from Singapore, the design sensibilities of our team in Italy, and the business acumen of our international members, we've created solutions that truly resonate with global audiences.</p>
+              <p>Our global team at TechGlobal Solutions has successfully delivered projects for clients across six continents. By combining the technical expertise of our developers from Hong Kong, the design sensibilities of our team in Italy, and the business acumen of our international members, we've created solutions that truly resonate with global audiences.</p>
               
               <h2>Conclusion</h2>
               <p>Building cross-cultural development teams is an investment in innovation and global competitiveness. While it requires effort and cultural sensitivity, the benefits far outweigh the challenges. Companies that embrace diversity in their development teams position themselves for success in the global marketplace.</p>
             `,
             category: 'Business',
             featuredImage: {
-              url: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=400&fit=crop&auto=format',
+              url: 'https://thumbs.dreamstime.com/b/diverse-team-professionals-working-together-modern-office-232345678.jpg',
               alt: 'Cross-Cultural Development Teams'
             },
             author: {
               name: 'Marco Rossi',
-              avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face&auto=format',
+              avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074801.jpg',
               title: 'Data Analytics Expert'
             },
             publishedAt: '2024-12-10',
@@ -123,12 +123,12 @@ const BlogPostPage = () => {
             `,
             category: 'AI & Machine Learning',
             featuredImage: {
-              url: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop&auto=format',
+              url: 'https://thumbs.dreamstime.com/b/artificial-intelligence-technology-concept-232345679.jpg',
               alt: 'AI in Web Development'
             },
             author: {
               name: 'Sarah Johnson',
-              avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=50&h=50&fit=crop&crop=face&auto=format',
+              avatar: 'https://img.freepik.com/free-photo/portrait-young-businesswoman_23-2149074778.jpg',
               title: 'AI Solutions Architect'
             },
             publishedAt: '2024-12-15',
@@ -161,12 +161,12 @@ const BlogPostPage = () => {
             `,
             category: 'Web Development',
             featuredImage: {
-              url: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop&auto=format',
+              url: 'https://thumbs.dreamstime.com/b/mobile-responsive-design-concept-232345680.jpg',
               alt: 'Mobile-First Design'
             },
             author: {
               name: 'Yuki Tanaka',
-              avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face&auto=format',
+              avatar: 'https://img.freepik.com/free-photo/portrait-young-businesswoman-2_23-2149074779.jpg',
               title: 'UX/UI Designer'
             },
             publishedAt: '2024-12-10',
@@ -208,12 +208,12 @@ const BlogPostPage = () => {
             `,
             category: 'Cloud & DevOps',
             featuredImage: {
-              url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop&auto=format',
+              url: 'https://thumbs.dreamstime.com/b/cloud-computing-technology-concept-232345681.jpg',
               alt: 'Cloud Infrastructure'
             },
             author: {
               name: 'Hans Mueller',
-              avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face&auto=format',
+              avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman-2_23-2149074780.jpg',
               title: 'Enterprise Systems Lead'
             },
             publishedAt: '2024-12-12',
@@ -255,12 +255,12 @@ const BlogPostPage = () => {
             `,
             category: 'Blockchain',
             featuredImage: {
-              url: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=400&fit=crop&auto=format',
+              url: 'https://thumbs.dreamstime.com/b/blockchain-technology-concept-232345682.jpg',
               alt: 'Blockchain Technology'
             },
             author: {
               name: 'Alex Chen',
-              avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face&auto=format',
+              avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074801.jpg',
               title: 'Full-Stack Developer'
             },
             publishedAt: '2024-12-08',
@@ -305,12 +305,12 @@ const BlogPostPage = () => {
             `,
             category: 'Security',
             featuredImage: {
-              url: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop&auto=format',
+              url: 'https://thumbs.dreamstime.com/b/cybersecurity-data-protection-concept-232345683.jpg',
               alt: 'Cybersecurity'
             },
             author: {
               name: 'Priya Patel',
-              avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=50&h=50&fit=crop&crop=face&auto=format',
+              avatar: 'https://img.freepik.com/free-photo/portrait-young-businesswoman-3_23-2149074781.jpg',
               title: 'Mobile App Specialist'
             },
             publishedAt: '2024-12-05',
@@ -354,12 +354,12 @@ const BlogPostPage = () => {
             `,
             category: 'Data Analytics',
             featuredImage: {
-              url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop&auto=format',
+              url: 'https://thumbs.dreamstime.com/b/big-data-analytics-concept-232345684.jpg',
               alt: 'Big Data Strategies'
             },
             author: {
               name: 'Marco Rossi',
-              avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face&auto=format',
+              avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074801.jpg',
               title: 'Data Analytics Expert'
             },
             publishedAt: '2024-12-05',
