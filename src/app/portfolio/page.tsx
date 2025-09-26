@@ -6,6 +6,7 @@ import Portfolio from '@/components/sections/Portfolio';
 import CTA from '@/components/sections/CTA';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const PortfolioPage = () => {
   const featuredProjects = [
@@ -155,9 +156,11 @@ const PortfolioPage = () => {
                 className="card overflow-hidden group hover-lift"
               >
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    width={400}
+                    height={256}
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

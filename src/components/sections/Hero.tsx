@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Play, Globe, Users, Award, Zap, X } from 'lucide-react';
+import Image from 'next/image';
 
 const Hero = () => {
   const [currentText, setCurrentText] = useState(0);
@@ -295,9 +296,11 @@ const Hero = () => {
                     <source src="https://assets.mixkit.co/videos/preview/mixkit-team-of-developers-working-together-4622-large.mp4" type="video/mp4" />
                     <source src="https://cdn.coverr.co/videos/coverr-modern-office-teamwork-2847/1080p.mp4" type="video/mp4" />
                     {/* Fallback image */}
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop&auto=format&q=85"
                       alt="Professional Team Collaboration"
+                      width={1200}
+                      height={800}
                       className="w-full h-full object-cover"
                       suppressHydrationWarning
                     />

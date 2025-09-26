@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Eye } from 'lucide-react';
+import Image from 'next/image';
 
 interface Project {
   id: string;
@@ -764,9 +765,11 @@ const Portfolio = ({ limit }: PortfolioProps) => {
               className="project-card group"
             >
               <div className="relative overflow-hidden">
-                <img
+                <Image
                   src={project.imageUrl}
                   alt={project.title}
+                  width={400}
+                  height={192}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

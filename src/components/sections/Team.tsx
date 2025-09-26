@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Github, Twitter, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 
 interface TeamMember {
   id: string;
@@ -280,9 +281,11 @@ const Team = () => {
             >
               <div className="relative mb-6">
                 <div className="w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-white/20 shadow-2xl group-hover:scale-110 transition-all duration-500">
-                  <img
+                  <Image
                     src={member.imageUrl}
                     alt={member.name}
+                    width={144}
+                    height={144}
                     className="w-full h-full object-cover"
                   />
                 </div>

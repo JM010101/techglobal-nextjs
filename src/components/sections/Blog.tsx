@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Calendar, Clock, Eye, Heart, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface BlogPost {
   id: string;
@@ -289,9 +290,11 @@ const Blog = () => {
               className="blog-card group"
             >
               <div className="relative overflow-hidden">
-                <img
+                <Image
                   src={post.featuredImage.url}
                   alt={post.featuredImage.alt}
+                  width={400}
+                  height={192}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">
@@ -326,9 +329,11 @@ const Blog = () => {
                 
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
-                    <img
+                    <Image
                       src={post.author.avatar}
                       alt={post.author.name}
+                      width={32}
+                      height={32}
                       className="w-8 h-8 rounded-full mr-3"
                     />
                     <div>

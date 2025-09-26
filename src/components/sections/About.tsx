@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Globe, Users, Award, Zap, Lightbulb, Shield, TrendingUp, Handshake } from 'lucide-react';
+import Image from 'next/image';
 
 const About = () => {
   const stats = [
@@ -105,9 +106,11 @@ const About = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
               alt="Our Global Team"
+              width={600}
+              height={500}
               className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl"
               suppressHydrationWarning
             />

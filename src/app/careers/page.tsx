@@ -23,6 +23,7 @@ import {
   Laptop,
   Plane
 } from 'lucide-react';
+import Image from 'next/image';
 
 interface JobPosition {
   id: string;
@@ -711,9 +712,11 @@ const CareersPage = () => {
                 className="testimonial-card"
               >
                 <div className="flex items-center mb-6">
-                  <img
+                  <Image
                     src={testimonial.image}
                     alt={testimonial.name}
+                    width={64}
+                    height={64}
                     className="w-16 h-16 rounded-full object-cover mr-4"
                   />
                   <div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { 
   Gamepad2, 
   Zap, 
@@ -243,9 +244,11 @@ const EntertainmentPage = () => {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="relative h-48 overflow-hidden">
-                        <img
+                        <Image
                           src={game.image}
                           alt={game.title}
+                          width={400}
+                          height={192}
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
