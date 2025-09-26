@@ -69,7 +69,7 @@ const Team = () => {
       role: 'AI Research Scientist',
       country: 'Japan',
       flag: '🇯🇵',
-      imageUrl: '/images/team/claude expert.png',
+      imageUrl: '/images/team/claude%20expert.png',
       bio: 'AI research scientist focused on advanced machine learning algorithms and natural language processing innovations.',
       skills: ['Deep Learning', 'NLP', 'Computer Vision', 'Research'],
       experience: '7+ years',
@@ -102,7 +102,7 @@ const Team = () => {
       role: 'Database Manager',
       country: 'India',
       flag: '🇮🇳',
-      imageUrl: '/images/team/database manager.png',
+      imageUrl: '/images/team/database%20manager.png',
       bio: 'Database architecture expert specializing in data modeling, performance optimization, and data security.',
       skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Data Modeling'],
       experience: '8+ years',
@@ -169,7 +169,7 @@ const Team = () => {
       role: 'Web Designer',
       country: 'UAE',
       flag: '🇦🇪',
-      imageUrl: '/images/team/Web designer.png',
+      imageUrl: '/images/team/Web%20designer.png',
       bio: 'Creative web designer with a focus on user experience, interface design, and creating beautiful, functional digital products.',
       skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping'],
       experience: '5+ years',
@@ -289,13 +289,13 @@ const Team = () => {
               className="team-card group"
             >
               <div className="relative mb-6">
-                <div className="w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-white/20 shadow-2xl group-hover:scale-110 transition-all duration-500">
+                <div className="w-48 h-96 mx-auto rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl group-hover:scale-110 transition-all duration-500">
                   <Image
                     src={member.imageUrl}
                     alt={member.name}
-                    width={144}
-                    height={144}
-                    className="w-full h-full object-cover"
+                    width={192}
+                    height={384}
+                    className="w-full h-full object-contain object-center"
                     unoptimized
                   />
                 </div>

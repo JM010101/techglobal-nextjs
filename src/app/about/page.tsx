@@ -3,7 +3,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
-import { Globe, Users, Award, Heart, Target, Lightbulb } from 'lucide-react';
+import { Globe, Users, Award, Heart, Target, Lightbulb, Star, Trophy, Code, Database, Smartphone, Palette, Brain, Gamepad2 } from 'lucide-react';
 import Image from 'next/image';
 
 const About = () => {
@@ -154,49 +154,150 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Members Introduction */}
+      {/* Leadership Spotlight */}
+      <section className="section-padding bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 mb-8" style={{ fontFamily: "'Space Grotesk', 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 900, letterSpacing: '-0.03em' }}>
+              Leadership Excellence
+            </h2>
+            <p className="text-2xl lg:text-3xl text-slate-600 max-w-4xl mx-auto leading-relaxed" style={{ fontFamily: "'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600, letterSpacing: '-0.02em' }}>
+              Meet our visionary leader who brings together the world's finest talent
+            </p>
+          </motion.div>
+
+          {/* Adam Wong - Leadership Spotlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-6xl mx-auto"
+          >
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                <div className="relative h-[700px] lg:h-full">
+                  <Image
+                    src="/images/team/adam-wong.jpg"
+                    alt="Adam Wong - Founder & CEO"
+                    width={600}
+                    height={900}
+                    className="w-full h-full object-contain object-center"
+                    unoptimized
+                  />
+                  <div className="absolute bottom-6 left-6 text-white bg-black/50 rounded-lg px-4 py-3">
+                    <div className="text-4xl mb-2">🇭🇰</div>
+                    <div className="text-sm font-medium opacity-90">Hong Kong</div>
+                  </div>
+                </div>
+                <div className="p-8 lg:p-12 flex flex-col justify-center">
+                  <div className="mb-6">
+                    <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Space Grotesk', 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 900 }}>
+                      Adam Wong
+                    </h3>
+                    <p className="text-2xl text-blue-600 font-semibold mb-6">Founder & Chief Technology Officer</p>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Career Highlights</h4>
+                      <ul className="space-y-2 text-gray-600">
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span>8+ years in full-stack development and team leadership</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span>Former Senior Developer at leading Hong Kong tech companies</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span>Expert in React, Node.js, AWS, and cloud architecture</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span>Led development of 50+ successful projects across 15+ countries</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Core Expertise</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {['React', 'Node.js', 'AWS', 'MongoDB', 'Team Leadership', 'Architecture Design'].map((skill, index) => (
+                          <span
+                            key={index}
+                            className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm rounded-full font-medium"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Vision</h4>
+                      <p className="text-gray-600 leading-relaxed">
+                        "I believe technology should bridge cultures and connect people. Our global team represents 
+                        the future of development - diverse, innovative, and united by a passion for excellence."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Expert Team Showcase */}
       <section className="section-padding">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="section-header"
+            className="text-center mb-16"
           >
-            <h2 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 mb-8" style={{ fontFamily: "'Space Grotesk', 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 900, letterSpacing: '-0.03em' }}>Meet Our Global Team</h2>
-            <p className="text-2xl lg:text-3xl xl:text-4xl text-slate-600 max-w-5xl mx-auto leading-relaxed" style={{ fontFamily: "'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600, letterSpacing: '-0.02em' }}>
-              Led by Adam Wong from Hong Kong, nine passionate experts from around the world, united by innovation
+            <h2 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 mb-8" style={{ fontFamily: "'Space Grotesk', 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 900, letterSpacing: '-0.03em' }}>
+              Our Expert Team
+            </h2>
+            <p className="text-2xl lg:text-3xl text-slate-600 max-w-4xl mx-auto leading-relaxed" style={{ fontFamily: "'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600, letterSpacing: '-0.02em' }}>
+              World-class professionals from 9 countries, each bringing unique expertise and cultural perspectives
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {[
-              {
-                name: 'Adam Wong',
-                role: 'Full-Stack Developer',
-                country: 'Hong Kong',
-                flag: '🇭🇰',
-                image: '/images/team/adam-wong.jpg',
-                bio: 'Expert in React, Node.js, and cloud architecture with 8+ years of experience building scalable web applications.',
-                skills: ['React', 'Node.js', 'AWS', 'MongoDB']
-              },
               {
                 name: 'Chen Wei',
                 role: 'Backend Development Lead',
                 country: 'China',
                 flag: '🇨🇳',
                 image: '/images/team/backend-expert.png',
-                bio: 'Backend architecture specialist with expertise in microservices, API development, and system optimization.',
-                skills: ['Node.js', 'Python', 'Docker', 'Kubernetes']
+                experience: '6+ years',
+                education: 'Computer Science, Tsinghua University',
+                career: 'Specialized in microservices architecture and system optimization. Led backend development for major e-commerce platforms serving millions of users.',
+                achievements: ['Scaled systems to handle 10M+ daily users', 'Reduced API response time by 60%', 'Mentored 15+ junior developers'],
+                skills: ['Node.js', 'Python', 'Docker', 'Kubernetes', 'Microservices', 'System Design'],
+                icon: Code
               },
               {
                 name: 'Sakura Nakamura',
                 role: 'AI Research Scientist',
                 country: 'Japan',
                 flag: '🇯🇵',
-                image: '/images/team/claude expert.png',
-                bio: 'AI research scientist focused on advanced machine learning algorithms and natural language processing innovations.',
-                skills: ['Deep Learning', 'NLP', 'Computer Vision', 'Research']
+                image: '/images/team/claude%20expert.png',
+                experience: '7+ years',
+                education: 'PhD in Machine Learning, University of Tokyo',
+                career: 'Leading AI researcher with focus on natural language processing and computer vision. Published 20+ papers in top-tier conferences.',
+                achievements: ['Developed award-winning NLP algorithms', 'Led AI projects for Fortune 500 companies', 'Patent holder in machine learning'],
+                skills: ['Deep Learning', 'NLP', 'Computer Vision', 'Research', 'TensorFlow', 'PyTorch'],
+                icon: Brain
               },
               {
                 name: 'Yuki Tanaka',
@@ -204,17 +305,25 @@ const About = () => {
                 country: 'Japan',
                 flag: '🇯🇵',
                 image: '/images/team/data-expert.png',
-                bio: 'Data science specialist with expertise in big data analytics, business intelligence, and predictive modeling.',
-                skills: ['Python', 'SQL', 'Tableau', 'Power BI']
+                experience: '5+ years',
+                education: 'Statistics & Data Science, Waseda University',
+                career: 'Data science specialist transforming raw data into actionable business insights. Expert in predictive modeling and business intelligence.',
+                achievements: ['Increased client ROI by 40% through data insights', 'Built real-time analytics dashboards', 'Certified in advanced analytics'],
+                skills: ['Python', 'SQL', 'Tableau', 'Power BI', 'Machine Learning', 'Statistics'],
+                icon: Database
               },
               {
                 name: 'Priya Sharma',
                 role: 'Database Manager',
                 country: 'India',
                 flag: '🇮🇳',
-                image: '/images/team/database manager.png',
-                bio: 'Database architecture expert specializing in data modeling, performance optimization, and data security.',
-                skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Data Modeling']
+                image: '/images/team/database%20manager.png',
+                experience: '8+ years',
+                education: 'Information Technology, IIT Delhi',
+                career: 'Database architecture expert with deep knowledge of data modeling, performance optimization, and data security across multiple platforms.',
+                achievements: ['Optimized database performance by 70%', 'Designed scalable data architectures', 'Led data migration for 50+ projects'],
+                skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Data Modeling', 'Performance Tuning', 'Data Security'],
+                icon: Database
               },
               {
                 name: 'Marcus Tan',
@@ -222,8 +331,12 @@ const About = () => {
                 country: 'Singapore',
                 flag: '🇸🇬',
                 image: '/images/team/mobile-app-expert.png',
-                bio: 'Mobile development expert with deep knowledge of React Native, Flutter, and native iOS/Android development.',
-                skills: ['React Native', 'Flutter', 'Swift', 'Kotlin']
+                experience: '6+ years',
+                education: 'Computer Engineering, National University of Singapore',
+                career: 'Mobile development expert with comprehensive knowledge of cross-platform and native development. Created apps with millions of downloads.',
+                achievements: ['Developed apps with 5M+ downloads', 'Led mobile teams of 10+ developers', 'Expert in both iOS and Android'],
+                skills: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Mobile UX', 'App Store Optimization'],
+                icon: Smartphone
               },
               {
                 name: 'Li Mei',
@@ -231,8 +344,12 @@ const About = () => {
                 country: 'China',
                 flag: '🇨🇳',
                 image: '/images/team/ai-expert.png',
-                bio: 'Leading AI expert specializing in machine learning, natural language processing, and intelligent automation systems.',
-                skills: ['Python', 'TensorFlow', 'OpenAI', 'MLOps']
+                experience: '9+ years',
+                education: 'Artificial Intelligence, Peking University',
+                career: 'Leading AI expert specializing in machine learning solutions for enterprise clients. Expert in MLOps and AI system deployment.',
+                achievements: ['Deployed AI solutions for 100+ enterprises', 'Reduced model training time by 50%', 'AI strategy consultant for major corporations'],
+                skills: ['Python', 'TensorFlow', 'OpenAI', 'MLOps', 'AI Strategy', 'Enterprise AI'],
+                icon: Brain
               },
               {
                 name: 'Aria Lim',
@@ -240,124 +357,94 @@ const About = () => {
                 country: 'Singapore',
                 flag: '🇸🇬',
                 image: '/images/team/game-designer.png',
-                bio: 'Creative game designer with expertise in game mechanics, user experience design, and interactive storytelling.',
-                skills: ['Unity', 'Game Design', '3D Modeling', 'User Research']
+                experience: '5+ years',
+                education: 'Game Design, Nanyang Technological University',
+                career: 'Creative game designer with expertise in game mechanics, user experience design, and interactive storytelling. Passionate about creating engaging user experiences.',
+                achievements: ['Designed award-winning mobile games', 'Led UX research for gaming platforms', 'Published game design methodologies'],
+                skills: ['Unity', 'Game Design', '3D Modeling', 'User Research', 'Interactive Design', 'Game Analytics'],
+                icon: Gamepad2
               },
               {
                 name: 'Ahmed Al-Rashid',
                 role: 'Web Designer',
                 country: 'UAE',
                 flag: '🇦🇪',
-                image: '/images/team/Web designer.png',
-                bio: 'Creative web designer with a focus on user experience, interface design, and creating beautiful, functional digital products.',
-                skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping']
+                image: '/images/team/Web%20designer.png',
+                experience: '7+ years',
+                education: 'Digital Design, American University of Dubai',
+                career: 'Creative web designer with expertise in user experience design, responsive layouts, and modern web technologies. Focused on creating beautiful, functional interfaces.',
+                achievements: ['Designed websites for 200+ clients', 'Improved user engagement by 45%', 'Led design teams for major brands'],
+                skills: ['UI/UX Design', 'Figma', 'CSS', 'JavaScript', 'Responsive Design', 'Brand Identity'],
+                icon: Palette
               }
-            ].map((member, index) => (
-              <motion.div
+            ].map((member, index) => {
+              const IconComponent = member.icon;
+              return (
+                <motion.div
                   key={member.name}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="card p-8 text-center hover-lift group"
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group"
                 >
-                  <div className="relative mb-6">
+                  <div className="relative h-[600px]">
                     <Image
                       src={member.image}
                       alt={member.name}
-                      width={128}
-                      height={128}
-                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-2xl group-hover:scale-110 transition-all duration-500 border-4 border-white/20"
+                      width={400}
+                      height={700}
+                      className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-300"
                       unoptimized
                     />
-                    <div className="absolute -bottom-2 -right-2 text-2xl">
-                      {member.flag}
+                    <div className="absolute bottom-6 left-4 text-white bg-black/50 rounded-lg px-3 py-2">
+                      <div className="text-3xl mb-1">{member.flag}</div>
+                      <div className="text-sm font-medium opacity-90">{member.country}</div>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
+                      <span className="text-sm font-semibold text-gray-800">{member.experience}</span>
+                    </div>
+                    <div className="absolute top-4 left-4 bg-blue-600/90 backdrop-blur-sm rounded-full p-2">
+                      <IconComponent className="w-5 h-5 text-white" />
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3" style={{ fontFamily: "'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 700, letterSpacing: '0.02em' }}>
-                    {member.name}
-                  </h3>
-                  
-                  <div className="text-indigo-600 font-semibold mb-4 text-lg" style={{ fontFamily: "'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600 }}>
-                    {member.role}
-                  </div>
-                  
-                  <p className="text-slate-600 text-base leading-relaxed mb-6" style={{ fontFamily: "'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 400, letterSpacing: '-0.01em' }}>
-                    {member.bio}
-                  </p>
-                  
-                  <div className="flex flex-wrap justify-center gap-3">
-                    {member.skills.map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 text-sm font-semibold rounded-full border border-indigo-200/50"
-                        style={{ fontFamily: "'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600 }}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-center mt-12"
-            >
-              <div className="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 rounded-3xl p-12 border border-white/50 shadow-2xl">
-                <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 800, letterSpacing: '0.02em' }}>
-                  Why Our Global Team Makes the Difference
-                </h3>
-                <p className="text-slate-600 leading-relaxed max-w-4xl mx-auto text-lg" style={{ fontFamily: "'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 400, letterSpacing: '-0.01em' }}>
-                  Our diverse team brings together unique perspectives, cultural insights, and specialized expertise from six different countries. 
-                  This global collaboration enables us to create solutions that resonate with international audiences while maintaining the highest 
-                  standards of quality and innovation. Each team member contributes their local market knowledge and technical expertise, 
-                  resulting in truly world-class solutions.
-                </p>
-              </div>
-            </motion.div>
-          ) : (
-            <div className="text-center mt-12">
-              <div className="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 rounded-3xl p-12 border border-white/50 shadow-2xl">
-                <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 800, letterSpacing: '0.02em' }}>
-                  Why Our Global Team Makes the Difference
-                </h3>
-                <p className="text-slate-600 leading-relaxed max-w-4xl mx-auto text-lg" style={{ fontFamily: "'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 400, letterSpacing: '-0.01em' }}>
-                  Our diverse team brings together unique perspectives, cultural insights, and specialized expertise from six different countries. 
-                  This global collaboration enables us to create solutions that resonate with international audiences while maintaining the highest 
-                  standards of quality and innovation. Each team member contributes their local market knowledge and technical expertise, 
-                  resulting in truly world-class solutions.
-                </p>
-              </div>
-            </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="section-padding">
-        <div className="container">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-medium">
-                    {stat.label}
+                  <div className="p-6">
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-1">{member.name}</h3>
+                      <p className="text-lg text-blue-600 font-semibold mb-2">{member.role}</p>
+                      <p className="text-sm text-gray-500 mb-3">{member.education}</p>
+                    </div>
+                    
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-gray-900 mb-2">Career Focus</h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">{member.career}</p>
+                    </div>
+                    
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-gray-900 mb-2">Key Achievements</h4>
+                      <ul className="space-y-1">
+                        {member.achievements.map((achievement, achievementIndex) => (
+                          <li key={achievementIndex} className="flex items-start text-sm text-gray-600">
+                            <Star className="w-3 h-3 text-yellow-500 mt-1 mr-2 flex-shrink-0" />
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-900 mb-2">Expertise</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {member.skills.map((skill, skillIndex) => (
+                          <span
+                            key={skillIndex}
+                            className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-md font-medium"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               );
@@ -366,29 +453,105 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission Statement */}
-      <section className="section-padding hero-gradient">
+      {/* Stats Section */}
+      <section className="section-padding gradient-bg">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center text-white max-w-4xl mx-auto"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-8" style={{ fontFamily: "'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 800, letterSpacing: '0.02em' }}>
-              Our Mission
-            </h2>
-            <p className="text-2xl lg:text-3xl text-blue-100 leading-relaxed" style={{ fontFamily: "'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 400, letterSpacing: '-0.01em' }}>
-              To deliver high-level web and software solutions worldwide, 
-              empowering businesses to achieve their digital transformation 
-              goals through innovation, reliability, and global collaboration.
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">Our Impact</h2>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+              Numbers that reflect our commitment to excellence and global reach
             </p>
-            <div className="mt-10">
-              <span className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 bg-clip-text text-transparent" style={{ fontFamily: "'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 800, letterSpacing: '0.02em' }}>
-                &quot;Innovation Without Borders&quot;
-              </span>
-            </div>
           </motion.div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-3xl lg:text-4xl font-bold text-white mb-2">{stat.number}</div>
+                  <div className="text-lg font-semibold text-blue-200">{stat.label}</div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="section-padding">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">Why Choose Our Global Team</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our diverse team brings together unique perspectives, cultural insights, and specialized expertise from 9 different countries
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="card p-8 text-center hover-lift"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Globe className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Global Perspective</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Our team spans 9 countries, bringing diverse cultural insights and local market knowledge to every project.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="card p-8 text-center hover-lift"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Trophy className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Proven Excellence</h3>
+              <p className="text-gray-600 leading-relaxed">
+                With 50+ successful projects and 100% client satisfaction, we deliver results that exceed expectations.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="card p-8 text-center hover-lift"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Lightbulb className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Innovation First</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We stay ahead of technology trends, implementing cutting-edge solutions that give you a competitive advantage.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
