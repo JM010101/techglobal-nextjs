@@ -167,7 +167,7 @@ const About = () => {
               Leadership Excellence
             </h2>
             <p className="text-2xl lg:text-3xl text-slate-600 max-w-4xl mx-auto leading-relaxed" style={{ fontFamily: "'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600, letterSpacing: '-0.02em' }}>
-              Meet our visionary leader who brings together the world's finest talent
+              Meet our visionary leader who brings together the world&apos;s finest talent
             </p>
           </motion.div>
 
@@ -242,8 +242,8 @@ const About = () => {
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900 mb-3">Vision</h4>
                       <p className="text-gray-600 leading-relaxed">
-                        "I believe technology should bridge cultures and connect people. Our global team represents 
-                        the future of development - diverse, innovative, and united by a passion for excellence."
+                        &ldquo;I believe technology should bridge cultures and connect people. Our global team represents 
+                        the future of development - diverse, innovative, and united by a passion for excellence.&rdquo;
                       </p>
                     </div>
                   </div>
