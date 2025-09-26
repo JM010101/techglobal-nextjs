@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
 const RobloxGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
-  const [selectedGame, setSelectedGame] = useState<string | null>(null);
   const [avatar, setAvatar] = useState({
     hair: 'brown',
     shirt: 'blue',

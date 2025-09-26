@@ -252,43 +252,42 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
     { shape: [[1, 1, 0], [0, 1, 1]], name: 'Scarf', color: '#FF9800' }  // Z-piece (scarf)
   ];
 
-  const initializeBoard = () => {
+  const initializeBoard = useCallback(() => {
     const newBoard = Array(20).fill(null).map(() => Array(10).fill(0));
     setBoard(newBoard);
     setScore(0);
     setGameOver(false);
     setGameStarted(false);
     setLinesCleared(0);
-  };
+  }, []);
 
   useEffect(() => {
     initializeBoard();
   }, [initializeBoard]);
 
-  const spawnPiece = () => {
+  const spawnPiece = useCallback(() => {
     const randomPiece = fashionPieces[Math.floor(Math.random() * fashionPieces.length)];
     setCurrentPiece(randomPiece.shape);
     setPiecePosition({ x: 4, y: 0 });
-  };
+  }, [fashionPieces]);
 
-  const startGame = () => {
-    setGameStarted(true);
-    spawnPiece();
-  };
-
-  const movePiece = (dx: number, dy: number) => {
-    if (!gameStarted || gameOver) return;
+  const clearLines = useCallback((board: number[][]) => {
+    const newBoard = board.filter(row => !row.every(cell => cell === 1));
+    const linesClearedCount = board.length - newBoard.length;
     
-    setPiecePosition(prev => {
-      const newPos = { x: prev.x + dx, y: prev.y + dy };
-      if (isValidPosition(newPos, currentPiece)) {
-        return newPos;
-      }
-      return prev;
-    });
-  };
+    if (linesClearedCount > 0) {
+      setLinesCleared(prev => prev + linesClearedCount);
+      setScore(prev => {
+        const newScore = prev + linesClearedCount * 100;
+        onScoreUpdate(newScore);
+        return newScore;
+      });
+      const emptyRows = Array(linesClearedCount).fill(null).map(() => Array(10).fill(0));
+      setBoard([...emptyRows, ...newBoard]);
+    }
+  }, [onScoreUpdate]);
 
-  const isValidPosition = (pos: { x: number; y: number }, piece: number[][]) => {
+  const isValidPosition = useCallback((pos: { x: number; y: number }, piece: number[][]) => {
     for (let y = 0; y < piece.length; y++) {
       for (let x = 0; x < piece[y].length; x++) {
         if (piece[y][x]) {
@@ -302,9 +301,21 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
       }
     }
     return true;
-  };
+  }, [board]);
 
-  const placePiece = () => {
+  const movePiece = useCallback((dx: number, dy: number) => {
+    if (!gameStarted || gameOver) return;
+    
+    setPiecePosition(prev => {
+      const newPos = { x: prev.x + dx, y: prev.y + dy };
+      if (isValidPosition(newPos, currentPiece)) {
+        return newPos;
+      }
+      return prev;
+    });
+  }, [gameStarted, gameOver, currentPiece, isValidPosition]);
+
+  const placePiece = useCallback(() => {
     const newBoard = board.map(row => [...row]);
     
     for (let y = 0; y < currentPiece.length; y++) {
@@ -322,22 +333,11 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
     setBoard(newBoard);
     clearLines(newBoard);
     spawnPiece();
-  };
+  }, [board, currentPiece, piecePosition, clearLines, spawnPiece]);
 
-  const clearLines = (board: number[][]) => {
-    const newBoard = board.filter(row => !row.every(cell => cell === 1));
-    const linesClearedCount = board.length - newBoard.length;
-    
-    if (linesClearedCount > 0) {
-      setLinesCleared(prev => prev + linesClearedCount);
-      setScore(prev => {
-        const newScore = prev + linesClearedCount * 100;
-        onScoreUpdate(newScore);
-        return newScore;
-      });
-      const emptyRows = Array(linesClearedCount).fill(null).map(() => Array(10).fill(0));
-      setBoard([...emptyRows, ...newBoard]);
-    }
+  const startGame = () => {
+    setGameStarted(true);
+    spawnPiece();
   };
 
   useEffect(() => {
@@ -687,7 +687,7 @@ const MarioKartGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScor
     return () => clearInterval(gameLoop);
   }, [gameStarted, speed]);
 
-  const handleKeyPress = (e: KeyboardEvent) => {
+  const handleKeyPress = useCallback((e: KeyboardEvent) => {
     if (!gameStarted) return;
     
     switch (e.key) {
@@ -698,7 +698,7 @@ const MarioKartGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScor
         setSpeed(prev => Math.min(5, prev + 1));
         break;
     }
-  };
+  }, [gameStarted]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);

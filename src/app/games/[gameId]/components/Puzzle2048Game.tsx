@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -17,7 +17,7 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
     }
   }, [gameOver, score, onScoreUpdate]);
 
-  const initializeBoard = () => {
+  const initializeBoard = useCallback(() => {
     const newBoard = Array(4).fill(null).map(() => Array(4).fill(0));
     addRandomTile(newBoard);
     addRandomTile(newBoard);
@@ -25,13 +25,13 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
     setScore(0);
     setGameWon(false);
     setGameOver(false);
-  };
+  }, [addRandomTile]);
 
   useEffect(() => {
     initializeBoard();
   }, [initializeBoard]);
 
-  const addRandomTile = (board: number[][]) => {
+  const addRandomTile = useCallback((board: number[][]) => {
     const emptyCells: [number, number][] = [];
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
@@ -45,9 +45,9 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
       const [row, col] = emptyCells[Math.floor(Math.random() * emptyCells.length)];
       board[row][col] = Math.random() < 0.9 ? 2 : 4;
     }
-  };
+  }, []);
 
-  const moveLeft = (board: number[][]) => {
+  const moveLeft = useCallback((board: number[][]) => {
     const newBoard = board.map(row => {
       const filtered = row.filter(cell => cell !== 0);
       const merged = [];
@@ -68,25 +68,25 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
     });
     
     return newBoard;
-  };
+  }, []);
 
-  const moveRight = (board: number[][]) => {
+  const moveRight = useCallback((board: number[][]) => {
     return moveLeft(board.map(row => [...row].reverse())).map(row => [...row].reverse());
-  };
+  }, [moveLeft]);
 
-  const moveUp = (board: number[][]) => {
+  const moveUp = useCallback((board: number[][]) => {
     const transposed = board[0].map((_, colIndex) => board.map(row => row[colIndex]));
     const moved = moveLeft(transposed);
     return moved[0].map((_, colIndex) => moved.map(row => row[colIndex]));
-  };
+  }, [moveLeft]);
 
-  const moveDown = (board: number[][]) => {
+  const moveDown = useCallback((board: number[][]) => {
     const transposed = board[0].map((_, colIndex) => board.map(row => row[colIndex]));
     const moved = moveRight(transposed);
     return moved[0].map((_, colIndex) => moved.map(row => row[colIndex]));
-  };
+  }, [moveRight]);
 
-  const handleMove = (direction: 'left' | 'right' | 'up' | 'down') => {
+  const handleMove = useCallback((direction: 'left' | 'right' | 'up' | 'down') => {
     if (gameOver) return;
     
     let newBoard: number[][];
@@ -105,9 +105,9 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
         setGameOver(true);
       }
     }
-  };
+  }, [gameOver, board, moveLeft, moveRight, moveUp, moveDown, addRandomTile, isGameOver]);
 
-  const isGameOver = (board: number[][]) => {
+  const isGameOver = useCallback((board: number[][]) => {
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         if (board[i][j] === 0) return false;
@@ -116,7 +116,7 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
       }
     }
     return true;
-  };
+  }, []);
 
   const getTileColor = (value: number) => {
     const colors: { [key: number]: string } = {
