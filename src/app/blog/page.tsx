@@ -6,6 +6,7 @@ import Blog from '@/components/sections/Blog';
 import CTA from '@/components/sections/CTA';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
+import Image from 'next/image';
 
 const BlogPage = () => {
   const featuredPosts = [
@@ -115,9 +116,11 @@ const BlogPage = () => {
                 className="card overflow-hidden group hover-lift"
               >
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
+                    width={400}
+                    height={192}
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">

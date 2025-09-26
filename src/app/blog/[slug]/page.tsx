@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Heart, ArrowLeft, Share2, User } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface BlogPost {
   id: string;
@@ -482,10 +483,13 @@ const BlogPostPage = () => {
           >
             {/* Featured Image */}
             <div className="aspect-video overflow-hidden">
-              <img
+              <Image
                 src={blogPost.featuredImage.url}
                 alt={blogPost.featuredImage.alt}
+                width={800}
+                height={450}
                 className="w-full h-full object-cover"
+                priority
               />
             </div>
             
@@ -500,9 +504,11 @@ const BlogPostPage = () => {
               <div className="mt-12 pt-8 border-t border-gray-200">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <img
+                    <Image
                       src={blogPost.author.avatar}
                       alt={blogPost.author.name}
+                      width={48}
+                      height={48}
                       className="w-12 h-12 rounded-full"
                     />
                     <div>
@@ -543,9 +549,11 @@ const BlogPostPage = () => {
                   <Link key={post.id} href={`/blog/${post.slug}`} className="group">
                     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
                       <div className="aspect-video overflow-hidden">
-                        <img
+                        <Image
                           src={post.featuredImage.url}
                           alt={post.featuredImage.alt}
+                          width={400}
+                          height={225}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
@@ -559,9 +567,11 @@ const BlogPostPage = () => {
                         </h3>
                         <p className="text-gray-600 mb-4">{post.excerpt}</p>
                         <div className="flex items-center">
-                          <img
+                          <Image
                             src={post.author.avatar}
                             alt={post.author.name}
+                            width={32}
+                            height={32}
                             className="w-8 h-8 rounded-full mr-3"
                           />
                           <div>
