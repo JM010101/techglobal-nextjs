@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const About = () => {
   const stats = [
-    { icon: Users, value: '6', label: 'Global Experts', description: 'From 6 different countries' },
+    { icon: Users, value: '9', label: 'Global Experts', description: 'From 9 different countries' },
     { icon: Award, value: '50+', label: 'Projects Delivered', description: 'Across 15+ countries' },
     { icon: Globe, value: '15+', label: 'Countries Served', description: 'Worldwide presence' },
     { icon: Zap, value: '100%', label: 'Client Satisfaction', description: 'Proven track record' },
@@ -76,7 +76,7 @@ const About = () => {
               <span className="gradient-text">Global Impact</span>
             </h2>
             <p className="text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed">
-              Founded on the principle that great technology knows no borders, TechGlobal Solutions brings together six passionate experts from different corners of the world.
+              Founded on the principle that great technology knows no borders, TechGlobal Solutions brings together nine passionate experts from different corners of the world.
             </p>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               Each team member brings unique cultural perspectives and technical expertise, creating a powerhouse of innovation and reliability.

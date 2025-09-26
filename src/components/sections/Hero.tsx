@@ -29,7 +29,7 @@ const Hero = () => {
 
   const stats = [
     { icon: Globe, value: '15+', label: 'Countries Served' },
-    { icon: Users, value: '6', label: 'Global Experts' },
+    { icon: Users, value: '9', label: 'Global Experts' },
     { icon: Award, value: '50+', label: 'Projects Delivered' },
     { icon: Zap, value: '100%', label: 'Client Satisfaction' },
   ];
@@ -387,7 +387,7 @@ const Hero = () => {
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-white">Team Online</div>
-                    <div className="text-xs text-white/80">6 experts available</div>
+                    <div className="text-xs text-white/80">9 experts available</div>
                   </div>
                 </div>
               </motion.div>

@@ -75,7 +75,7 @@ const BlogPostPage = () => {
               <p>Use modern collaboration tools like Slack, Microsoft Teams, or Discord to maintain constant communication. Video calls help build personal connections despite physical distance.</p>
               
               <h2>Real-World Success Stories</h2>
-              <p>Our global team at TechGlobal Solutions has successfully delivered projects for clients across six continents. By combining the technical expertise of our developers in China, the design sensibilities of our team in Italy, and the business acumen of our US-based members, we've created solutions that truly resonate with global audiences.</p>
+              <p>Our global team at TechGlobal Solutions has successfully delivered projects for clients across six continents. By combining the technical expertise of our developers from Singapore, the design sensibilities of our team in Italy, and the business acumen of our international members, we've created solutions that truly resonate with global audiences.</p>
               
               <h2>Conclusion</h2>
               <p>Building cross-cultural development teams is an investment in innovation and global competitiveness. While it requires effort and cultural sensitivity, the benefits far outweigh the challenges. Companies that embrace diversity in their development teams position themselves for success in the global marketplace.</p>

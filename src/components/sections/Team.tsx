@@ -230,7 +230,7 @@ const Team = () => {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Meet Our Global Team</h2>
-            <p className="section-subtitle">Six experts from different countries, united by passion for technology and innovation</p>
+            <p className="section-subtitle">Nine experts from different countries, united by passion for technology and innovation</p>
           </div>
           <div className="flex justify-center">
             <div className="loading-spinner"></div>
@@ -262,7 +262,7 @@ const Team = () => {
             className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed"
             style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 400, letterSpacing: '-0.01em' }}
           >
-            Six experts from different countries, united by passion for technology and innovation
+            Nine experts from different countries, united by passion for technology and innovation
           </motion.p>
         </div>
 

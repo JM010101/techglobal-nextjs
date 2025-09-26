@@ -38,7 +38,7 @@ const About = () => {
   ];
 
   const stats = [
-    { number: '6', label: 'Global Experts', icon: Users },
+    { number: '9', label: 'Global Experts', icon: Users },
     { number: '15+', label: 'Countries Served', icon: Globe },
     { number: '50+', label: 'Projects Delivered', icon: Award },
     { number: '100%', label: 'Client Satisfaction', icon: Heart }
@@ -183,7 +183,7 @@ const About = () => {
           >
             <h2 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 mb-8" style={{ fontFamily: "'Space Grotesk', 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 900, letterSpacing: '-0.03em' }}>Meet Our Global Team</h2>
             <p className="text-2xl lg:text-3xl xl:text-4xl text-slate-600 max-w-5xl mx-auto leading-relaxed" style={{ fontFamily: "'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontWeight: 600, letterSpacing: '-0.02em' }}>
-              Led by Adam Wong from Hong Kong, six passionate experts from around the world, united by innovation
+              Led by Adam Wong from Singapore, nine passionate experts from around the world, united by innovation
             </p>
           </motion.div>
 
