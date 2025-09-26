@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Calendar, Clock, Eye, Heart, ArrowRight } from 'lucide-react';
@@ -32,7 +32,7 @@ const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const sampleBlogPosts: BlogPost[] = [
+  const sampleBlogPosts: BlogPost[] = useMemo(() => [
     {
       id: '1',
       title: 'Building Cross-Cultural Development Teams',
@@ -201,7 +201,7 @@ const Blog = () => {
       likes: 28,
       isFeatured: false
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
@@ -222,7 +222,7 @@ const Blog = () => {
     };
 
     fetchBlogPosts();
-  }, []); // Removed sampleBlogPosts from dependency array
+  }, [sampleBlogPosts]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);

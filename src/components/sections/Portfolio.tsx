@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Eye } from 'lucide-react';
 import Image from 'next/image';
@@ -36,7 +36,7 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     { id: 'Blockchain', label: 'Blockchain' },
   ];
 
-  const sampleProjects: Project[] = [
+  const sampleProjects: Project[] = useMemo(() => [
     {
       id: '1',
       title: 'E-Commerce Platform',
@@ -654,7 +654,7 @@ const Portfolio = ({ limit }: PortfolioProps) => {
       client: 'EduMarket Pro',
       featured: true
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -675,7 +675,7 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     };
 
     fetchProjects();
-  }, []); // Removed sampleProjects from dependency array
+  }, [sampleProjects]);
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 

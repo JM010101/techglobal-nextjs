@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
@@ -61,7 +61,7 @@ const Services = () => {
     'Headphones': Headphones,
   };
 
-  const sampleServices: Service[] = [
+  const sampleServices: Service[] = useMemo(() => [
     {
       id: '1',
       name: 'Full-Stack Web Development',
@@ -123,7 +123,7 @@ const Services = () => {
       pricing: 'Starting from $6,000',
       technologies: ['Python', 'SQL', 'Tableau', 'Power BI']
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -145,7 +145,7 @@ const Services = () => {
     };
 
     fetchServices();
-  }, []); // Removed sampleServices from dependency array
+  }, [sampleServices]);
 
   const filteredServices = activeCategory === 'all' 
     ? services 

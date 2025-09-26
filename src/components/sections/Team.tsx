@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Github, Twitter, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
@@ -28,7 +28,7 @@ const Team = () => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const sampleTeamMembers: TeamMember[] = [
+  const sampleTeamMembers: TeamMember[] = useMemo(() => [
     {
       id: '1',
       name: 'Adam Wong',
@@ -179,7 +179,7 @@ const Team = () => {
         twitter: '#'
       }
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const fetchTeamMembers = async () => {
@@ -201,7 +201,7 @@ const Team = () => {
     };
 
     fetchTeamMembers();
-  }, []); // Removed sampleTeamMembers from dependency array
+  }, [sampleTeamMembers]);
 
   const containerVariants = {
     hidden: { opacity: 0 },

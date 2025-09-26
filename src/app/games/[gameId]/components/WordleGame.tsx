@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
 const WordleGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
-  const words = ['REACT', 'NEXTJS', 'TYPESCRIPT', 'JAVASCRIPT', 'PYTHON', 'NODEJS', 'MONGODB', 'EXPRESS'];
+  const words = useMemo(() => ['REACT', 'NEXTJS', 'TYPESCRIPT', 'JAVASCRIPT', 'PYTHON', 'NODEJS', 'MONGODB', 'EXPRESS'], []);
   const [targetWord, setTargetWord] = useState('');
   const [guesses, setGuesses] = useState<string[]>([]);
   const [currentGuess, setCurrentGuess] = useState('');

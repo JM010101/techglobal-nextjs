@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -52,7 +52,7 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
     spawnPiece();
   };
 
-  const movePiece = (dx: number, dy: number) => {
+  const movePiece = useCallback((dx: number, dy: number) => {
     if (!gameStarted || gameOver) return;
     
     setPiecePosition(prev => {
@@ -62,9 +62,9 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
       }
       return prev;
     });
-  };
+  }, [gameStarted, gameOver, currentPiece, isValidPosition]);
 
-  const isValidPosition = (pos: { x: number; y: number }, piece: number[][]) => {
+  const isValidPosition = useCallback((pos: { x: number; y: number }, piece: number[][]) => {
     for (let y = 0; y < piece.length; y++) {
       for (let x = 0; x < piece[y].length; x++) {
         if (piece[y][x]) {
@@ -78,9 +78,9 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
       }
     }
     return true;
-  };
+  }, [board]);
 
-  const placePiece = () => {
+  const placePiece = useCallback(() => {
     const newBoard = board.map(row => [...row]);
     
     for (let y = 0; y < currentPiece.length; y++) {
@@ -98,7 +98,7 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
     setBoard(newBoard);
     clearLines(newBoard);
     spawnPiece();
-  };
+  }, [board, currentPiece, piecePosition, spawnPiece]);
 
   const clearLines = (board: number[][]) => {
     const newBoard = board.filter(row => !row.every(cell => cell === 1));
