@@ -17,20 +17,6 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
     }
   }, [gameOver, score, onScoreUpdate]);
 
-  const initializeBoard = useCallback(() => {
-    const newBoard = Array(4).fill(null).map(() => Array(4).fill(0));
-    addRandomTile(newBoard);
-    addRandomTile(newBoard);
-    setBoard(newBoard);
-    setScore(0);
-    setGameWon(false);
-    setGameOver(false);
-  }, [addRandomTile]);
-
-  useEffect(() => {
-    initializeBoard();
-  }, [initializeBoard]);
-
   const addRandomTile = useCallback((board: number[][]) => {
     const emptyCells: [number, number][] = [];
     for (let i = 0; i < 4; i++) {
@@ -46,6 +32,20 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
       board[row][col] = Math.random() < 0.9 ? 2 : 4;
     }
   }, []);
+
+  const initializeBoard = useCallback(() => {
+    const newBoard = Array(4).fill(null).map(() => Array(4).fill(0));
+    addRandomTile(newBoard);
+    addRandomTile(newBoard);
+    setBoard(newBoard);
+    setScore(0);
+    setGameWon(false);
+    setGameOver(false);
+  }, [addRandomTile]);
+
+  useEffect(() => {
+    initializeBoard();
+  }, [initializeBoard]);
 
   const moveLeft = useCallback((board: number[][]) => {
     const newBoard = board.map(row => {
@@ -86,6 +86,17 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
     return moved[0].map((_, colIndex) => moved.map(row => row[colIndex]));
   }, [moveRight]);
 
+  const isGameOver = useCallback((board: number[][]) => {
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        if (board[i][j] === 0) return false;
+        if (i < 3 && board[i][j] === board[i + 1][j]) return false;
+        if (j < 3 && board[i][j] === board[i][j + 1]) return false;
+      }
+    }
+    return true;
+  }, []);
+
   const handleMove = useCallback((direction: 'left' | 'right' | 'up' | 'down') => {
     if (gameOver) return;
     
@@ -106,17 +117,6 @@ const Puzzle2048Game = ({ onClose, onScoreUpdate }: { onClose: () => void; onSco
       }
     }
   }, [gameOver, board, moveLeft, moveRight, moveUp, moveDown, addRandomTile, isGameOver]);
-
-  const isGameOver = useCallback((board: number[][]) => {
-    for (let i = 0; i < 4; i++) {
-      for (let j = 0; j < 4; j++) {
-        if (board[i][j] === 0) return false;
-        if (i < 3 && board[i][j] === board[i + 1][j]) return false;
-        if (j < 3 && board[i][j] === board[i][j + 1]) return false;
-      }
-    }
-    return true;
-  }, []);
 
   const getTileColor = (value: number) => {
     const colors: { [key: number]: string } = {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -19,15 +19,15 @@ const SnakeGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpd
     }
   }, [gameOver, score, onScoreUpdate]);
 
-  const generateFood = () => {
+  const generateFood = useCallback(() => {
     const newFood: [number, number] = [
       Math.floor(Math.random() * 20),
       Math.floor(Math.random() * 20)
     ];
     setFood(newFood);
-  };
+  }, []);
 
-  const moveSnake = () => {
+  const moveSnake = useCallback(() => {
     if (!gameStarted || gameOver) return;
 
     setSnake(prevSnake => {
@@ -65,7 +65,7 @@ const SnakeGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpd
 
       return newSnake;
     });
-  };
+  }, [gameStarted, gameOver, direction, food, generateFood]);
 
   useEffect(() => {
     const gameLoop = setInterval(moveSnake, 150);

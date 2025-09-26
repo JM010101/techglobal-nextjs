@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -12,7 +12,7 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
 
-  const pieces = [
+  const pieces = useMemo(() => [
     [[1, 1, 1, 1]], // I
     [[1, 1], [1, 1]], // O
     [[1, 1, 1], [0, 1, 0]], // T
@@ -20,7 +20,7 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
     [[1, 1, 1], [0, 0, 1]], // J
     [[0, 1, 1], [1, 1, 0]], // S
     [[1, 1, 0], [0, 1, 1]]  // Z
-  ];
+  ], []);
 
   // Handle score update when game ends
   useEffect(() => {
@@ -41,28 +41,16 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
     setGameStarted(false);
   };
 
-  const spawnPiece = () => {
+  const spawnPiece = useCallback(() => {
     const randomPiece = pieces[Math.floor(Math.random() * pieces.length)];
     setCurrentPiece(randomPiece);
     setPiecePosition({ x: 4, y: 0 });
-  };
+  }, [pieces]);
 
   const startGame = () => {
     setGameStarted(true);
     spawnPiece();
   };
-
-  const movePiece = useCallback((dx: number, dy: number) => {
-    if (!gameStarted || gameOver) return;
-    
-    setPiecePosition(prev => {
-      const newPos = { x: prev.x + dx, y: prev.y + dy };
-      if (isValidPosition(newPos, currentPiece)) {
-        return newPos;
-      }
-      return prev;
-    });
-  }, [gameStarted, gameOver, currentPiece]);
 
   const isValidPosition = useCallback((pos: { x: number; y: number }, piece: number[][]) => {
     for (let y = 0; y < piece.length; y++) {
@@ -79,6 +67,18 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
     }
     return true;
   }, [board]);
+
+  const movePiece = useCallback((dx: number, dy: number) => {
+    if (!gameStarted || gameOver) return;
+    
+    setPiecePosition(prev => {
+      const newPos = { x: prev.x + dx, y: prev.y + dy };
+      if (isValidPosition(newPos, currentPiece)) {
+        return newPos;
+      }
+      return prev;
+    });
+  }, [gameStarted, gameOver, currentPiece, isValidPosition]);
 
   const placePiece = useCallback(() => {
     const newBoard = board.map(row => [...row]);

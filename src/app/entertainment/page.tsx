@@ -242,7 +242,7 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
   const [linesCleared, setLinesCleared] = useState(0);
 
   // Fashion pieces (clothing items)
-  const fashionPieces = [
+  const fashionPieces = useMemo(() => [
     { shape: [[1, 1, 1, 1]], name: 'Dress', color: '#E91E63' }, // I-piece (dress)
     { shape: [[1, 1], [1, 1]], name: 'Shirt', color: '#2196F3' }, // O-piece (shirt)
     { shape: [[1, 1, 1], [0, 1, 0]], name: 'Hat', color: '#9C27B0' }, // T-piece (hat)
@@ -250,7 +250,7 @@ const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; on
     { shape: [[1, 1, 1], [0, 0, 1]], name: 'Bag', color: '#4CAF50' }, // J-piece (bag)
     { shape: [[0, 1, 1], [1, 1, 0]], name: 'Belt', color: '#FFC107' }, // S-piece (belt)
     { shape: [[1, 1, 0], [0, 1, 1]], name: 'Scarf', color: '#FF9800' }  // Z-piece (scarf)
-  ];
+  ], []);
 
   const initializeBoard = useCallback(() => {
     const newBoard = Array(20).fill(null).map(() => Array(10).fill(0));
