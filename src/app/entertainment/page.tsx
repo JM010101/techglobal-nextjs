@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { 
@@ -93,13 +93,13 @@ const MinecraftGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScor
   const [score, setScore] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const blockTypes = [
+  const blockTypes = useMemo(() => [
     { id: 'grass', color: '#4CAF50', name: 'Grass' },
     { id: 'stone', color: '#757575', name: 'Stone' },
     { id: 'wood', color: '#8D6E63', name: 'Wood' },
     { id: 'sand', color: '#FFC107', name: 'Sand' },
     { id: 'water', color: '#2196F3', name: 'Water' }
-  ];
+  ], []);
 
   const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
@@ -162,7 +162,7 @@ const MinecraftGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScor
         ctx.strokeRect(block.x * 20, block.y * 20, 20, 20);
       }
     });
-  }, [blocks]);
+  }, [blocks, blockTypes]);
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">

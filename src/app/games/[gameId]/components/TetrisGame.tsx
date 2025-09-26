@@ -62,7 +62,7 @@ const TetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUp
       }
       return prev;
     });
-  }, [gameStarted, gameOver, currentPiece, isValidPosition]);
+  }, [gameStarted, gameOver, currentPiece]);
 
   const isValidPosition = useCallback((pos: { x: number; y: number }, piece: number[][]) => {
     for (let y = 0; y < piece.length; y++) {
