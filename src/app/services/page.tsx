@@ -17,13 +17,18 @@ import {
   User,
   Mail,
   Phone,
-  MessageSquare
 } from 'lucide-react';
 import { useState } from 'react';
 
 const ServicesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<any>(null);
+  const [selectedService, setSelectedService] = useState<{
+    id: string;
+    title: string;
+    description: string;
+    price: string;
+    icon: React.ReactNode;
+  } | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,7 +39,13 @@ const ServicesPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleGetStarted = (service: any) => {
+  const handleGetStarted = (service: {
+    id: string;
+    title: string;
+    description: string;
+    price: string;
+    icon: React.ReactNode;
+  }) => {
     setSelectedService(service);
     setIsModalOpen(true);
   };

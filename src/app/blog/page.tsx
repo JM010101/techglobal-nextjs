@@ -1000,7 +1000,7 @@ const BlogPage = () => {
                   </h4>
                   <p className="text-gray-600 mb-8 text-lg">
                     Your blog post has been added to your personal blog collection. 
-                    You can view it in the "My Blogs" section.
+                    You can view it in the &ldquo;My Blogs&rdquo; section.
                   </p>
                   <button
                     onClick={handleCloseWriteModal}
