@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { 
@@ -14,7 +14,6 @@ import {
   Target,
   Sparkles,
   X,
-  RotateCcw
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -31,426 +30,598 @@ interface Game {
 
 const games: Game[] = [
   {
-    id: 'minecraft',
-    title: 'Minecraft Creative',
-    description: 'Build, explore, and create in an infinite sandbox world. Let your imagination run wild with endless blocks and tools.',
-    icon: Gamepad2,
-    image: 'https://img.freepik.com/free-photo/minecraft-game-concept_23-2149074784.jpg',
-    difficulty: 'Easy',
-    category: 'Sandbox'
-  },
-  {
-    id: 'fashion-tetris',
-    title: 'Fashion Tetris',
-    description: 'Arrange beautiful clothing pieces in this stylish twist on the classic puzzle game. Create perfect outfits and clear lines!',
-    icon: Sparkles,
-    image: 'https://img.freepik.com/free-photo/fashion-dress-up-game-concept_23-2149074785.jpg',
+    id: 'business-strategy',
+    title: 'Business Strategy Simulator',
+    description: 'Build and manage your own company empire. Make strategic decisions, manage resources, and lead your business to success.',
+    icon: Target,
+    image: 'https://img.freepik.com/free-photo/business-people-working-together-office_23-2149211061.jpg',
     difficulty: 'Medium',
-    category: 'Fashion'
+    category: 'Strategy'
   },
+        {
+          id: 'networking-puzzle',
+          title: 'Sakura AI Assistant',
+          description: 'Chat with Sakura Nakamura, our AI Research Scientist, about romance, lifestyle, psychology, and personal growth. Get expert advice on relationships, wellness, and life challenges.',
+          icon: Users,
+          image: 'https://img.freepik.com/free-photo/beautiful-woman-using-laptop_23-2149211061.jpg',
+          difficulty: 'Easy',
+          category: 'AI Chat'
+        },
   {
-    id: 'roblox',
-    title: 'Roblox World',
-    description: 'Explore thousands of games and create your own adventures. Customize your avatar and join friends in virtual worlds.',
-    icon: Star,
-    image: 'https://img.freepik.com/free-photo/roblox-social-gaming-concept_23-2149074786.jpg',
+    id: 'career-path',
+    title: 'Career Path Adventure',
+    description: 'Navigate through different career opportunities. Make decisions that shape your professional journey and unlock achievements.',
+    icon: Trophy,
+    image: 'https://img.freepik.com/free-photo/professional-man-working-office_23-2149211061.jpg',
     difficulty: 'Easy',
-    category: 'Social'
+    category: 'Career'
   },
   {
-    id: 'mario-kart',
-    title: 'Mario Kart Racing',
-    description: 'Race with iconic characters like Princess Peach and Mario. Use power-ups and drift your way to victory!',
+    id: 'project-management',
+    title: 'Project Management Challenge',
+    description: 'Lead teams and deliver projects on time. Manage resources, timelines, and stakeholder expectations in this strategic game.',
     icon: Timer,
-    image: 'https://img.freepik.com/free-photo/mario-kart-racing-game-concept_23-2149074787.jpg',
-    difficulty: 'Medium',
-    category: 'Racing'
+    image: 'https://img.freepik.com/free-photo/team-meeting-office_23-2149211061.jpg',
+    difficulty: 'Hard',
+    category: 'Management'
   },
   {
-    id: 'sims',
-    title: 'The Sims Life',
-    description: 'Create and control virtual people in a life simulation. Build homes, pursue careers, and live your dream life.',
+    id: 'skill-builder',
+    title: 'Skill Development Quest',
+    description: 'Level up your professional skills through interactive challenges. Master new technologies and advance your expertise.',
     icon: Brain,
-    image: 'https://img.freepik.com/free-photo/sims-life-simulation-game-concept_23-2149074788.jpg',
-    difficulty: 'Easy',
-    category: 'Simulation'
+    image: 'https://img.freepik.com/free-photo/learning-education-concept_23-2149211061.jpg',
+    difficulty: 'Medium',
+    category: 'Learning'
   },
   {
-    id: 'love-nikki',
-    title: 'Love Nikki Fashion',
-    description: 'Design stunning outfits and style beautiful characters. Compete in fashion shows and unlock exclusive clothing.',
+    id: 'startup-simulator',
+    title: 'Startup Simulator',
+    description: 'Launch and grow your startup from idea to IPO. Handle funding rounds, product development, and market competition.',
     icon: Star,
-    image: 'https://img.freepik.com/free-photo/fashion-dress-up-game-concept_23-2149074785.jpg',
-    difficulty: 'Easy',
-    category: 'Fashion'
+    image: 'https://img.freepik.com/free-photo/startup-entrepreneur-concept_23-2149211061.jpg',
+    difficulty: 'Hard',
+    category: 'Entrepreneurship'
   }
 ];
 
-// Minecraft Creative Game Component
-const MinecraftGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
-  const [blocks, setBlocks] = useState<Array<{x: number, y: number, type: string}>>([]);
-  const [selectedBlock, setSelectedBlock] = useState('grass');
-  const [score, setScore] = useState(0);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+// Business Strategy Simulator Game Component
+const BusinessStrategyGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
+  const [companyValue, setCompanyValue] = useState(1000000);
+  const [revenue, setRevenue] = useState(0);
+  const [employees, setEmployees] = useState(10);
+  const [marketShare, setMarketShare] = useState(5);
+  const [currentQuarter, setCurrentQuarter] = useState(1);
+  const [decisions, setDecisions] = useState<string[]>([]);
+  const [gameStarted, setGameStarted] = useState(false);
 
-  const blockTypes = useMemo(() => [
-    { id: 'grass', color: '#4CAF50', name: 'Grass' },
-    { id: 'stone', color: '#757575', name: 'Stone' },
-    { id: 'wood', color: '#8D6E63', name: 'Wood' },
-    { id: 'sand', color: '#FFC107', name: 'Sand' },
-    { id: 'water', color: '#2196F3', name: 'Water' }
+  const businessDecisions = useMemo(() => [
+    {
+      id: 'hire_marketing',
+      title: 'Hire Marketing Team',
+      cost: 50000,
+      effect: { revenue: 20000, employees: 3, marketShare: 2 },
+      description: 'Expand marketing to reach more customers'
+    },
+    {
+      id: 'product_development',
+      title: 'Product Development',
+      cost: 100000,
+      effect: { revenue: 50000, employees: 5, marketShare: 5 },
+      description: 'Invest in new product features'
+    },
+    {
+      id: 'sales_expansion',
+      title: 'Sales Team Expansion',
+      cost: 75000,
+      effect: { revenue: 40000, employees: 4, marketShare: 3 },
+      description: 'Hire more sales representatives'
+    },
+    {
+      id: 'technology_upgrade',
+      title: 'Technology Upgrade',
+      cost: 150000,
+      effect: { revenue: 30000, employees: 2, marketShare: 4 },
+      description: 'Upgrade company technology infrastructure'
+    },
+    {
+      id: 'market_research',
+      title: 'Market Research',
+      cost: 25000,
+      effect: { revenue: 15000, employees: 1, marketShare: 3 },
+      description: 'Study market trends and customer needs'
+    }
   ], []);
 
-  const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  const makeDecision = (decisionId: string) => {
+    const decision = businessDecisions.find(d => d.id === decisionId);
+    if (!decision || companyValue < decision.cost) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const x = Math.floor((e.clientX - rect.left) / 20);
-    const y = Math.floor((e.clientY - rect.top) / 20);
-
-    if (x >= 0 && x < 20 && y >= 0 && y < 15) {
-      setBlocks(prev => {
-        const newBlocks = prev.filter(block => !(block.x === x && block.y === y));
-        newBlocks.push({ x, y, type: selectedBlock });
-        setScore(prev => prev + 10);
-        onScoreUpdate(score + 10);
-        return newBlocks;
-      });
-    }
+    setCompanyValue(prev => prev - decision.cost);
+    setRevenue(prev => prev + decision.effect.revenue);
+    setEmployees(prev => prev + decision.effect.employees);
+    setMarketShare(prev => Math.min(100, prev + decision.effect.marketShare));
+    setDecisions(prev => [...prev, decision.title]);
+    
+    onScoreUpdate(companyValue - decision.cost);
   };
 
-  const clearCanvas = () => {
-    setBlocks([]);
-    setScore(0);
-  };
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // Clear canvas
-    ctx.fillStyle = '#87CEEB';
-    ctx.fillRect(0, 0, 400, 300);
-
-    // Draw grid
-    ctx.strokeStyle = '#E0E0E0';
-    ctx.lineWidth = 1;
-    for (let x = 0; x <= 20; x++) {
-      ctx.beginPath();
-      ctx.moveTo(x * 20, 0);
-      ctx.lineTo(x * 20, 300);
-      ctx.stroke();
-    }
-    for (let y = 0; y <= 15; y++) {
-      ctx.beginPath();
-      ctx.moveTo(0, y * 20);
-      ctx.lineTo(400, y * 20);
-      ctx.stroke();
-    }
-
-    // Draw blocks
-    blocks.forEach(block => {
-      const blockType = blockTypes.find(bt => bt.id === block.type);
-      if (blockType) {
-        ctx.fillStyle = blockType.color;
-        ctx.fillRect(block.x * 20, block.y * 20, 20, 20);
-        ctx.strokeStyle = '#000';
-        ctx.strokeRect(block.x * 20, block.y * 20, 20, 20);
+  const nextQuarter = () => {
+    const quarterlyRevenue = revenue * 0.25;
+    const growthFactor = 1 + (marketShare / 100);
+    
+    setCompanyValue(prev => prev + quarterlyRevenue * growthFactor);
+    setCurrentQuarter(prev => prev + 1);
+    
+    // Random market events
+    if (Math.random() < 0.3) {
+      const event = Math.random();
+      if (event < 0.5) {
+        setRevenue(prev => prev * 1.1); // Market boom
+      } else {
+        setRevenue(prev => prev * 0.9); // Market downturn
       }
-    });
-  }, [blocks, blockTypes]);
+    }
+  };
+
+  const startGame = () => {
+    setGameStarted(true);
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-white rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-2xl p-8 max-w-6xl w-full max-h-[90vh] overflow-y-auto"
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold">Minecraft Creative</h2>
+          <h2 className="text-3xl font-bold">Business Strategy Simulator</h2>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        <div className="flex gap-6">
-          <div className="flex-1">
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold mb-2">Score: {score}</h3>
-              <button onClick={clearCanvas} className="btn btn-secondary">
-                <RotateCcw className="w-4 h-4 mr-2" />
-                Clear World
+        {!gameStarted ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Welcome to Business Strategy Simulator</h3>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Build and manage your company empire. Make strategic decisions, manage resources, 
+              and lead your business to success. Start with $1M and grow your company value!
+            </p>
+            <button onClick={startGame} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              Start Your Company
               </button>
             </div>
-            
-            <canvas
-              ref={canvasRef}
-              width={400}
-              height={300}
-              className="border-2 border-gray-300 rounded cursor-crosshair"
-              onClick={handleCanvasClick}
-            />
-            
-            <p className="text-sm text-gray-600 mt-2">
-              Click on the grid to place blocks. Build your world!
-            </p>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Company Stats */}
+            <div className="lg:col-span-1">
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-xl font-bold mb-4">Company Overview</h3>
+                <div className="space-y-4">
+                  <div>
+                    <div className="text-sm text-gray-600">Company Value</div>
+                    <div className="text-2xl font-bold text-green-600">${companyValue.toLocaleString()}</div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-600">Quarterly Revenue</div>
+                    <div className="text-xl font-semibold">${revenue.toLocaleString()}</div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-600">Employees</div>
+                    <div className="text-xl font-semibold">{employees}</div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-600">Market Share</div>
+                    <div className="text-xl font-semibold">{marketShare}%</div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-600">Current Quarter</div>
+                    <div className="text-xl font-semibold">Q{currentQuarter}</div>
+                  </div>
+                </div>
+                <button 
+                  onClick={nextQuarter}
+                  className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  Next Quarter
+                </button>
+              </div>
           </div>
 
-          <div className="w-48">
-            <h3 className="text-lg font-semibold mb-4">Blocks</h3>
-            <div className="space-y-2">
-              {blockTypes.map(block => (
+            {/* Business Decisions */}
+            <div className="lg:col-span-2">
+              <h3 className="text-xl font-bold mb-4">Strategic Decisions</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {businessDecisions.map(decision => (
+                  <div key={decision.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <h4 className="font-semibold mb-2">{decision.title}</h4>
+                    <p className="text-sm text-gray-600 mb-3">{decision.description}</p>
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-sm font-medium">Cost: ${decision.cost.toLocaleString()}</span>
+                      <span className="text-sm text-green-600">+${decision.effect.revenue.toLocaleString()} revenue</span>
+                    </div>
                 <button
-                  key={block.id}
-                  onClick={() => setSelectedBlock(block.id)}
-                  className={`w-full p-3 rounded-lg border-2 transition-all ${
-                    selectedBlock === block.id 
-                      ? 'border-blue-500 bg-blue-50' 
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <div 
-                      className="w-6 h-6 rounded border"
-                      style={{ backgroundColor: block.color }}
-                    />
-                    <span className="font-medium">{block.name}</span>
-                  </div>
+                      onClick={() => makeDecision(decision.id)}
+                      disabled={companyValue < decision.cost}
+                      className={`w-full py-2 rounded-lg font-medium transition-colors ${
+                        companyValue >= decision.cost
+                          ? 'bg-green-600 text-white hover:bg-green-700'
+                          : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      }`}
+                    >
+                      {companyValue >= decision.cost ? 'Invest' : 'Insufficient Funds'}
                 </button>
+                  </div>
               ))}
             </div>
           </div>
         </div>
+        )}
+
+        {/* Recent Decisions */}
+        {decisions.length > 0 && (
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold mb-3">Recent Decisions</h3>
+            <div className="flex flex-wrap gap-2">
+              {decisions.slice(-5).map((decision, index) => (
+                <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                  {decision}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </motion.div>
     </div>
   );
 };
 
-// Fashion Tetris Game Component
-const FashionTetrisGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
-  const [board, setBoard] = useState<number[][]>([]);
-  const [currentPiece, setCurrentPiece] = useState<number[][]>([]);
-  const [piecePosition, setPiecePosition] = useState({ x: 0, y: 0 });
-  const [score, setScore] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
+// Sakura AI Assistant Game Component
+const ClaudeExpertChatbot = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
+  const [messages, setMessages] = useState<Array<{id: string, text: string, isUser: boolean, timestamp: Date}>>([]);
+  const [inputText, setInputText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [conversationScore, setConversationScore] = useState(0);
+  const [currentTopic, setCurrentTopic] = useState('general');
   const [gameStarted, setGameStarted] = useState(false);
-  const [linesCleared, setLinesCleared] = useState(0);
 
-  // Fashion pieces (clothing items)
-  const fashionPieces = useMemo(() => [
-    { shape: [[1, 1, 1, 1]], name: 'Dress', color: '#E91E63' }, // I-piece (dress)
-    { shape: [[1, 1], [1, 1]], name: 'Shirt', color: '#2196F3' }, // O-piece (shirt)
-    { shape: [[1, 1, 1], [0, 1, 0]], name: 'Hat', color: '#9C27B0' }, // T-piece (hat)
-    { shape: [[1, 1, 1], [1, 0, 0]], name: 'Shoe', color: '#FF5722' }, // L-piece (shoe)
-    { shape: [[1, 1, 1], [0, 0, 1]], name: 'Bag', color: '#4CAF50' }, // J-piece (bag)
-    { shape: [[0, 1, 1], [1, 1, 0]], name: 'Belt', color: '#FFC107' }, // S-piece (belt)
-    { shape: [[1, 1, 0], [0, 1, 1]], name: 'Scarf', color: '#FF9800' }  // Z-piece (scarf)
+  const conversationTopics = useMemo(() => [
+    { id: 'romance', name: 'Romance & Relationships', icon: '💕', description: 'Love, dating, and relationship advice' },
+    { id: 'lifestyle', name: 'Lifestyle & Wellness', icon: '🌟', description: 'Health, habits, and personal growth' },
+    { id: 'psychology', name: 'Psychology & Mind', icon: '🧠', description: 'Mental health, emotions, and behavior' },
+    { id: 'career', name: 'Career & Success', icon: '💼', description: 'Professional development and goals' },
+    { id: 'social', name: 'Social & Communication', icon: '👥', description: 'Social skills and interactions' },
+    { id: 'general', name: 'General Chat', icon: '💬', description: 'Casual conversation and advice' }
   ], []);
 
-  const initializeBoard = useCallback(() => {
-    const newBoard = Array(20).fill(null).map(() => Array(10).fill(0));
-    setBoard(newBoard);
-    setScore(0);
-    setGameOver(false);
-    setGameStarted(false);
-    setLinesCleared(0);
-  }, []);
+  const claudeResponses = useMemo(() => ({
+    romance: [
+      "Love is a beautiful journey that requires patience and understanding. What specific aspect of romance would you like to explore?",
+      "Relationships are built on trust, communication, and mutual respect. Tell me about your current situation.",
+      "Dating can be challenging, but remember that the right person will appreciate you for who you are. What's on your mind?",
+      "Romantic connections often start with genuine friendship. How are you feeling about your love life lately?",
+      "Every relationship teaches us something valuable. What would you like to discuss about romance?"
+    ],
+    lifestyle: [
+      "A balanced lifestyle is key to happiness and fulfillment. What area of your life would you like to improve?",
+      "Small daily habits can create significant positive changes. What lifestyle changes are you considering?",
+      "Wellness encompasses physical, mental, and emotional health. How are you taking care of yourself?",
+      "Life is about finding what brings you joy and purpose. What makes you feel most alive?",
+      "Personal growth is a continuous journey. What would you like to work on in your life?"
+    ],
+    psychology: [
+      "Understanding our emotions and thoughts is the first step toward mental wellness. How are you feeling today?",
+      "Our minds are incredibly powerful tools. What psychological aspect would you like to explore?",
+      "Mental health is just as important as physical health. What's on your mind lately?",
+      "Emotions are valid and temporary. What emotional challenge are you facing?",
+      "Self-awareness is the foundation of personal growth. What would you like to understand better about yourself?"
+    ],
+    career: [
+      "Career success comes from passion, persistence, and continuous learning. What are your professional goals?",
+      "Every career path has its challenges and rewards. What aspect of your work life concerns you?",
+      "Professional growth requires stepping out of your comfort zone. What opportunities are you considering?",
+      "Work-life balance is crucial for long-term success. How are you managing your career and personal life?",
+      "Success is defined differently by everyone. What does career success mean to you?"
+    ],
+    social: [
+      "Social connections are essential for our well-being. How are your relationships with others?",
+      "Communication is an art that can be learned and improved. What social situation challenges you?",
+      "Building meaningful relationships takes time and effort. What would you like to improve in your social life?",
+      "Social anxiety is common and manageable. What social situations make you feel uncomfortable?",
+      "Friendship and community provide support and joy. How are you nurturing your social connections?"
+    ],
+    general: [
+      "I'm here to listen and help with whatever's on your mind. What would you like to talk about?",
+      "Sometimes it helps to share our thoughts with someone who understands. What's bothering you today?",
+      "Life can be complex, but talking through our concerns often brings clarity. What's on your mind?",
+      "I'm Sakura, your AI companion for thoughtful conversations. How can I assist you today?",
+      "Every conversation is an opportunity for growth and understanding. What would you like to explore?"
+    ]
+  }), []);
 
-  useEffect(() => {
-    initializeBoard();
-  }, [initializeBoard]);
+  const sendMessage = async (text: string) => {
+    if (!text.trim()) return;
 
-  const spawnPiece = useCallback(() => {
-    const randomPiece = fashionPieces[Math.floor(Math.random() * fashionPieces.length)];
-    setCurrentPiece(randomPiece.shape);
-    setPiecePosition({ x: 4, y: 0 });
-  }, [fashionPieces]);
-
-  const clearLines = useCallback((board: number[][]) => {
-    const newBoard = board.filter(row => !row.every(cell => cell === 1));
-    const linesClearedCount = board.length - newBoard.length;
-    
-    if (linesClearedCount > 0) {
-      setLinesCleared(prev => prev + linesClearedCount);
-      setScore(prev => {
-        const newScore = prev + linesClearedCount * 100;
-        onScoreUpdate(newScore);
-        return newScore;
-      });
-      const emptyRows = Array(linesClearedCount).fill(null).map(() => Array(10).fill(0));
-      setBoard([...emptyRows, ...newBoard]);
-    }
-  }, [onScoreUpdate]);
-
-  const isValidPosition = useCallback((pos: { x: number; y: number }, piece: number[][]) => {
-    for (let y = 0; y < piece.length; y++) {
-      for (let x = 0; x < piece[y].length; x++) {
-        if (piece[y][x]) {
-          const newX = pos.x + x;
-          const newY = pos.y + y;
-          
-          if (newX < 0 || newX >= 10 || newY >= 20 || (newY >= 0 && board[newY][newX])) {
-            return false;
-          }
-        }
-      }
-    }
-    return true;
-  }, [board]);
-
-  const movePiece = useCallback((dx: number, dy: number) => {
-    if (!gameStarted || gameOver) return;
-    
-    setPiecePosition(prev => {
-      const newPos = { x: prev.x + dx, y: prev.y + dy };
-      if (isValidPosition(newPos, currentPiece)) {
-        return newPos;
-      }
-      return prev;
-    });
-  }, [gameStarted, gameOver, currentPiece, isValidPosition]);
-
-  const placePiece = useCallback(() => {
-    const newBoard = board.map(row => [...row]);
-    
-    for (let y = 0; y < currentPiece.length; y++) {
-      for (let x = 0; x < currentPiece[y].length; x++) {
-        if (currentPiece[y][x]) {
-          const boardY = piecePosition.y + y;
-          const boardX = piecePosition.x + x;
-          if (boardY >= 0) {
-            newBoard[boardY][boardX] = 1;
-          }
-        }
-      }
-    }
-    
-    setBoard(newBoard);
-    clearLines(newBoard);
-    spawnPiece();
-  }, [board, currentPiece, piecePosition, clearLines, spawnPiece]);
-
-  const startGame = () => {
-    setGameStarted(true);
-    spawnPiece();
-  };
-
-  useEffect(() => {
-    if (!gameStarted || gameOver) return;
-    
-    const gameLoop = setInterval(() => {
-      if (isValidPosition({ x: piecePosition.x, y: piecePosition.y + 1 }, currentPiece)) {
-        setPiecePosition(prev => ({ ...prev, y: prev.y + 1 }));
-      } else {
-        placePiece();
-      }
-    }, 500);
-    
-    return () => clearInterval(gameLoop);
-  }, [piecePosition, currentPiece, gameStarted, gameOver, isValidPosition, placePiece]);
-
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (!gameStarted) return;
-      
-      switch (e.key) {
-        case 'ArrowLeft': movePiece(-1, 0); break;
-        case 'ArrowRight': movePiece(1, 0); break;
-        case 'ArrowDown': movePiece(0, 1); break;
-        case ' ': e.preventDefault(); placePiece(); break;
-      }
+    const userMessage = {
+      id: Date.now().toString(),
+      text: text.trim(),
+      isUser: true,
+      timestamp: new Date()
     };
 
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [gameStarted, movePiece, placePiece]);
+    setMessages(prev => [...prev, userMessage]);
+    setInputText('');
+    setIsTyping(true);
 
-  const getPieceColor = (piece: number[][]) => {
-    const pieceIndex = fashionPieces.findIndex(fp => 
-      JSON.stringify(fp.shape) === JSON.stringify(piece)
-    );
-    return pieceIndex >= 0 ? fashionPieces[pieceIndex].color : '#9E9E9E';
+    try {
+      // Call the AI API
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: text.trim(),
+          topic: currentTopic
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get AI response');
+      }
+
+      const data = await response.json();
+      
+      const claudeMessage = {
+        id: (Date.now() + 1).toString(),
+        text: data.response,
+        isUser: false,
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, claudeMessage]);
+      setIsTyping(false);
+      
+      // Update conversation score
+      const newScore = conversationScore + 10;
+      setConversationScore(newScore);
+      onScoreUpdate(newScore);
+
+    } catch (error) {
+      console.error('Error sending message:', error);
+      
+      // Fallback to local responses if API fails
+      const responses = claudeResponses[currentTopic as keyof typeof claudeResponses];
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      
+      const claudeMessage = {
+        id: (Date.now() + 1).toString(),
+        text: randomResponse,
+        isUser: false,
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, claudeMessage]);
+      setIsTyping(false);
+      
+      // Update conversation score
+      const newScore = conversationScore + 10;
+      setConversationScore(newScore);
+      onScoreUpdate(newScore);
+    }
   };
 
-  const getPieceName = (piece: number[][]) => {
-    const pieceIndex = fashionPieces.findIndex(fp => 
-      JSON.stringify(fp.shape) === JSON.stringify(piece)
-    );
-    return pieceIndex >= 0 ? fashionPieces[pieceIndex].name : 'Item';
+  const startConversation = () => {
+    setGameStarted(true);
+    setMessages([{
+      id: '1',
+      text: "Hello! I'm Sakura Nakamura, your AI Research Scientist and life coach. I'm here to help with romance, lifestyle, psychology, and any other topics you'd like to discuss. What's on your mind today?",
+      isUser: false,
+      timestamp: new Date()
+    }]);
   };
+
+  const changeTopic = (topicId: string) => {
+    setCurrentTopic(topicId);
+    const topic = conversationTopics.find(t => t.id === topicId);
+    if (topic) {
+      const topicMessage = {
+        id: Date.now().toString(),
+        text: `Let's talk about ${topic.name.toLowerCase()}. ${topic.description}. What would you like to know?`,
+        isUser: false,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, topicMessage]);
+    }
+  };
+
+
+
+
+
+
+
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-white rounded-2xl p-8 max-w-2xl w-full"
+        className="bg-white rounded-2xl p-6 max-w-4xl w-full max-h-[90vh] flex flex-col relative overflow-hidden"
+        style={{
+          backgroundImage: 'url(/images/team/claude expert.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
       >
+        {/* Background overlay with opacity */}
+        <div className="absolute inset-0 bg-white opacity-50 z-0"></div>
+        {/* Content with higher z-index */}
+        <div className="relative z-10 flex flex-col h-full">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold">Fashion Tetris</h2>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-200">
+              <Image
+                src="/images/team/claude expert.png"
+                alt="Sakura Nakamura"
+                width={48}
+                height={48}
+                className="w-full h-full object-cover"
+                unoptimized
+              />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold">Sakura AI Assistant</h2>
+              <p className="text-sm text-gray-600">AI Research Scientist & Life Coach</p>
+            </div>
+          </div>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        <div className="flex justify-between items-center mb-4">
-          <div className="text-xl font-bold">Score: {score}</div>
-          <div className="text-lg">Lines: {linesCleared}</div>
-          {!gameStarted && (
-            <button onClick={startGame} className="btn btn-primary">
-              Start Game
+        {!gameStarted ? (
+          <div className="text-center py-12 flex-1 flex flex-col justify-center">
+            <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden border-4 border-blue-200">
+              <Image
+                src="/images/team/claude expert.png"
+                alt="Sakura Nakamura"
+                width={96}
+                height={96}
+                className="w-full h-full object-cover"
+                unoptimized
+              />
+            </div>
+            <h3 className="text-3xl font-bold mb-4">Chat with Sakura Nakamura</h3>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">
+              Hi! I&apos;m Sakura, your AI Research Scientist and life coach. I specialize in romance, lifestyle, psychology, and personal growth. 
+              Whether you need relationship advice, want to discuss your goals, or just need someone to talk to, I&apos;m here to help!
+            </p>
+            <button 
+              onClick={startConversation} 
+              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 text-lg"
+            >
+              Start Conversation 💬
             </button>
-          )}
-        </div>
-
-        <div className="bg-pink-100 p-4 rounded-lg mb-4">
-          <div className="grid grid-cols-10 gap-1 w-80 h-96 mx-auto">
-            {Array.from({ length: 200 }, (_, i) => {
-              const x = i % 10;
-              const y = Math.floor(i / 10);
-              const isOccupied = board[y] && board[y][x];
-              const isCurrentPiece = currentPiece.some((row, py) => 
-                row.some((cell, px) => 
-                  cell && piecePosition.x + px === x && piecePosition.y + py === y
-                )
-              );
-              
-              return (
-                <div
-                  key={i}
-                  className={`w-8 h-8 border border-pink-200 ${
-                    isCurrentPiece ? 'bg-pink-400' : 
-                    isOccupied ? 'bg-pink-500' : 
-                    'bg-pink-50'
-                  }`}
-                />
-              );
-            })}
           </div>
-        </div>
+        ) : (
+          <div className="flex-1 flex flex-col">
+            {/* Topic Selector */}
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold mb-3">Choose a topic:</h3>
+              <div className="flex flex-wrap gap-2">
+                {conversationTopics.map(topic => (
+                  <button
+                    key={topic.id}
+                    onClick={() => changeTopic(topic.id)}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                      currentTopic === topic.id
+                        ? 'bg-purple-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {topic.icon} {topic.name}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-        <div className="text-center text-sm text-gray-600 mb-4">
-          Use arrow keys to move pieces. Press space to drop quickly!<br/>
-          Current piece: <span className="font-bold" style={{ color: getPieceColor(currentPiece) }}>
-            {getPieceName(currentPiece)}
-          </span>
-        </div>
+            {/* Chat Messages */}
+            <div className="flex-1 bg-gray-50 rounded-lg p-4 mb-4 overflow-y-auto max-h-96">
+              <div className="space-y-4">
+                {messages.map(message => (
+                  <div
+                    key={message.id}
+                    className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div
+                      className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                        message.isUser
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-white text-gray-800 border'
+                      }`}
+                    >
+                      {!message.isUser && (
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="w-6 h-6 rounded-full overflow-hidden">
+                            <Image
+                              src="/images/team/claude expert.png"
+                              alt="Sakura"
+                              width={24}
+                              height={24}
+                              className="w-full h-full object-cover"
+                              unoptimized
+                            />
+                          </div>
+                          <span className="text-xs font-medium text-gray-500">Sakura</span>
+                        </div>
+                      )}
+                      <p className="text-sm">{message.text}</p>
+                      <p className="text-xs opacity-70 mt-1">
+                        {message.timestamp.toLocaleTimeString()}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {isTyping && (
+                  <div className="flex justify-start">
+                    <div className="bg-white text-gray-800 border px-4 py-2 rounded-lg">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-full overflow-hidden">
+                          <Image
+                            src="/images/team/claude expert.png"
+                            alt="Sakura"
+                            width={24}
+                            height={24}
+                            className="w-full h-full object-cover"
+                            unoptimized
+                          />
+                        </div>
+                        <span className="text-xs font-medium text-gray-500">Sakura is typing...</span>
+                      </div>
+                      <div className="flex gap-1 mt-2">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
 
-        {gameOver && (
-          <div className="text-center">
-            <p className="text-2xl font-bold text-red-600 mb-4">Game Over!</p>
-            <p className="mb-4">Final Score: {score}</p>
-            <p className="mb-4">Lines Cleared: {linesCleared}</p>
-            <button onClick={initializeBoard} className="btn btn-primary">
-              Play Again
-            </button>
+            {/* Message Input */}
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && sendMessage(inputText)}
+                placeholder="Type your message..."
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                disabled={isTyping}
+              />
+              <button
+                onClick={() => sendMessage(inputText)}
+                disabled={!inputText.trim() || isTyping}
+                className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+              >
+                Send
+              </button>
+            </div>
+
+            {/* Conversation Score */}
+            <div className="mt-4 text-center">
+              <div className="text-sm text-gray-600">
+                Conversation Score: <span className="font-bold text-purple-600">{conversationScore}</span>
+              </div>
+            </div>
           </div>
         )}
+        </div>
       </motion.div>
     </div>
   );
@@ -1129,17 +1300,17 @@ const EntertainmentPage = () => {
     };
 
     switch (selectedGame) {
-      case 'minecraft':
-        return <MinecraftGame {...gameProps} />;
-      case 'fashion-tetris':
-        return <FashionTetrisGame {...gameProps} />;
-      case 'roblox':
+      case 'business-strategy':
+        return <BusinessStrategyGame {...gameProps} />;
+      case 'networking-puzzle':
+        return <ClaudeExpertChatbot {...gameProps} />;
+      case 'career-path':
         return <RobloxGame {...gameProps} />;
-      case 'mario-kart':
+      case 'project-management':
         return <MarioKartGame {...gameProps} />;
-      case 'sims':
+      case 'skill-builder':
         return <SimsGame {...gameProps} />;
-      case 'love-nikki':
+      case 'startup-simulator':
         return <LoveNikkiGame {...gameProps} />;
       default:
         return null;

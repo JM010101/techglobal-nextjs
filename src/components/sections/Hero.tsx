@@ -297,7 +297,7 @@ const Hero = () => {
                     <source src="https://cdn.coverr.co/videos/coverr-modern-office-teamwork-2847/1080p.mp4" type="video/mp4" />
                     {/* Fallback image */}
                     <Image
-                      src="https://media.gettyimages.com/id/1206800967/photo/diverse-group-of-professionals-working-together-in-modern-office.jpg"
+                      src="https://img.freepik.com/free-photo/diverse-business-people-working-together-modern-office_23-2149211061.jpg"
                       alt="Professional Team Collaboration"
                       width={1200}
                       height={800}
