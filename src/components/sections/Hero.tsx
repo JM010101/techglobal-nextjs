@@ -286,25 +286,19 @@ const Hero = () => {
               {/* Main Hero Video */}
               <div className="relative z-10">
                 <div className="relative w-full h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
-                  <video
+                  <Image
+                    src="/images/landing/hero.jpg"
+                    alt="Professional Team Collaboration"
+                    width={1200}
+                    height={800}
                     className="w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                  >
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-team-of-developers-working-together-4622-large.mp4" type="video/mp4" />
-                    <source src="https://cdn.coverr.co/videos/coverr-modern-office-teamwork-2847/1080p.mp4" type="video/mp4" />
-                    {/* Fallback image */}
-                    <Image
-                      src="https://img.freepik.com/free-photo/diverse-business-people-working-together-modern-office_23-2149211061.jpg"
-                      alt="Professional Team Collaboration"
-                      width={1200}
-                      height={800}
-                      className="w-full h-full object-cover"
-                      suppressHydrationWarning
-                    />
-                  </video>
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://img.freepik.com/free-photo/business-people-working-together-office_23-2149211061.jpg';
+                    }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent"></div>
                   
                   {/* Video Overlay content */}

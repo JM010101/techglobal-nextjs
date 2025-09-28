@@ -84,28 +84,6 @@ const PortfolioPage = () => {
     },
     {
       id: '6',
-      title: 'IoT Manufacturing System',
-      description: 'Smart manufacturing solution with real-time monitoring, predictive maintenance, and automated quality control systems.',
-      imageUrl: 'https://img.freepik.com/free-photo/iot-smart-manufacturing-concept_23-2149074782.jpg',
-      technologies: ['IoT', 'Python', 'React', 'Machine Learning'],
-      category: 'AI/ML',
-      projectUrl: '#',
-      client: 'IoT Innovations',
-      featured: false
-    },
-    {
-      id: '7',
-      title: 'Digital Marketing Dashboard',
-      description: 'Comprehensive marketing analytics platform with campaign management, ROI tracking, and automated reporting features.',
-      imageUrl: 'https://img.freepik.com/free-photo/digital-marketing-analytics-concept_23-2149074783.jpg',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Chart.js'],
-      category: 'Web Development',
-      projectUrl: '#',
-      client: 'Digital Marketing Pro',
-      featured: false
-    },
-    {
-      id: '8',
       title: 'Health Monitoring App',
       description: 'Mobile health application with wearable device integration, health tracking, and telemedicine capabilities.',
       imageUrl: 'https://img.freepik.com/free-photo/healthcare-medical-technology-concept_23-2149074786.jpg',
@@ -113,50 +91,6 @@ const PortfolioPage = () => {
       category: 'Mobile App',
       projectUrl: '#',
       client: 'HealthTech Innovations',
-      featured: true
-    },
-    {
-      id: '9',
-      title: 'Smart City Management System',
-      description: 'Comprehensive smart city platform integrating traffic management, energy monitoring, and citizen services with real-time data analytics.',
-      imageUrl: 'https://img.freepik.com/free-photo/smart-city-technology-concept_23-2149074787.jpg',
-      technologies: ['IoT', 'Python', 'React', 'Machine Learning', 'AWS'],
-      category: 'AI/ML',
-      projectUrl: '#',
-      client: 'SmartCity Solutions',
-      featured: true
-    },
-    {
-      id: '10',
-      title: 'Cryptocurrency Trading Platform',
-      description: 'Advanced cryptocurrency trading platform with real-time market data, automated trading bots, and comprehensive portfolio management.',
-      imageUrl: 'https://img.freepik.com/free-photo/cryptocurrency-trading-platform-concept_23-2149074788.jpg',
-      technologies: ['React', 'Node.js', 'WebSocket', 'Blockchain', 'Redis'],
-      category: 'Blockchain',
-      projectUrl: '#',
-      client: 'CryptoTrader Pro',
-      featured: false
-    },
-    {
-      id: '11',
-      title: 'Fitness Tracking Mobile App',
-      description: 'Comprehensive fitness tracking application with workout plans, nutrition tracking, social features, and wearable device integration.',
-      imageUrl: 'https://img.freepik.com/free-photo/fitness-tracking-mobile-app-concept_23-2149074789.jpg',
-      technologies: ['React Native', 'Node.js', 'MongoDB', 'Firebase'],
-      category: 'Mobile App',
-      projectUrl: '#',
-      client: 'FitLife Technologies',
-      featured: false
-    },
-    {
-      id: '12',
-      title: 'Enterprise Resource Planning System',
-      description: 'Comprehensive ERP solution with modules for HR, finance, inventory, and project management with advanced reporting and analytics.',
-      imageUrl: 'https://img.freepik.com/free-photo/enterprise-resource-planning-system-concept_23-2149074790.jpg',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Docker', 'Kubernetes'],
-      category: 'Web Development',
-      projectUrl: '#',
-      client: 'Enterprise Solutions Inc.',
       featured: true
     }
   ], []);

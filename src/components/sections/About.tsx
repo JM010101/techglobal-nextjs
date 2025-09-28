@@ -107,12 +107,17 @@ const About = () => {
             className="relative"
           >
             <Image
-              src="https://img.freepik.com/free-photo/diverse-business-people-working-together-modern-office_23-2149211061.jpg"
+              src="/images/landing/second.jpg"
               alt="Our Global Team"
               width={600}
               height={500}
               className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl"
-              suppressHydrationWarning
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = 'https://img.freepik.com/free-photo/diverse-business-people-working-together-modern-office_23-2149211061.jpg';
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent rounded-2xl"></div>
             
