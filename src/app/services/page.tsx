@@ -27,7 +27,7 @@ const ServicesPage = () => {
     title: string;
     description: string;
     price: string;
-    icon: React.ReactNode;
+    icon: React.ComponentType<any>;
     features: string[];
     popular: boolean;
     color: string;
@@ -47,7 +47,7 @@ const ServicesPage = () => {
     title: string;
     description: string;
     price: string;
-    icon: React.ReactNode;
+    icon: React.ComponentType<any>;
     features: string[];
     popular: boolean;
     color: string;
