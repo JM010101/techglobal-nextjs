@@ -4,7 +4,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import CTA from '@/components/sections/CTA';
 import { motion } from 'framer-motion';
-import { Calendar, ArrowRight, Tag, Filter, Grid, List, Clock, Eye, Heart } from 'lucide-react';
+import { Calendar, ArrowRight, Tag, Filter, Grid, List, Clock, Eye, Heart, Plus, X, Save, Image as ImageIcon, Type, Hash } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
@@ -34,6 +34,20 @@ interface BlogPost {
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [blogForm, setBlogForm] = useState({
+    title: '',
+    excerpt: '',
+    category: '',
+    content: '',
+    tags: '',
+    featuredImage: '',
+    authorName: '',
+    authorTitle: ''
+  });
+  const [userBlogs, setUserBlogs] = useState<BlogPost[]>([]);
 
   const allBlogPosts: BlogPost[] = useMemo(() => [
     {
@@ -249,13 +263,15 @@ const BlogPage = () => {
   ], []);
 
   const categories = useMemo(() => {
-    const categoryCounts = allBlogPosts.reduce((acc, post) => {
+    const allPosts = [...allBlogPosts, ...userBlogs];
+    const categoryCounts = allPosts.reduce((acc, post) => {
       acc[post.category] = (acc[post.category] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
 
     return [
-      { id: 'all', label: 'All Posts', count: allBlogPosts.length },
+      { id: 'all', label: 'All Posts', count: allPosts.length },
+      { id: 'my-blogs', label: 'My Blogs', count: userBlogs.length },
       { id: 'Web Development', label: 'Web Development', count: categoryCounts['Web Development'] || 0 },
       { id: 'AI & Machine Learning', label: 'AI & Machine Learning', count: categoryCounts['AI & Machine Learning'] || 0 },
       { id: 'Cloud & DevOps', label: 'Cloud & DevOps', count: categoryCounts['Cloud & DevOps'] || 0 },
@@ -266,16 +282,24 @@ const BlogPage = () => {
       { id: 'Data Analytics', label: 'Data Analytics', count: categoryCounts['Data Analytics'] || 0 },
       { id: 'Technology Trends', label: 'Technology Trends', count: categoryCounts['Technology Trends'] || 0 },
     ];
-  }, [allBlogPosts]);
+  }, [allBlogPosts, userBlogs]);
 
   const tags = [
     'React', 'Node.js', 'Python', 'AI', 'Machine Learning', 'Cloud', 'AWS', 
     'Docker', 'Kubernetes', 'Blockchain', 'Security', 'Mobile', 'Web Design'
   ];
 
-  const filteredPosts = activeCategory === 'all' 
-    ? allBlogPosts 
-    : allBlogPosts.filter(post => post.category === activeCategory);
+  const filteredPosts = useMemo(() => {
+    const allPosts = [...allBlogPosts, ...userBlogs];
+    
+    if (activeCategory === 'all') {
+      return allPosts;
+    } else if (activeCategory === 'my-blogs') {
+      return userBlogs;
+    } else {
+      return allPosts.filter(post => post.category === activeCategory);
+    }
+  }, [activeCategory, allBlogPosts, userBlogs]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -284,6 +308,89 @@ const BlogPage = () => {
       month: 'short', 
       day: 'numeric' 
     });
+  };
+
+  const isValidImageUrl = (url: string) => {
+    if (!url) return false;
+    try {
+      const urlObj = new URL(url);
+      return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  };
+
+  const handleWriteBlog = () => {
+    setIsWriteModalOpen(true);
+  };
+
+  const handleCloseWriteModal = () => {
+    setIsWriteModalOpen(false);
+    setIsSubmitted(false);
+    setBlogForm({
+      title: '',
+      excerpt: '',
+      category: '',
+      content: '',
+      tags: '',
+      featuredImage: '',
+      authorName: '',
+      authorTitle: ''
+    });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setBlogForm({
+      ...blogForm,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmitBlog = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Create new blog post
+      const newBlog: BlogPost = {
+        id: `user-${Date.now()}`,
+        title: blogForm.title,
+        slug: blogForm.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+        excerpt: blogForm.excerpt,
+        category: blogForm.category,
+        featuredImage: {
+          url: isValidImageUrl(blogForm.featuredImage) 
+            ? blogForm.featuredImage 
+            : 'https://img.freepik.com/free-photo/blog-writing-concept_23-2149074779.jpg',
+          alt: blogForm.title
+        },
+        author: {
+          name: blogForm.authorName,
+          avatar: 'https://img.freepik.com/free-photo/portrait-young-businessman_23-2149074779.jpg',
+          title: blogForm.authorTitle || 'Blog Author'
+        },
+        publishedAt: new Date().toISOString().split('T')[0],
+        readingTime: Math.ceil(blogForm.content.split(' ').length / 200),
+        views: 0,
+        likes: 0,
+        isFeatured: false
+      };
+      
+      // Add to user blogs
+      setUserBlogs(prev => [newBlog, ...prev]);
+      
+      // Switch to "My Blogs" category to show the new blog
+      setActiveCategory('my-blogs');
+      
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting blog:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -306,6 +413,16 @@ const BlogPage = () => {
               Stay updated with the latest technology trends, insights, 
               and best practices from our expert team.
             </p>
+            <motion.button
+              onClick={handleWriteBlog}
+              className="inline-flex items-center px-8 py-4 bg-yellow-400 text-gray-900 rounded-xl font-semibold hover:bg-yellow-300 transition-all duration-300 group shadow-lg hover:shadow-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Plus className="w-5 h-5 mr-2 group-hover:rotate-90 transition-transform duration-300" />
+              Write New Blog Post
+            </motion.button>
           </motion.div>
         </div>
       </section>
@@ -337,15 +454,23 @@ const BlogPage = () => {
                         onClick={() => setActiveCategory(category.id)}
                         className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-between group ${
                           activeCategory === category.id
-                            ? 'bg-blue-600 text-white shadow-lg'
-                            : 'bg-gray-50 text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                            ? category.id === 'my-blogs' 
+                              ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg'
+                              : 'bg-blue-600 text-white shadow-lg'
+                            : category.id === 'my-blogs'
+                              ? 'bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 hover:from-purple-100 hover:to-purple-200 hover:text-purple-800'
+                              : 'bg-gray-50 text-gray-700 hover:bg-blue-50 hover:text-blue-600'
                         }`}
                       >
                         <span>{category.label}</span>
                         <span className={`text-sm px-2 py-1 rounded-full ${
                           activeCategory === category.id
-                            ? 'bg-blue-500 text-white'
-                            : 'bg-gray-200 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-600'
+                            ? category.id === 'my-blogs'
+                              ? 'bg-purple-500 text-white'
+                              : 'bg-blue-500 text-white'
+                            : category.id === 'my-blogs'
+                              ? 'bg-purple-200 text-purple-600 group-hover:bg-purple-300 group-hover:text-purple-700'
+                              : 'bg-gray-200 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-600'
                         }`}>
                           {category.count}
                         </span>
@@ -442,6 +567,10 @@ const BlogPage = () => {
                           width={400}
                           height={240}
                           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = 'https://img.freepik.com/free-photo/blog-writing-concept_23-2149074779.jpg';
+                          }}
                         />
                         <div className="absolute top-4 left-4">
                           <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
@@ -529,6 +658,10 @@ const BlogPage = () => {
                             width={320}
                             height={200}
                             className="w-full h-48 md:h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = 'https://img.freepik.com/free-photo/blog-writing-concept_23-2149074779.jpg';
+                            }}
                           />
                           <div className="absolute top-4 left-4">
                             <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
@@ -650,6 +783,237 @@ const BlogPage = () => {
 
       <CTA />
       <Footer />
+
+      {/* Write Blog Modal */}
+      {isWriteModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          >
+            <div className="p-6 lg:p-8">
+              {/* Modal Header */}
+              <div className="flex items-start justify-between mb-8">
+                <div className="flex-1 pr-4">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+                    Write New Blog Post
+                  </h3>
+                  <p className="text-gray-600 text-base lg:text-lg leading-relaxed">
+                    Share your insights and expertise with our community
+                  </p>
+                </div>
+                <button
+                  onClick={handleCloseWriteModal}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 flex-shrink-0"
+                >
+                  <X className="w-6 h-6 text-gray-500" />
+                </button>
+              </div>
+
+              {!isSubmitted ? (
+                <form onSubmit={handleSubmitBlog} className="space-y-8">
+                  {/* Basic Information */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-800">
+                        Blog Title *
+                      </label>
+                      <div className="relative">
+                        <Type className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          type="text"
+                          name="title"
+                          value={blogForm.title}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                          placeholder="Enter your blog title"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-800">
+                        Category *
+                      </label>
+                      <select
+                        name="category"
+                        value={blogForm.category}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900"
+                      >
+                        <option value="">Select a category</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="AI & Machine Learning">AI & Machine Learning</option>
+                        <option value="Cloud & DevOps">Cloud & DevOps</option>
+                        <option value="Mobile Development">Mobile Development</option>
+                        <option value="Blockchain">Blockchain</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Business">Business</option>
+                        <option value="Data Analytics">Data Analytics</option>
+                        <option value="Technology Trends">Technology Trends</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Author Information */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-800">
+                        Author Name *
+                      </label>
+                      <input
+                        type="text"
+                        name="authorName"
+                        value={blogForm.authorName}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                        placeholder="Enter your name"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-800">
+                        Author Title
+                      </label>
+                      <input
+                        type="text"
+                        name="authorTitle"
+                        value={blogForm.authorTitle}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                        placeholder="e.g., Senior Developer, Tech Lead"
+                      />
+                    </div>
+                  </div>
+
+               {/* Featured Image */}
+               <div className="space-y-2">
+                 <label className="block text-sm font-semibold text-gray-800">
+                   Featured Image URL
+                 </label>
+                 <div className="relative">
+                   <ImageIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                   <input
+                     type="url"
+                     name="featuredImage"
+                     value={blogForm.featuredImage}
+                     onChange={handleInputChange}
+                     className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                     placeholder="https://example.com/image.jpg (optional)"
+                   />
+                 </div>
+                 <p className="text-sm text-gray-500">
+                   Leave empty to use a default blog image. Make sure the URL is valid and accessible.
+                 </p>
+               </div>
+
+                  {/* Excerpt */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-semibold text-gray-800">
+                      Blog Excerpt *
+                    </label>
+                    <textarea
+                      name="excerpt"
+                      value={blogForm.excerpt}
+                      onChange={handleInputChange}
+                      required
+                      rows={3}
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500 resize-none"
+                      placeholder="Write a brief summary of your blog post..."
+                    />
+                  </div>
+
+                  {/* Tags */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-semibold text-gray-800">
+                      Tags
+                    </label>
+                    <div className="relative">
+                      <Hash className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type="text"
+                        name="tags"
+                        value={blogForm.tags}
+                        onChange={handleInputChange}
+                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                        placeholder="react, javascript, web-development (comma separated)"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-semibold text-gray-800">
+                      Blog Content *
+                    </label>
+                    <textarea
+                      name="content"
+                      value={blogForm.content}
+                      onChange={handleInputChange}
+                      required
+                      rows={12}
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500 resize-none"
+                      placeholder="Write your blog content here. You can use markdown formatting..."
+                    />
+                  </div>
+
+                  {/* Submit Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-8 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-lg hover:shadow-xl"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                          Publishing...
+                        </>
+                      ) : (
+                        <>
+                          <Save className="w-5 h-5 mr-3" />
+                          Publish Blog Post
+                        </>
+                      )}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleCloseWriteModal}
+                      className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="text-center py-12">
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Save className="w-10 h-10 text-green-600" />
+                  </div>
+                  <h4 className="text-2xl font-semibold text-slate-900 mb-3">
+                    Blog Post Published Successfully!
+                  </h4>
+                  <p className="text-gray-600 mb-8 text-lg">
+                    Your blog post has been added to your personal blog collection. 
+                    You can view it in the "My Blogs" section.
+                  </p>
+                  <button
+                    onClick={handleCloseWriteModal}
+                    className="bg-blue-600 text-white py-3 px-8 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300"
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      )}
     </main>
   );
 };
