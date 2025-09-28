@@ -23,11 +23,14 @@ import { useState } from 'react';
 const ServicesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<{
-    id: string;
+    id: number;
     title: string;
     description: string;
     price: string;
     icon: React.ReactNode;
+    features: string[];
+    popular: boolean;
+    color: string;
   } | null>(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -40,11 +43,14 @@ const ServicesPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleGetStarted = (service: {
-    id: string;
+    id: number;
     title: string;
     description: string;
     price: string;
     icon: React.ReactNode;
+    features: string[];
+    popular: boolean;
+    color: string;
   }) => {
     setSelectedService(service);
     setIsModalOpen(true);
