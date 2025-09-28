@@ -1573,11 +1573,10 @@ const EntertainmentPage = () => {
                             width={400}
                             height={192}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            placeholder="blur"
-                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                            unoptimized
                             onError={(e) => {
                               const target = e.target as HTMLImageElement;
-                              target.src = 'https://img.freepik.com/free-photo/gaming-concept_23-2149074800.jpg';
+                              target.src = 'https://picsum.photos/800/600?random=fallback';
                             }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
