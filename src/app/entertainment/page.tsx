@@ -33,7 +33,7 @@ const games: Game[] = [
     title: 'Business Strategy Simulator',
     description: 'Build and manage your own company empire. Make strategic decisions, manage resources, and lead your business to success.',
     icon: Target,
-    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop&auto=format&q=80',
+    image: 'https://picsum.photos/800/600?random=1',
     difficulty: 'Medium',
     category: 'Strategy'
   },
@@ -42,7 +42,7 @@ const games: Game[] = [
     title: 'Sakura AI Assistant',
     description: 'Chat with Sakura Nakamura, our AI Research Scientist, about romance, lifestyle, psychology, and personal growth. Get expert advice on relationships, wellness, and life challenges.',
     icon: Users,
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b647?w=800&h=600&fit=crop&auto=format&q=80',
+    image: 'https://picsum.photos/800/600?random=2',
     difficulty: 'Easy',
     category: 'AI Chat'
   },
@@ -51,7 +51,7 @@ const games: Game[] = [
     title: 'Career Path Adventure',
     description: 'Navigate through different career opportunities. Make decisions that shape your professional journey and unlock achievements.',
     icon: Trophy,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&auto=format&q=80',
+    image: 'https://picsum.photos/800/600?random=3',
     difficulty: 'Easy',
     category: 'Career'
   },
@@ -60,7 +60,7 @@ const games: Game[] = [
     title: 'Project Management Challenge',
     description: 'Lead teams and deliver projects on time. Manage resources, timelines, and stakeholder expectations in this strategic game.',
     icon: Timer,
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&auto=format&q=80',
+    image: 'https://picsum.photos/800/600?random=4',
     difficulty: 'Hard',
     category: 'Management'
   },
@@ -69,7 +69,7 @@ const games: Game[] = [
     title: 'Skill Development Quest',
     description: 'Level up your professional skills through interactive challenges. Master new technologies and advance your expertise.',
     icon: Brain,
-    image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop&auto=format&q=80',
+    image: 'https://picsum.photos/800/600?random=5',
     difficulty: 'Medium',
     category: 'Learning'
   },
@@ -78,7 +78,7 @@ const games: Game[] = [
     title: 'Startup Simulator',
     description: 'Launch and grow your startup from idea to IPO. Handle funding rounds, product development, and market competition.',
     icon: Star,
-    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=600&fit=crop&auto=format&q=80',
+    image: 'https://picsum.photos/800/600?random=6',
     difficulty: 'Hard',
     category: 'Entrepreneurship'
   }
