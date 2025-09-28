@@ -38,15 +38,15 @@ const games: Game[] = [
     difficulty: 'Medium',
     category: 'Strategy'
   },
-        {
-          id: 'networking-puzzle',
-          title: 'Sakura AI Assistant',
-          description: 'Chat with Sakura Nakamura, our AI Research Scientist, about romance, lifestyle, psychology, and personal growth. Get expert advice on relationships, wellness, and life challenges.',
-          icon: Users,
-          image: 'https://img.freepik.com/free-photo/beautiful-woman-using-laptop_23-2149211061.jpg',
-          difficulty: 'Easy',
-          category: 'AI Chat'
-        },
+  {
+    id: 'networking-puzzle',
+    title: 'Sakura AI Assistant',
+    description: 'Chat with Sakura Nakamura, our AI Research Scientist, about romance, lifestyle, psychology, and personal growth. Get expert advice on relationships, wellness, and life challenges.',
+    icon: Users,
+    image: 'https://img.freepik.com/free-photo/beautiful-woman-using-laptop_23-2149211061.jpg',
+    difficulty: 'Easy',
+    category: 'AI Chat'
+  },
   {
     id: 'career-path',
     title: 'Career Path Adventure',
@@ -1250,6 +1250,771 @@ const LoveNikkiGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScor
   );
 };
 
+// Career Path Adventure - Real Game Component
+const SimpleCareerGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
+  const [score, setScore] = useState(0);
+  const [level, setLevel] = useState(1);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [currentTask, setCurrentTask] = useState(0);
+  const [tasks, setTasks] = useState<string[]>([]);
+  const [gameOver, setGameOver] = useState(false);
+
+  const careerTasks = [
+    "Complete project proposal",
+    "Review team performance",
+    "Attend client meeting",
+    "Update project timeline",
+    "Train new employee",
+    "Present quarterly results",
+    "Negotiate budget",
+    "Launch new feature",
+    "Resolve team conflict",
+    "Plan team building"
+  ];
+
+  const startGame = () => {
+    setGameStarted(true);
+    setScore(0);
+    setLevel(1);
+    setTimeLeft(30);
+    setCurrentTask(0);
+    setGameOver(false);
+    generateNewTask();
+  };
+
+  const generateNewTask = () => {
+    const shuffled = [...careerTasks].sort(() => Math.random() - 0.5);
+    setTasks(shuffled.slice(0, 3));
+  };
+
+  const completeTask = (taskIndex: number) => {
+    if (taskIndex === 0) {
+      setScore(prev => {
+        const newScore = prev + 10;
+        // Use setTimeout to defer the score update to avoid render issues
+        setTimeout(() => onScoreUpdate(newScore), 0);
+        setLevel(Math.floor(newScore / 50) + 1);
+        return newScore;
+      });
+      setCurrentTask(prev => prev + 1);
+      generateNewTask();
+    }
+  };
+
+  useEffect(() => {
+    if (gameStarted && timeLeft > 0 && !gameOver) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0) {
+      setGameOver(true);
+    }
+  }, [gameStarted, timeLeft, gameOver]);
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-white rounded-2xl p-8 max-w-4xl w-full"
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold">Career Path Adventure</h2>
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {!gameStarted ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Start Your Career Journey</h3>
+            <p className="text-gray-600 mb-8">Complete tasks quickly to advance your career! You have 30 seconds to complete as many tasks as possible.</p>
+            <button onClick={startGame} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              Start Career Journey
+            </button>
+          </div>
+        ) : gameOver ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Career Journey Complete!</h3>
+            <p className="text-xl text-gray-600 mb-4">Final Score: {score}</p>
+            <p className="text-lg text-gray-600 mb-6">Level {level} Professional</p>
+            <button onClick={startGame} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              Play Again
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-6">
+            <div className="flex justify-between items-center">
+              <div>
+                <h3 className="text-xl font-bold">Level {level} Professional</h3>
+                <p className="text-2xl font-bold text-blue-600">Score: {score}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-lg font-bold text-red-600">Time: {timeLeft}s</p>
+                <p className="text-sm text-gray-600">Tasks: {currentTask}</p>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h4 className="text-lg font-semibold mb-4">Complete this task:</h4>
+              <div className="text-center">
+                <p className="text-xl font-bold text-gray-800 mb-6">{tasks[0]}</p>
+                <button 
+                  onClick={() => completeTask(0)}
+                  className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                >
+                  Complete Task (+10 points)
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-blue-50 rounded-lg p-4">
+                <h5 className="font-semibold text-blue-800">Next Tasks:</h5>
+                <ul className="text-sm text-blue-700 mt-2">
+                  <li>• {tasks[1]}</li>
+                  <li>• {tasks[2]}</li>
+                </ul>
+              </div>
+              <div className="bg-yellow-50 rounded-lg p-4">
+                <h5 className="font-semibold text-yellow-800">Tips:</h5>
+                <ul className="text-sm text-yellow-700 mt-2">
+                  <li>• Complete tasks quickly</li>
+                  <li>• Each task gives 10 points</li>
+                  <li>• Level up every 50 points</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+// Project Management Challenge - Real Game Component
+const SimpleProjectGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
+  const [score, setScore] = useState(0);
+  const [projects, setProjects] = useState(0);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [currentProject, setCurrentProject] = useState<any>(null);
+  const [teamMembers, setTeamMembers] = useState(3);
+  const [budget, setBudget] = useState(10000);
+  const [deadline, setDeadline] = useState(30);
+  const [gameOver, setGameOver] = useState(false);
+
+  const projectTypes = [
+    { name: "Website Redesign", difficulty: "Easy", time: 15, budget: 5000, team: 2, reward: 20 },
+    { name: "Mobile App", difficulty: "Medium", time: 25, budget: 8000, team: 4, reward: 35 },
+    { name: "AI Integration", difficulty: "Hard", time: 40, budget: 15000, team: 6, reward: 60 },
+    { name: "Database Migration", difficulty: "Medium", time: 20, budget: 6000, team: 3, reward: 30 },
+    { name: "Cloud Migration", difficulty: "Hard", time: 35, budget: 12000, team: 5, reward: 50 }
+  ];
+
+  const startGame = () => {
+    setGameStarted(true);
+    setScore(0);
+    setProjects(0);
+    setTeamMembers(3);
+    setBudget(10000);
+    setDeadline(30);
+    setGameOver(false);
+    startNewProject();
+  };
+
+  const startNewProject = () => {
+    const randomProject = projectTypes[Math.floor(Math.random() * projectTypes.length)];
+    setCurrentProject(randomProject);
+    setDeadline(randomProject.time);
+  };
+
+  const makeDecision = (decision: string) => {
+    if (!currentProject) return;
+
+    let points = 0;
+    let newBudget = budget;
+    let newTeam = teamMembers;
+
+    switch (decision) {
+      case 'hire':
+        if (budget >= 2000) {
+          newBudget -= 2000;
+          newTeam += 1;
+          points = 5;
+        }
+        break;
+      case 'overtime':
+        if (budget >= 1000) {
+          newBudget -= 1000;
+          setDeadline(prev => Math.max(1, prev - 5));
+          points = 10;
+        }
+        break;
+      case 'outsource':
+        if (budget >= 3000) {
+          newBudget -= 3000;
+          setDeadline(prev => Math.max(1, prev - 10));
+          points = 15;
+        }
+        break;
+      case 'complete':
+        if (teamMembers >= currentProject.team && budget >= currentProject.budget) {
+          points = currentProject.reward;
+          setProjects(prev => prev + 1);
+          startNewProject();
+        }
+        break;
+    }
+
+    setBudget(newBudget);
+    setTeamMembers(newTeam);
+    
+    if (points > 0) {
+      setScore(prev => {
+        const newScore = prev + points;
+        // Use setTimeout to defer the score update to avoid render issues
+        setTimeout(() => onScoreUpdate(newScore), 0);
+        return newScore;
+      });
+    }
+
+    // Check game over conditions
+    if (newBudget <= 0 || deadline <= 0) {
+      setGameOver(true);
+    }
+  };
+
+  useEffect(() => {
+    if (gameStarted && deadline > 0 && !gameOver) {
+      const timer = setTimeout(() => setDeadline(prev => prev - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (deadline === 0) {
+      setGameOver(true);
+    }
+  }, [gameStarted, deadline, gameOver]);
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-white rounded-2xl p-8 max-w-4xl w-full"
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold">Project Management Challenge</h2>
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {!gameStarted ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Lead Projects to Success</h3>
+            <p className="text-gray-600 mb-8">Manage your team, budget, and deadlines to complete projects successfully!</p>
+            <button onClick={startGame} className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              Start Managing
+            </button>
+          </div>
+        ) : gameOver ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Game Over!</h3>
+            <p className="text-xl text-gray-600 mb-4">Final Score: {score}</p>
+            <p className="text-lg text-gray-600 mb-6">Projects Completed: {projects}</p>
+            <button onClick={startGame} className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              Play Again
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-6">
+            <div className="grid grid-cols-4 gap-4">
+              <div className="bg-blue-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-blue-800">Score</h4>
+                <p className="text-2xl font-bold text-blue-600">{score}</p>
+              </div>
+              <div className="bg-green-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-green-800">Projects</h4>
+                <p className="text-2xl font-bold text-green-600">{projects}</p>
+              </div>
+              <div className="bg-yellow-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-yellow-800">Budget</h4>
+                <p className="text-2xl font-bold text-yellow-600">${budget}</p>
+              </div>
+              <div className="bg-red-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-red-800">Deadline</h4>
+                <p className="text-2xl font-bold text-red-600">{deadline}d</p>
+              </div>
+            </div>
+
+            {currentProject && (
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-xl font-bold mb-4">Current Project: {currentProject.name}</h3>
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <p><strong>Difficulty:</strong> {currentProject.difficulty}</p>
+                    <p><strong>Required Team:</strong> {currentProject.team} members</p>
+                  </div>
+                  <div>
+                    <p><strong>Required Budget:</strong> ${currentProject.budget}</p>
+                    <p><strong>Reward:</strong> {currentProject.reward} points</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Make a decision:</h4>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button 
+                      onClick={() => makeDecision('hire')}
+                      disabled={budget < 2000}
+                      className="p-3 border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <div className="font-medium">Hire Team Member</div>
+                      <div className="text-sm text-gray-600">Cost: $2000, +1 team member</div>
+                    </button>
+                    <button 
+                      onClick={() => makeDecision('overtime')}
+                      disabled={budget < 1000}
+                      className="p-3 border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <div className="font-medium">Pay Overtime</div>
+                      <div className="text-sm text-gray-600">Cost: $1000, -5 days</div>
+                    </button>
+                    <button 
+                      onClick={() => makeDecision('outsource')}
+                      disabled={budget < 3000}
+                      className="p-3 border-2 border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <div className="font-medium">Outsource Work</div>
+                      <div className="text-sm text-gray-600">Cost: $3000, -10 days</div>
+                    </button>
+                    <button 
+                      onClick={() => makeDecision('complete')}
+                      disabled={teamMembers < currentProject.team || budget < currentProject.budget}
+                      className="p-3 border-2 border-gray-200 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <div className="font-medium">Complete Project</div>
+                      <div className="text-sm text-gray-600">+{currentProject.reward} points</div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="bg-blue-50 rounded-lg p-4">
+              <h5 className="font-semibold text-blue-800 mb-2">Current Team: {teamMembers} members</h5>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div 
+                  className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${Math.min(100, (teamMembers / 10) * 100)}%` }}
+                ></div>
+              </div>
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+// Skill Development Quest - Real Game Component
+const SimpleSkillGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
+  const [score, setScore] = useState(0);
+  const [skills, setSkills] = useState(0);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [currentSkill, setCurrentSkill] = useState<any>(null);
+  const [progress, setProgress] = useState(0);
+  const [energy, setEnergy] = useState(100);
+  const [gameOver, setGameOver] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(60);
+
+  const skillTypes = [
+    { name: "React.js", difficulty: "Medium", time: 20, energy: 30, reward: 25, color: "bg-blue-500" },
+    { name: "Python", difficulty: "Easy", time: 15, energy: 20, reward: 20, color: "bg-green-500" },
+    { name: "AI/ML", difficulty: "Hard", time: 30, energy: 50, reward: 40, color: "bg-purple-500" },
+    { name: "Communication", difficulty: "Easy", time: 10, energy: 15, reward: 15, color: "bg-yellow-500" },
+    { name: "Leadership", difficulty: "Medium", time: 25, energy: 35, reward: 30, color: "bg-red-500" },
+    { name: "DevOps", difficulty: "Hard", time: 35, energy: 45, reward: 45, color: "bg-indigo-500" }
+  ];
+
+  const startGame = () => {
+    setGameStarted(true);
+    setScore(0);
+    setSkills(0);
+    setProgress(0);
+    setEnergy(100);
+    setGameOver(false);
+    setTimeLeft(60);
+    selectNewSkill();
+  };
+
+  const selectNewSkill = () => {
+    const randomSkill = skillTypes[Math.floor(Math.random() * skillTypes.length)];
+    setCurrentSkill(randomSkill);
+    setProgress(0);
+  };
+
+  const study = () => {
+    if (!currentSkill || energy < currentSkill.energy) return;
+
+    setProgress(prev => {
+      const newProgress = prev + 10;
+      if (newProgress >= 100) {
+        // Skill completed
+        setScore(prev => {
+          const newScore = prev + currentSkill.reward;
+          // Use setTimeout to defer the score update to avoid render issues
+          setTimeout(() => onScoreUpdate(newScore), 0);
+          return newScore;
+        });
+        setSkills(prev => prev + 1);
+        selectNewSkill();
+        return 0;
+      }
+      return newProgress;
+    });
+
+    setEnergy(prev => Math.max(0, prev - currentSkill.energy));
+  };
+
+  const rest = () => {
+    setEnergy(prev => Math.min(100, prev + 20));
+  };
+
+  useEffect(() => {
+    if (gameStarted && timeLeft > 0 && !gameOver) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0) {
+      setGameOver(true);
+    }
+  }, [gameStarted, timeLeft, gameOver]);
+
+  useEffect(() => {
+    if (energy <= 0) {
+      setGameOver(true);
+    }
+  }, [energy]);
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-white rounded-2xl p-8 max-w-4xl w-full"
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold">Skill Development Quest</h2>
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {!gameStarted ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Level Up Your Skills</h3>
+            <p className="text-gray-600 mb-8">Study different skills, manage your energy, and complete as many skills as possible in 60 seconds!</p>
+            <button onClick={startGame} className="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+              Start Learning
+            </button>
+          </div>
+        ) : gameOver ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Learning Session Complete!</h3>
+            <p className="text-xl text-gray-600 mb-4">Final Score: {score}</p>
+            <p className="text-lg text-gray-600 mb-6">Skills Mastered: {skills}</p>
+            <button onClick={startGame} className="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+              Study Again
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-6">
+            <div className="grid grid-cols-4 gap-4">
+              <div className="bg-purple-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-purple-800">Score</h4>
+                <p className="text-2xl font-bold text-purple-600">{score}</p>
+              </div>
+              <div className="bg-green-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-green-800">Skills</h4>
+                <p className="text-2xl font-bold text-green-600">{skills}</p>
+              </div>
+              <div className="bg-yellow-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-yellow-800">Energy</h4>
+                <p className="text-2xl font-bold text-yellow-600">{energy}%</p>
+              </div>
+              <div className="bg-red-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-red-800">Time</h4>
+                <p className="text-2xl font-bold text-red-600">{timeLeft}s</p>
+              </div>
+            </div>
+
+            {currentSkill && (
+              <div className="bg-gray-50 rounded-lg p-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className={`w-12 h-12 rounded-full ${currentSkill.color} flex items-center justify-center text-white font-bold text-lg`}>
+                    {currentSkill.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">Learning: {currentSkill.name}</h3>
+                    <p className="text-gray-600">Difficulty: {currentSkill.difficulty}</p>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-sm font-medium">Progress</span>
+                    <span className="text-sm font-medium">{progress}%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-3">
+                    <div 
+                      className={`${currentSkill.color} h-3 rounded-full transition-all duration-300`}
+                      style={{ width: `${progress}%` }}
+                    ></div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <button 
+                    onClick={study}
+                    disabled={energy < currentSkill.energy}
+                    className="p-4 border-2 border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <div className="font-medium">Study Hard</div>
+                    <div className="text-sm text-gray-600">Energy: -{currentSkill.energy}%</div>
+                    <div className="text-sm text-gray-600">Progress: +10%</div>
+                  </button>
+                  <button 
+                    onClick={rest}
+                    disabled={energy >= 100}
+                    className="p-4 border-2 border-gray-200 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <div className="font-medium">Take a Break</div>
+                    <div className="text-sm text-gray-600">Energy: +20%</div>
+                    <div className="text-sm text-gray-600">No progress</div>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            <div className="bg-blue-50 rounded-lg p-4">
+              <h5 className="font-semibold text-blue-800 mb-2">Energy Level</h5>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div 
+                  className="bg-yellow-500 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${energy}%` }}
+                ></div>
+              </div>
+              <p className="text-sm text-blue-700 mt-2">
+                {energy > 70 ? "You're energized and ready to learn!" : 
+                 energy > 30 ? "Getting tired, consider taking a break." : 
+                 "Very tired! Rest to continue learning."}
+              </p>
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+// Startup Simulator - Real Game Component
+const SimpleStartupGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
+  const [score, setScore] = useState(0);
+  const [funding, setFunding] = useState(0);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [currentPhase, setCurrentPhase] = useState(0);
+  const [revenue, setRevenue] = useState(0);
+  const [users, setUsers] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(45);
+
+  const startupPhases = [
+    { name: "Idea Stage", funding: 0, revenue: 0, users: 0, actions: [
+      { name: "Validate Idea", cost: 0, revenue: 0, users: 10, funding: 0, points: 15 },
+      { name: "Create MVP", cost: 5000, revenue: 0, users: 50, funding: 0, points: 25 },
+      { name: "Get First Users", cost: 2000, revenue: 100, users: 100, funding: 0, points: 20 }
+    ]},
+    { name: "Seed Stage", funding: 50000, revenue: 1000, users: 200, actions: [
+      { name: "Hire Team", cost: 10000, revenue: 0, users: 0, funding: 0, points: 20 },
+      { name: "Improve Product", cost: 8000, revenue: 500, users: 150, funding: 0, points: 25 },
+      { name: "Marketing Campaign", cost: 5000, revenue: 200, users: 300, funding: 0, points: 18 }
+    ]},
+    { name: "Series A", funding: 200000, revenue: 5000, users: 1000, actions: [
+      { name: "Scale Operations", cost: 20000, revenue: 1000, users: 500, funding: 0, points: 30 },
+      { name: "Expand Team", cost: 15000, revenue: 0, users: 0, funding: 0, points: 25 },
+      { name: "New Features", cost: 12000, revenue: 800, users: 400, funding: 0, points: 28 }
+    ]},
+    { name: "Growth Stage", funding: 500000, revenue: 15000, users: 5000, actions: [
+      { name: "International Expansion", cost: 30000, revenue: 2000, users: 1000, funding: 0, points: 40 },
+      { name: "Acquisition", cost: 50000, revenue: 3000, users: 2000, funding: 0, points: 50 },
+      { name: "IPO Preparation", cost: 40000, revenue: 1500, users: 500, funding: 0, points: 60 }
+    ]}
+  ];
+
+  const startGame = () => {
+    setGameStarted(true);
+    setScore(0);
+    setFunding(0);
+    setRevenue(0);
+    setUsers(0);
+    setCurrentPhase(0);
+    setGameOver(false);
+    setTimeLeft(45);
+  };
+
+  const executeAction = (action: any) => {
+    if (funding < action.cost) return;
+
+    setFunding(prev => prev - action.cost);
+    setRevenue(prev => prev + action.revenue);
+    setUsers(prev => prev + action.users);
+    setScore(prev => {
+      const newScore = prev + action.points;
+      // Use setTimeout to defer the score update to avoid render issues
+      setTimeout(() => onScoreUpdate(newScore), 0);
+      return newScore;
+    });
+
+    // Check if ready for next phase
+    const currentPhaseData = startupPhases[currentPhase];
+    if (revenue >= currentPhaseData.revenue && users >= currentPhaseData.users && currentPhase < startupPhases.length - 1) {
+      setCurrentPhase(prev => prev + 1);
+      const nextPhase = startupPhases[currentPhase + 1];
+      setFunding(prev => prev + nextPhase.funding);
+    }
+  };
+
+  useEffect(() => {
+    if (gameStarted && timeLeft > 0 && !gameOver) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0) {
+      setGameOver(true);
+    }
+  }, [gameStarted, timeLeft, gameOver]);
+
+  const currentPhaseData = startupPhases[currentPhase];
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-white rounded-2xl p-8 max-w-4xl w-full"
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold">Startup Simulator</h2>
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {!gameStarted ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Launch Your Startup</h3>
+            <p className="text-gray-600 mb-8">Build your startup from idea to IPO! Manage funding, revenue, and users to grow your company in 45 seconds!</p>
+            <button onClick={startGame} className="bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+              Start Startup
+            </button>
+          </div>
+        ) : gameOver ? (
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold mb-4">Startup Journey Complete!</h3>
+            <p className="text-xl text-gray-600 mb-4">Final Score: {score}</p>
+            <p className="text-lg text-gray-600 mb-2">Final Funding: ${funding.toLocaleString()}</p>
+            <p className="text-lg text-gray-600 mb-2">Final Revenue: ${revenue.toLocaleString()}</p>
+            <p className="text-lg text-gray-600 mb-6">Total Users: {users.toLocaleString()}</p>
+            <button onClick={startGame} className="bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+              Start New Startup
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-6">
+            <div className="grid grid-cols-4 gap-4">
+              <div className="bg-orange-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-orange-800">Score</h4>
+                <p className="text-2xl font-bold text-orange-600">{score}</p>
+              </div>
+              <div className="bg-green-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-green-800">Funding</h4>
+                <p className="text-2xl font-bold text-green-600">${funding.toLocaleString()}</p>
+              </div>
+              <div className="bg-blue-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-blue-800">Revenue</h4>
+                <p className="text-2xl font-bold text-blue-600">${revenue.toLocaleString()}</p>
+              </div>
+              <div className="bg-red-50 rounded-lg p-4 text-center">
+                <h4 className="font-bold text-red-800">Time</h4>
+                <p className="text-2xl font-bold text-red-600">{timeLeft}s</p>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold">Current Phase: {currentPhaseData.name}</h3>
+                <div className="text-right">
+                  <p className="text-sm text-gray-600">Users: {users.toLocaleString()}</p>
+                  <p className="text-sm text-gray-600">Phase {currentPhase + 1} of {startupPhases.length}</p>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex justify-between mb-2">
+                  <span className="text-sm font-medium">Phase Progress</span>
+                  <span className="text-sm font-medium">
+                    {Math.min(100, Math.floor((revenue / currentPhaseData.revenue) * 50 + (users / currentPhaseData.users) * 50))}%
+                  </span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div 
+                    className="bg-orange-500 h-3 rounded-full transition-all duration-300"
+                    style={{ width: `${Math.min(100, Math.floor((revenue / currentPhaseData.revenue) * 50 + (users / currentPhaseData.users) * 50))}%` }}
+                  ></div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="font-semibold">Available Actions:</h4>
+                {currentPhaseData.actions.map((action, index) => (
+                  <button 
+                    key={index}
+                    onClick={() => executeAction(action)}
+                    disabled={funding < action.cost}
+                    className="w-full p-4 border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-left"
+                  >
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <div className="font-medium">{action.name}</div>
+                        <div className="text-sm text-gray-600">
+                          Cost: ${action.cost.toLocaleString()} | 
+                          Revenue: +${action.revenue.toLocaleString()} | 
+                          Users: +{action.users.toLocaleString()}
+                        </div>
+                      </div>
+                      <div className="text-orange-600 font-bold">+{action.points} pts</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-blue-50 rounded-lg p-4">
+              <h5 className="font-semibold text-blue-800 mb-2">Next Phase Requirements:</h5>
+              {currentPhase < startupPhases.length - 1 ? (
+                <div className="text-sm text-blue-700">
+                  <p>• Revenue: ${startupPhases[currentPhase + 1].revenue.toLocaleString()}</p>
+                  <p>• Users: {startupPhases[currentPhase + 1].users.toLocaleString()}</p>
+                  <p>• Funding Bonus: ${startupPhases[currentPhase + 1].funding.toLocaleString()}</p>
+                </div>
+              ) : (
+                <p className="text-sm text-blue-700">🎉 You've reached the final phase! Keep growing your startup!</p>
+              )}
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
 const EntertainmentPage = () => {
   const [filterCategory, setFilterCategory] = useState('all');
   const [leaderboard, setLeaderboard] = useState<{[key: string]: number}>({});
@@ -1265,7 +2030,7 @@ const EntertainmentPage = () => {
     }
   }, []);
 
-  const categories = ['all', 'Sandbox', 'Fashion', 'Social', 'Racing', 'Simulation'];
+  const categories = ['all', 'Strategy', 'AI Chat', 'Career', 'Management', 'Learning', 'Entrepreneurship'];
 
   const filteredGames = filterCategory === 'all' 
     ? games 
@@ -1305,150 +2070,180 @@ const EntertainmentPage = () => {
       case 'networking-puzzle':
         return <ClaudeExpertChatbot {...gameProps} />;
       case 'career-path':
-        return <RobloxGame {...gameProps} />;
+        return <SimpleCareerGame {...gameProps} />;
       case 'project-management':
-        return <MarioKartGame {...gameProps} />;
+        return <SimpleProjectGame {...gameProps} />;
       case 'skill-builder':
-        return <SimsGame {...gameProps} />;
+        return <SimpleSkillGame {...gameProps} />;
       case 'startup-simulator':
-        return <LoveNikkiGame {...gameProps} />;
+        return <SimpleStartupGame {...gameProps} />;
       default:
         return null;
     }
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-100">
+    <main className="min-h-screen bg-gray-50">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="hero-gradient py-16 lg:py-24">
+        <div className="container">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="text-center text-white max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-6">
-              Entertainment Hub
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              Professional <span className="text-yellow-400">Games</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Discover the most popular and engaging games of 2025. From creative sandboxes to fashion shows, 
-              there&apos;s something for everyone to enjoy!
+            <p className="text-xl lg:text-2xl text-blue-100 leading-relaxed mb-8">
+              Play engaging LinkedIn-style games that combine fun with professional development. 
+              Build skills, make connections, and advance your career through interactive gameplay.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              {[
-                { icon: Gamepad2, text: '6 Amazing Games' },
-                { icon: Users, text: 'Multiplayer Fun' },
-                { icon: Trophy, text: 'Leaderboards' },
-                { icon: Sparkles, text: 'Professional Quality' }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white/20 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3"
-                >
-                  <item.icon className="w-6 h-6" />
-                  <span className="font-medium">{item.text}</span>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Game Categories */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Game Categories</h2>
-            <p className="text-xl text-gray-600">Filter games by your preferred genre</p>
-          </motion.div>
-
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setFilterCategory(category)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  filterCategory === category
-                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-gray-50'
-                }`}
-              >
-                {category === 'all' ? 'All Games' : category}
-              </button>
-            ))}
-          </div>
-
-          {/* Games Grid */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {filteredGames.map((game, index) => {
-              const Icon = game.icon;
-              return (
-                <motion.div
-                  key={game.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -10 }}
-                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={game.image}
-                          alt={game.title}
-                          width={400}
-                          height={192}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = 'https://img.freepik.com/free-photo/gaming-concept_23-2149074800.jpg';
-                          }}
-                        />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                      <Icon className="w-8 h-8 text-white" />
-                      <span className={`
-                        px-3 py-1 rounded-full text-xs font-medium
-                        ${game.difficulty === 'Easy' ? 'bg-green-500' : ''}
-                        ${game.difficulty === 'Medium' ? 'bg-yellow-500' : ''}
-                        ${game.difficulty === 'Hard' ? 'bg-red-500' : ''}
-                        text-white
-                      `}>
-                        {game.difficulty}
+      {/* Main Content with Sidebar */}
+      <section className="py-12">
+        <div className="container">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Left Sidebar */}
+            <div className="lg:w-80 flex-shrink-0">
+              <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                  <Gamepad2 className="w-6 h-6 mr-3 text-blue-600" />
+                  Game Categories
+                </h3>
+                
+                <div className="space-y-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setFilterCategory(category)}
+                      className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                        filterCategory === category
+                          ? 'bg-blue-600 text-white shadow-md'
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      {category === 'all' ? 'All Games' : category}
+                      <span className="float-right text-sm opacity-75">
+                        {category === 'all' ? games.length : games.filter(g => g.category === category).length}
                       </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3">{game.title}</h3>
-                    <p className="text-gray-600 mb-6">{game.description}</p>
-                     <button
-                       onClick={() => openGame(game.id)}
-                       className="btn btn-primary w-full group"
-                     >
-                      <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                      Play Now
                     </button>
+                  ))}
+                </div>
+
+                {/* Leaderboard Preview */}
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <Trophy className="w-5 h-5 mr-2 text-yellow-500" />
+                    Top Scores
+                  </h4>
+                  <div className="space-y-2">
+                    {games.slice(0, 3).map((game, index) => (
+                      <div key={game.id} className="flex items-center justify-between text-sm">
+                        <span className="text-gray-600 truncate">{game.title}</span>
+                        <span className="font-semibold text-blue-600">
+                          {isClient ? (leaderboard[game.id] || 0) : 0}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="flex-1">
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                  {filterCategory === 'all' ? 'All Games' : filterCategory} Games
+                </h2>
+                <p className="text-gray-600">
+                  {filteredGames.length} {filteredGames.length === 1 ? 'game' : 'games'} available
+                </p>
+              </div>
+
+              {filteredGames.length === 0 ? (
+                <div className="text-center py-12">
+                  <Gamepad2 className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">No games found</h3>
+                  <p className="text-gray-600">Try selecting a different category.</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {filteredGames.map((game, index) => {
+                    const Icon = game.icon;
+                    return (
+                      <motion.div
+                        key={game.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group"
+                      >
+                        <div className="relative h-48 overflow-hidden">
+                          <Image
+                            src={game.image}
+                            alt={game.title}
+                            width={400}
+                            height={192}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = 'https://img.freepik.com/free-photo/gaming-concept_23-2149074800.jpg';
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                            <Icon className="w-6 h-6 text-white" />
+                            <span className={`
+                              px-2 py-1 rounded-full text-xs font-medium
+                              ${game.difficulty === 'Easy' ? 'bg-green-500' : ''}
+                              ${game.difficulty === 'Medium' ? 'bg-yellow-500' : ''}
+                              ${game.difficulty === 'Hard' ? 'bg-red-500' : ''}
+                              text-white
+                            `}>
+                              {game.difficulty}
+                            </span>
+                          </div>
+                          <div className="absolute top-4 right-4">
+                            <span className="bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
+                              {game.category}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="p-6">
+                          <h3 className="text-xl font-bold mb-3 text-gray-900">{game.title}</h3>
+                          <p className="text-gray-600 mb-4 text-sm leading-relaxed">{game.description}</p>
+                          <div className="flex items-center justify-between">
+                            <div className="text-sm text-gray-500">
+                              High Score: <span className="font-semibold text-blue-600">
+                                {isClient ? (leaderboard[game.id] || 0) : 0}
+                              </span>
+                            </div>
+                            <button
+                              onClick={() => openGame(game.id)}
+                              className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2"
+                            >
+                              <Play className="w-4 h-4" />
+                              Play
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
