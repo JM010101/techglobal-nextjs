@@ -27,7 +27,7 @@ const ServicesPage = () => {
     title: string;
     description: string;
     price: string;
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     features: string[];
     popular: boolean;
     color: string;
@@ -47,7 +47,7 @@ const ServicesPage = () => {
     title: string;
     description: string;
     price: string;
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     features: string[];
     popular: boolean;
     color: string;
