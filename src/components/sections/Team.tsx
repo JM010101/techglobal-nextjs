@@ -289,13 +289,13 @@ const Team = () => {
               className="team-card group"
             >
               <div className="relative mb-6">
-                <div className="w-48 h-96 mx-auto rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl group-hover:scale-110 transition-all duration-500">
+                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white/20 shadow-2xl group-hover:scale-110 transition-all duration-500">
                   <Image
                     src={member.imageUrl}
                     alt={member.name}
-                    width={192}
-                    height={384}
-                    className="w-full h-full object-contain object-center"
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-cover object-center"
                     unoptimized
                   />
                 </div>
