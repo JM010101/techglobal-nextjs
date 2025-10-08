@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
@@ -30,7 +30,6 @@ const Portfolio = ({ limit }: PortfolioProps) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
-  const [currentX, setCurrentX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
 
   const categories = [
@@ -721,7 +720,6 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     setIsDragging(true);
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
     setStartX(clientX);
-    setCurrentX(clientX);
     setDragOffset(0);
   };
 
@@ -730,7 +728,6 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
     const diff = clientX - startX;
-    setCurrentX(clientX);
     setDragOffset(diff);
   };
 
@@ -754,24 +751,29 @@ const Portfolio = ({ limit }: PortfolioProps) => {
   };
 
   // Mouse events
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     handleDragStart(e);
-  };
+  }, []);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    handleDragMove(e);
-  };
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    const syntheticEvent = {
+      ...e,
+      touches: undefined,
+      clientX: e.clientX
+    } as React.MouseEvent;
+    handleDragMove(syntheticEvent);
+  }, [isDragging, startX]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     handleDragEnd();
-  };
+  }, [isDragging, dragOffset, currentIndex, maxIndex]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     if (isDragging) {
       handleDragEnd();
     }
-  };
+  }, [isDragging, dragOffset, currentIndex, maxIndex]);
 
   // Touch events
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -789,17 +791,17 @@ const Portfolio = ({ limit }: PortfolioProps) => {
   // Add global mouse events when dragging
   useEffect(() => {
     if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove as any);
+      document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
       document.addEventListener('mouseleave', handleMouseLeave);
       
       return () => {
-        document.removeEventListener('mousemove', handleMouseMove as any);
+        document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
         document.removeEventListener('mouseleave', handleMouseLeave);
       };
     }
-  }, [isDragging, dragOffset, startX, currentIndex, maxIndex]);
+  }, [isDragging, handleMouseMove, handleMouseUp, handleMouseLeave]);
 
   if (loading) {
     return (
