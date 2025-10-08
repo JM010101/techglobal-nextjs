@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { ExternalLink, Github, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 
 interface Project {
@@ -26,6 +26,8 @@ const Portfolio = ({ limit }: PortfolioProps) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [activeCategory, setActiveCategory] = useState('all');
   const [loading, setLoading] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     { id: 'all', label: 'All Projects' },
@@ -693,6 +695,23 @@ const Portfolio = ({ limit }: PortfolioProps) => {
   // Apply limit if specified (for landing page)
   const displayProjects = limit ? filteredProjects.slice(0, limit) : filteredProjects;
 
+  // Slider configuration
+  const itemsPerView = 3; // Show 3 projects at a time
+  const maxIndex = Math.max(0, displayProjects.length - itemsPerView);
+
+  const nextSlide = () => {
+    setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex(prev => Math.max(prev - 1, 0));
+  };
+
+  // Reset slider when category changes
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [activeCategory]);
+
   if (loading) {
     return (
       <section id="portfolio" className="section-padding bg-white">
@@ -756,90 +775,152 @@ const Portfolio = ({ limit }: PortfolioProps) => {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Projects Slider */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="relative"
         >
-          {displayProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="project-card group"
+          {/* Navigation Buttons */}
+          <div className="flex justify-between items-center mb-8">
+            <button
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+              className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
+                currentIndex === 0
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl'
+              }`}
             >
-              <div className="relative overflow-hidden">
-                <Image
-                  src={project.imageUrl}
-                  alt={project.title}
-                  width={400}
-                  height={192}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            
+            <div className="flex space-x-2">
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? 'bg-blue-600 scale-125'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4 flex space-x-2">
-                    {project.projectUrl && (
-                      <a
-                        href={project.projectUrl}
-                        className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-gray-900 hover:bg-blue-600 hover:text-white transition-colors duration-300"
-                        aria-label="View Project"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-gray-900 hover:bg-gray-800 hover:text-white transition-colors duration-300"
-                        aria-label="View Code"
-                      >
-                        <Github className="w-5 h-5" />
-                      </a>
-                    )}
-                    <button className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-gray-900 hover:bg-green-600 hover:text-white transition-colors duration-300">
-                      <Eye className="w-5 h-5" />
-                    </button>
+              ))}
+            </div>
+            
+            <button
+              onClick={nextSlide}
+              disabled={currentIndex === maxIndex}
+              className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
+                currentIndex === maxIndex
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl'
+              }`}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Slider Container */}
+          <div className="overflow-hidden">
+            <div
+              ref={sliderRef}
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+                width: `${(displayProjects.length / itemsPerView) * 100}%`
+              }}
+            >
+              {displayProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="project-card group flex-shrink-0 px-4"
+                  style={{ width: `${100 / displayProjects.length}%` }}
+                >
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group h-full">
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src={project.imageUrl}
+                        alt={project.title}
+                        width={400}
+                        height={240}
+                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                        unoptimized
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-4 left-4 right-4 flex space-x-2">
+                          {project.projectUrl && (
+                            <a
+                              href={project.projectUrl}
+                              className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-gray-900 hover:bg-blue-600 hover:text-white transition-colors duration-300"
+                              aria-label="View Project"
+                            >
+                              <ExternalLink className="w-5 h-5" />
+                            </a>
+                          )}
+                          {project.githubUrl && (
+                            <a
+                              href={project.githubUrl}
+                              className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-gray-900 hover:bg-gray-800 hover:text-white transition-colors duration-300"
+                              aria-label="View Code"
+                            >
+                              <Github className="w-5 h-5" />
+                            </a>
+                          )}
+                          <button className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-gray-900 hover:bg-green-600 hover:text-white transition-colors duration-300">
+                            <Eye className="w-5 h-5" />
+                          </button>
+                        </div>
+                      </div>
+                      {project.featured && (
+                        <div className="absolute top-4 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-semibold">
+                          Featured
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium text-blue-600">{project.category}</span>
+                        <span className="text-sm text-gray-500">{project.client}</span>
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      
+                      <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                            +{project.technologies.length - 3}
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-                {project.featured && (
-                  <div className="absolute top-4 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-semibold">
-                    Featured
-                  </div>
-                )}
-              </div>
-              
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-blue-600">{project.category}</span>
-                  <span className="text-sm text-gray-500">{project.client}</span>
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
