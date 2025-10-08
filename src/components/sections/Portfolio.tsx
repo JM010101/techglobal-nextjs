@@ -28,6 +28,10 @@ const Portfolio = ({ limit }: PortfolioProps) => {
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
 
   const categories = [
     { id: 'all', label: 'All Projects' },
@@ -712,6 +716,91 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     setCurrentIndex(0);
   }, [activeCategory]);
 
+  // Drag functionality
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    setStartX(clientX);
+    setCurrentX(clientX);
+    setDragOffset(0);
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const diff = clientX - startX;
+    setCurrentX(clientX);
+    setDragOffset(diff);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    
+    setIsDragging(false);
+    const threshold = 50; // Minimum drag distance to trigger slide change
+    
+    if (Math.abs(dragOffset) > threshold) {
+      if (dragOffset > 0 && currentIndex > 0) {
+        // Dragged right, go to previous slide
+        setCurrentIndex(prev => Math.max(prev - 1, 0));
+      } else if (dragOffset < 0 && currentIndex < maxIndex) {
+        // Dragged left, go to next slide
+        setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
+      }
+    }
+    
+    setDragOffset(0);
+  };
+
+  // Mouse events
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    handleDragStart(e);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    handleDragMove(e);
+  };
+
+  const handleMouseUp = () => {
+    handleDragEnd();
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      handleDragEnd();
+    }
+  };
+
+  // Touch events
+  const handleTouchStart = (e: React.TouchEvent) => {
+    handleDragStart(e);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    handleDragMove(e);
+  };
+
+  const handleTouchEnd = () => {
+    handleDragEnd();
+  };
+
+  // Add global mouse events when dragging
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove as any);
+      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('mouseleave', handleMouseLeave);
+      
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove as any);
+        document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+  }, [isDragging, dragOffset, startX, currentIndex, maxIndex]);
+
   if (loading) {
     return (
       <section id="portfolio" className="section-padding bg-white">
@@ -828,11 +917,15 @@ const Portfolio = ({ limit }: PortfolioProps) => {
           <div className="overflow-hidden">
             <div
               ref={sliderRef}
-              className="flex transition-transform duration-500 ease-in-out"
+              className={`flex ${isDragging ? 'transition-none' : 'transition-transform duration-500 ease-in-out'} cursor-grab ${isDragging ? 'cursor-grabbing' : ''}`}
               style={{
-                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+                transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% + ${dragOffset}px))`,
                 width: `${(displayProjects.length / itemsPerView) * 100}%`
               }}
+              onMouseDown={handleMouseDown}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               {displayProjects.map((project, index) => (
                 <motion.div
@@ -844,15 +937,16 @@ const Portfolio = ({ limit }: PortfolioProps) => {
                   className="project-card group flex-shrink-0 px-4"
                   style={{ width: `${100 / displayProjects.length}%` }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group h-full">
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group h-full select-none">
                     <div className="relative overflow-hidden">
                       <Image
                         src={project.imageUrl}
                         alt={project.title}
                         width={400}
                         height={240}
-                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none"
                         unoptimized
+                        draggable={false}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-4 left-4 right-4 flex space-x-2">
