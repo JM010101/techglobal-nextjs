@@ -316,18 +316,50 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     if (card.isDead) return '';
 
     if (!card.isOpen) {
-      // Closed card - show team color
+      // Closed card - show mystery icons
       return (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-2xl">{card.team === 'blue' ? '🔵' : '🔴'}</div>
+          <div className="text-2xl">{card.team === 'blue' ? '🛡️' : '⚡'}</div>
+          <div className="text-xs opacity-60">?</div>
         </div>
       );
     } else {
-      // Open card - show weapon and health
+      // Open card - show different warrior types based on stats
+      const getWarriorIcon = (card: Card) => {
+        if (card.attackRate >= 3) {
+          return card.team === 'blue' ? '⚔️' : '🗡️'; // High attack - swords
+        } else if (card.health >= 6) {
+          return card.team === 'blue' ? '🛡️' : '🛡️'; // High health - shields
+        } else if (card.attackRate === 1) {
+          return card.team === 'blue' ? '🏹' : '🏹'; // Low attack - archers
+        } else {
+          return card.team === 'blue' ? '⚔️' : '🗡️'; // Default - swords
+        }
+      };
+
+      const getHealthColor = (health: number) => {
+        if (health >= 6) return 'text-green-600';
+        if (health >= 4) return 'text-yellow-600';
+        return 'text-red-600';
+      };
+
+      const getAttackColor = (attack: number) => {
+        if (attack >= 3) return 'text-red-600';
+        if (attack >= 2) return 'text-orange-600';
+        return 'text-blue-600';
+      };
+
       return (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-2xl">{card.team === 'blue' ? '⚔️' : '🗡️'}</div>
-          <div className="text-xs font-bold">{card.health}</div>
+          <div className="text-2xl">{getWarriorIcon(card)}</div>
+          <div className="flex flex-col items-center text-xs">
+            <div className={`font-bold ${getHealthColor(card.health)}`}>
+              ❤️{card.health}
+            </div>
+            <div className={`font-bold ${getAttackColor(card.attackRate)}`}>
+              ⚡{card.attackRate}
+            </div>
+          </div>
         </div>
       );
     }
