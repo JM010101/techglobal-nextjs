@@ -213,6 +213,8 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     setCards(prev => prev.map(c => 
       c.id === card.id ? { ...c, isOpen: true } : c
     ));
+    // Switch to the opposite team after opening a card
+    setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
   };
 
   const moveCard = (card: Card, newRow: number, newCol: number) => {
