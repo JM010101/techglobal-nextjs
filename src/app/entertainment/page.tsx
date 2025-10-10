@@ -1,13 +1,11 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { 
   Gamepad2, 
-  Star, 
   Timer, 
-  Brain, 
   Play, 
   Trophy, 
   Users, 
@@ -407,7 +405,7 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
 };
 
 // Placeholder Game Component
-const PlaceholderGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
+const PlaceholderGame = ({ onClose }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
       <motion.div
@@ -426,7 +424,7 @@ const PlaceholderGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
           <Gamepad2 className="w-24 h-24 text-gray-400 mx-auto mb-6" />
           <h3 className="text-2xl font-bold mb-4">This Game is Under Development</h3>
           <p className="text-gray-600 mb-8">
-            We're working hard to bring you an amazing gaming experience. 
+            We&apos;re working hard to bring you an amazing gaming experience. 
             This game will be available soon with exciting features and gameplay!
           </p>
           <div className="bg-blue-50 rounded-lg p-6 mb-6">

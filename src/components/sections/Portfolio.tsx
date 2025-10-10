@@ -763,17 +763,17 @@ const Portfolio = ({ limit }: PortfolioProps) => {
       clientX: e.clientX
     } as unknown as React.MouseEvent;
     handleDragMove(syntheticEvent);
-  }, [isDragging, startX]);
+  }, [isDragging, startX, handleDragMove]);
 
   const handleMouseUp = useCallback(() => {
     handleDragEnd();
-  }, [isDragging, dragOffset, currentIndex, maxIndex]);
+  }, [isDragging, dragOffset, currentIndex, maxIndex, handleDragEnd]);
 
   const handleMouseLeave = useCallback(() => {
     if (isDragging) {
       handleDragEnd();
     }
-  }, [isDragging, dragOffset, currentIndex, maxIndex]);
+  }, [isDragging, dragOffset, currentIndex, maxIndex, handleDragEnd]);
 
   // Touch events
   const handleTouchStart = (e: React.TouchEvent) => {
