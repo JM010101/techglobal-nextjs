@@ -284,11 +284,9 @@ const GridTacticsGame = () => {
     if (card.isDead) return '';
 
     if (!card.isOpen) {
-      // Closed card - show mystery icon (same for all teams)
+      // Closed card - show light gradient (same for all teams)
       return (
-        <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-4xl">❓</div>
-          <div className="text-lg opacity-60">?</div>
+        <div className="flex flex-col items-center justify-center h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg">
         </div>
       );
     } else {
