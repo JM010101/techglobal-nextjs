@@ -13,7 +13,7 @@ import {
 
 interface Card {
   id: string;
-  team: 'blue' | 'red';
+  team: 'male' | 'female';
   health: number;
   maxHealth: number;
   attackRate: number;
@@ -21,14 +21,15 @@ interface Card {
   isDead: boolean;
   row: number;
   col: number;
+  imageIndex: number;
 }
 
 const GridTacticsGame = () => {
   const [gameStarted, setGameStarted] = useState(false);
-  const [currentTurn, setCurrentTurn] = useState<'blue' | 'red'>('blue');
+  const [currentTurn, setCurrentTurn] = useState<'male' | 'female'>('male');
   const [selectedCard, setSelectedCard] = useState<{row: number, col: number} | null>(null);
   const [gameOver, setGameOver] = useState(false);
-  const [winner, setWinner] = useState<'blue' | 'red' | null>(null);
+  const [winner, setWinner] = useState<'male' | 'female' | null>(null);
   const [score, setScore] = useState(0);
 
   const [cards, setCards] = useState<Card[]>([]);
@@ -97,17 +98,18 @@ const GridTacticsGame = () => {
     for (let i = 0; i < 64; i++) {
       const row = Math.floor(i / 8);
       const col = i % 8;
-      const isBlue = i < 32; // First 32 are blue, last 32 are red
+      const isMale = i < 32; // First 32 are male, last 32 are female
       const card: Card = {
-        id: `${isBlue ? 'blue' : 'red'}-${i % 32}`,
-        team: isBlue ? 'blue' : 'red',
+        id: `${isMale ? 'male' : 'female'}-${i % 32}`,
+        team: isMale ? 'male' : 'female',
         health: Math.floor(Math.random() * 5) + 3, // 3-7 health
         maxHealth: Math.floor(Math.random() * 5) + 3,
         attackRate: Math.floor(Math.random() * 3) + 1, // 1-3 attack
         isOpen: false,
         isDead: false,
         row,
-        col
+        col,
+        imageIndex: (i % 32) + 1 // 1-32 for male, 1-24 for female
       };
       newCards.push(card);
     }
@@ -130,7 +132,7 @@ const GridTacticsGame = () => {
 
   const startGame = () => {
     setGameStarted(true);
-    setCurrentTurn('blue');
+    setCurrentTurn('male');
     setGameOver(false);
     setWinner(null);
     setScore(0);
@@ -140,7 +142,7 @@ const GridTacticsGame = () => {
 
   const resetGame = () => {
     setGameStarted(false);
-    setCurrentTurn('blue');
+    setCurrentTurn('male');
     setSelectedCard(null);
     setGameOver(false);
     setWinner(null);
@@ -193,7 +195,7 @@ const GridTacticsGame = () => {
           openBorderCards(targetCard);
           setSelectedCard(null);
           // Switch to the opposite team after opening border cards
-          const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+          const newTurn = currentTurn === 'male' ? 'female' : 'male';
           setCurrentTurn(newTurn);
         }
       }
@@ -207,7 +209,7 @@ const GridTacticsGame = () => {
           // Open all border cards around the clicked card
           openBorderCards(card);
           // Switch to the opposite team after opening border cards
-          const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+          const newTurn = currentTurn === 'male' ? 'female' : 'male';
           setCurrentTurn(newTurn);
         } else {
           // Select open card for movement/attack (only current team's cards)
@@ -231,7 +233,7 @@ const GridTacticsGame = () => {
     ));
     setGrid(newGrid);
     setSelectedCard(null);
-    const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+    const newTurn = currentTurn === 'male' ? 'female' : 'male';
     setCurrentTurn(newTurn);
   };
 
@@ -255,21 +257,21 @@ const GridTacticsGame = () => {
     }
 
     setSelectedCard(null);
-    const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+    const newTurn = currentTurn === 'male' ? 'female' : 'male';
     setCurrentTurn(newTurn);
   };
 
   const checkGameOver = () => {
-    const blueAlive = cards.filter(c => c.team === 'blue' && !c.isDead).length;
-    const redAlive = cards.filter(c => c.team === 'red' && !c.isDead).length;
+    const maleAlive = cards.filter(c => c.team === 'male' && !c.isDead).length;
+    const femaleAlive = cards.filter(c => c.team === 'female' && !c.isDead).length;
 
-    if (blueAlive === 0) {
+    if (maleAlive === 0) {
       setGameOver(true);
-      setWinner('red');
+      setWinner('female');
       setScore(score + 200);
-    } else if (redAlive === 0) {
+    } else if (femaleAlive === 0) {
       setGameOver(true);
-      setWinner('blue');
+      setWinner('male');
       setScore(score + 200);
     }
   };
@@ -295,40 +297,38 @@ const GridTacticsGame = () => {
         </div>
       );
     } else {
-      // Open card - show different warrior types based on stats
-      const getWarriorIcon = (card: Card) => {
-        if (card.attackRate >= 3) {
-          return card.team === 'blue' ? '⚔️' : '🗡️'; // High attack - swords
-        } else if (card.health >= 6) {
-          return card.team === 'blue' ? '🛡️' : '🛡️'; // High health - shields
-        } else if (card.attackRate === 1) {
-          return card.team === 'blue' ? '🏹' : '🏹'; // Low attack - archers
-        } else {
-          return card.team === 'blue' ? '⚔️' : '🗡️'; // Default - swords
-        }
-      };
-
+      // Open card - show character image with stats
       const getHealthColor = (health: number) => {
-        if (health >= 6) return 'text-green-600';
-        if (health >= 4) return 'text-yellow-600';
-        return 'text-red-600';
+        if (health >= 6) return 'text-green-400';
+        if (health >= 4) return 'text-yellow-400';
+        return 'text-red-400';
       };
 
       const getAttackColor = (attack: number) => {
-        if (attack >= 3) return 'text-red-600';
-        if (attack >= 2) return 'text-orange-600';
-        return 'text-blue-600';
+        if (attack >= 3) return 'text-red-400';
+        if (attack >= 2) return 'text-orange-400';
+        return 'text-blue-400';
+      };
+
+      const getTeamColor = (team: string) => {
+        return team === 'male' ? 'bg-blue-600' : 'bg-pink-600';
       };
 
       return (
-        <div className="w-full h-full flex flex-col items-center justify-center">
-          <div className="text-2xl mb-1">{getWarriorIcon(card)}</div>
-          <div className="flex flex-col items-center text-sm">
-            <div className={`font-bold ${getHealthColor(card.health)}`}>
-              ❤️{card.health}
-            </div>
-            <div className={`font-bold ${getAttackColor(card.attackRate)}`}>
-              ⚡{card.attackRate}
+        <div className={`w-full h-full flex flex-col items-center justify-center ${getTeamColor(card.team)} rounded-lg relative overflow-hidden`}>
+          <img 
+            src={`/images/game/grid_tactical/${card.team}/${String(card.imageIndex).padStart(5, '0')}.jpg`}
+            alt={`${card.team} character`}
+            className="w-full h-full object-cover opacity-90"
+          />
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-1 rounded-b-lg">
+            <div className="flex justify-center items-center gap-2 text-xs">
+              <div className={`font-bold ${getHealthColor(card.health)}`}>
+                ❤️{card.health}
+              </div>
+              <div className={`font-bold ${getAttackColor(card.attackRate)}`}>
+                ⚡{card.attackRate}
+              </div>
             </div>
           </div>
         </div>
@@ -381,7 +381,7 @@ const GridTacticsGame = () => {
             <div className="text-6xl mb-6">⚔️</div>
             <h3 className="text-2xl font-bold mb-4 text-white">Welcome to Grid Tactics</h3>
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Two-player tactical combat! Blue team vs Red team. Click closed cards to reveal all adjacent cards, 
+              Two-player tactical combat! Male team vs Female team. Click closed cards to reveal all adjacent cards, 
               move your warriors, and attack the enemy. Eliminate all opponent cards to win!
             </p>
             <div className="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
@@ -391,7 +391,7 @@ const GridTacticsGame = () => {
                 <li>• Click open cards to select them for movement/attack</li>
                 <li>• Move to adjacent empty cells or attack enemy cards</li>
                 <li>• Eliminate all opponent cards to win!</li>
-                <li>• Blue team starts first, then alternate turns</li>
+                <li>• Male team starts first, then alternate turns</li>
               </ul>
             </div>
             <button onClick={startGame} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
@@ -426,20 +426,20 @@ const GridTacticsGame = () => {
               <div className="flex gap-2">
                 <div className="bg-blue-900 rounded-lg p-1 border border-blue-700">
                   <div className="flex items-center gap-1">
-                    <span className="text-sm">🔵</span>
-                    <span className="font-bold text-xs text-blue-200">Blue: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32</span>
+                    <span className="text-sm">👨</span>
+                    <span className="font-bold text-xs text-blue-200">Male: {cards.filter(c => c.team === 'male' && !c.isDead).length}/32</span>
                   </div>
                 </div>
-                <div className="bg-red-900 rounded-lg p-1 border border-red-700">
+                <div className="bg-pink-900 rounded-lg p-1 border border-pink-700">
                   <div className="flex items-center gap-1">
-                    <span className="text-sm">🔴</span>
-                    <span className="font-bold text-xs text-red-200">Red: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32</span>
+                    <span className="text-sm">👩</span>
+                    <span className="font-bold text-xs text-pink-200">Female: {cards.filter(c => c.team === 'female' && !c.isDead).length}/32</span>
                   </div>
                 </div>
               </div>
               <div className="text-right">
                 <div className="text-xs font-bold text-white">
-                  {currentTurn === 'blue' ? 'Blue Turn' : 'Red Turn'} | Score: {score}
+                  {currentTurn === 'male' ? 'Male Turn' : 'Female Turn'} | Score: {score}
                 </div>
               </div>
             </div>
@@ -449,7 +449,7 @@ const GridTacticsGame = () => {
               <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
                 <h4 className="font-semibold mb-2 text-white">Selected Card:</h4>
                 <div className="flex items-center gap-4">
-                  <span className="text-2xl">{getSelectedCard()?.team === 'blue' ? '⚔️' : '🗡️'}</span>
+                  <span className="text-2xl">{getSelectedCard()?.team === 'male' ? '👨' : '👩'}</span>
                   <div>
                     <div className="font-medium">{getSelectedCard()?.team} Team</div>
                     <div className="text-sm text-gray-300">
