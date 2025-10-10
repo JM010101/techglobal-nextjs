@@ -146,13 +146,16 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     return adjacentCards;
   };
 
-  // Open all border cards around a center card
+  // Open all border cards around a center card (including the center card itself)
   const openBorderCards = (centerCard: Card) => {
     const adjacentCards = getAdjacentCards(centerCard.row, centerCard.col);
     
-    // Open all adjacent closed cards
+    // Add the center card to the list of cards to open
+    const cardsToOpen = [...adjacentCards, centerCard];
+    
+    // Open all cards (adjacent + center)
     setCards(prev => prev.map(card => 
-      adjacentCards.some(adjCard => adjCard.id === card.id) 
+      cardsToOpen.some(cardToOpen => cardToOpen.id === card.id) 
         ? { ...card, isOpen: true } 
         : card
     ));
