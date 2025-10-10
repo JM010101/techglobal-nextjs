@@ -476,10 +476,10 @@ const GridTacticsGame = () => {
                       onClick={() => handleCellClick(row, col)}
                       className={`
                         w-full h-full border-2 rounded-lg flex items-center justify-center text-2xl font-bold transition-all duration-200
-                        ${grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'blue'
+                        ${grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'male'
                           ? 'bg-blue-500 text-white border-blue-600' 
-                          : grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'red'
-                          ? 'bg-red-500 text-white border-red-600'
+                          : grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'female'
+                          ? 'bg-pink-500 text-white border-pink-600'
                           : selectedCard && selectedCard.row === row && selectedCard.col === col
                           ? 'bg-yellow-300 border-yellow-500'
                           : canMove(row, col)
