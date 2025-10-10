@@ -286,7 +286,7 @@ const GridTacticsGame = () => {
     if (!card.isOpen) {
       // Closed card - show light gradient (same for all teams)
       return (
-        <div className="flex flex-col items-center justify-center h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg">
+        <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
         </div>
       );
     } else {
@@ -316,8 +316,8 @@ const GridTacticsGame = () => {
       };
 
       return (
-        <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-4xl">{getWarriorIcon(card)}</div>
+        <div className="w-full h-full flex flex-col items-center justify-center">
+          <div className="text-4xl mb-1">{getWarriorIcon(card)}</div>
           <div className="flex flex-col items-center text-base">
             <div className={`font-bold ${getHealthColor(card.health)}`}>
               ❤️{card.health}
