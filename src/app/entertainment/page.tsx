@@ -85,177 +85,216 @@ const games: Game[] = [
 // Grid Tactics Game Component
 const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
   const [gameStarted, setGameStarted] = useState(false);
-  const [currentTurn, setCurrentTurn] = useState<'player' | 'enemy'>('player');
-  const [selectedCell, setSelectedCell] = useState<{row: number, col: number} | null>(null);
+  const [currentTurn, setCurrentTurn] = useState<'blue' | 'red'>('blue');
+  const [selectedCard, setSelectedCard] = useState<{row: number, col: number} | null>(null);
   const [gameOver, setGameOver] = useState(false);
-  const [winner, setWinner] = useState<'player' | 'enemy' | null>(null);
+  const [winner, setWinner] = useState<'blue' | 'red' | null>(null);
   const [score, setScore] = useState(0);
 
-  const [player, setPlayer] = useState({
-    row: 1,
-    col: 1,
-    health: 3,
-    maxHealth: 3,
-    weapon: '⚔️',
-    name: 'Warrior'
-  });
+  interface Card {
+    id: string;
+    team: 'blue' | 'red';
+    health: number;
+    maxHealth: number;
+    attackRate: number;
+    isOpen: boolean;
+    isDead: boolean;
+    row: number;
+    col: number;
+  }
 
-  const [enemy, setEnemy] = useState({
-    row: 6,
-    col: 6,
-    health: 7,
-    maxHealth: 7,
-    weapon: '🗡️',
-    name: 'Goblin'
-  });
-
+  const [cards, setCards] = useState<Card[]>([]);
   const [grid, setGrid] = useState<Array<Array<string>>>(() => {
-    const newGrid = Array(8).fill(null).map(() => Array(8).fill(''));
-    newGrid[1][1] = 'player';
-    newGrid[6][6] = 'enemy';
-    return newGrid;
+    return Array(8).fill(null).map(() => Array(8).fill(''));
   });
+
+  const initializeCards = () => {
+    const newCards: Card[] = [];
+    const newGrid = Array(8).fill(null).map(() => Array(8).fill(''));
+    
+    // Create 32 blue cards (top 4 rows)
+    for (let i = 0; i < 32; i++) {
+      const row = Math.floor(i / 8);
+      const col = i % 8;
+      const card: Card = {
+        id: `blue-${i}`,
+        team: 'blue',
+        health: Math.floor(Math.random() * 5) + 3, // 3-7 health
+        maxHealth: Math.floor(Math.random() * 5) + 3,
+        attackRate: Math.floor(Math.random() * 3) + 1, // 1-3 attack
+        isOpen: false,
+        isDead: false,
+        row,
+        col
+      };
+      newCards.push(card);
+      newGrid[row][col] = `blue-${i}`;
+    }
+    
+    // Create 32 red cards (bottom 4 rows)
+    for (let i = 0; i < 32; i++) {
+      const row = Math.floor(i / 8) + 4; // Start from row 4
+      const col = i % 8;
+      const card: Card = {
+        id: `red-${i}`,
+        team: 'red',
+        health: Math.floor(Math.random() * 5) + 3, // 3-7 health
+        maxHealth: Math.floor(Math.random() * 5) + 3,
+        attackRate: Math.floor(Math.random() * 3) + 1, // 1-3 attack
+        isOpen: false,
+        isDead: false,
+        row,
+        col
+      };
+      newCards.push(card);
+      newGrid[row][col] = `red-${i}`;
+    }
+    
+    setCards(newCards);
+    setGrid(newGrid);
+  };
 
   const startGame = () => {
     setGameStarted(true);
-    setCurrentTurn('player');
+    setCurrentTurn('blue');
     setGameOver(false);
     setWinner(null);
     setScore(0);
+    setSelectedCard(null);
+    initializeCards();
   };
 
   const resetGame = () => {
     setGameStarted(false);
-    setCurrentTurn('player');
-    setSelectedCell(null);
+    setCurrentTurn('blue');
+    setSelectedCard(null);
     setGameOver(false);
     setWinner(null);
     setScore(0);
-    
-    setPlayer({
-      row: 1,
-      col: 1,
-      health: 3,
-      maxHealth: 3,
-      weapon: '⚔️',
-      name: 'Warrior'
-    });
-    
-    setEnemy({
-      row: 6,
-      col: 6,
-      health: 7,
-      maxHealth: 7,
-      weapon: '🗡️',
-      name: 'Goblin'
-    });
-
-    const newGrid = Array(8).fill(null).map(() => Array(8).fill(''));
-    newGrid[1][1] = 'player';
-    newGrid[6][6] = 'enemy';
-    setGrid(newGrid);
+    setCards([]);
+    setGrid(Array(8).fill(null).map(() => Array(8).fill('')));
   };
 
   const handleCellClick = (row: number, col: number) => {
-    if (gameOver || currentTurn !== 'player') return;
-
-    if (selectedCell) {
-      // Try to move or attack
-      if (grid[row][col] === '') {
-        // Move to empty cell
-        const newGrid = [...grid];
-        newGrid[selectedCell.row][selectedCell.col] = '';
-        newGrid[row][col] = 'player';
-        setGrid(newGrid);
-        setPlayer(prev => ({ ...prev, row, col }));
-        setSelectedCell(null);
-        setCurrentTurn('enemy');
-        setTimeout(() => enemyTurn(), 1000);
-      } else if (grid[row][col] === 'enemy') {
-        // Attack enemy
-        attackEnemy();
-      }
-    } else {
-      // Select player cell
-      if (grid[row][col] === 'player') {
-        setSelectedCell({ row, col });
-      }
-    }
-  };
-
-  const attackEnemy = () => {
-    const damage = 1;
-    const newEnemyHealth = Math.max(0, enemy.health - damage);
-    setEnemy(prev => ({ ...prev, health: newEnemyHealth }));
-    
-    if (newEnemyHealth <= 0) {
-      setGameOver(true);
-      setWinner('player');
-      const newScore = score + 100;
-      setScore(newScore);
-      onScoreUpdate(newScore);
-    } else {
-      setCurrentTurn('enemy');
-      setTimeout(() => enemyTurn(), 1000);
-    }
-    setSelectedCell(null);
-  };
-
-  const enemyTurn = () => {
     if (gameOver) return;
 
-    // Simple AI: move towards player or attack if adjacent
-    const distance = Math.abs(player.row - enemy.row) + Math.abs(player.col - enemy.col);
-    
-    if (distance === 1) {
-      // Attack player
-      const damage = 1;
-      const newPlayerHealth = Math.max(0, player.health - damage);
-      setPlayer(prev => ({ ...prev, health: newPlayerHealth }));
-      
-      if (newPlayerHealth <= 0) {
-        setGameOver(true);
-        setWinner('enemy');
+    const cardId = grid[row][col];
+    if (!cardId) return;
+
+    const card = cards.find(c => c.id === cardId);
+    if (!card) return;
+
+    // Check if it's the current team's turn
+    if (card.team !== currentTurn) return;
+
+    if (selectedCard) {
+      // Try to move or attack
+      const selectedCardData = cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
+      if (!selectedCardData) return;
+
+      if (grid[row][col] === '') {
+        // Move to empty cell
+        moveCard(selectedCardData, row, col);
+      } else if (card.team !== currentTurn) {
+        // Attack enemy card
+        attackCard(selectedCardData, card);
       }
     } else {
-      // Move towards player
-      const newGrid = [...grid];
-      newGrid[enemy.row][enemy.col] = '';
-      
-      let newRow = enemy.row;
-      let newCol = enemy.col;
-      
-      if (enemy.row < player.row) newRow++;
-      else if (enemy.row > player.row) newRow--;
-      else if (enemy.col < player.col) newCol++;
-      else if (enemy.col > player.col) newCol--;
-      
-      newGrid[newRow][newCol] = 'enemy';
-      setGrid(newGrid);
-      setEnemy(prev => ({ ...prev, row: newRow, col: newCol }));
+      // Open card or select for movement
+      if (!card.isOpen) {
+        openCard(card);
+      } else {
+        setSelectedCard({ row, col });
+      }
     }
+  };
+
+  const openCard = (card: Card) => {
+    setCards(prev => prev.map(c => 
+      c.id === card.id ? { ...c, isOpen: true } : c
+    ));
+  };
+
+  const moveCard = (card: Card, newRow: number, newCol: number) => {
+    if (!card.isOpen) return;
+
+    const newGrid = [...grid];
+    newGrid[card.row][card.col] = '';
+    newGrid[newRow][newCol] = card.id;
+
+    setCards(prev => prev.map(c => 
+      c.id === card.id ? { ...c, row: newRow, col: newCol } : c
+    ));
+    setGrid(newGrid);
+    setSelectedCard(null);
+    setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
+  };
+
+  const attackCard = (attacker: Card, defender: Card) => {
+    if (!attacker.isOpen || !defender.isOpen) return;
+
+    const newHealth = Math.max(0, defender.health - attacker.attackRate);
     
-    setCurrentTurn('player');
+    setCards(prev => prev.map(c => 
+      c.id === defender.id ? { ...c, health: newHealth, isDead: newHealth === 0 } : c
+    ));
+
+    if (newHealth === 0) {
+      // Remove dead card from grid
+      const newGrid = [...grid];
+      newGrid[defender.row][defender.col] = '';
+      setGrid(newGrid);
+      
+      // Check for game over
+      checkGameOver();
+    }
+
+    setSelectedCard(null);
+    setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
+  };
+
+  const checkGameOver = () => {
+    const blueAlive = cards.filter(c => c.team === 'blue' && !c.isDead).length;
+    const redAlive = cards.filter(c => c.team === 'red' && !c.isDead).length;
+
+    if (blueAlive === 0) {
+      setGameOver(true);
+      setWinner('red');
+      setScore(score + 200);
+      onScoreUpdate(score + 200);
+    } else if (redAlive === 0) {
+      setGameOver(true);
+      setWinner('blue');
+      setScore(score + 200);
+      onScoreUpdate(score + 200);
+    }
   };
 
   const getCellContent = (row: number, col: number) => {
-    if (grid[row][col] === 'player') {
+    const cardId = grid[row][col];
+    if (!cardId) return '';
+
+    const card = cards.find(c => c.id === cardId);
+    if (!card) return '';
+
+    if (card.isDead) return '';
+
+    if (!card.isOpen) {
+      // Closed card - show team color
       return (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-2xl">{player.weapon}</div>
-          <div className="text-xs font-bold text-blue-600">{player.health}</div>
+          <div className="text-2xl">{card.team === 'blue' ? '🔵' : '🔴'}</div>
+        </div>
+      );
+    } else {
+      // Open card - show weapon and health
+      return (
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="text-2xl">{card.team === 'blue' ? '⚔️' : '🗡️'}</div>
+          <div className="text-xs font-bold">{card.health}</div>
         </div>
       );
     }
-    if (grid[row][col] === 'enemy') {
-      return (
-        <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-2xl">{enemy.weapon}</div>
-          <div className="text-xs font-bold text-red-600">{enemy.health}</div>
-        </div>
-      );
-    }
-    return '';
   };
 
   const isAdjacent = (row1: number, col1: number, row2: number, col2: number) => {
@@ -263,13 +302,25 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
   };
 
   const canAttack = (row: number, col: number) => {
-    if (!selectedCell) return false;
-    return isAdjacent(selectedCell.row, selectedCell.col, row, col) && grid[row][col] === 'enemy';
+    if (!selectedCard) return false;
+    const selectedCardData = cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
+    if (!selectedCardData) return false;
+    
+    const targetCard = cards.find(c => c.id === grid[row][col]);
+    if (!targetCard) return false;
+    
+    return isAdjacent(selectedCard.row, selectedCard.col, row, col) && 
+           targetCard.team !== selectedCardData.team;
   };
 
   const canMove = (row: number, col: number) => {
-    if (!selectedCell) return false;
-    return isAdjacent(selectedCell.row, selectedCell.col, row, col) && grid[row][col] === '';
+    if (!selectedCard) return false;
+    return isAdjacent(selectedCard.row, selectedCard.col, row, col) && grid[row][col] === '';
+  };
+
+  const getSelectedCard = () => {
+    if (!selectedCard) return null;
+    return cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
   };
 
   return (
@@ -297,10 +348,10 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
             <div className="bg-blue-50 rounded-lg p-6 mb-8">
               <h4 className="font-semibold text-blue-800 mb-4">How to Play:</h4>
               <ul className="text-sm text-blue-700 space-y-2 text-left">
-                <li>• Click on your warrior to select them</li>
-                <li>• Click adjacent empty cells to move</li>
-                <li>• Click adjacent enemies to attack</li>
-                <li>• Reduce enemy health to 0 to win!</li>
+                <li>• Click closed cards to open them and reveal stats</li>
+                <li>• Click open cards to select them for movement/attack</li>
+                <li>• Move to adjacent empty cells or attack enemy cards</li>
+                <li>• Eliminate all enemy cards to win!</li>
               </ul>
             </div>
             <button onClick={startGame} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
@@ -309,14 +360,14 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
           </div>
         ) : gameOver ? (
           <div className="text-center py-12">
-            <div className="text-6xl mb-6">{winner === 'player' ? '🏆' : '💀'}</div>
+            <div className="text-6xl mb-6">{winner === 'blue' ? '🏆' : '💀'}</div>
             <h3 className="text-2xl font-bold mb-4">
-              {winner === 'player' ? 'Victory!' : 'Defeat!'}
+              {winner === 'blue' ? 'Blue Team Victory!' : 'Red Team Victory!'}
             </h3>
             <p className="text-gray-600 mb-6">
-              {winner === 'player' 
-                ? `You defeated the enemy! Final Score: ${score}` 
-                : 'The enemy was too strong this time...'
+              {winner === 'blue' 
+                ? `Blue team eliminated all red cards! Final Score: ${score}` 
+                : 'Red team eliminated all blue cards!'
               }
             </p>
             <div className="flex gap-4 justify-center">
@@ -335,26 +386,46 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
               <div className="flex gap-6">
                 <div className="bg-blue-50 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">{player.weapon}</span>
-                    <span className="font-bold">{player.name}</span>
+                    <span className="text-2xl">🔵</span>
+                    <span className="font-bold">Blue Team</span>
                   </div>
-                  <div className="text-sm text-blue-700">Health: {player.health}/{player.maxHealth}</div>
+                  <div className="text-sm text-blue-700">
+                    Alive: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32
+                  </div>
                 </div>
                 <div className="bg-red-50 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">{enemy.weapon}</span>
-                    <span className="font-bold">{enemy.name}</span>
+                    <span className="text-2xl">🔴</span>
+                    <span className="font-bold">Red Team</span>
                   </div>
-                  <div className="text-sm text-red-700">Health: {enemy.health}/{enemy.maxHealth}</div>
+                  <div className="text-sm text-red-700">
+                    Alive: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32
+                  </div>
                 </div>
               </div>
               <div className="text-right">
                 <div className="text-lg font-bold text-gray-800">
-                  {currentTurn === 'player' ? 'Your Turn' : 'Enemy Turn'}
+                  {currentTurn === 'blue' ? 'Blue Team Turn' : 'Red Team Turn'}
                 </div>
                 <div className="text-sm text-gray-600">Score: {score}</div>
               </div>
             </div>
+
+            {/* Selected Card Info */}
+            {getSelectedCard() && (
+              <div className="bg-gray-50 rounded-lg p-4">
+                <h4 className="font-semibold mb-2">Selected Card:</h4>
+                <div className="flex items-center gap-4">
+                  <span className="text-2xl">{getSelectedCard()?.team === 'blue' ? '⚔️' : '🗡️'}</span>
+                  <div>
+                    <div className="font-medium">{getSelectedCard()?.team} Team</div>
+                    <div className="text-sm text-gray-600">
+                      Health: {getSelectedCard()?.health} | Attack: {getSelectedCard()?.attackRate}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Game Grid */}
             <div className="flex justify-center">
@@ -366,11 +437,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
                       onClick={() => handleCellClick(row, col)}
                       className={`
                         w-12 h-12 border-2 rounded-lg flex items-center justify-center text-sm font-bold transition-all duration-200
-                        ${grid[row][col] === 'player' 
+                        ${grid[row][col] && cards.find(c => c.id === grid[row][col])?.team === 'blue'
                           ? 'bg-blue-500 text-white border-blue-600' 
-                          : grid[row][col] === 'enemy'
+                          : grid[row][col] && cards.find(c => c.id === grid[row][col])?.team === 'red'
                           ? 'bg-red-500 text-white border-red-600'
-                          : selectedCell && selectedCell.row === row && selectedCell.col === col
+                          : selectedCard && selectedCard.row === row && selectedCard.col === col
                           ? 'bg-yellow-300 border-yellow-500'
                           : canMove(row, col)
                           ? 'bg-green-100 border-green-300 hover:bg-green-200'
@@ -378,9 +449,9 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
                           ? 'bg-orange-100 border-orange-300 hover:bg-orange-200'
                           : 'bg-white border-gray-300 hover:bg-gray-50'
                         }
-                        ${currentTurn !== 'player' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                        ${!grid[row][col] ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                       `}
-                      disabled={currentTurn !== 'player'}
+                      disabled={!grid[row][col]}
                     >
                       {getCellContent(row, col)}
                     </button>
@@ -391,10 +462,10 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
 
             {/* Instructions */}
             <div className="text-center text-sm text-gray-600">
-              {selectedCell ? (
+              {selectedCard ? (
                 <p>Click an adjacent cell to move or attack!</p>
               ) : (
-                <p>Click on your warrior to select them</p>
+                <p>Click on a {currentTurn} team card to open or select it</p>
               )}
             </div>
           </div>
