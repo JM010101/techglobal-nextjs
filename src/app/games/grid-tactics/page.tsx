@@ -284,13 +284,13 @@ const GridTacticsGame = () => {
     if (card.isDead) return '';
 
     if (!card.isOpen) {
-      // Closed card - show shield image (same for all teams)
+      // Closed card - show shield image with matching background
       return (
-        <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+        <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center relative overflow-hidden">
           <img 
             src="/images/game/grid_tactical/shield.jpg" 
             alt="Shield" 
-            className="w-3/4 h-3/4 object-contain opacity-80"
+            className="w-full h-full object-cover opacity-90"
           />
         </div>
       );
@@ -322,8 +322,8 @@ const GridTacticsGame = () => {
 
       return (
         <div className="w-full h-full flex flex-col items-center justify-center">
-          <div className="text-4xl mb-1">{getWarriorIcon(card)}</div>
-          <div className="flex flex-col items-center text-base">
+          <div className="text-2xl mb-1">{getWarriorIcon(card)}</div>
+          <div className="flex flex-col items-center text-sm">
             <div className={`font-bold ${getHealthColor(card.health)}`}>
               ❤️{card.health}
             </div>
@@ -465,8 +465,8 @@ const GridTacticsGame = () => {
               <div 
                 className="grid grid-cols-8 gap-1 bg-gray-200 p-1 rounded-lg shadow-lg"
                 style={{
-                  width: '1800px',
-                  height: '800px'
+                  width: '1600px',
+                  height: '600px'
                 }}
               >
                 {Array(8).fill(null).map((_, row) => 
