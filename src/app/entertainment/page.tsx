@@ -181,18 +181,34 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     const cardId = grid[row][col];
     
     if (selectedCard) {
-      // Try to move or attack
-      const selectedCardData = cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
-      if (!selectedCardData) return;
+      // If clicking the same selected card, deselect it
+      if (selectedCard.row === row && selectedCard.col === col) {
+        setSelectedCard(null);
+        return;
+      }
 
+      // If clicking empty space, deselect current selection
       if (grid[row][col] === '') {
-        // Move to empty cell (including dead card positions)
-        moveCard(selectedCardData, row, col);
-      } else {
-        const targetCard = cards.find(c => c.id === grid[row][col]);
-        if (targetCard && targetCard.team !== selectedCardData.team && targetCard.isOpen) {
-          // Attack enemy card (only if enemy is open)
+        setSelectedCard(null);
+        return;
+      }
+
+      // If clicking a different card, handle it
+      if (cardId) {
+        const targetCard = cards.find(c => c.id === cardId);
+        if (!targetCard) return;
+
+        // If it's an enemy card and open, attack it
+        const selectedCardData = cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
+        if (selectedCardData && targetCard.team !== selectedCardData.team && targetCard.isOpen) {
           attackCard(selectedCardData, targetCard);
+        } else if (targetCard.team === currentTurn && targetCard.isOpen) {
+          // If it's current team's open card, switch selection
+          setSelectedCard({ row, col });
+        } else if (!targetCard.isOpen) {
+          // If it's a closed card, open it and deselect current
+          openCard(targetCard);
+          setSelectedCard(null);
         }
       }
     } else {
@@ -474,7 +490,12 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
             {/* Instructions */}
             <div className="text-center text-sm text-gray-600">
               {selectedCard ? (
-                <p>Click an adjacent cell to move or attack!</p>
+                <div>
+                  <p>Click an adjacent cell to move or attack!</p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Click selected card again to deselect • Click empty space to cancel • Click different card to switch
+                  </p>
+                </div>
               ) : (
                 <p>Click on any card to open it, or click your {currentTurn} cards to select them</p>
               )}
