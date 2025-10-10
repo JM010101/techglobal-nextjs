@@ -316,10 +316,10 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     if (card.isDead) return '';
 
     if (!card.isOpen) {
-      // Closed card - show mystery icons
+      // Closed card - show mystery icon (same for all teams)
       return (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-2xl">{card.team === 'blue' ? '🛡️' : '⚡'}</div>
+          <div className="text-2xl">❓</div>
           <div className="text-xs opacity-60">?</div>
         </div>
       );
@@ -506,9 +506,9 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
                       onClick={() => handleCellClick(row, col)}
                       className={`
                         w-12 h-12 border-2 rounded-lg flex items-center justify-center text-sm font-bold transition-all duration-200
-                        ${grid[row][col] && cards.find(c => c.id === grid[row][col])?.team === 'blue'
+                        ${grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'blue'
                           ? 'bg-blue-500 text-white border-blue-600' 
-                          : grid[row][col] && cards.find(c => c.id === grid[row][col])?.team === 'red'
+                          : grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'red'
                           ? 'bg-red-500 text-white border-red-600'
                           : selectedCard && selectedCard.row === row && selectedCard.col === col
                           ? 'bg-yellow-300 border-yellow-500'
