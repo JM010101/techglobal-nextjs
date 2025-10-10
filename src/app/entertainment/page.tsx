@@ -304,7 +304,12 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     // 70% chance to open a closed card if available
     if (closedCards.length > 0 && Math.random() < 0.7) {
       const randomCard = closedCards[Math.floor(Math.random() * closedCards.length)];
-      openCard(randomCard);
+      // Open card directly without triggering AI again
+      setCards(prev => prev.map(c => 
+        c.id === randomCard.id ? { ...c, isOpen: true } : c
+      ));
+      // Switch turn back to blue
+      setCurrentTurn('blue');
       return;
     }
 
