@@ -676,9 +676,9 @@ const EntertainmentPage = () => {
   }, [isClient]);
 
   const openGame = (gameId: string) => {
-    // Open game in new tab instead of modal
+    // Open game in new tab in same browser
     const gameUrl = `/games/${gameId}`;
-    window.open(gameUrl, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+    window.open(gameUrl, '_blank');
   };
 
   const closeGame = () => {
