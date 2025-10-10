@@ -480,24 +480,77 @@ const GridTacticsGame = () => {
             </button>
           </div>
         ) : gameOver ? (
-          <div className="text-center py-16">
-            <div className="text-9xl mb-8 animate-bounce">{winner === 'male' ? '🏆' : '💀'}</div>
-            <h3 className="text-6xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 tracking-wider">
-              {winner === 'male' ? 'MALE TEAM VICTORY!' : 'FEMALE TEAM VICTORY!'}
-            </h3>
-            <p className="text-2xl text-gray-200 mb-8 font-medium">
-              {winner === 'male' 
-                ? `Male warriors conquered the battlefield! Final Score: ${score}` 
-                : 'Female warriors dominated the arena!'
-              }
-            </p>
-            <div className="flex gap-6 justify-center">
-              <button onClick={resetGame} className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:from-green-700 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-2xl">
-                PLAY AGAIN
-              </button>
-              <button onClick={() => window.close()} className="bg-gradient-to-r from-red-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:from-red-700 hover:to-pink-700 transition-all duration-300 hover:scale-105 shadow-2xl">
-                CLOSE
-              </button>
+          <div 
+            className="text-center py-16 relative min-h-screen flex items-center justify-center"
+            style={{
+              backgroundImage: 'url(/images/game/grid_tactical/win_result.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          >
+            {/* Victory Background Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-orange-500/10 to-red-500/10 rounded-3xl blur-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-400/10 via-purple-500/10 to-pink-500/10 rounded-3xl blur-3xl"></div>
+            
+            <div className="relative z-10">
+              {/* Victory Icon with Animation */}
+              <div className="text-9xl mb-8 animate-bounce">
+                {winner === 'male' ? '👑' : '💎'}
+              </div>
+              
+              {/* Victory Title */}
+              <h2 className="text-7xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 tracking-wider animate-pulse">
+                {winner === 'male' ? 'MALE DOMINANCE!' : 'FEMALE SUPREMACY!'}
+              </h2>
+              
+              {/* Victory Subtitle */}
+              <h3 className="text-4xl font-black mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 tracking-wide">
+                {winner === 'male' ? '⚔️ WARRIORS TRIUMPH ⚔️' : '❤️ CHAMPIONS VICTORY ❤️'}
+              </h3>
+              
+              {/* Victory Message */}
+              <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-8 mb-12 border border-gray-600 shadow-2xl max-w-4xl mx-auto">
+                <p className="text-2xl text-gray-200 mb-6 font-medium leading-relaxed">
+                  {winner === 'male' 
+                    ? `🏆 The Male warriors have achieved total domination! 🏆\nTheir strategic prowess and combat skills led to complete victory!\n\nFinal Battle Score: ${score} points`
+                    : `💎 The Female champions have secured absolute supremacy! 💎\nTheir tactical brilliance and warrior spirit conquered all enemies!\n\nFinal Battle Score: ${score} points`
+                  }
+                </p>
+                
+                {/* Team Statistics */}
+                <div className="grid grid-cols-2 gap-6 mt-8">
+                  <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl p-6 border border-blue-600">
+                    <div className="text-3xl font-black text-blue-200 mb-2">MALE WARRIORS</div>
+                    <div className="text-lg text-blue-300">
+                      Survivors: {cards.filter(c => c.team === 'male' && !c.isDead).length}/32
+                    </div>
+                  </div>
+                  <div className="bg-gradient-to-r from-pink-900 to-pink-800 rounded-2xl p-6 border border-pink-600">
+                    <div className="text-3xl font-black text-pink-200 mb-2">FEMALE CHAMPIONS</div>
+                    <div className="text-lg text-pink-300">
+                      Survivors: {cards.filter(c => c.team === 'female' && !c.isDead).length}/32
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="flex gap-8 justify-center">
+                <button 
+                  onClick={resetGame} 
+                  className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:from-green-700 hover:via-emerald-600 hover:to-teal-700 transition-all duration-300 hover:scale-110 shadow-2xl border-2 border-green-400"
+                >
+                  🎮 PLAY AGAIN
+                </button>
+                <button 
+                  onClick={() => window.close()} 
+                  className="bg-gradient-to-r from-red-600 via-pink-500 to-rose-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:from-red-700 hover:via-pink-600 hover:to-rose-700 transition-all duration-300 hover:scale-110 shadow-2xl border-2 border-red-400"
+                >
+                  🚪 EXIT GAME
+                </button>
+              </div>
             </div>
           </div>
         ) : (
