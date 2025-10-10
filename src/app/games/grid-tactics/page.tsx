@@ -287,8 +287,8 @@ const GridTacticsGame = () => {
       // Closed card - show mystery icon (same for all teams)
       return (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-3xl">❓</div>
-          <div className="text-sm opacity-60">?</div>
+          <div className="text-4xl">❓</div>
+          <div className="text-lg opacity-60">?</div>
         </div>
       );
     } else {
@@ -319,8 +319,8 @@ const GridTacticsGame = () => {
 
       return (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-3xl">{getWarriorIcon(card)}</div>
-          <div className="flex flex-col items-center text-sm">
+          <div className="text-4xl">{getWarriorIcon(card)}</div>
+          <div className="flex flex-col items-center text-base">
             <div className={`font-bold ${getHealthColor(card.health)}`}>
               ❤️{card.health}
             </div>
@@ -360,8 +360,8 @@ const GridTacticsGame = () => {
   };
 
   return (
-    <div className="h-screen bg-gray-50 flex flex-col">
-      <div className="flex justify-between items-center p-2 bg-white shadow-sm">
+    <div className="fixed inset-0 bg-gray-50 flex flex-col overflow-hidden">
+      <div className="flex justify-between items-center p-2 bg-white shadow-sm flex-shrink-0">
         <h1 className="text-xl font-bold">Grid Tactics</h1>
         <button 
           onClick={() => window.close()} 
@@ -371,7 +371,7 @@ const GridTacticsGame = () => {
         </button>
       </div>
       
-      <div className="flex-1 flex flex-col p-2">
+      <div className="flex-1 flex flex-col p-2 overflow-hidden">
 
         {!gameStarted ? (
           <div className="text-center py-12">
@@ -417,34 +417,27 @@ const GridTacticsGame = () => {
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col space-y-2">
+          <div className="flex-1 flex flex-col space-y-1 overflow-hidden">
             {/* Game Status */}
-            <div className="flex justify-between items-center bg-white rounded-lg p-2 shadow-sm">
-              <div className="flex gap-3">
-                <div className="bg-blue-50 rounded-lg p-2">
-                  <div className="flex items-center gap-1 mb-1">
-                    <span className="text-lg">🔵</span>
-                    <span className="font-bold text-xs">Blue Team</span>
-                  </div>
-                  <div className="text-xs text-blue-700">
-                    Alive: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32
+            <div className="flex justify-between items-center bg-white rounded-lg p-1 shadow-sm flex-shrink-0">
+              <div className="flex gap-2">
+                <div className="bg-blue-50 rounded-lg p-1">
+                  <div className="flex items-center gap-1">
+                    <span className="text-sm">🔵</span>
+                    <span className="font-bold text-xs">Blue: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32</span>
                   </div>
                 </div>
-                <div className="bg-red-50 rounded-lg p-2">
-                  <div className="flex items-center gap-1 mb-1">
-                    <span className="text-lg">🔴</span>
-                    <span className="font-bold text-xs">Red Team</span>
-                  </div>
-                  <div className="text-xs text-red-700">
-                    Alive: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32
+                <div className="bg-red-50 rounded-lg p-1">
+                  <div className="flex items-center gap-1">
+                    <span className="text-sm">🔴</span>
+                    <span className="font-bold text-xs">Red: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32</span>
                   </div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-sm font-bold text-gray-800">
-                  {currentTurn === 'blue' ? 'Blue Team Turn' : 'Red Team Turn'}
+                <div className="text-xs font-bold text-gray-800">
+                  {currentTurn === 'blue' ? 'Blue Turn' : 'Red Turn'} | Score: {score}
                 </div>
-                <div className="text-xs text-gray-600">Score: {score}</div>
               </div>
             </div>
 
@@ -465,15 +458,21 @@ const GridTacticsGame = () => {
             )}
 
             {/* Game Grid */}
-            <div className="flex-1 flex items-center justify-center">
-              <div className="grid grid-cols-8 gap-1 bg-gray-200 p-2 rounded-lg shadow-lg w-full max-w-4xl">
+            <div className="flex-1 flex items-center justify-center overflow-hidden">
+              <div 
+                className="grid grid-cols-8 gap-1 bg-gray-200 p-1 rounded-lg shadow-lg"
+                style={{
+                  width: '1800px',
+                  height: '800px'
+                }}
+              >
                 {Array(8).fill(null).map((_, row) => 
                   Array(8).fill(null).map((_, col) => (
                     <button
                       key={`${row}-${col}`}
                       onClick={() => handleCellClick(row, col)}
                       className={`
-                        aspect-square border-2 rounded-lg flex items-center justify-center text-lg font-bold transition-all duration-200
+                        w-full h-full border-2 rounded-lg flex items-center justify-center text-2xl font-bold transition-all duration-200
                         ${grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'blue'
                           ? 'bg-blue-500 text-white border-blue-600' 
                           : grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'red'
@@ -497,7 +496,7 @@ const GridTacticsGame = () => {
             </div>
 
             {/* Instructions */}
-            <div className="text-center text-xs text-gray-600 pb-2">
+            <div className="text-center text-xs text-gray-600 pb-1 flex-shrink-0">
               {selectedCard ? (
                 <div>
                   <p className="mb-1">Click an adjacent cell to move or attack!</p>
