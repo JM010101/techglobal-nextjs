@@ -36,6 +36,10 @@ const GridTacticsGame = () => {
   const [grid, setGrid] = useState<Array<Array<string>>>(() => {
     return Array(8).fill(null).map(() => Array(8).fill(''));
   });
+  const [attackAnimation, setAttackAnimation] = useState<{
+    attacker: {row: number, col: number} | null;
+    target: {row: number, col: number} | null;
+  }>({ attacker: null, target: null });
 
   // Shuffle function to randomize array
   const shuffleArray = (array: Card[]): Card[] => {
@@ -240,11 +244,22 @@ const GridTacticsGame = () => {
   const attackCard = (attacker: Card, defender: Card) => {
     if (!attacker.isOpen || !defender.isOpen) return;
 
+    // Start attack animation
+    setAttackAnimation({
+      attacker: { row: attacker.row, col: attacker.col },
+      target: { row: defender.row, col: defender.col }
+    });
+
     const newHealth = Math.max(0, defender.health - attacker.attackRate);
     
     setCards(prev => prev.map(c => 
       c.id === defender.id ? { ...c, health: newHealth, isDead: newHealth === 0 } : c
     ));
+
+    // Clear animation after 600ms
+    setTimeout(() => {
+      setAttackAnimation({ attacker: null, target: null });
+    }, 600);
 
     if (newHealth === 0) {
       // Remove dead card from grid
@@ -253,7 +268,9 @@ const GridTacticsGame = () => {
       setGrid(newGrid);
       
       // Check for game over
-      checkGameOver();
+      setTimeout(() => {
+        checkGameOver();
+      }, 700);
     }
 
     setSelectedCard(null);
@@ -511,8 +528,23 @@ const GridTacticsGame = () => {
                           ? 'bg-orange-100 border-orange-300 hover:bg-orange-200'
                           : 'bg-white border-gray-300 hover:bg-gray-50'
                         }
+                        ${attackAnimation.attacker && attackAnimation.attacker.row === row && attackAnimation.attacker.col === col
+                          ? 'animate-pulse transform scale-105'
+                          : ''
+                        }
+                        ${attackAnimation.target && attackAnimation.target.row === row && attackAnimation.target.col === col
+                          ? 'animate-bounce'
+                          : ''
+                        }
                         cursor-pointer
                       `}
+                      style={{
+                        transform: attackAnimation.attacker && attackAnimation.attacker.row === row && attackAnimation.attacker.col === col
+                          ? 'translateX(5px) translateY(-2px)'
+                          : attackAnimation.target && attackAnimation.target.row === row && attackAnimation.target.col === col
+                          ? 'translateX(-3px) translateY(1px)'
+                          : 'translateX(0) translateY(0)'
+                      }}
                     >
                       {getCellContent(row, col)}
                     </button>
