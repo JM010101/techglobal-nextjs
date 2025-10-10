@@ -31,7 +31,7 @@ const games: Game[] = [
     title: 'Grid Tactics',
     description: 'Turn-based tactical combat on an 8x8 grid. Command your warrior to defeat the enemy in strategic battles!',
     icon: Target,
-    image: 'https://picsum.photos/800/600?random=1',
+    image: '/images/game/grid_tactical/dashboard.png',
     difficulty: 'Medium',
     category: 'Strategy'
   },
