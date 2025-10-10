@@ -118,6 +118,46 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     return shuffled;
   };
 
+  // Find all adjacent closed cards around a position
+  const getAdjacentCards = (row: number, col: number) => {
+    const adjacentCards = [];
+    
+    // Check all 8 directions around the clicked card
+    for (let dr = -1; dr <= 1; dr++) {
+      for (let dc = -1; dc <= 1; dc++) {
+        if (dr === 0 && dc === 0) continue; // Skip center card
+        
+        const newRow = row + dr;
+        const newCol = col + dc;
+        
+        // Check if position is within grid bounds
+        if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
+          const cardId = grid[newRow][newCol];
+          if (cardId) {
+            const card = cards.find(c => c.id === cardId);
+            if (card && !card.isOpen && !card.isDead) {
+              adjacentCards.push(card);
+            }
+          }
+        }
+      }
+    }
+    
+    return adjacentCards;
+  };
+
+  // Open all border cards around a center card
+  const openBorderCards = (centerCard: Card) => {
+    const adjacentCards = getAdjacentCards(centerCard.row, centerCard.col);
+    
+    // Open all adjacent closed cards
+    setCards(prev => prev.map(card => 
+      adjacentCards.some(adjCard => adjCard.id === card.id) 
+        ? { ...card, isOpen: true } 
+        : card
+    ));
+  };
+
   const initializeCards = () => {
     const newCards: Card[] = [];
     const newGrid = Array(8).fill(null).map(() => Array(8).fill(''));
@@ -218,9 +258,12 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
           // If it's current team's open card, switch selection
           setSelectedCard({ row, col });
         } else if (!targetCard.isOpen) {
-          // If it's a closed card, open it and deselect current
-          openCard(targetCard);
+          // If it's a closed card, open all border cards and deselect current
+          openBorderCards(targetCard);
           setSelectedCard(null);
+          // Switch to the opposite team after opening border cards
+          const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+          setCurrentTurn(newTurn);
         }
       }
     } else {
@@ -230,8 +273,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
         if (!card) return;
 
         if (!card.isOpen) {
-          // Open closed card (any team can open any card)
-          openCard(card);
+          // Open all border cards around the clicked card
+          openBorderCards(card);
+          // Switch to the opposite team after opening border cards
+          const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+          setCurrentTurn(newTurn);
         } else {
           // Select open card for movement/attack (only current team's cards)
           if (card.team === currentTurn) {
@@ -413,13 +459,13 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
             <div className="text-6xl mb-6">⚔️</div>
             <h3 className="text-2xl font-bold mb-4">Welcome to Grid Tactics</h3>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Two-player tactical combat! Blue team vs Red team. Open cards strategically, move your warriors, 
-              and attack the enemy. Eliminate all opponent cards to win!
+              Two-player tactical combat! Blue team vs Red team. Click closed cards to reveal all adjacent cards, 
+              move your warriors, and attack the enemy. Eliminate all opponent cards to win!
             </p>
             <div className="bg-blue-50 rounded-lg p-6 mb-8">
               <h4 className="font-semibold text-blue-800 mb-4">How to Play:</h4>
               <ul className="text-sm text-blue-700 space-y-2 text-left">
-                <li>• Click closed cards to open them and reveal stats</li>
+                <li>• Click closed cards to reveal ALL adjacent cards</li>
                 <li>• Click open cards to select them for movement/attack</li>
                 <li>• Move to adjacent empty cells or attack enemy cards</li>
                 <li>• Eliminate all opponent cards to win!</li>
