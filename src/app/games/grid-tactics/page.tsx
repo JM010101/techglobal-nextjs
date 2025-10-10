@@ -284,9 +284,14 @@ const GridTacticsGame = () => {
     if (card.isDead) return '';
 
     if (!card.isOpen) {
-      // Closed card - show light gradient (same for all teams)
+      // Closed card - show shield image (same for all teams)
       return (
         <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+          <img 
+            src="/images/game/grid_tactical/shield.jpg" 
+            alt="Shield" 
+            className="w-3/4 h-3/4 object-contain opacity-80"
+          />
         </div>
       );
     } else {
