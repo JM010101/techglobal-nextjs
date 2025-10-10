@@ -360,18 +360,18 @@ const GridTacticsGame = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <div className="flex justify-between items-center p-4 bg-white shadow-sm">
-        <h1 className="text-2xl font-bold">Grid Tactics</h1>
+    <div className="h-screen bg-gray-50 flex flex-col">
+      <div className="flex justify-between items-center p-2 bg-white shadow-sm">
+        <h1 className="text-xl font-bold">Grid Tactics</h1>
         <button 
           onClick={() => window.close()} 
           className="p-2 hover:bg-gray-100 rounded-full"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5" />
         </button>
       </div>
       
-      <div className="flex-1 flex flex-col items-center justify-center p-4">
+      <div className="flex-1 flex flex-col p-2">
 
         {!gameStarted ? (
           <div className="text-center py-12">
@@ -417,23 +417,23 @@ const GridTacticsGame = () => {
             </div>
           </div>
         ) : (
-          <div className="w-full max-w-4xl space-y-4">
+          <div className="flex-1 flex flex-col space-y-2">
             {/* Game Status */}
-            <div className="flex justify-between items-center bg-white rounded-lg p-4 shadow-sm">
-              <div className="flex gap-4">
-                <div className="bg-blue-50 rounded-lg p-3">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xl">🔵</span>
-                    <span className="font-bold text-sm">Blue Team</span>
+            <div className="flex justify-between items-center bg-white rounded-lg p-2 shadow-sm">
+              <div className="flex gap-3">
+                <div className="bg-blue-50 rounded-lg p-2">
+                  <div className="flex items-center gap-1 mb-1">
+                    <span className="text-lg">🔵</span>
+                    <span className="font-bold text-xs">Blue Team</span>
                   </div>
                   <div className="text-xs text-blue-700">
                     Alive: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32
                   </div>
                 </div>
-                <div className="bg-red-50 rounded-lg p-3">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xl">🔴</span>
-                    <span className="font-bold text-sm">Red Team</span>
+                <div className="bg-red-50 rounded-lg p-2">
+                  <div className="flex items-center gap-1 mb-1">
+                    <span className="text-lg">🔴</span>
+                    <span className="font-bold text-xs">Red Team</span>
                   </div>
                   <div className="text-xs text-red-700">
                     Alive: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32
@@ -441,10 +441,10 @@ const GridTacticsGame = () => {
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-lg font-bold text-gray-800">
+                <div className="text-sm font-bold text-gray-800">
                   {currentTurn === 'blue' ? 'Blue Team Turn' : 'Red Team Turn'}
                 </div>
-                <div className="text-sm text-gray-600">Score: {score}</div>
+                <div className="text-xs text-gray-600">Score: {score}</div>
               </div>
             </div>
 
@@ -465,15 +465,15 @@ const GridTacticsGame = () => {
             )}
 
             {/* Game Grid */}
-            <div className="flex justify-center w-full">
-              <div className="grid grid-cols-8 gap-2 bg-gray-200 p-4 rounded-lg shadow-lg">
+            <div className="flex-1 flex items-center justify-center">
+              <div className="grid grid-cols-8 gap-1 bg-gray-200 p-2 rounded-lg shadow-lg w-full max-w-4xl">
                 {Array(8).fill(null).map((_, row) => 
                   Array(8).fill(null).map((_, col) => (
                     <button
                       key={`${row}-${col}`}
                       onClick={() => handleCellClick(row, col)}
                       className={`
-                        w-16 h-16 border-2 rounded-lg flex items-center justify-center text-lg font-bold transition-all duration-200
+                        aspect-square border-2 rounded-lg flex items-center justify-center text-lg font-bold transition-all duration-200
                         ${grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'blue'
                           ? 'bg-blue-500 text-white border-blue-600' 
                           : grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'red'
@@ -497,11 +497,11 @@ const GridTacticsGame = () => {
             </div>
 
             {/* Instructions */}
-            <div className="text-center text-sm text-gray-600">
+            <div className="text-center text-xs text-gray-600 pb-2">
               {selectedCard ? (
                 <div>
-                  <p>Click an adjacent cell to move or attack!</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="mb-1">Click an adjacent cell to move or attack!</p>
+                  <p className="text-xs text-gray-500">
                     Click selected card again to deselect • Click empty space to cancel • Click different card to switch
                   </p>
                 </div>
