@@ -218,10 +218,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
       c.id === card.id ? { ...c, isOpen: true } : c
     ));
     // Switch to the opposite team after opening a card
-    setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
+    const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+    setCurrentTurn(newTurn);
     
     // If it's now red team's turn, trigger AI
-    if (currentTurn === 'blue') {
+    if (newTurn === 'red') {
       setTimeout(() => redTeamAI(), 1000);
     }
   };
@@ -238,10 +239,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     ));
     setGrid(newGrid);
     setSelectedCard(null);
-    setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
+    const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+    setCurrentTurn(newTurn);
     
     // If it's now red team's turn, trigger AI
-    if (currentTurn === 'blue') {
+    if (newTurn === 'red') {
       setTimeout(() => redTeamAI(), 1000);
     }
   };
@@ -266,10 +268,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     }
 
     setSelectedCard(null);
-    setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
+    const newTurn = currentTurn === 'blue' ? 'red' : 'blue';
+    setCurrentTurn(newTurn);
     
     // If it's now red team's turn, trigger AI
-    if (currentTurn === 'blue') {
+    if (newTurn === 'red') {
       setTimeout(() => redTeamAI(), 1000);
     }
   };
