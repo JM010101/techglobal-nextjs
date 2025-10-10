@@ -108,17 +108,28 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     return Array(8).fill(null).map(() => Array(8).fill(''));
   });
 
+  // Shuffle function to randomize array
+  const shuffleArray = (array: any[]) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   const initializeCards = () => {
     const newCards: Card[] = [];
     const newGrid = Array(8).fill(null).map(() => Array(8).fill(''));
     
-    // Create 32 blue cards (top 4 rows)
-    for (let i = 0; i < 32; i++) {
+    // Create all 64 cards first
+    for (let i = 0; i < 64; i++) {
       const row = Math.floor(i / 8);
       const col = i % 8;
+      const isBlue = i < 32; // First 32 are blue, last 32 are red
       const card: Card = {
-        id: `blue-${i}`,
-        team: 'blue',
+        id: `${isBlue ? 'blue' : 'red'}-${i % 32}`,
+        team: isBlue ? 'blue' : 'red',
         health: Math.floor(Math.random() * 5) + 3, // 3-7 health
         maxHealth: Math.floor(Math.random() * 5) + 3,
         attackRate: Math.floor(Math.random() * 3) + 1, // 1-3 attack
@@ -128,29 +139,21 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
         col
       };
       newCards.push(card);
-      newGrid[row][col] = `blue-${i}`;
     }
     
-    // Create 32 red cards (bottom 4 rows)
-    for (let i = 0; i < 32; i++) {
-      const row = Math.floor(i / 8) + 4; // Start from row 4
-      const col = i % 8;
-      const card: Card = {
-        id: `red-${i}`,
-        team: 'red',
-        health: Math.floor(Math.random() * 5) + 3, // 3-7 health
-        maxHealth: Math.floor(Math.random() * 5) + 3,
-        attackRate: Math.floor(Math.random() * 3) + 1, // 1-3 attack
-        isOpen: false,
-        isDead: false,
-        row,
-        col
-      };
-      newCards.push(card);
-      newGrid[row][col] = `red-${i}`;
-    }
+    // Shuffle all cards to randomize positions
+    const shuffledCards = shuffleArray(newCards);
     
-    setCards(newCards);
+    // Update card positions and grid
+    shuffledCards.forEach((card, index) => {
+      const row = Math.floor(index / 8);
+      const col = index % 8;
+      card.row = row;
+      card.col = col;
+      newGrid[row][col] = card.id;
+    });
+    
+    setCards(shuffledCards);
     setGrid(newGrid);
   };
 
