@@ -676,7 +676,9 @@ const EntertainmentPage = () => {
   }, [isClient]);
 
   const openGame = (gameId: string) => {
-    setSelectedGame(gameId);
+    // Open game in new tab instead of modal
+    const gameUrl = `/games/${gameId}`;
+    window.open(gameUrl, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
   };
 
   const closeGame = () => {
