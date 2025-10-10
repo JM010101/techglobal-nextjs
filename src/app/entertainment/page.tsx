@@ -184,9 +184,6 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     const card = cards.find(c => c.id === cardId);
     if (!card) return;
 
-    // Check if it's the current team's turn
-    if (card.team !== currentTurn) return;
-
     if (selectedCard) {
       // Try to move or attack
       const selectedCardData = cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
@@ -195,16 +192,23 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
       if (grid[row][col] === '') {
         // Move to empty cell
         moveCard(selectedCardData, row, col);
-      } else if (card.team !== currentTurn) {
-        // Attack enemy card
-        attackCard(selectedCardData, card);
+      } else {
+        const targetCard = cards.find(c => c.id === grid[row][col]);
+        if (targetCard && targetCard.team !== selectedCardData.team && targetCard.isOpen) {
+          // Attack enemy card (only if enemy is open)
+          attackCard(selectedCardData, targetCard);
+        }
       }
     } else {
-      // Open card or select for movement
+      // Handle card interaction
       if (!card.isOpen) {
+        // Open closed card (any team can open any card)
         openCard(card);
       } else {
-        setSelectedCard({ row, col });
+        // Select open card for movement/attack (only current team's cards)
+        if (card.team === currentTurn) {
+          setSelectedCard({ row, col });
+        }
       }
     }
   };
