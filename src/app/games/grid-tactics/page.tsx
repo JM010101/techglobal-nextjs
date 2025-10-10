@@ -326,6 +326,13 @@ const GridTacticsGame = () => {
     }
   };
 
+  // Debug: Log game over state changes
+  useEffect(() => {
+    if (gameOver) {
+      console.log('Game over screen should be visible:', { gameOver, winner, score });
+    }
+  }, [gameOver, winner, score]);
+
   const getCellContent = (row: number, col: number) => {
     const cardId = grid[row][col];
     if (!cardId) return '';
@@ -493,7 +500,6 @@ const GridTacticsGame = () => {
               backgroundRepeat: 'no-repeat'
             }}
           >
-            {console.log('Rendering game over screen:', { gameOver, winner, score })}
             {/* Victory Background Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-60"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-orange-500/10 to-red-500/10 rounded-3xl blur-3xl"></div>
