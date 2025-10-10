@@ -22,6 +22,7 @@ interface Card {
   row: number;
   col: number;
   imageIndex: number;
+  name: string;
 }
 
 const GridTacticsGame = () => {
@@ -40,6 +41,21 @@ const GridTacticsGame = () => {
     attacker: {row: number, col: number} | null;
     target: {row: number, col: number} | null;
   }>({ attacker: null, target: null });
+
+  // Name generation arrays
+  const maleNames = [
+    'Alex', 'Blade', 'Cyrus', 'Dante', 'Erik', 'Finn', 'Gareth', 'Hector',
+    'Ivan', 'Jax', 'Kane', 'Liam', 'Marcus', 'Nero', 'Orion', 'Phoenix',
+    'Quinn', 'Rex', 'Sage', 'Titan', 'Ulysses', 'Viktor', 'Wade', 'Xander',
+    'Yuki', 'Zane', 'Ares', 'Blaze', 'Cade', 'Drake', 'Echo', 'Frost'
+  ];
+
+  const femaleNames = [
+    'Aria', 'Blaze', 'Cora', 'Diana', 'Eve', 'Faye', 'Grace', 'Hope',
+    'Iris', 'Jade', 'Kira', 'Luna', 'Maya', 'Nova', 'Opal', 'Pixie',
+    'Quinn', 'Ruby', 'Sage', 'Tara', 'Uma', 'Vera', 'Willow', 'Xara',
+    'Yara', 'Zara', 'Aura', 'Belle', 'Crystal', 'Dawn', 'Ember', 'Flame'
+  ];
 
   // Shuffle function to randomize array
   const shuffleArray = (array: Card[]): Card[] => {
@@ -103,6 +119,7 @@ const GridTacticsGame = () => {
       const row = Math.floor(i / 8);
       const col = i % 8;
       const isMale = i < 32; // First 32 are male, last 32 are female
+      const nameIndex = i % 32;
       const card: Card = {
         id: `${isMale ? 'male' : 'female'}-${i % 32}`,
         team: isMale ? 'male' : 'female',
@@ -113,7 +130,8 @@ const GridTacticsGame = () => {
         isDead: false,
         row,
         col,
-        imageIndex: (i % 32) + 1 // 1-32 for male, 1-24 for female
+        imageIndex: (i % 32) + 1, // 1-32 for male, 1-24 for female
+        name: isMale ? maleNames[nameIndex] : femaleNames[nameIndex]
       };
       newCards.push(card);
     }
@@ -509,7 +527,10 @@ const GridTacticsGame = () => {
                 <div className="flex items-center gap-6">
                   <span className="text-4xl">{getSelectedCard()?.team === 'male' ? '⚔️' : '❤️'}</span>
                   <div>
-                    <div className="text-2xl font-black text-white tracking-wide">{getSelectedCard()?.team.toUpperCase()} TEAM</div>
+                    <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 tracking-wide mb-2">
+                      {getSelectedCard()?.name}
+                    </div>
+                    <div className="text-xl font-black text-white tracking-wide mb-2">{getSelectedCard()?.team.toUpperCase()} TEAM</div>
                     <div className="text-lg text-gray-200 font-medium">
                       Health: <span className="text-red-400 font-black">{getSelectedCard()?.health}</span> | Attack: <span className="text-yellow-400 font-black">{getSelectedCard()?.attackRate}</span>
                     </div>
