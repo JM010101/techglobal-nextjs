@@ -206,9 +206,14 @@ const GridTacticsGame = () => {
         const targetCard = cards.find(c => c.id === cardId);
         if (!targetCard) return;
 
-        // If it's an enemy card and open, attack it
+        // If it's an enemy card and open, check if it's adjacent before attacking
         if (targetCard.team !== selectedCardData.team && targetCard.isOpen) {
-          attackCard(selectedCardData, targetCard);
+          if (isAdjacent(selectedCard.row, selectedCard.col, row, col)) {
+            attackCard(selectedCardData, targetCard);
+          } else {
+            // If not adjacent, deselect
+            setSelectedCard(null);
+          }
         } else if (targetCard.team === currentTurn && targetCard.isOpen) {
           // If it's current team's open card, switch selection
           setSelectedCard({ row, col });
