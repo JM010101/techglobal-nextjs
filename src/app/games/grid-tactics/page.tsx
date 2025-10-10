@@ -363,12 +363,12 @@ const GridTacticsGame = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-50 flex flex-col overflow-hidden">
-      <div className="flex justify-between items-center p-2 bg-white shadow-sm flex-shrink-0">
-        <h1 className="text-xl font-bold">Grid Tactics</h1>
+    <div className="fixed inset-0 bg-gray-900 flex flex-col overflow-hidden">
+      <div className="flex justify-between items-center p-2 bg-gray-800 shadow-lg flex-shrink-0">
+        <h1 className="text-xl font-bold text-white">Grid Tactics</h1>
         <button 
           onClick={() => window.close()} 
-          className="p-2 hover:bg-gray-100 rounded-full"
+          className="p-2 hover:bg-gray-700 rounded-full text-white"
         >
           <X className="w-5 h-5" />
         </button>
@@ -379,14 +379,14 @@ const GridTacticsGame = () => {
         {!gameStarted ? (
           <div className="text-center py-12">
             <div className="text-6xl mb-6">⚔️</div>
-            <h3 className="text-2xl font-bold mb-4">Welcome to Grid Tactics</h3>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold mb-4 text-white">Welcome to Grid Tactics</h3>
+            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
               Two-player tactical combat! Blue team vs Red team. Click closed cards to reveal all adjacent cards, 
               move your warriors, and attack the enemy. Eliminate all opponent cards to win!
             </p>
-            <div className="bg-blue-50 rounded-lg p-6 mb-8">
-              <h4 className="font-semibold text-blue-800 mb-4">How to Play:</h4>
-              <ul className="text-sm text-blue-700 space-y-2 text-left">
+            <div className="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
+              <h4 className="font-semibold text-blue-400 mb-4">How to Play:</h4>
+              <ul className="text-sm text-gray-300 space-y-2 text-left">
                 <li>• Click closed cards to reveal ALL adjacent cards</li>
                 <li>• Click open cards to select them for movement/attack</li>
                 <li>• Move to adjacent empty cells or attack enemy cards</li>
@@ -422,23 +422,23 @@ const GridTacticsGame = () => {
         ) : (
           <div className="flex-1 flex flex-col space-y-1 overflow-hidden">
             {/* Game Status */}
-            <div className="flex justify-between items-center bg-white rounded-lg p-1 shadow-sm flex-shrink-0">
+            <div className="flex justify-between items-center bg-gray-800 rounded-lg p-1 shadow-sm flex-shrink-0 border border-gray-700">
               <div className="flex gap-2">
-                <div className="bg-blue-50 rounded-lg p-1">
+                <div className="bg-blue-900 rounded-lg p-1 border border-blue-700">
                   <div className="flex items-center gap-1">
                     <span className="text-sm">🔵</span>
-                    <span className="font-bold text-xs">Blue: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32</span>
+                    <span className="font-bold text-xs text-blue-200">Blue: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32</span>
                   </div>
                 </div>
-                <div className="bg-red-50 rounded-lg p-1">
+                <div className="bg-red-900 rounded-lg p-1 border border-red-700">
                   <div className="flex items-center gap-1">
                     <span className="text-sm">🔴</span>
-                    <span className="font-bold text-xs">Red: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32</span>
+                    <span className="font-bold text-xs text-red-200">Red: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32</span>
                   </div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-xs font-bold text-gray-800">
+                <div className="text-xs font-bold text-white">
                   {currentTurn === 'blue' ? 'Blue Turn' : 'Red Turn'} | Score: {score}
                 </div>
               </div>
@@ -446,13 +446,13 @@ const GridTacticsGame = () => {
 
             {/* Selected Card Info */}
             {getSelectedCard() && (
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h4 className="font-semibold mb-2">Selected Card:</h4>
+              <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+                <h4 className="font-semibold mb-2 text-white">Selected Card:</h4>
                 <div className="flex items-center gap-4">
                   <span className="text-2xl">{getSelectedCard()?.team === 'blue' ? '⚔️' : '🗡️'}</span>
                   <div>
                     <div className="font-medium">{getSelectedCard()?.team} Team</div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-gray-300">
                       Health: {getSelectedCard()?.health} | Attack: {getSelectedCard()?.attackRate}
                     </div>
                   </div>
@@ -463,7 +463,7 @@ const GridTacticsGame = () => {
             {/* Game Grid */}
             <div className="flex-1 flex items-center justify-center overflow-hidden">
               <div 
-                className="grid grid-cols-8 gap-1 bg-gray-200 p-1 rounded-lg shadow-lg"
+                className="grid grid-cols-8 gap-1 bg-gray-700 p-1 rounded-lg shadow-lg border border-gray-600"
                 style={{
                   width: '1600px',
                   height: '600px'
@@ -499,11 +499,11 @@ const GridTacticsGame = () => {
             </div>
 
             {/* Instructions */}
-            <div className="text-center text-xs text-gray-600 pb-1 flex-shrink-0">
+            <div className="text-center text-xs text-gray-300 pb-1 flex-shrink-0">
               {selectedCard ? (
                 <div>
                   <p className="mb-1">Click an adjacent cell to move or attack!</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-400">
                     Click selected card again to deselect • Click empty space to cancel • Click different card to switch
                   </p>
                 </div>
