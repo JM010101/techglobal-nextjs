@@ -321,6 +321,12 @@ const GridTacticsGame = () => {
             alt={`${card.team} character`}
             className="w-full h-full object-cover opacity-90"
           />
+          {/* Team Logo in top left corner */}
+          <div className="absolute top-1 left-1 bg-black bg-opacity-80 rounded-full p-1">
+            <span className="text-lg">
+              {card.team === 'male' ? '⚔️' : '❤️'}
+            </span>
+          </div>
           <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-1 rounded-b-lg">
             <div className="flex justify-center items-center gap-2 text-xs">
               <div className={`font-bold ${getHealthColor(card.health)}`}>

@@ -68,29 +68,29 @@ const CareersPage = () => {
   };
 
   if (isSubmitted) {
-    return (
+  return (
       <main className="min-h-screen bg-gray-50">
-        <Navigation />
-        
+      <Navigation />
+      
         {/* Success Page */}
         <section className="min-h-screen flex items-center justify-center">
-          <div className="container">
-            <motion.div
+        <div className="container">
+          <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.6 }}
               className="max-w-2xl mx-auto text-center"
             >
               <div className="bg-white rounded-2xl shadow-lg p-12">
-                <motion.div
+          <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8"
                 >
                   <CheckCircle className="w-12 h-12 text-green-600" />
-                </motion.div>
-                
+          </motion.div>
+
                 <h1 className="text-4xl font-bold text-gray-900 mb-4">
                   Application Submitted!
                 </h1>
@@ -105,25 +105,25 @@ const CareersPage = () => {
                     What happens next?
                   </p>
                   <div className="text-left space-y-2">
-                    <div className="flex items-center">
+                  <div className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                       <span className="text-gray-700">We&apos;ll review your resume and portfolio</span>
-                    </div>
-                    <div className="flex items-center">
+                  </div>
+                  <div className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                       <span className="text-gray-700">Our team will contact you for next steps</span>
-                    </div>
-                    <div className="flex items-center">
+                  </div>
+                  <div className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                       <span className="text-gray-700">We&apos;ll schedule an interview if there&apos;s a good fit</span>
-                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-        
+                </div>
+                </div>
+              </motion.div>
+        </div>
+      </section>
+
         <Footer />
       </main>
     );
@@ -171,7 +171,7 @@ const CareersPage = () => {
                 <p className="text-gray-600">
                   Fill out the form below and upload your resume to get started.
                 </p>
-              </div>
+        </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Personal Information */}
@@ -297,13 +297,13 @@ const CareersPage = () => {
                       required
                     />
                     <label htmlFor="resume-upload" className="cursor-pointer">
-                      <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600 mb-2">
+                    <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                    <p className="text-gray-600 mb-2">
                         <span className="text-blue-600 font-medium hover:underline">
-                          Click to upload
-                        </span> or drag and drop
-                      </p>
-                      <p className="text-sm text-gray-500">PDF, DOC, or DOCX (max. 5MB)</p>
+                        Click to upload
+                      </span> or drag and drop
+                    </p>
+                    <p className="text-sm text-gray-500">PDF, DOC, or DOCX (max. 5MB)</p>
                       {resumeFile && (
                         <p className="text-sm text-green-600 mt-2">
                           ✓ {resumeFile.name} uploaded
@@ -363,8 +363,8 @@ const CareersPage = () => {
                       </div>
                     ) : (
                       <div className="flex items-center">
-                        Submit Application
-                        <ArrowRight className="w-5 h-5 ml-2" />
+                    Submit Application
+                    <ArrowRight className="w-5 h-5 ml-2" />
                       </div>
                     )}
                   </button>

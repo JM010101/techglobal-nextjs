@@ -369,12 +369,12 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
 
     if (!card.isOpen) {
       // Closed card - show mystery icon (same for all teams)
-      return (
+              return (
         <div className="flex flex-col items-center justify-center h-full">
           <div className="text-2xl">❓</div>
           <div className="text-xs opacity-60">?</div>
-        </div>
-      );
+    </div>
+  );
     } else {
       // Open card - show different warrior types based on stats
       const getWarriorIcon = (card: Card) => {
@@ -399,21 +399,21 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
         if (attack >= 3) return 'text-red-600';
         if (attack >= 2) return 'text-orange-600';
         return 'text-blue-600';
-      };
+  };
 
-      return (
+  return (
         <div className="flex flex-col items-center justify-center h-full">
           <div className="text-2xl">{getWarriorIcon(card)}</div>
           <div className="flex flex-col items-center text-xs">
             <div className={`font-bold ${getHealthColor(card.health)}`}>
               ❤️{card.health}
-            </div>
+        </div>
             <div className={`font-bold ${getAttackColor(card.attackRate)}`}>
               ⚡{card.attackRate}
             </div>
-          </div>
-        </div>
-      );
+              </div>
+    </div>
+  );
     }
   };
 
@@ -478,7 +478,7 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
             <button onClick={startGame} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
               Start Battle
             </button>
-          </div>
+        </div>
         ) : gameOver ? (
           <div className="text-center py-12">
             <div className="text-6xl mb-6">{winner === 'blue' ? '🏆' : '💀'}</div>
@@ -498,9 +498,9 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
               <button onClick={onClose} className="bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors">
                 Close
               </button>
-            </div>
           </div>
-        ) : (
+                </div>
+              ) : (
           <div className="space-y-6">
             {/* Game Status */}
             <div className="flex justify-between items-center">
@@ -509,43 +509,43 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-2xl">🔵</span>
                     <span className="font-bold">Blue Team</span>
-                  </div>
+                </div>
                   <div className="text-sm text-blue-700">
                     Alive: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32
-                  </div>
-                </div>
+            </div>
+        </div>
                 <div className="bg-red-50 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-2xl">🔴</span>
                     <span className="font-bold">Red Team</span>
-                  </div>
+        </div>
                   <div className="text-sm text-red-700">
                     Alive: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32
-                  </div>
-                </div>
-              </div>
+    </div>
+        </div>
+        </div>
               <div className="text-right">
                 <div className="text-lg font-bold text-gray-800">
                   {currentTurn === 'blue' ? 'Blue Team Turn' : 'Red Team Turn'}
-                </div>
+                  </div>
                 <div className="text-sm text-gray-600">Score: {score}</div>
-              </div>
-            </div>
-
+                  </div>
+                </div>
+                
             {/* Selected Card Info */}
             {getSelectedCard() && (
               <div className="bg-gray-50 rounded-lg p-4">
                 <h4 className="font-semibold mb-2">Selected Card:</h4>
                 <div className="flex items-center gap-4">
                   <span className="text-2xl">{getSelectedCard()?.team === 'blue' ? '⚔️' : '🗡️'}</span>
-                  <div>
+                <div>
                     <div className="font-medium">{getSelectedCard()?.team} Team</div>
                     <div className="text-sm text-gray-600">
                       Health: {getSelectedCard()?.health} | Attack: {getSelectedCard()?.attackRate}
-                    </div>
+                  </div>
                   </div>
                 </div>
-              </div>
+                  </div>
             )}
 
             {/* Game Grid */}
@@ -553,7 +553,7 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
               <div className="grid grid-cols-8 gap-1 bg-gray-200 p-2 rounded-lg">
                 {Array(8).fill(null).map((_, row) => 
                   Array(8).fill(null).map((_, col) => (
-                    <button
+                <button
                       key={`${row}-${col}`}
                       onClick={() => handleCellClick(row, col)}
                       className={`
@@ -574,11 +574,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
                       `}
                     >
                       {getCellContent(row, col)}
-                    </button>
+                </button>
                   ))
                 )}
-              </div>
             </div>
+          </div>
 
             {/* Instructions */}
             <div className="text-center text-sm text-gray-600">
@@ -588,7 +588,7 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
                   <p className="text-xs text-gray-500 mt-1">
                     Click selected card again to deselect • Click empty space to cancel • Click different card to switch
                   </p>
-                </div>
+        </div>
               ) : (
                 <p>Click on any card to open it, or click your {currentTurn} cards to select them</p>
               )}
@@ -631,13 +631,13 @@ const PlaceholderGame = ({ onClose }: { onClose: () => void; onScoreUpdate: (sco
               <li>• Score tracking and leaderboards</li>
               <li>• Multiple difficulty levels</li>
             </ul>
-          </div>
-          <button 
+        </div>
+                    <button
             onClick={onClose}
             className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
             Close
-          </button>
+                    </button>
         </div>
       </motion.div>
     </div>
@@ -738,23 +738,23 @@ const EntertainmentPage = () => {
                 </h3>
                 
                 <div className="space-y-2">
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setFilterCategory(category)}
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setFilterCategory(category)}
                       className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
-                        filterCategory === category
+                  filterCategory === category
                           ? 'bg-blue-600 text-white shadow-md'
                           : 'text-gray-700 hover:bg-gray-100'
-                      }`}
-                    >
-                      {category === 'all' ? 'All Games' : category}
+                }`}
+              >
+                {category === 'all' ? 'All Games' : category}
                       <span className="float-right text-sm opacity-75">
                         {category === 'all' ? games.length : games.filter(g => g.category === category).length}
                       </span>
-                    </button>
-                  ))}
-                </div>
+              </button>
+            ))}
+          </div>
 
                 {/* Leaderboard Preview */}
                 <div className="mt-8 pt-6 border-t border-gray-200">
@@ -795,49 +795,49 @@ const EntertainmentPage = () => {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {filteredGames.map((game, index) => {
-                    const Icon = game.icon;
-                    return (
-                      <motion.div
-                        key={game.id}
-                        initial={{ opacity: 0, y: 20 }}
+            {filteredGames.map((game, index) => {
+              const Icon = game.icon;
+              return (
+                <motion.div
+                  key={game.id}
+                  initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group"
-                      >
-                        <div className="relative h-48 overflow-hidden">
+                >
+                  <div className="relative h-48 overflow-hidden">
                           <Image
-                            src={game.image}
-                            alt={game.title}
+                          src={game.image}
+                          alt={game.title}
                             width={400}
                             height={192}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             unoptimized
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
                               target.src = 'https://picsum.photos/800/600?random=fallback';
-                            }}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                          <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                          }}
+                        />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
                             <Icon className="w-6 h-6 text-white" />
-                            <span className={`
+                      <span className={`
                               px-2 py-1 rounded-full text-xs font-medium
-                              ${game.difficulty === 'Easy' ? 'bg-green-500' : ''}
-                              ${game.difficulty === 'Medium' ? 'bg-yellow-500' : ''}
-                              ${game.difficulty === 'Hard' ? 'bg-red-500' : ''}
-                              text-white
-                            `}>
-                              {game.difficulty}
-                            </span>
-                          </div>
+                        ${game.difficulty === 'Easy' ? 'bg-green-500' : ''}
+                        ${game.difficulty === 'Medium' ? 'bg-yellow-500' : ''}
+                        ${game.difficulty === 'Hard' ? 'bg-red-500' : ''}
+                        text-white
+                      `}>
+                        {game.difficulty}
+                      </span>
+                    </div>
                           <div className="absolute top-4 right-4">
                             <span className="bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
                               {game.category}
                             </span>
                           </div>
-                        </div>
-                        <div className="p-6">
+                  </div>
+                  <div className="p-6">
                           <h3 className="text-xl font-bold mb-3 text-gray-900">{game.title}</h3>
                           <p className="text-gray-600 mb-4 text-sm leading-relaxed">{game.description}</p>
                           <div className="flex items-center justify-between">
@@ -846,18 +846,18 @@ const EntertainmentPage = () => {
                                 {isClient ? (leaderboard[game.id] || 0) : 0}
                               </span>
                             </div>
-                            <button
-                              onClick={() => openGame(game.id)}
+                     <button
+                       onClick={() => openGame(game.id)}
                               className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2"
-                            >
+                     >
                               <Play className="w-4 h-4" />
                               Play
-                            </button>
+                    </button>
                           </div>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
+                  </div>
+                </motion.div>
+              );
+            })}
                 </div>
               )}
             </div>
