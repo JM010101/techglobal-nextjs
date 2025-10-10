@@ -176,7 +176,7 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
   };
 
   const handleCellClick = (row: number, col: number) => {
-    if (gameOver) return;
+    if (gameOver || currentTurn !== 'blue') return; // Only allow blue team (user) to click
 
     const cardId = grid[row][col];
     if (!cardId) return;
@@ -219,6 +219,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     ));
     // Switch to the opposite team after opening a card
     setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
+    
+    // If it's now red team's turn, trigger AI
+    if (currentTurn === 'blue') {
+      setTimeout(() => redTeamAI(), 1000);
+    }
   };
 
   const moveCard = (card: Card, newRow: number, newCol: number) => {
@@ -234,6 +239,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     setGrid(newGrid);
     setSelectedCard(null);
     setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
+    
+    // If it's now red team's turn, trigger AI
+    if (currentTurn === 'blue') {
+      setTimeout(() => redTeamAI(), 1000);
+    }
   };
 
   const attackCard = (attacker: Card, defender: Card) => {
@@ -257,6 +267,11 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
 
     setSelectedCard(null);
     setCurrentTurn(currentTurn === 'blue' ? 'red' : 'blue');
+    
+    // If it's now red team's turn, trigger AI
+    if (currentTurn === 'blue') {
+      setTimeout(() => redTeamAI(), 1000);
+    }
   };
 
   const checkGameOver = () => {
@@ -273,6 +288,59 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
       setWinner('blue');
       setScore(score + 200);
       onScoreUpdate(score + 200);
+    }
+  };
+
+  const redTeamAI = () => {
+    if (gameOver || currentTurn !== 'red') return;
+
+    const redCards = cards.filter(c => c.team === 'red' && !c.isDead);
+    const blueCards = cards.filter(c => c.team === 'blue' && !c.isDead && c.isOpen);
+    
+    // AI Strategy: 1. Open random closed card, 2. Move/attack with open cards
+    const closedCards = cards.filter(c => c.team === 'red' && !c.isOpen && !c.isDead);
+    const openRedCards = cards.filter(c => c.team === 'red' && c.isOpen && !c.isDead);
+
+    if (closedCards.length > 0 && Math.random() < 0.7) {
+      // 70% chance to open a closed card
+      const randomCard = closedCards[Math.floor(Math.random() * closedCards.length)];
+      openCard(randomCard);
+    } else if (openRedCards.length > 0) {
+      // Try to move or attack with open cards
+      const randomOpenCard = openRedCards[Math.floor(Math.random() * openRedCards.length)];
+      
+      // Find adjacent targets
+      const adjacentTargets = [];
+      for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+          if (isAdjacent(randomOpenCard.row, randomOpenCard.col, row, col)) {
+            const targetCard = cards.find(c => c.id === grid[row][col]);
+            if (targetCard && targetCard.team === 'blue' && targetCard.isOpen) {
+              adjacentTargets.push({ row, col, card: targetCard });
+            } else if (!grid[row][col]) {
+              adjacentTargets.push({ row, col, card: null });
+            }
+          }
+        }
+      }
+
+      if (adjacentTargets.length > 0) {
+        const target = adjacentTargets[Math.floor(Math.random() * adjacentTargets.length)];
+        
+        if (target.card) {
+          // Attack blue card
+          attackCard(randomOpenCard, target.card);
+        } else {
+          // Move to empty cell
+          moveCard(randomOpenCard, target.row, target.col);
+        }
+      } else {
+        // No valid moves, just end turn
+        setCurrentTurn('blue');
+      }
+    } else {
+      // No open cards, just end turn
+      setCurrentTurn('blue');
     }
   };
 
@@ -348,8 +416,8 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
             <div className="text-6xl mb-6">⚔️</div>
             <h3 className="text-2xl font-bold mb-4">Welcome to Grid Tactics</h3>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Command your warrior in tactical combat! Move strategically and attack your enemy. 
-              Reduce their health to zero to win the battle!
+              Command your blue team against the red AI! Open cards strategically, move your warriors, 
+              and attack the enemy. Eliminate all red cards to win!
             </p>
             <div className="bg-blue-50 rounded-lg p-6 mb-8">
               <h4 className="font-semibold text-blue-800 mb-4">How to Play:</h4>
@@ -411,9 +479,12 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
               </div>
               <div className="text-right">
                 <div className="text-lg font-bold text-gray-800">
-                  {currentTurn === 'blue' ? 'Blue Team Turn' : 'Red Team Turn'}
+                  {currentTurn === 'blue' ? 'Your Turn (Blue)' : 'AI Turn (Red)'}
                 </div>
                 <div className="text-sm text-gray-600">Score: {score}</div>
+                {currentTurn === 'red' && (
+                  <div className="text-sm text-orange-600">AI is thinking...</div>
+                )}
               </div>
             </div>
 
@@ -468,10 +539,12 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
 
             {/* Instructions */}
             <div className="text-center text-sm text-gray-600">
-              {selectedCard ? (
+              {currentTurn === 'red' ? (
+                <p>AI is making its move...</p>
+              ) : selectedCard ? (
                 <p>Click an adjacent cell to move or attack!</p>
               ) : (
-                <p>Click on a {currentTurn} team card to open or select it</p>
+                <p>Click on any card to open it, or click your blue cards to select them</p>
               )}
             </div>
           </div>
