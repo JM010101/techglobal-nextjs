@@ -400,14 +400,14 @@ const GridTacticsGame = () => {
           </div>
         ) : gameOver ? (
           <div className="text-center py-12">
-            <div className="text-6xl mb-6">{winner === 'blue' ? '🏆' : '💀'}</div>
-            <h3 className="text-2xl font-bold mb-4">
-              {winner === 'blue' ? 'Blue Team Victory!' : 'Red Team Victory!'}
+            <div className="text-6xl mb-6">{winner === 'male' ? '🏆' : '💀'}</div>
+            <h3 className="text-2xl font-bold mb-4 text-white">
+              {winner === 'male' ? 'Male Team Victory!' : 'Female Team Victory!'}
             </h3>
-            <p className="text-gray-600 mb-6">
-              {winner === 'blue' 
-                ? `Blue team eliminated all red cards! Final Score: ${score}` 
-                : 'Red team eliminated all blue cards!'
+            <p className="text-gray-300 mb-6">
+              {winner === 'male' 
+                ? `Male team eliminated all female cards! Final Score: ${score}` 
+                : 'Female team eliminated all male cards!'
               }
             </p>
             <div className="flex gap-4 justify-center">
