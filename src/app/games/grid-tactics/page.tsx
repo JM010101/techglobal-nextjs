@@ -369,8 +369,19 @@ const GridTacticsGame = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-900 flex flex-col">
-      <div className="flex justify-between items-center p-2 bg-gray-800 shadow-lg flex-shrink-0">
+    <div 
+      className="fixed inset-0 flex flex-col"
+      style={{
+        backgroundImage: 'url(/images/game/grid_tactical/dashboard.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      
+      <div className="relative z-10 flex justify-between items-center p-2 bg-gray-800 shadow-lg flex-shrink-0">
         <h1 className="text-xl font-bold text-white">Grid Tactics</h1>
         <button 
           onClick={() => window.close()} 
@@ -380,7 +391,7 @@ const GridTacticsGame = () => {
         </button>
       </div>
       
-      <div className="flex-1 flex flex-col p-2 overflow-auto">
+      <div className="relative z-10 flex-1 flex flex-col p-2 overflow-auto">
 
         {!gameStarted ? (
           <div className="text-center py-12">
@@ -469,7 +480,7 @@ const GridTacticsGame = () => {
             {/* Game Grid */}
             <div className="flex-1 flex items-center justify-center">
               <div 
-                className="grid grid-cols-8 gap-1 bg-gray-700 p-1 rounded-lg shadow-lg border border-gray-600"
+                className="grid grid-cols-8 gap-1 bg-black bg-opacity-30 p-1 rounded-lg shadow-lg border border-gray-400"
                 style={{
                   width: '1600px',
                   height: '600px'
