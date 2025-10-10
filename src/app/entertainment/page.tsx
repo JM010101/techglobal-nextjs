@@ -179,18 +179,14 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     if (gameOver) return; // Allow both teams to click
 
     const cardId = grid[row][col];
-    if (!cardId) return;
-
-    const card = cards.find(c => c.id === cardId);
-    if (!card) return;
-
+    
     if (selectedCard) {
       // Try to move or attack
       const selectedCardData = cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
       if (!selectedCardData) return;
 
       if (grid[row][col] === '') {
-        // Move to empty cell
+        // Move to empty cell (including dead card positions)
         moveCard(selectedCardData, row, col);
       } else {
         const targetCard = cards.find(c => c.id === grid[row][col]);
@@ -200,14 +196,19 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
         }
       }
     } else {
-      // Handle card interaction
-      if (!card.isOpen) {
-        // Open closed card (any team can open any card)
-        openCard(card);
-      } else {
-        // Select open card for movement/attack (only current team's cards)
-        if (card.team === currentTurn) {
-          setSelectedCard({ row, col });
+      // Handle card interaction (only if there's a card in this cell)
+      if (cardId) {
+        const card = cards.find(c => c.id === cardId);
+        if (!card) return;
+
+        if (!card.isOpen) {
+          // Open closed card (any team can open any card)
+          openCard(card);
+        } else {
+          // Select open card for movement/attack (only current team's cards)
+          if (card.team === currentTurn) {
+            setSelectedCard({ row, col });
+          }
         }
       }
     }
@@ -460,9 +461,8 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
                           ? 'bg-orange-100 border-orange-300 hover:bg-orange-200'
                           : 'bg-white border-gray-300 hover:bg-gray-50'
                         }
-                        ${!grid[row][col] ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                        cursor-pointer
                       `}
-                      disabled={!grid[row][col]}
                     >
                       {getCellContent(row, col)}
                     </button>
