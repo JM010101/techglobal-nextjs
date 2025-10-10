@@ -761,7 +761,7 @@ const Portfolio = ({ limit }: PortfolioProps) => {
       ...e,
       touches: undefined,
       clientX: e.clientX
-    } as React.MouseEvent;
+    } as unknown as React.MouseEvent;
     handleDragMove(syntheticEvent);
   }, [isDragging, startX]);
 
