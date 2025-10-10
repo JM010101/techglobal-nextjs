@@ -381,96 +381,102 @@ const GridTacticsGame = () => {
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       
-      <div className="relative z-10 flex justify-between items-center p-2 bg-gray-800 shadow-lg flex-shrink-0">
-        <h1 className="text-xl font-bold text-white">Grid Tactics</h1>
+      <div className="relative z-10 flex justify-between items-center p-4 bg-gradient-to-r from-gray-900 to-gray-800 shadow-2xl flex-shrink-0 border-b border-gray-700">
+        <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 tracking-wider">
+          GRID TACTICS
+        </h1>
         <button 
           onClick={() => window.close()} 
-          className="p-2 hover:bg-gray-700 rounded-full text-white"
+          className="p-3 hover:bg-red-600 rounded-full text-white transition-all duration-300 hover:scale-110"
         >
-          <X className="w-5 h-5" />
+          <X className="w-6 h-6" />
         </button>
       </div>
       
       <div className="relative z-10 flex-1 flex flex-col p-2 overflow-auto">
 
         {!gameStarted ? (
-          <div className="text-center py-12">
-            <div className="text-6xl mb-6">⚔️</div>
-            <h3 className="text-2xl font-bold mb-4 text-white">Welcome to Grid Tactics</h3>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Two-player tactical combat! Male team vs Female team. Click closed cards to reveal all adjacent cards, 
-              move your warriors, and attack the enemy. Eliminate all opponent cards to win!
+          <div className="text-center py-16">
+            <div className="text-8xl mb-8 animate-pulse">⚔️</div>
+            <h3 className="text-5xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 tracking-wider">
+              WELCOME TO GRID TACTICS
+            </h3>
+            <p className="text-xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+              Epic tactical combat awaits! Command your warriors in strategic battles. 
+              <span className="text-yellow-400 font-bold"> Male vs Female</span> teams clash in this intense grid-based warfare!
             </p>
-            <div className="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-              <h4 className="font-semibold text-blue-400 mb-4">How to Play:</h4>
-              <ul className="text-sm text-gray-300 space-y-2 text-left">
-                <li>• Click closed cards to reveal ALL adjacent cards</li>
-                <li>• Click open cards to select them for movement/attack</li>
-                <li>• Move to adjacent empty cells or attack enemy cards</li>
-                <li>• Eliminate all opponent cards to win!</li>
-                <li>• Male team starts first, then alternate turns</li>
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 mb-12 border border-gray-600 shadow-2xl">
+              <h4 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 mb-6 tracking-wide">
+                HOW TO PLAY
+              </h4>
+              <ul className="text-lg text-gray-200 space-y-3 text-left font-medium">
+                <li className="flex items-center"><span className="text-yellow-400 mr-3">⚡</span> Click closed cards to reveal ALL adjacent cards</li>
+                <li className="flex items-center"><span className="text-blue-400 mr-3">🎯</span> Click open cards to select them for movement/attack</li>
+                <li className="flex items-center"><span className="text-green-400 mr-3">🚀</span> Move to adjacent empty cells or attack enemy cards</li>
+                <li className="flex items-center"><span className="text-red-400 mr-3">💀</span> Eliminate all opponent cards to win!</li>
+                <li className="flex items-center"><span className="text-purple-400 mr-3">👑</span> Male team starts first, then alternate turns</li>
               </ul>
             </div>
-            <button onClick={startGame} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-              Start Battle
+            <button onClick={startGame} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-12 py-4 rounded-2xl font-black text-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:scale-105 shadow-2xl">
+              START BATTLE
             </button>
           </div>
         ) : gameOver ? (
-          <div className="text-center py-12">
-            <div className="text-6xl mb-6">{winner === 'male' ? '🏆' : '💀'}</div>
-            <h3 className="text-2xl font-bold mb-4 text-white">
-              {winner === 'male' ? 'Male Team Victory!' : 'Female Team Victory!'}
+          <div className="text-center py-16">
+            <div className="text-9xl mb-8 animate-bounce">{winner === 'male' ? '🏆' : '💀'}</div>
+            <h3 className="text-6xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 tracking-wider">
+              {winner === 'male' ? 'MALE TEAM VICTORY!' : 'FEMALE TEAM VICTORY!'}
             </h3>
-            <p className="text-gray-300 mb-6">
+            <p className="text-2xl text-gray-200 mb-8 font-medium">
               {winner === 'male' 
-                ? `Male team eliminated all female cards! Final Score: ${score}` 
-                : 'Female team eliminated all male cards!'
+                ? `Male warriors conquered the battlefield! Final Score: ${score}` 
+                : 'Female warriors dominated the arena!'
               }
             </p>
-            <div className="flex gap-4 justify-center">
-              <button onClick={resetGame} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                Play Again
+            <div className="flex gap-6 justify-center">
+              <button onClick={resetGame} className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:from-green-700 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-2xl">
+                PLAY AGAIN
               </button>
-              <button onClick={() => window.close()} className="bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors">
-                Close
+              <button onClick={() => window.close()} className="bg-gradient-to-r from-red-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:from-red-700 hover:to-pink-700 transition-all duration-300 hover:scale-105 shadow-2xl">
+                CLOSE
               </button>
             </div>
           </div>
         ) : (
           <div className="flex-1 flex flex-col space-y-1">
             {/* Game Status */}
-            <div className="flex justify-between items-center bg-gray-800 rounded-lg p-1 shadow-sm flex-shrink-0 border border-gray-700">
-              <div className="flex gap-2">
-                <div className="bg-blue-900 rounded-lg p-1 border border-blue-700">
-                  <div className="flex items-center gap-1">
-                    <span className="text-sm">👨</span>
-                    <span className="font-bold text-xs text-blue-200">Male: {cards.filter(c => c.team === 'male' && !c.isDead).length}/32</span>
+            <div className="flex justify-between items-center bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-4 shadow-2xl flex-shrink-0 border border-gray-600">
+              <div className="flex gap-4">
+                <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-xl p-3 border border-blue-600 shadow-lg">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">⚔️</span>
+                    <span className="font-black text-sm text-blue-200 tracking-wide">MALE: {cards.filter(c => c.team === 'male' && !c.isDead).length}/32</span>
                   </div>
                 </div>
-                <div className="bg-pink-900 rounded-lg p-1 border border-pink-700">
-                  <div className="flex items-center gap-1">
-                    <span className="text-sm">👩</span>
-                    <span className="font-bold text-xs text-pink-200">Female: {cards.filter(c => c.team === 'female' && !c.isDead).length}/32</span>
+                <div className="bg-gradient-to-r from-pink-900 to-pink-800 rounded-xl p-3 border border-pink-600 shadow-lg">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">❤️</span>
+                    <span className="font-black text-sm text-pink-200 tracking-wide">FEMALE: {cards.filter(c => c.team === 'female' && !c.isDead).length}/32</span>
                   </div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-xs font-bold text-white">
-                  {currentTurn === 'male' ? 'Male Turn' : 'Female Turn'} | Score: {score}
+                <div className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 tracking-wide">
+                  {currentTurn === 'male' ? 'MALE TURN' : 'FEMALE TURN'} | SCORE: {score}
                 </div>
               </div>
             </div>
 
             {/* Selected Card Info */}
             {getSelectedCard() && (
-              <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-                <h4 className="font-semibold mb-2 text-white">Selected Card:</h4>
-                <div className="flex items-center gap-4">
-                  <span className="text-2xl">{getSelectedCard()?.team === 'male' ? '👨' : '👩'}</span>
+              <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-600 shadow-2xl">
+                <h4 className="text-xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 tracking-wide">SELECTED WARRIOR</h4>
+                <div className="flex items-center gap-6">
+                  <span className="text-4xl">{getSelectedCard()?.team === 'male' ? '⚔️' : '❤️'}</span>
                   <div>
-                    <div className="font-medium">{getSelectedCard()?.team} Team</div>
-                    <div className="text-sm text-gray-300">
-                      Health: {getSelectedCard()?.health} | Attack: {getSelectedCard()?.attackRate}
+                    <div className="text-2xl font-black text-white tracking-wide">{getSelectedCard()?.team.toUpperCase()} TEAM</div>
+                    <div className="text-lg text-gray-200 font-medium">
+                      Health: <span className="text-red-400 font-black">{getSelectedCard()?.health}</span> | Attack: <span className="text-yellow-400 font-black">{getSelectedCard()?.attackRate}</span>
                     </div>
                   </div>
                 </div>
@@ -516,16 +522,18 @@ const GridTacticsGame = () => {
             </div>
 
             {/* Instructions */}
-            <div className="text-center text-xs text-gray-300 pb-1 flex-shrink-0">
+            <div className="text-center text-lg text-gray-200 pb-4 flex-shrink-0">
               {selectedCard ? (
                 <div>
-                  <p className="mb-1">Click an adjacent cell to move or attack!</p>
-                  <p className="text-xs text-gray-400">
+                  <p className="mb-2 font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">CLICK ADJACENT CELL TO MOVE OR ATTACK!</p>
+                  <p className="text-sm text-gray-400 font-medium">
                     Click selected card again to deselect • Click empty space to cancel • Click different card to switch
                   </p>
                 </div>
               ) : (
-                <p>Click on any card to open it, or click your {currentTurn} cards to select them</p>
+                <p className="font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
+                  CLICK ON ANY CARD TO OPEN IT, OR CLICK YOUR {currentTurn.toUpperCase()} CARDS TO SELECT THEM
+                </p>
               )}
             </div>
           </div>
