@@ -187,9 +187,19 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
         return;
       }
 
-      // If clicking empty space, deselect current selection
+      // Get the selected card data
+      const selectedCardData = cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
+      if (!selectedCardData) return;
+
+      // If clicking empty space, check if it's adjacent for movement
       if (grid[row][col] === '') {
-        setSelectedCard(null);
+        if (isAdjacent(selectedCard.row, selectedCard.col, row, col)) {
+          // Move to adjacent empty cell
+          moveCard(selectedCardData, row, col);
+        } else {
+          // If not adjacent, deselect
+          setSelectedCard(null);
+        }
         return;
       }
 
@@ -199,8 +209,7 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
         if (!targetCard) return;
 
         // If it's an enemy card and open, attack it
-        const selectedCardData = cards.find(c => c.id === grid[selectedCard.row][selectedCard.col]);
-        if (selectedCardData && targetCard.team !== selectedCardData.team && targetCard.isOpen) {
+        if (targetCard.team !== selectedCardData.team && targetCard.isOpen) {
           attackCard(selectedCardData, targetCard);
         } else if (targetCard.team === currentTurn && targetCard.isOpen) {
           // If it's current team's open card, switch selection
