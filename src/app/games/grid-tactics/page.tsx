@@ -363,7 +363,7 @@ const GridTacticsGame = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-900 flex flex-col overflow-hidden">
+    <div className="fixed inset-0 bg-gray-900 flex flex-col">
       <div className="flex justify-between items-center p-2 bg-gray-800 shadow-lg flex-shrink-0">
         <h1 className="text-xl font-bold text-white">Grid Tactics</h1>
         <button 
@@ -374,7 +374,7 @@ const GridTacticsGame = () => {
         </button>
       </div>
       
-      <div className="flex-1 flex flex-col p-2 overflow-hidden">
+      <div className="flex-1 flex flex-col p-2 overflow-auto">
 
         {!gameStarted ? (
           <div className="text-center py-12">
@@ -420,7 +420,7 @@ const GridTacticsGame = () => {
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col space-y-1 overflow-hidden">
+          <div className="flex-1 flex flex-col space-y-1">
             {/* Game Status */}
             <div className="flex justify-between items-center bg-gray-800 rounded-lg p-1 shadow-sm flex-shrink-0 border border-gray-700">
               <div className="flex gap-2">
@@ -461,7 +461,7 @@ const GridTacticsGame = () => {
             )}
 
             {/* Game Grid */}
-            <div className="flex-1 flex items-center justify-center overflow-hidden">
+            <div className="flex-1 flex items-center justify-center">
               <div 
                 className="grid grid-cols-8 gap-1 bg-gray-700 p-1 rounded-lg shadow-lg border border-gray-600"
                 style={{
