@@ -502,9 +502,9 @@ const GridTacticsGame = () => {
               </div>
             </div>
 
-            {/* Selected Card Info */}
+            {/* Selected Card Info - Fixed Position */}
             {getSelectedCard() && (
-              <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-600 shadow-2xl">
+              <div className="fixed top-20 left-4 z-50 bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-600 shadow-2xl">
                 <h4 className="text-xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 tracking-wide">SELECTED WARRIOR</h4>
                 <div className="flex items-center gap-6">
                   <span className="text-4xl">{getSelectedCard()?.team === 'male' ? '⚔️' : '❤️'}</span>
