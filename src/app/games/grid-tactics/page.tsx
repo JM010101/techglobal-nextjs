@@ -351,12 +351,24 @@ const GridTacticsGame = () => {
             </span>
           </div>
           <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-1 rounded-b-lg">
-            <div className="flex justify-center items-center gap-2 text-xs">
-              <div className={`font-bold ${getHealthColor(card.health)}`}>
-                ❤️{card.health}
+            <div className="flex flex-col items-center gap-1">
+              {/* Health Bar */}
+              <div className="w-full bg-gray-600 rounded-full h-2 overflow-hidden">
+                <div 
+                  className={`h-full transition-all duration-300 ${
+                    card.health >= 6 ? 'bg-green-500' : 
+                    card.health >= 4 ? 'bg-yellow-500' : 
+                    'bg-red-500'
+                  }`}
+                  style={{ width: `${(card.health / 7) * 100}%` }}
+                ></div>
               </div>
-              <div className={`font-bold ${getAttackColor(card.attackRate)}`}>
-                ⚡{card.attackRate}
+              {/* Attack Number */}
+              <div className="flex justify-center items-center gap-1 text-xs">
+                <span className="text-yellow-400">⚡</span>
+                <span className={`font-bold ${getAttackColor(card.attackRate)}`}>
+                  {card.attackRate}
+                </span>
               </div>
             </div>
           </div>
