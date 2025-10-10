@@ -29,13 +29,13 @@ interface Game {
 
 const games: Game[] = [
   {
-    id: 'game-1',
-    title: 'Coming Soon',
-    description: 'A new exciting game will be available here soon. Stay tuned for updates!',
-    icon: Gamepad2,
+    id: 'grid-tactics',
+    title: 'Grid Tactics',
+    description: 'Turn-based tactical combat on an 8x8 grid. Command your warrior to defeat the enemy in strategic battles!',
+    icon: Target,
     image: 'https://picsum.photos/800/600?random=1',
-    difficulty: 'Easy',
-    category: 'All'
+    difficulty: 'Medium',
+    category: 'Strategy'
   },
   {
     id: 'game-2',
@@ -83,6 +83,328 @@ const games: Game[] = [
     category: 'All'
   }
 ];
+
+// Grid Tactics Game Component
+const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
+  const [gameStarted, setGameStarted] = useState(false);
+  const [currentTurn, setCurrentTurn] = useState<'player' | 'enemy'>('player');
+  const [selectedCell, setSelectedCell] = useState<{row: number, col: number} | null>(null);
+  const [gameOver, setGameOver] = useState(false);
+  const [winner, setWinner] = useState<'player' | 'enemy' | null>(null);
+  const [score, setScore] = useState(0);
+
+  const [player, setPlayer] = useState({
+    row: 1,
+    col: 1,
+    health: 3,
+    maxHealth: 3,
+    weapon: '⚔️',
+    name: 'Warrior'
+  });
+
+  const [enemy, setEnemy] = useState({
+    row: 6,
+    col: 6,
+    health: 7,
+    maxHealth: 7,
+    weapon: '🗡️',
+    name: 'Goblin'
+  });
+
+  const [grid, setGrid] = useState<Array<Array<string>>>(() => {
+    const newGrid = Array(8).fill(null).map(() => Array(8).fill(''));
+    newGrid[1][1] = 'player';
+    newGrid[6][6] = 'enemy';
+    return newGrid;
+  });
+
+  const startGame = () => {
+    setGameStarted(true);
+    setCurrentTurn('player');
+    setGameOver(false);
+    setWinner(null);
+    setScore(0);
+  };
+
+  const resetGame = () => {
+    setGameStarted(false);
+    setCurrentTurn('player');
+    setSelectedCell(null);
+    setGameOver(false);
+    setWinner(null);
+    setScore(0);
+    
+    setPlayer({
+      row: 1,
+      col: 1,
+      health: 3,
+      maxHealth: 3,
+      weapon: '⚔️',
+      name: 'Warrior'
+    });
+    
+    setEnemy({
+      row: 6,
+      col: 6,
+      health: 7,
+      maxHealth: 7,
+      weapon: '🗡️',
+      name: 'Goblin'
+    });
+
+    const newGrid = Array(8).fill(null).map(() => Array(8).fill(''));
+    newGrid[1][1] = 'player';
+    newGrid[6][6] = 'enemy';
+    setGrid(newGrid);
+  };
+
+  const handleCellClick = (row: number, col: number) => {
+    if (gameOver || currentTurn !== 'player') return;
+
+    if (selectedCell) {
+      // Try to move or attack
+      if (grid[row][col] === '') {
+        // Move to empty cell
+        const newGrid = [...grid];
+        newGrid[selectedCell.row][selectedCell.col] = '';
+        newGrid[row][col] = 'player';
+        setGrid(newGrid);
+        setPlayer(prev => ({ ...prev, row, col }));
+        setSelectedCell(null);
+        setCurrentTurn('enemy');
+        setTimeout(() => enemyTurn(), 1000);
+      } else if (grid[row][col] === 'enemy') {
+        // Attack enemy
+        attackEnemy();
+      }
+    } else {
+      // Select player cell
+      if (grid[row][col] === 'player') {
+        setSelectedCell({ row, col });
+      }
+    }
+  };
+
+  const attackEnemy = () => {
+    const damage = 1;
+    const newEnemyHealth = Math.max(0, enemy.health - damage);
+    setEnemy(prev => ({ ...prev, health: newEnemyHealth }));
+    
+    if (newEnemyHealth <= 0) {
+      setGameOver(true);
+      setWinner('player');
+      const newScore = score + 100;
+      setScore(newScore);
+      onScoreUpdate(newScore);
+    } else {
+      setCurrentTurn('enemy');
+      setTimeout(() => enemyTurn(), 1000);
+    }
+    setSelectedCell(null);
+  };
+
+  const enemyTurn = () => {
+    if (gameOver) return;
+
+    // Simple AI: move towards player or attack if adjacent
+    const distance = Math.abs(player.row - enemy.row) + Math.abs(player.col - enemy.col);
+    
+    if (distance === 1) {
+      // Attack player
+      const damage = 1;
+      const newPlayerHealth = Math.max(0, player.health - damage);
+      setPlayer(prev => ({ ...prev, health: newPlayerHealth }));
+      
+      if (newPlayerHealth <= 0) {
+        setGameOver(true);
+        setWinner('enemy');
+      }
+    } else {
+      // Move towards player
+      const newGrid = [...grid];
+      newGrid[enemy.row][enemy.col] = '';
+      
+      let newRow = enemy.row;
+      let newCol = enemy.col;
+      
+      if (enemy.row < player.row) newRow++;
+      else if (enemy.row > player.row) newRow--;
+      else if (enemy.col < player.col) newCol++;
+      else if (enemy.col > player.col) newCol--;
+      
+      newGrid[newRow][newCol] = 'enemy';
+      setGrid(newGrid);
+      setEnemy(prev => ({ ...prev, row: newRow, col: newCol }));
+    }
+    
+    setCurrentTurn('player');
+  };
+
+  const getCellContent = (row: number, col: number) => {
+    if (grid[row][col] === 'player') {
+      return (
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="text-2xl">{player.weapon}</div>
+          <div className="text-xs font-bold text-blue-600">{player.health}</div>
+        </div>
+      );
+    }
+    if (grid[row][col] === 'enemy') {
+      return (
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="text-2xl">{enemy.weapon}</div>
+          <div className="text-xs font-bold text-red-600">{enemy.health}</div>
+        </div>
+      );
+    }
+    return '';
+  };
+
+  const isAdjacent = (row1: number, col1: number, row2: number, col2: number) => {
+    return Math.abs(row1 - row2) + Math.abs(col1 - col2) === 1;
+  };
+
+  const canAttack = (row: number, col: number) => {
+    if (!selectedCell) return false;
+    return isAdjacent(selectedCell.row, selectedCell.col, row, col) && grid[row][col] === 'enemy';
+  };
+
+  const canMove = (row: number, col: number) => {
+    if (!selectedCell) return false;
+    return isAdjacent(selectedCell.row, selectedCell.col, row, col) && grid[row][col] === '';
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-white rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold">Grid Tactics</h2>
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {!gameStarted ? (
+          <div className="text-center py-12">
+            <div className="text-6xl mb-6">⚔️</div>
+            <h3 className="text-2xl font-bold mb-4">Welcome to Grid Tactics</h3>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Command your warrior in tactical combat! Move strategically and attack your enemy. 
+              Reduce their health to zero to win the battle!
+            </p>
+            <div className="bg-blue-50 rounded-lg p-6 mb-8">
+              <h4 className="font-semibold text-blue-800 mb-4">How to Play:</h4>
+              <ul className="text-sm text-blue-700 space-y-2 text-left">
+                <li>• Click on your warrior to select them</li>
+                <li>• Click adjacent empty cells to move</li>
+                <li>• Click adjacent enemies to attack</li>
+                <li>• Reduce enemy health to 0 to win!</li>
+              </ul>
+            </div>
+            <button onClick={startGame} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              Start Battle
+            </button>
+          </div>
+        ) : gameOver ? (
+          <div className="text-center py-12">
+            <div className="text-6xl mb-6">{winner === 'player' ? '🏆' : '💀'}</div>
+            <h3 className="text-2xl font-bold mb-4">
+              {winner === 'player' ? 'Victory!' : 'Defeat!'}
+            </h3>
+            <p className="text-gray-600 mb-6">
+              {winner === 'player' 
+                ? `You defeated the enemy! Final Score: ${score}` 
+                : 'The enemy was too strong this time...'
+              }
+            </p>
+            <div className="flex gap-4 justify-center">
+              <button onClick={resetGame} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Play Again
+              </button>
+              <button onClick={onClose} className="bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors">
+                Close
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-6">
+            {/* Game Status */}
+            <div className="flex justify-between items-center">
+              <div className="flex gap-6">
+                <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">{player.weapon}</span>
+                    <span className="font-bold">{player.name}</span>
+                  </div>
+                  <div className="text-sm text-blue-700">Health: {player.health}/{player.maxHealth}</div>
+                </div>
+                <div className="bg-red-50 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">{enemy.weapon}</span>
+                    <span className="font-bold">{enemy.name}</span>
+                  </div>
+                  <div className="text-sm text-red-700">Health: {enemy.health}/{enemy.maxHealth}</div>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-lg font-bold text-gray-800">
+                  {currentTurn === 'player' ? 'Your Turn' : 'Enemy Turn'}
+                </div>
+                <div className="text-sm text-gray-600">Score: {score}</div>
+              </div>
+            </div>
+
+            {/* Game Grid */}
+            <div className="flex justify-center">
+              <div className="grid grid-cols-8 gap-1 bg-gray-200 p-2 rounded-lg">
+                {Array(8).fill(null).map((_, row) => 
+                  Array(8).fill(null).map((_, col) => (
+                    <button
+                      key={`${row}-${col}`}
+                      onClick={() => handleCellClick(row, col)}
+                      className={`
+                        w-12 h-12 border-2 rounded-lg flex items-center justify-center text-sm font-bold transition-all duration-200
+                        ${grid[row][col] === 'player' 
+                          ? 'bg-blue-500 text-white border-blue-600' 
+                          : grid[row][col] === 'enemy'
+                          ? 'bg-red-500 text-white border-red-600'
+                          : selectedCell && selectedCell.row === row && selectedCell.col === col
+                          ? 'bg-yellow-300 border-yellow-500'
+                          : canMove(row, col)
+                          ? 'bg-green-100 border-green-300 hover:bg-green-200'
+                          : canAttack(row, col)
+                          ? 'bg-orange-100 border-orange-300 hover:bg-orange-200'
+                          : 'bg-white border-gray-300 hover:bg-gray-50'
+                        }
+                        ${currentTurn !== 'player' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                      `}
+                      disabled={currentTurn !== 'player'}
+                    >
+                      {getCellContent(row, col)}
+                    </button>
+                  ))
+                )}
+              </div>
+            </div>
+
+            {/* Instructions */}
+            <div className="text-center text-sm text-gray-600">
+              {selectedCell ? (
+                <p>Click an adjacent cell to move or attack!</p>
+              ) : (
+                <p>Click on your warrior to select them</p>
+              )}
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
 
 // Placeholder Game Component
 const PlaceholderGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onScoreUpdate: (score: number) => void }) => {
@@ -143,7 +465,7 @@ const EntertainmentPage = () => {
     }
   }, []);
 
-  const categories = ['all', 'All'];
+  const categories = ['all', 'Strategy', 'All'];
 
   const filteredGames = filterCategory === 'all' 
     ? games 
@@ -175,7 +497,12 @@ const EntertainmentPage = () => {
       onScoreUpdate: (score: number) => updateLeaderboard(selectedGame, score) 
     };
 
-    return <PlaceholderGame {...gameProps} />;
+    switch (selectedGame) {
+      case 'grid-tactics':
+        return <GridTacticsGame {...gameProps} />;
+      default:
+        return <PlaceholderGame {...gameProps} />;
+    }
   };
 
   return (
