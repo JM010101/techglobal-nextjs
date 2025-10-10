@@ -287,8 +287,8 @@ const GridTacticsGame = () => {
       // Closed card - show mystery icon (same for all teams)
       return (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-2xl">❓</div>
-          <div className="text-xs opacity-60">?</div>
+          <div className="text-3xl">❓</div>
+          <div className="text-sm opacity-60">?</div>
         </div>
       );
     } else {
@@ -319,8 +319,8 @@ const GridTacticsGame = () => {
 
       return (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-2xl">{getWarriorIcon(card)}</div>
-          <div className="flex flex-col items-center text-xs">
+          <div className="text-3xl">{getWarriorIcon(card)}</div>
+          <div className="flex flex-col items-center text-sm">
             <div className={`font-bold ${getHealthColor(card.health)}`}>
               ❤️{card.health}
             </div>
@@ -360,17 +360,18 @@ const GridTacticsGame = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">Grid Tactics</h1>
-          <button 
-            onClick={() => window.close()} 
-            className="p-2 hover:bg-gray-100 rounded-full"
-          >
-            <X className="w-6 h-6" />
-          </button>
-        </div>
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="flex justify-between items-center p-4 bg-white shadow-sm">
+        <h1 className="text-2xl font-bold">Grid Tactics</h1>
+        <button 
+          onClick={() => window.close()} 
+          className="p-2 hover:bg-gray-100 rounded-full"
+        >
+          <X className="w-6 h-6" />
+        </button>
+      </div>
+      
+      <div className="flex-1 flex flex-col items-center justify-center p-4">
 
         {!gameStarted ? (
           <div className="text-center py-12">
@@ -416,25 +417,25 @@ const GridTacticsGame = () => {
             </div>
           </div>
         ) : (
-          <div className="space-y-6">
+          <div className="w-full max-w-4xl space-y-4">
             {/* Game Status */}
-            <div className="flex justify-between items-center">
-              <div className="flex gap-6">
-                <div className="bg-blue-50 rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">🔵</span>
-                    <span className="font-bold">Blue Team</span>
+            <div className="flex justify-between items-center bg-white rounded-lg p-4 shadow-sm">
+              <div className="flex gap-4">
+                <div className="bg-blue-50 rounded-lg p-3">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xl">🔵</span>
+                    <span className="font-bold text-sm">Blue Team</span>
                   </div>
-                  <div className="text-sm text-blue-700">
+                  <div className="text-xs text-blue-700">
                     Alive: {cards.filter(c => c.team === 'blue' && !c.isDead).length}/32
                   </div>
                 </div>
-                <div className="bg-red-50 rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">🔴</span>
-                    <span className="font-bold">Red Team</span>
+                <div className="bg-red-50 rounded-lg p-3">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xl">🔴</span>
+                    <span className="font-bold text-sm">Red Team</span>
                   </div>
-                  <div className="text-sm text-red-700">
+                  <div className="text-xs text-red-700">
                     Alive: {cards.filter(c => c.team === 'red' && !c.isDead).length}/32
                   </div>
                 </div>
@@ -464,15 +465,15 @@ const GridTacticsGame = () => {
             )}
 
             {/* Game Grid */}
-            <div className="flex justify-center">
-              <div className="grid grid-cols-8 gap-1 bg-gray-200 p-2 rounded-lg">
+            <div className="flex justify-center w-full">
+              <div className="grid grid-cols-8 gap-2 bg-gray-200 p-4 rounded-lg shadow-lg">
                 {Array(8).fill(null).map((_, row) => 
                   Array(8).fill(null).map((_, col) => (
                     <button
                       key={`${row}-${col}`}
                       onClick={() => handleCellClick(row, col)}
                       className={`
-                        w-12 h-12 border-2 rounded-lg flex items-center justify-center text-sm font-bold transition-all duration-200
+                        w-16 h-16 border-2 rounded-lg flex items-center justify-center text-lg font-bold transition-all duration-200
                         ${grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'blue'
                           ? 'bg-blue-500 text-white border-blue-600' 
                           : grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'red'
