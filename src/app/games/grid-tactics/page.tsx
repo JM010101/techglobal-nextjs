@@ -539,7 +539,7 @@ const GridTacticsGame = () => {
                           : grid[row][col] && cards.find(c => c.id === grid[row][col])?.isOpen && cards.find(c => c.id === grid[row][col])?.team === 'female'
                           ? 'bg-pink-500 text-white border-pink-600'
                           : selectedCard && selectedCard.row === row && selectedCard.col === col
-                          ? 'bg-yellow-300 border-yellow-500'
+                          ? 'bg-green-100 border-green-500 border-4'
                           : canMove(row, col)
                           ? 'bg-green-100 border-green-300 hover:bg-green-200'
                           : canAttack(row, col)
