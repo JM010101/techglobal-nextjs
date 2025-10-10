@@ -223,7 +223,16 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
     
     // If it's now red team's turn, trigger AI
     if (newTurn === 'red') {
-      setTimeout(() => redTeamAI(), 1000);
+      setTimeout(() => {
+        redTeamAI();
+        // Fallback: ensure turn switches back to blue after 3 seconds
+        setTimeout(() => {
+          if (currentTurn === 'red') {
+            console.log('AI: Fallback - switching to blue turn');
+            setCurrentTurn('blue');
+          }
+        }, 3000);
+      }, 1000);
     }
   };
 
@@ -295,19 +304,28 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
   };
 
   const redTeamAI = () => {
-    if (gameOver || currentTurn !== 'red') return;
+    if (gameOver || currentTurn !== 'red') {
+      console.log('AI: Game over or not red turn, returning');
+      return;
+    }
 
+    console.log('AI: Starting red team AI turn');
+    
     // AI Strategy: 1. Open random closed card, 2. Move/attack with open cards
     const closedCards = cards.filter(c => c.team === 'red' && !c.isOpen && !c.isDead);
     const openRedCards = cards.filter(c => c.team === 'red' && c.isOpen && !c.isDead);
 
-    if (closedCards.length > 0 && Math.random() < 0.7) {
-      // 70% chance to open a closed card
+    console.log('AI: Closed cards:', closedCards.length, 'Open cards:', openRedCards.length);
+
+    if (closedCards.length > 0) {
+      // Always open a closed card if available
       const randomCard = closedCards[Math.floor(Math.random() * closedCards.length)];
+      console.log('AI: Opening card:', randomCard.id);
       openCard(randomCard);
     } else if (openRedCards.length > 0) {
       // Try to move or attack with open cards
       const randomOpenCard = openRedCards[Math.floor(Math.random() * openRedCards.length)];
+      console.log('AI: Using open card:', randomOpenCard.id);
       
       // Find adjacent targets
       const adjacentTargets = [];
@@ -324,22 +342,24 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
         }
       }
 
+      console.log('AI: Found', adjacentTargets.length, 'adjacent targets');
+
       if (adjacentTargets.length > 0) {
         const target = adjacentTargets[Math.floor(Math.random() * adjacentTargets.length)];
         
         if (target.card) {
-          // Attack blue card
+          console.log('AI: Attacking blue card');
           attackCard(randomOpenCard, target.card);
         } else {
-          // Move to empty cell
+          console.log('AI: Moving to empty cell');
           moveCard(randomOpenCard, target.row, target.col);
         }
       } else {
-        // No valid moves, just end turn
+        console.log('AI: No valid moves, ending turn');
         setCurrentTurn('blue');
       }
     } else {
-      // No open cards, just end turn
+      console.log('AI: No cards available, ending turn');
       setCurrentTurn('blue');
     }
   };
