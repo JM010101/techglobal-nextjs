@@ -297,9 +297,6 @@ const GridTacticsGame = ({ onClose, onScoreUpdate }: { onClose: () => void; onSc
   const redTeamAI = () => {
     if (gameOver || currentTurn !== 'red') return;
 
-    const redCards = cards.filter(c => c.team === 'red' && !c.isDead);
-    const blueCards = cards.filter(c => c.team === 'blue' && !c.isDead && c.isOpen);
-    
     // AI Strategy: 1. Open random closed card, 2. Move/attack with open cards
     const closedCards = cards.filter(c => c.team === 'red' && !c.isOpen && !c.isDead);
     const openRedCards = cards.filter(c => c.team === 'red' && c.isOpen && !c.isDead);
