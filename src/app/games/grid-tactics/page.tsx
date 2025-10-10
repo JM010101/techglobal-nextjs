@@ -256,21 +256,27 @@ const GridTacticsGame = () => {
       c.id === defender.id ? { ...c, health: newHealth, isDead: newHealth === 0 } : c
     ));
 
-    // Clear animation after 600ms
-    setTimeout(() => {
-      setAttackAnimation({ attacker: null, target: null });
-    }, 600);
+    // Create a more controlled animation sequence
+    let animationStep = 0;
+    const animationInterval = setInterval(() => {
+      animationStep++;
+      
+      if (animationStep >= 6) { // 6 steps = 300ms total
+        clearInterval(animationInterval);
+        setAttackAnimation({ attacker: null, target: null });
+      }
+    }, 50); // 50ms per step
 
     if (newHealth === 0) {
-      // Remove dead card from grid
-      const newGrid = [...grid];
-      newGrid[defender.row][defender.col] = '';
-      setGrid(newGrid);
-      
-      // Check for game over
+      // Remove dead card from grid after animation
       setTimeout(() => {
+        const newGrid = [...grid];
+        newGrid[defender.row][defender.col] = '';
+        setGrid(newGrid);
+        
+        // Check for game over
         checkGameOver();
-      }, 700);
+      }, 350);
     }
 
     setSelectedCard(null);
@@ -528,22 +534,21 @@ const GridTacticsGame = () => {
                           ? 'bg-orange-100 border-orange-300 hover:bg-orange-200'
                           : 'bg-white border-gray-300 hover:bg-gray-50'
                         }
-                        ${attackAnimation.attacker && attackAnimation.attacker.row === row && attackAnimation.attacker.col === col
-                          ? 'animate-pulse transform scale-105'
-                          : ''
-                        }
-                        ${attackAnimation.target && attackAnimation.target.row === row && attackAnimation.target.col === col
-                          ? 'animate-bounce'
-                          : ''
-                        }
                         cursor-pointer
                       `}
                       style={{
                         transform: attackAnimation.attacker && attackAnimation.attacker.row === row && attackAnimation.attacker.col === col
-                          ? 'translateX(5px) translateY(-2px)'
+                          ? 'translateX(3px) translateY(-1px) scale(1.05)'
                           : attackAnimation.target && attackAnimation.target.row === row && attackAnimation.target.col === col
-                          ? 'translateX(-3px) translateY(1px)'
-                          : 'translateX(0) translateY(0)'
+                          ? 'translateX(-2px) translateY(1px) scale(0.98)'
+                          : 'translateX(0) translateY(0) scale(1)',
+                        transition: 'transform 0.1s ease-in-out',
+                        position: 'relative',
+                        zIndex: attackAnimation.attacker && attackAnimation.attacker.row === row && attackAnimation.attacker.col === col
+                          ? 10
+                          : attackAnimation.target && attackAnimation.target.row === row && attackAnimation.target.col === col
+                          ? 5
+                          : 1
                       }}
                     >
                       {getCellContent(row, col)}
