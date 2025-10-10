@@ -311,11 +311,15 @@ const GridTacticsGame = () => {
     const maleAlive = cards.filter(c => c.team === 'male' && !c.isDead).length;
     const femaleAlive = cards.filter(c => c.team === 'female' && !c.isDead).length;
 
+    console.log('Checking game over:', { maleAlive, femaleAlive });
+
     if (maleAlive === 0) {
+      console.log('Game over: Female wins!');
       setGameOver(true);
       setWinner('female');
       setScore(score + 200);
     } else if (femaleAlive === 0) {
+      console.log('Game over: Male wins!');
       setGameOver(true);
       setWinner('male');
       setScore(score + 200);
@@ -489,6 +493,7 @@ const GridTacticsGame = () => {
               backgroundRepeat: 'no-repeat'
             }}
           >
+            {console.log('Rendering game over screen:', { gameOver, winner, score })}
             {/* Victory Background Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-60"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-orange-500/10 to-red-500/10 rounded-3xl blur-3xl"></div>
@@ -575,6 +580,18 @@ const GridTacticsGame = () => {
                 <div className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 tracking-wide">
                   {currentTurn === 'male' ? 'MALE TURN' : 'FEMALE TURN'} | SCORE: {score}
                 </div>
+                {/* Debug: Test game over */}
+                <button 
+                  onClick={() => {
+                    console.log('Manual game over test');
+                    setGameOver(true);
+                    setWinner('male');
+                    setScore(score + 200);
+                  }}
+                  className="ml-4 bg-red-600 text-white px-3 py-1 rounded text-xs"
+                >
+                  Test Win
+                </button>
               </div>
             </div>
 
