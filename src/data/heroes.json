@@ -1,0 +1,232 @@
+[
+  {
+    "id": "hero_rift",
+    "codename": "RIFT",
+    "role": "Assault",
+    "weapon": "AR",
+    "rarity": "SR",
+    "description": "Assault Rifle specialist with tactical superiority abilities. Excels at marking targets and dealing consistent damage.",
+    "base_stats": {
+      "hp": 1200,
+      "atk": 110,
+      "def": 60,
+      "crit": 0.05,
+      "speed": 5
+    },
+    "skills": [
+      {
+        "id": "overwatch",
+        "name": "Overwatch",
+        "type": "buff",
+        "cooldown": 3,
+        "description": "Creates an aim-assist cone, granting +15% crit chance for 6 seconds.",
+        "duration": 6,
+        "crit_bonus": 0.15
+      },
+      {
+        "id": "flash_vent",
+        "name": "Flash Vent",
+        "type": "stun",
+        "cooldown": 4,
+        "description": "Stuns nearby melee units for 2 seconds.",
+        "radius": 2,
+        "duration": 2
+      }
+    ],
+    "ultimate": {
+      "id": "sky_lancer",
+      "name": "Sky-Lancer",
+      "description": "Fires guided micro-missiles at marked targets, dealing massive damage.",
+      "charge_required": 100,
+      "salvos": 6,
+      "damage_per_salvo": 200,
+      "homing": true
+    },
+    "synergy_tags": ["Assault", "TargetMark", "CritChain"]
+  },
+  {
+    "id": "hero_haven",
+    "codename": "HAVEN",
+    "role": "Support",
+    "weapon": "SMG",
+    "rarity": "SR",
+    "description": "Medic drone specialist. Keeps the squad alive with healing and protective shields.",
+    "base_stats": {
+      "hp": 1000,
+      "atk": 85,
+      "def": 70,
+      "crit": 0.03,
+      "speed": 6
+    },
+    "skills": [
+      {
+        "id": "pulse_mend",
+        "name": "Pulse Mend",
+        "type": "heal",
+        "cooldown": 3,
+        "description": "Heals the lowest HP ally and provides HoT for 5 seconds.",
+        "heal_amount": 300,
+        "hot_amount": 50,
+        "duration": 5
+      },
+      {
+        "id": "aegis_veil",
+        "name": "Aegis Veil",
+        "type": "shield",
+        "cooldown": 4,
+        "description": "Grants temporary overshield to an ally.",
+        "shield_amount": 400,
+        "duration": 8
+      }
+    ],
+    "ultimate": {
+      "id": "sanctuary_field",
+      "name": "Sanctuary Field",
+      "description": "Creates a healing dome that restores HP and cleanses status effects.",
+      "charge_required": 100,
+      "heal_amount": 500,
+      "radius": 3,
+      "duration": 6,
+      "cleanse": true
+    },
+    "synergy_tags": ["Healer", "Shield", "Cleanse"]
+  },
+  {
+    "id": "hero_ember",
+    "codename": "EMBER",
+    "role": "Demolition",
+    "weapon": "Shotgun",
+    "rarity": "SR",
+    "description": "Close-range demolition expert. Breaks armor and controls areas with fire.",
+    "base_stats": {
+      "hp": 1400,
+      "atk": 140,
+      "def": 50,
+      "crit": 0.08,
+      "speed": 4
+    },
+    "skills": [
+      {
+        "id": "thermite",
+        "name": "Thermite",
+        "type": "aoe",
+        "cooldown": 3,
+        "description": "Creates a DoT puddle that denies area access.",
+        "damage_per_tick": 80,
+        "duration": 8,
+        "radius": 2
+      },
+      {
+        "id": "breacher_roll",
+        "name": "Breacher Roll",
+        "type": "mobility",
+        "cooldown": 4,
+        "description": "Dash to new cover, next shot deals double damage.",
+        "dash_range": 3,
+        "damage_multiplier": 2.0
+      }
+    ],
+    "ultimate": {
+      "id": "nova_charge",
+      "name": "Nova Charge",
+      "description": "Unleashes a cone blast that shreds enemy armor.",
+      "charge_required": 100,
+      "damage": 800,
+      "armor_shred": 0.3,
+      "cone_range": 3
+    },
+    "synergy_tags": ["ArmorBreak", "AreaDeny", "Mobility"]
+  },
+  {
+    "id": "hero_glint",
+    "codename": "GLINT",
+    "role": "Marksman",
+    "weapon": "DMR",
+    "rarity": "SR",
+    "description": "Precision marksman with target designation abilities. Enhances team damage against marked enemies.",
+    "base_stats": {
+      "hp": 900,
+      "atk": 130,
+      "def": 45,
+      "crit": 0.12,
+      "speed": 5
+    },
+    "skills": [
+      {
+        "id": "tag_beam",
+        "name": "Tag Beam",
+        "type": "debuff",
+        "cooldown": 3,
+        "description": "Marks a target; team deals +20% damage to marked enemies.",
+        "damage_bonus": 0.20,
+        "duration": 8
+      },
+      {
+        "id": "decoy_node",
+        "name": "Decoy Node",
+        "type": "utility",
+        "cooldown": 5,
+        "description": "Deploys a decoy that draws enemy fire for 3 seconds.",
+        "duration": 3,
+        "threat_generation": 999
+      }
+    ],
+    "ultimate": {
+      "id": "line_collapse",
+      "name": "Line Collapse",
+      "description": "Piercing shot that hits all enemies in a line with headshot bonus.",
+      "charge_required": 100,
+      "damage": 600,
+      "headshot_multiplier": 2.0,
+      "pierce": true
+    },
+    "synergy_tags": ["Mark", "Decoy", "Precision"]
+  },
+  {
+    "id": "hero_kite",
+    "codename": "KITE",
+    "role": "Controller",
+    "weapon": "SMG",
+    "rarity": "SR",
+    "description": "Tactical controller specializing in crowd control and area denial with traps.",
+    "base_stats": {
+      "hp": 1100,
+      "atk": 95,
+      "def": 65,
+      "crit": 0.04,
+      "speed": 6
+    },
+    "skills": [
+      {
+        "id": "tether_mine",
+        "name": "Tether Mine",
+        "type": "cc",
+        "cooldown": 4,
+        "description": "Places a mine that roots small enemies in place.",
+        "duration": 4,
+        "radius": 1
+      },
+      {
+        "id": "smoke_lattice",
+        "name": "Smoke Lattice",
+        "type": "utility",
+        "cooldown": 5,
+        "description": "Creates smoke that breaks line of sight and reduces ranged accuracy.",
+        "duration": 6,
+        "accuracy_reduction": 0.4,
+        "radius": 2
+      }
+    ],
+    "ultimate": {
+      "id": "net_crown",
+      "name": "Net Crown",
+      "description": "AoE root that immobilizes enemies and increases their vulnerability.",
+      "charge_required": 100,
+      "duration": 5,
+      "vulnerability": 0.25,
+      "radius": 3
+    },
+    "synergy_tags": ["Root", "Blind", "Vulnerable", "AreaControl"]
+  }
+]
+

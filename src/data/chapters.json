@@ -1,0 +1,222 @@
+[
+  {
+    "chapter": 1,
+    "title": "First Light",
+    "description": "The Warmind breach begins. Aegis Corps mobilizes to defend the Skybridge sector.",
+    "sections": [
+      {
+        "section": 1,
+        "name": "Wake Protocol",
+        "environment": "Aegis Rooftop",
+        "description": "Tutorial mission. Learn the basics of tactical combat.",
+        "objectives": [
+          "Complete movement tutorial",
+          "Eliminate all Dart Drones",
+          "No squad members defeated"
+        ],
+        "grid_size": { "rows": 8, "cols": 8 },
+        "player_spawn": [
+          { "row": 7, "col": 3 },
+          { "row": 7, "col": 4 },
+          { "row": 7, "col": 5 }
+        ],
+        "waves": [
+          {
+            "wave": 1,
+            "enemies": [
+              { "id": "enemy_dart_drone", "spawn": { "row": 0, "col": 2 } },
+              { "id": "enemy_dart_drone", "spawn": { "row": 0, "col": 5 } }
+            ]
+          },
+          {
+            "wave": 2,
+            "enemies": [
+              { "id": "enemy_dart_drone", "spawn": { "row": 1, "col": 1 } },
+              { "id": "enemy_dart_drone", "spawn": { "row": 1, "col": 4 } },
+              { "id": "enemy_dart_drone", "spawn": { "row": 1, "col": 6 } }
+            ]
+          }
+        ],
+        "dialogue_before": [
+          {
+            "speaker": "Commander",
+            "text": "RIFT, this is Command. Warmind drones have breached the perimeter. Time to show them what Aegis Corps is made of."
+          },
+          {
+            "speaker": "RIFT",
+            "text": "Copy that, Command. Moving to engage."
+          }
+        ],
+        "dialogue_after": [
+          {
+            "speaker": "RIFT",
+            "text": "Area clear. Those drones never stood a chance."
+          },
+          {
+            "speaker": "Commander",
+            "text": "Good work. But this is just the beginning. Prepare for deployment to the Skybridge."
+          }
+        ],
+        "rewards": {
+          "credits": 500,
+          "xp": 100,
+          "items": ["starter_ar_mk1"]
+        }
+      },
+      {
+        "section": 2,
+        "name": "Streetline Breach",
+        "environment": "Skybridge",
+        "description": "Defend the Skybridge against Warmind assault.",
+        "objectives": [
+          "Eliminate all enemies",
+          "Protect civilians (3 NPCs)",
+          "Complete within 10 turns"
+        ],
+        "grid_size": { "rows": 10, "cols": 10 },
+        "player_spawn": [
+          { "row": 8, "col": 4 },
+          { "row": 9, "col": 4 },
+          { "row": 9, "col": 5 }
+        ],
+        "waves": [
+          {
+            "wave": 1,
+            "enemies": [
+              { "id": "enemy_dart_drone", "spawn": { "row": 0, "col": 2 } },
+              { "id": "enemy_shock_hound", "spawn": { "row": 0, "col": 7 } },
+              { "id": "enemy_dart_drone", "spawn": { "row": 1, "col": 4 } }
+            ]
+          },
+          {
+            "wave": 2,
+            "trigger": "wave_1_complete",
+            "enemies": [
+              { "id": "enemy_shock_hound", "spawn": { "row": 0, "col": 1 } },
+              { "id": "enemy_shock_hound", "spawn": { "row": 0, "col": 9 } },
+              { "id": "enemy_mortar_nest", "spawn": { "row": 2, "col": 5 } }
+            ]
+          }
+        ],
+        "dialogue_before": [
+          {
+            "speaker": "Commander",
+            "text": "RIFT, HAVEN is deploying to your position. Shock Hounds detected — fast melee units. Keep your distance."
+          },
+          {
+            "speaker": "HAVEN",
+            "text": "Medical drone online. I'll keep the squad patched up."
+          },
+          {
+            "speaker": "RIFT",
+            "text": "Good to have you with us, HAVEN. Let's move."
+          }
+        ],
+        "dialogue_after": [
+          {
+            "speaker": "HAVEN",
+            "text": "Civilians are safe. Good teamwork out there."
+          },
+          {
+            "speaker": "RIFT",
+            "text": "The Warminds are getting more aggressive. What are they after?"
+          },
+          {
+            "speaker": "Commander",
+            "text": "That's what we need to find out. Stand by for further orders."
+          }
+        ],
+        "rewards": {
+          "credits": 800,
+          "xp": 200,
+          "signal_keys": 1,
+          "unlock_hero": "hero_haven"
+        }
+      },
+      {
+        "section": 3,
+        "name": "Generator Hold",
+        "environment": "Power Hub Interior",
+        "description": "Defend the generator against waves of attackers.",
+        "objectives": [
+          "Defend the generator for 8 turns",
+          "Generator HP > 50%",
+          "Eliminate all Shield Walkers"
+        ],
+        "grid_size": { "rows": 8, "cols": 12 },
+        "player_spawn": [
+          { "row": 4, "col": 5 },
+          { "row": 4, "col": 6 },
+          { "row": 5, "col": 5 }
+        ],
+        "objectives_entities": [
+          {
+            "type": "generator",
+            "hp": 1000,
+            "position": { "row": 6, "col": 6 },
+            "must_defend": true
+          }
+        ],
+        "waves": [
+          {
+            "wave": 1,
+            "enemies": [
+              { "id": "enemy_dart_drone", "spawn": { "row": 0, "col": 3 } },
+              { "id": "enemy_shield_walker", "spawn": { "row": 0, "col": 8 } },
+              { "id": "enemy_dart_drone", "spawn": { "row": 0, "col": 10 } }
+            ]
+          },
+          {
+            "wave": 2,
+            "trigger": "turn_4",
+            "enemies": [
+              { "id": "enemy_shield_walker", "spawn": { "row": 1, "col": 2 } },
+              { "id": "enemy_shock_hound", "spawn": { "row": 0, "col": 6 } },
+              { "id": "enemy_shield_walker", "spawn": { "row": 1, "col": 10 } }
+            ]
+          },
+          {
+            "wave": 3,
+            "trigger": "turn_7",
+            "enemies": [
+              { "id": "enemy_hacker", "spawn": { "row": 0, "col": 5 } },
+              { "id": "enemy_pulse_sniper", "spawn": { "row": 0, "col": 11 } }
+            ]
+          }
+        ],
+        "dialogue_before": [
+          {
+            "speaker": "Commander",
+            "text": "The power hub is under attack. If it falls, the entire sector goes dark."
+          },
+          {
+            "speaker": "EMBER",
+            "text": "Ember reporting in. I'll handle the heavy armor."
+          },
+          {
+            "speaker": "RIFT",
+            "text": "Welcome to the squad, Ember. Let's hold this position."
+          }
+        ],
+        "dialogue_after": [
+          {
+            "speaker": "EMBER",
+            "text": "Generator secured. Nothing gets through us."
+          },
+          {
+            "speaker": "Commander",
+            "text": "Excellent work. We've identified Shield Walkers with frontal armor. Flank them or use armor-shredding weapons."
+          }
+        ],
+        "rewards": {
+          "credits": 1200,
+          "xp": 300,
+          "signal_keys": 2,
+          "items": ["mod_armor_shred_1"],
+          "unlock_hero": "hero_ember"
+        }
+      }
+    ]
+  }
+]
+

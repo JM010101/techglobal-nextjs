@@ -1,0 +1,223 @@
+[
+  {
+    "id": "enemy_dart_drone",
+    "name": "Dart Drone",
+    "archetype": "swarmer",
+    "description": "Basic autonomous drone. Fast but fragile.",
+    "hp": 200,
+    "atk": 30,
+    "def": 10,
+    "speed": 7,
+    "attackRange": 4,
+    "moveRange": 3,
+    "ai_type": "aggressive",
+    "abilities": [],
+    "weakpoints": [],
+    "rewards": {
+      "credits": 50,
+      "xp": 20
+    }
+  },
+  {
+    "id": "enemy_shock_hound",
+    "name": "Shock Hound",
+    "archetype": "melee",
+    "description": "Fast melee unit that rushes the player.",
+    "hp": 350,
+    "atk": 60,
+    "def": 15,
+    "speed": 8,
+    "attackRange": 1,
+    "moveRange": 4,
+    "ai_type": "aggressive",
+    "abilities": [
+      {
+        "id": "leap_strike",
+        "name": "Leap Strike",
+        "type": "melee",
+        "damage": 90,
+        "range": 2
+      }
+    ],
+    "weakpoints": [],
+    "rewards": {
+      "credits": 80,
+      "xp": 35
+    }
+  },
+  {
+    "id": "enemy_shield_walker",
+    "name": "Shield Walker",
+    "archetype": "tank",
+    "description": "Heavily armored unit with frontal shield. Flank to deal full damage.",
+    "hp": 600,
+    "atk": 45,
+    "def": 40,
+    "speed": 3,
+    "attackRange": 3,
+    "moveRange": 2,
+    "ai_type": "defensive",
+    "abilities": [],
+    "armor": {
+      "front": 0.7,
+      "flank": 0.3,
+      "rear": 0.0
+    },
+    "weakpoints": ["rear_core"],
+    "rewards": {
+      "credits": 120,
+      "xp": 50
+    }
+  },
+  {
+    "id": "enemy_pulse_sniper",
+    "name": "Pulse Sniper",
+    "archetype": "ranged",
+    "description": "Long-range sniper with charged laser. Relocates after firing.",
+    "hp": 280,
+    "atk": 100,
+    "def": 20,
+    "speed": 5,
+    "attackRange": 8,
+    "moveRange": 3,
+    "ai_type": "cautious",
+    "abilities": [
+      {
+        "id": "charged_shot",
+        "name": "Charged Shot",
+        "type": "ranged",
+        "damage": 180,
+        "charge_time": 1,
+        "range": 8
+      }
+    ],
+    "weakpoints": [],
+    "rewards": {
+      "credits": 100,
+      "xp": 40
+    }
+  },
+  {
+    "id": "enemy_mortar_nest",
+    "name": "Mortar Nest",
+    "archetype": "artillery",
+    "description": "Stationary artillery. Telegraphs attacks with red circles.",
+    "hp": 400,
+    "atk": 80,
+    "def": 30,
+    "speed": 0,
+    "attackRange": 10,
+    "moveRange": 0,
+    "ai_type": "stationary",
+    "abilities": [
+      {
+        "id": "mortar_strike",
+        "name": "Mortar Strike",
+        "type": "aoe",
+        "damage": 120,
+        "radius": 2,
+        "telegraph_time": 2
+      }
+    ],
+    "weakpoints": ["core"],
+    "rewards": {
+      "credits": 150,
+      "xp": 60
+    }
+  },
+  {
+    "id": "enemy_hacker",
+    "name": "Hacker",
+    "archetype": "support",
+    "description": "Disables hero skills. High priority target.",
+    "hp": 250,
+    "atk": 20,
+    "def": 25,
+    "speed": 4,
+    "attackRange": 5,
+    "moveRange": 2,
+    "ai_type": "support",
+    "abilities": [
+      {
+        "id": "skill_jam",
+        "name": "Skill Jam",
+        "type": "debuff",
+        "duration": 3,
+        "range": 5
+      }
+    ],
+    "weakpoints": [],
+    "rewards": {
+      "credits": 130,
+      "xp": 55
+    }
+  },
+  {
+    "id": "enemy_bulwark_elite",
+    "name": "Bulwark Elite",
+    "archetype": "elite_tank",
+    "description": "Elite heavy unit with rotating armor plates. Aim for exposed joints.",
+    "hp": 1200,
+    "atk": 70,
+    "def": 60,
+    "speed": 2,
+    "attackRange": 3,
+    "moveRange": 2,
+    "ai_type": "boss",
+    "abilities": [
+      {
+        "id": "suppressive_fire",
+        "name": "Suppressive Fire",
+        "type": "sustained",
+        "dps": 45,
+        "duration": 3
+      },
+      {
+        "id": "shield_rush",
+        "name": "Shield Rush",
+        "type": "charge",
+        "damage": 150,
+        "stagger": true
+      }
+    ],
+    "armor": {
+      "front": 0.8,
+      "flank": 0.4,
+      "rear": 0.1
+    },
+    "weakpoints": ["left_joint", "right_joint"],
+    "rewards": {
+      "credits": 300,
+      "xp": 150,
+      "loot": ["mod_armor_shred_1"]
+    }
+  },
+  {
+    "id": "enemy_wraith",
+    "name": "Wraith",
+    "archetype": "stealth",
+    "description": "Cloaking assassin. Use reveal abilities to expose.",
+    "hp": 450,
+    "atk": 110,
+    "def": 20,
+    "speed": 7,
+    "attackRange": 2,
+    "moveRange": 4,
+    "ai_type": "assassin",
+    "abilities": [
+      {
+        "id": "cloak_burst",
+        "name": "Cloak Burst",
+        "type": "stealth",
+        "duration": 4,
+        "damage_bonus": 0.5
+      }
+    ],
+    "weakpoints": [],
+    "rewards": {
+      "credits": 200,
+      "xp": 80
+    }
+  }
+]
+
