@@ -1,0 +1,358 @@
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import heroesData from '@/data/heroes.json';
+
+export interface Hero {
+  id: string;
+  codename: string;
+  role: string;
+  weapon: string;
+  rarity: string;
+  description: string;
+  level: number;
+  xp: number;
+  currentHp: number;
+  base_stats: {
+    hp: number;
+    atk: number;
+    def: number;
+    crit: number;
+    speed: number;
+  };
+  skills: Array<{
+    id: string;
+    name: string;
+    type: string;
+    cooldown: number;
+    description: string;
+    currentCooldown?: number;
+    [key: string]: unknown;
+  }>;
+  ultimate: {
+    id: string;
+    name: string;
+    description: string;
+    charge_required: number;
+    currentCharge?: number;
+    [key: string]: unknown;
+  };
+  synergy_tags: string[];
+}
+
+export interface Enemy {
+  id: string;
+  name: string;
+  archetype: string;
+  hp: number;
+  currentHp: number;
+  atk: number;
+  def: number;
+  speed: number;
+  position?: { row: number; col: number };
+  [key: string]: unknown;
+}
+
+export interface GameState {
+  // Player Resources
+  credits: number;
+  signalKeys: number;
+  modCores: number;
+  
+  // Heroes
+  ownedHeroes: Hero[];
+  currentSquad: string[]; // Array of hero IDs (max 3)
+  
+  // Progress
+  currentChapter: number;
+  currentSection: number;
+  completedMissions: string[]; // Array of "chapter_section" strings
+  
+  // Battle State
+  inBattle: boolean;
+  currentMission: unknown;
+  battleHeroes: Hero[];
+  battleEnemies: Enemy[];
+  currentTurn: number;
+  selectedUnit: { type: 'hero' | 'enemy'; index: number } | null;
+  
+  // Gacha
+  gachaPityCounter: number;
+  gachaHistory: Array<{ heroId: string; timestamp: number; rarity: string }>;
+  
+  // UI State
+  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue';
+  selectedHeroForDetail: string | null;
+  
+  // Actions
+  addCredits: (amount: number) => void;
+  addSignalKeys: (amount: number) => void;
+  spendCredits: (amount: number) => boolean;
+  spendSignalKeys: (amount: number) => boolean;
+  
+  addHero: (heroId: string) => void;
+  setSquad: (heroIds: string[]) => void;
+  levelUpHero: (heroId: string) => void;
+  addHeroXP: (heroId: string, xp: number) => void;
+  
+  setCurrentScreen: (screen: GameState['currentScreen']) => void;
+  setSelectedHeroForDetail: (heroId: string | null) => void;
+  
+  startMission: (chapter: number, section: number) => void;
+  completeMission: (rewards: Record<string, unknown>) => void;
+  
+  performGacha: () => Hero | null;
+  
+  saveGame: () => void;
+  loadGame: () => void;
+  resetGame: () => void;
+}
+
+const initialState = {
+  credits: 10000,
+  signalKeys: 10,
+  modCores: 0,
+  ownedHeroes: [
+    { ...heroesData[0], level: 1, xp: 0, currentHp: heroesData[0].base_stats.hp }
+  ] as Hero[],
+  currentSquad: [heroesData[0].id],
+  currentChapter: 1,
+  currentSection: 1,
+  completedMissions: [],
+  inBattle: false,
+  currentMission: null,
+  battleHeroes: [],
+  battleEnemies: [],
+  currentTurn: 0,
+  selectedUnit: null,
+  gachaPityCounter: 0,
+  gachaHistory: [],
+  currentScreen: 'home' as const,
+  selectedHeroForDetail: null,
+};
+
+export const useGameStore = create<GameState>()(
+  persist(
+    (set, get) => ({
+      ...initialState,
+
+      addCredits: (amount) => set((state) => ({ credits: state.credits + amount })),
+      addSignalKeys: (amount) => set((state) => ({ signalKeys: state.signalKeys + amount })),
+      
+      spendCredits: (amount) => {
+        const state = get();
+        if (state.credits >= amount) {
+          set({ credits: state.credits - amount });
+          return true;
+        }
+        return false;
+      },
+      
+      spendSignalKeys: (amount) => {
+        const state = get();
+        if (state.signalKeys >= amount) {
+          set({ signalKeys: state.signalKeys - amount });
+          return true;
+        }
+        return false;
+      },
+
+      addHero: (heroId) => {
+        const heroData = heroesData.find(h => h.id === heroId);
+        if (!heroData) return;
+        
+        const state = get();
+        const alreadyOwned = state.ownedHeroes.find(h => h.id === heroId);
+        
+        if (alreadyOwned) {
+          // Convert duplicate to resources
+          set({ modCores: state.modCores + (heroData.rarity === 'SSR' ? 50 : heroData.rarity === 'SR' ? 15 : 5) });
+        } else {
+          const newHero: Hero = {
+            ...heroData,
+            level: 1,
+            xp: 0,
+            currentHp: heroData.base_stats.hp,
+            skills: heroData.skills.map(s => ({ ...s, currentCooldown: 0 })),
+            ultimate: { ...heroData.ultimate, currentCharge: 0 }
+          } as Hero;
+          
+          set({ ownedHeroes: [...state.ownedHeroes, newHero] });
+        }
+      },
+
+      setSquad: (heroIds) => {
+        if (heroIds.length <= 3) {
+          set({ currentSquad: heroIds });
+        }
+      },
+
+      levelUpHero: (heroId) => {
+        set((state) => ({
+          ownedHeroes: state.ownedHeroes.map(hero => 
+            hero.id === heroId 
+              ? { 
+                  ...hero, 
+                  level: hero.level + 1,
+                  xp: 0,
+                  base_stats: {
+                    ...hero.base_stats,
+                    hp: Math.floor(hero.base_stats.hp * 1.1),
+                    atk: Math.floor(hero.base_stats.atk * 1.1),
+                    def: Math.floor(hero.base_stats.def * 1.1),
+                  }
+                }
+              : hero
+          )
+        }));
+      },
+
+      addHeroXP: (heroId, xp) => {
+        set((state) => {
+          const updatedHeroes = state.ownedHeroes.map(hero => {
+            if (hero.id === heroId) {
+              const newXp = hero.xp + xp;
+              const xpForNextLevel = hero.level * 100;
+              
+              if (newXp >= xpForNextLevel) {
+                return {
+                  ...hero,
+                  level: hero.level + 1,
+                  xp: newXp - xpForNextLevel,
+                  base_stats: {
+                    ...hero.base_stats,
+                    hp: Math.floor(hero.base_stats.hp * 1.1),
+                    atk: Math.floor(hero.base_stats.atk * 1.1),
+                    def: Math.floor(hero.base_stats.def * 1.1),
+                  }
+                };
+              }
+              return { ...hero, xp: newXp };
+            }
+            return hero;
+          });
+          
+          return { ownedHeroes: updatedHeroes };
+        });
+      },
+
+      setCurrentScreen: (screen) => set({ currentScreen: screen }),
+      setSelectedHeroForDetail: (heroId) => set({ selectedHeroForDetail: heroId }),
+
+      startMission: (chapter, section) => {
+        set({ 
+          currentChapter: chapter,
+          currentSection: section,
+          inBattle: true,
+          currentTurn: 0,
+          currentScreen: 'dialogue'
+        });
+      },
+
+      completeMission: (rewards) => {
+        const state = get();
+        const missionId = `${state.currentChapter}_${state.currentSection}`;
+        
+        set({
+          completedMissions: [...state.completedMissions, missionId],
+          credits: state.credits + (Number(rewards.credits) || 0),
+          signalKeys: state.signalKeys + (Number(rewards.signal_keys) || 0),
+          inBattle: false,
+        });
+        
+        // Add XP to squad heroes
+        const xp = Number(rewards.xp);
+        if (xp) {
+          state.currentSquad.forEach(heroId => {
+            get().addHeroXP(heroId, xp);
+          });
+        }
+      },
+
+      performGacha: () => {
+        const state = get();
+        if (!get().spendSignalKeys(1)) return null;
+        
+        const pity = state.gachaPityCounter + 1;
+        let rarity: string;
+        
+        // Pity system
+        if (pity >= 90) {
+          rarity = 'SSR';
+          set({ gachaPityCounter: 0 });
+        } else if (pity >= 50) {
+          // Soft pity: increased SSR rate
+          const rand = Math.random();
+          if (rand < 0.10) {
+            rarity = 'SSR';
+            set({ gachaPityCounter: 0 });
+          } else if (rand < 0.30) {
+            rarity = 'SR';
+            set({ gachaPityCounter: pity });
+          } else {
+            rarity = 'R';
+            set({ gachaPityCounter: pity });
+          }
+        } else {
+          // Normal rates
+          const rand = Math.random();
+          if (rand < 0.03) {
+            rarity = 'SSR';
+            set({ gachaPityCounter: 0 });
+          } else if (rand < 0.18) {
+            rarity = 'SR';
+            set({ gachaPityCounter: pity });
+          } else {
+            rarity = 'R';
+            set({ gachaPityCounter: pity });
+          }
+        }
+        
+        // Get random hero of rarity
+        const heroesOfRarity = heroesData.filter(h => h.rarity === rarity);
+        const randomHeroData = heroesOfRarity[Math.floor(Math.random() * heroesOfRarity.length)];
+        
+        if (randomHeroData) {
+          get().addHero(randomHeroData.id);
+          set({
+            gachaHistory: [
+              { heroId: randomHeroData.id, timestamp: Date.now(), rarity },
+              ...state.gachaHistory
+            ].slice(0, 100) // Keep last 100
+          });
+          
+          // Return hero with runtime properties
+          const fullHero: Hero = {
+            ...randomHeroData,
+            level: 1,
+            xp: 0,
+            currentHp: randomHeroData.base_stats.hp,
+            skills: randomHeroData.skills.map(s => ({ ...s, currentCooldown: 0 })),
+            ultimate: { ...randomHeroData.ultimate, currentCharge: 0 }
+          } as Hero;
+          
+          return fullHero;
+        }
+        
+        return null;
+      },
+
+      saveGame: () => {
+        // Zustand persist middleware handles this automatically
+        console.log('Game saved!');
+      },
+
+      loadGame: () => {
+        // Zustand persist middleware handles this automatically
+        console.log('Game loaded!');
+      },
+
+      resetGame: () => {
+        set(initialState);
+      },
+    }),
+    {
+      name: 'aegis-protocol-save',
+    }
+  )
+);
+
