@@ -10,7 +10,6 @@ import {
   Trophy, 
   Users, 
   Target,
-  Heart,
   X,
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
@@ -35,15 +34,6 @@ const games: Game[] = [
     image: '/images/game/grid_tactical/dashboard.png',
     difficulty: 'Medium',
     category: 'Strategy'
-  },
-  {
-    id: 'divine-awakening',
-    title: 'Divine Awakening',
-    description: 'A cinematic anime-style visual novel. Experience the emotional journey of Liora - Unit 07, a divine android awakening in a post-apocalyptic cathedral-hangar.',
-    icon: Heart,
-    image: 'https://picsum.photos/800/600?random=2',
-    difficulty: 'Easy',
-    category: 'Visual Novel'
   },
   {
     id: 'game-2',
