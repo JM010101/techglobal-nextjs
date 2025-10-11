@@ -262,6 +262,9 @@ const GridTacticsGame = () => {
     setSelectedCard(null);
     const newTurn = currentTurn === 'male' ? 'female' : 'male';
     setCurrentTurn(newTurn);
+    
+    // Check for game over after any move
+    checkGameOver();
   };
 
   const attackCard = (attacker: Card, defender: Card) => {
@@ -297,9 +300,12 @@ const GridTacticsGame = () => {
         newGrid[defender.row][defender.col] = '';
         setGrid(newGrid);
         
-        // Check for game over
+        // Check for game over after attack
         checkGameOver();
       }, 350);
+    } else {
+      // Check for game over even if no attack happened
+      checkGameOver();
     }
 
     setSelectedCard(null);
@@ -332,6 +338,14 @@ const GridTacticsGame = () => {
       console.log('Game over screen should be visible:', { gameOver, winner, score });
     }
   }, [gameOver, winner, score]);
+
+  // Check for game over whenever cards change
+  useEffect(() => {
+    if (gameStarted && !gameOver) {
+      console.log('Cards changed, checking game over...');
+      checkGameOver();
+    }
+  }, [cards, gameStarted, gameOver]);
 
   const getCellContent = (row: number, col: number) => {
     const cardId = grid[row][col];
