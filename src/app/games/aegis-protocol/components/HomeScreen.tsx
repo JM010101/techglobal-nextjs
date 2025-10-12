@@ -150,7 +150,7 @@ const HomeScreen = () => {
                             alert('Please add at least one hero to your squad!');
                             return;
                           }
-                          useGameStore.getState().startMission(currentChapter, index + 1);
+                          useGameStore.getState().startMission(`chapter_${currentChapter}_section_${index + 1}`);
                         }}
                         className={`px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
                           isCompleted

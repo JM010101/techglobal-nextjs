@@ -279,7 +279,7 @@ const BattleScreen = () => {
       const chapter = chaptersData.find(c => c.chapter === currentChapter);
       const section = chapter?.sections.find(s => s.section === currentSection);
       if (section) {
-        completeMission(section.rewards);
+        completeMission(`chapter_${currentChapter}_section_${currentSection}`, 'S');
       }
     }
   };

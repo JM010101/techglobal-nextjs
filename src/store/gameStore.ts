@@ -3,6 +3,13 @@ import { persist } from 'zustand/middleware';
 import heroesData from '@/data/heroes.json';
 import { Relationship, AffinityEvent, SocialInteraction } from '@/lib/models/Relationship';
 import { StoryMission, StoryEvent, StoryBeat } from '@/lib/models/StoryMission';
+import { CombatState, CombatAction, CoverPosition, BattlefieldTile } from '@/lib/models/Combat';
+import { Equipment, Weapon, Armor, Mod } from '@/lib/models/Equipment';
+import { Mission, CampaignChapter, MissionObjective } from '@/lib/models/Mission';
+import { UIState, Notification, Modal, Animation } from '@/lib/models/UI';
+import { AudioState, AudioTrack, SoundEffect, VoiceLine } from '@/lib/models/Audio';
+import { SocialState, Friend, Guild, ChatRoom, Achievement } from '@/lib/models/Social';
+import { CloudState, CloudAccount, CloudBackup, CloudSync } from '@/lib/models/Cloud';
 
 export interface Hero {
   id: string;
@@ -117,6 +124,16 @@ export interface GameState {
   triggeredEvents: string[];
   storyUnlocks: string[];
   
+  // Phase 4: Advanced Systems
+  combat: CombatState;
+  equipment: Equipment[];
+  missions: Mission[];
+  campaign: CampaignChapter[];
+  ui: UIState;
+  audio: AudioState;
+  social: SocialState;
+  cloud: CloudState;
+  
   // UI State
   currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event' | 'story';
   selectedHeroForDetail: string | null;
@@ -134,9 +151,6 @@ export interface GameState {
   
   setCurrentScreen: (screen: GameState['currentScreen']) => void;
   setSelectedHeroForDetail: (heroId: string | null) => void;
-  
-  startMission: (chapter: number, section: number) => void;
-  completeMission: (rewards: Record<string, unknown>) => void;
   
   performGacha: () => Hero | null;
   
@@ -178,6 +192,52 @@ export interface GameState {
   unlockStoryBranch: (branchId: string) => void;
   getAvailableMissions: () => StoryMission[];
   getAvailableEvents: () => StoryEvent[];
+  
+  // Phase 4: Advanced Systems Actions
+  // Combat Actions
+  startCombat: (enemies: string[], environment: string) => void;
+  endCombat: (result: unknown) => void;
+  performCombatAction: (action: CombatAction) => void;
+  selectCombatTarget: (targetId: string) => void;
+  
+  // Equipment Actions
+  equipItem: (heroId: string, equipmentId: string, slot: string) => void;
+  unequipItem: (heroId: string, slot: string) => void;
+  upgradeEquipment: (equipmentId: string, materials: Record<string, number>) => void;
+  craftEquipment: (recipeId: string, materials: Record<string, number>) => void;
+  
+  // Mission Actions
+  startMission: (missionId: string) => void;
+  completeMission: (missionId: string, rating: string) => void;
+  updateMissionObjective: (missionId: string, objectiveId: string, progress: number) => void;
+  
+  // UI Actions
+  showNotification: (notification: Notification) => void;
+  hideNotification: (notificationId: string) => void;
+  showModal: (modal: Modal) => void;
+  hideModal: (modalId: string) => void;
+  startAnimation: (animation: Animation) => void;
+  stopAnimation: (animationId: string) => void;
+  
+  // Audio Actions
+  playMusic: (trackId: string) => void;
+  stopMusic: () => void;
+  playSoundEffect: (effectId: string) => void;
+  playVoiceLine: (lineId: string) => void;
+  setAudioVolume: (type: string, volume: number) => void;
+  
+  // Social Actions
+  addFriend: (userId: string) => void;
+  removeFriend: (userId: string) => void;
+  joinGuild: (guildId: string) => void;
+  leaveGuild: (guildId: string) => void;
+  sendChatMessage: (roomId: string, message: string) => void;
+  
+  // Cloud Actions
+  syncToCloud: () => void;
+  restoreFromCloud: (backupId: string) => void;
+  createBackup: (name: string, description: string) => void;
+  resolveCloudConflict: (conflictId: string, resolution: string) => void;
   
   saveGame: () => void;
   loadGame: () => void;
@@ -234,6 +294,253 @@ const initialState = {
   storyBranches: [],
   triggeredEvents: [],
   storyUnlocks: [],
+  
+  // Phase 4: Advanced Systems Initial State
+  combat: {
+    isActive: false,
+    currentTurn: 'player' as const,
+    turnNumber: 1,
+    selectedHero: null,
+    selectedEnemy: null,
+    actionQueue: [],
+    coverPositions: [],
+    battlefield: [],
+    combatLog: []
+  },
+  equipment: [],
+  missions: [],
+  campaign: [],
+  ui: {
+    currentScreen: 'home',
+    previousScreen: 'home',
+    screenHistory: [],
+    isMenuOpen: false,
+    isSettingsOpen: false,
+    isPaused: false,
+    notifications: [],
+    tooltips: [],
+    modals: [],
+    animations: [],
+    theme: {
+      name: 'default',
+      colors: {
+        primary: '#8B5CF6',
+        secondary: '#EC4899',
+        accent: '#F59E0B',
+        background: '#1F2937',
+        surface: '#374151',
+        text: '#FFFFFF',
+        textSecondary: '#D1D5DB',
+        border: '#4B5563',
+        success: '#10B981',
+        warning: '#F59E0B',
+        error: '#EF4444',
+        info: '#3B82F6'
+      },
+      typography: {
+        fontFamily: 'Inter',
+        fontSize: { xs: 12, sm: 14, base: 16, lg: 18, xl: 20, '2xl': 24, '3xl': 30 },
+        fontWeight: { light: 300, normal: 400, medium: 500, semibold: 600, bold: 700 },
+        lineHeight: { tight: 1.25, normal: 1.5, relaxed: 1.75 }
+      },
+      spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 32, '2xl': 48, '3xl': 64 },
+      borders: {
+        radius: { none: 0, sm: 4, md: 8, lg: 12, xl: 16, full: 9999 },
+        width: { none: 0, thin: 1, medium: 2, thick: 4 }
+      },
+      shadows: {
+        none: 'none',
+        sm: '0 1px 2px rgba(0, 0, 0, 0.05)',
+        md: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        lg: '0 10px 15px rgba(0, 0, 0, 0.1)',
+        xl: '0 20px 25px rgba(0, 0, 0, 0.1)',
+        '2xl': '0 25px 50px rgba(0, 0, 0, 0.25)'
+      },
+      animations: {
+        duration: { fast: 150, normal: 300, slow: 500 },
+        easing: {
+          linear: 'linear',
+          ease: 'ease',
+          easeIn: 'ease-in',
+          easeOut: 'ease-out',
+          easeInOut: 'ease-in-out'
+        }
+      }
+    },
+    accessibility: {
+      highContrast: false,
+      largeText: false,
+      screenReader: false,
+      colorBlindSupport: false,
+      reducedMotion: false,
+      keyboardNavigation: true,
+      focusIndicators: true,
+      audioDescriptions: false
+    },
+    performance: {
+      targetFPS: 60,
+      maxParticles: 100,
+      shadowQuality: 'medium' as const,
+      textureQuality: 'high' as const,
+      antiAliasing: true,
+      vsync: true,
+      frameRateLimit: 60,
+      memoryLimit: 1024
+    }
+  },
+  audio: {
+    isPlaying: false,
+    currentTrack: null,
+    volume: { master: 80, music: 70, sfx: 80, voice: 90, ambient: 60 },
+    settings: {
+      quality: 'high' as const,
+      compression: true,
+      spatialAudio: false,
+      reverb: false,
+      equalizer: { enabled: false, presets: [], currentPreset: 'flat', custom: [] },
+      crossfade: true,
+      fadeTime: 2000,
+      loopMusic: true,
+      randomPlay: false
+    },
+    playlists: [],
+    soundEffects: [],
+    ambientSounds: [],
+    voiceLines: [],
+    isMuted: false,
+    isPaused: false
+  },
+  social: {
+    friends: [],
+    friendRequests: [],
+    guilds: [],
+    guildInvitations: [],
+    chatRooms: [],
+    leaderboards: [],
+    achievements: [],
+    socialEvents: [],
+    isOnline: true,
+    lastSeen: new Date(),
+    status: { type: 'online' as const, message: '', lastSeen: new Date() },
+    privacy: {
+      showOnlineStatus: true,
+      showGameActivity: true,
+      allowFriendRequests: true,
+      allowGuildInvitations: true,
+      allowPrivateMessages: true,
+      showLastSeen: true,
+      showAchievements: true,
+      showLeaderboard: true,
+      blockList: [],
+      muteList: []
+    }
+  },
+  cloud: {
+    isConnected: false,
+    isSyncing: false,
+    lastSync: new Date(),
+    syncStatus: {
+      isActive: false,
+      progress: 0,
+      currentOperation: '',
+      totalOperations: 0,
+      completedOperations: 0,
+      failedOperations: 0,
+      estimatedTimeRemaining: 0
+    },
+    conflicts: [],
+    backups: [],
+    settings: {
+      autoSync: true,
+      syncInterval: 30,
+      syncOnStartup: true,
+      syncOnExit: true,
+      syncOnNetworkChange: true,
+      syncOnBatteryLow: false,
+      compression: true,
+      encryption: false,
+      conflictResolution: {
+        default: 'ask_user' as const,
+        perDataType: {},
+        autoResolve: false,
+        askBeforeResolve: true
+      },
+      backupEnabled: true,
+      backupFrequency: { type: 'daily' as const, interval: 1, time: '02:00', days: [], isEnabled: true },
+      backupRetention: { maxBackups: 10, maxAge: 30, autoDelete: true, keepForever: false },
+      storageProvider: {
+        id: 'local',
+        name: 'Local Storage',
+        type: 'local' as const,
+        endpoint: '',
+        credentials: { isEncrypted: false },
+        isConfigured: true,
+        isTested: true
+      },
+      apiEndpoint: '',
+      timeout: 30000,
+      retryAttempts: 3,
+      retryDelay: 1000
+    },
+    account: {
+      id: '',
+      username: '',
+      email: '',
+      displayName: '',
+      avatar: '',
+      isVerified: false,
+      isPremium: false,
+      subscription: {
+        plan: 'free' as const,
+        features: [],
+        limits: {
+          maxStorage: 1073741824, // 1GB
+          maxBackups: 5,
+          maxDevices: 3,
+          maxSyncFrequency: 60,
+          maxFileSize: 104857600, // 100MB
+          maxConcurrentSyncs: 1
+        },
+        billing: {
+          amount: 0,
+          currency: 'USD',
+          interval: 'monthly' as const,
+          nextBilling: new Date(),
+          paymentMethod: '',
+          isAutoPay: false
+        },
+        isActive: true,
+        autoRenew: false
+      },
+      permissions: [],
+      quota: { total: 1073741824, used: 0, available: 1073741824, percentage: 0, isNearLimit: false, isOverLimit: false, lastUpdated: new Date() },
+      usage: {
+        totalSyncs: 0,
+        totalBackups: 0,
+        totalDataTransferred: 0,
+        averageSyncTime: 0,
+        averageBackupSize: 0,
+        lastSync: new Date(),
+        lastBackup: new Date(),
+        errors: []
+      },
+      createdDate: new Date(),
+      lastLogin: new Date(),
+      isActive: true
+    },
+    devices: [],
+    storage: {
+      total: 1073741824,
+      used: 0,
+      available: 1073741824,
+      breakdown: { saveData: 0, backups: 0, settings: 0, media: 0, logs: 0, other: 0 },
+      files: [],
+      folders: [],
+      isEncrypted: false,
+      isCompressed: false,
+      lastUpdated: new Date()
+    }
+  },
   
   currentScreen: 'home' as const,
   selectedHeroForDetail: null,
@@ -347,7 +654,12 @@ export const useGameStore = create<GameState>()(
       setCurrentScreen: (screen) => set({ currentScreen: screen }),
       setSelectedHeroForDetail: (heroId) => set({ selectedHeroForDetail: heroId }),
 
-      startMission: (chapter, section) => {
+      startMission: (missionId) => {
+        // Parse mission ID to extract chapter and section
+        const parts = missionId.split('_');
+        const chapter = parseInt(parts[1]);
+        const section = parseInt(parts[3]);
+        
         set({ 
           currentChapter: chapter,
           currentSection: section,
@@ -363,13 +675,13 @@ export const useGameStore = create<GameState>()(
         
         set({
           completedMissions: [...state.completedMissions, missionId],
-          credits: state.credits + (Number(rewards.credits) || 0),
-          signalKeys: state.signalKeys + (Number(rewards.signal_keys) || 0),
+          credits: state.credits + (Number((rewards as unknown as Record<string, unknown>).credits) || 0),
+          signalKeys: state.signalKeys + (Number((rewards as unknown as Record<string, unknown>).signal_keys) || 0),
           inBattle: false,
         });
         
         // Add XP to squad heroes
-        const xp = Number(rewards.xp);
+        const xp = Number((rewards as unknown as Record<string, unknown>).xp);
         if (xp) {
           state.currentSquad.forEach(heroId => {
             get().addHeroXP(heroId, xp);
@@ -705,6 +1017,402 @@ export const useGameStore = create<GameState>()(
       getAvailableEvents: () => {
         // This would filter events based on conditions
         return [];
+      },
+
+      // Phase 4: Advanced Systems Action Implementations
+      // Combat Actions
+      startCombat: (enemies, environment) => {
+        set((state) => ({
+          combat: {
+            ...state.combat,
+            isActive: true,
+            currentTurn: 'player' as const,
+            turnNumber: 1,
+            selectedHero: null,
+            selectedEnemy: null,
+            actionQueue: [],
+            coverPositions: [],
+            battlefield: [],
+            combatLog: []
+          }
+        }));
+      },
+
+      endCombat: (result) => {
+        set((state) => ({
+          combat: {
+            ...state.combat,
+            isActive: false,
+            currentTurn: 'player' as const,
+            turnNumber: 1,
+            selectedHero: null,
+            selectedEnemy: null,
+            actionQueue: [],
+            combatLog: []
+          }
+        }));
+      },
+
+      performCombatAction: (action) => {
+        set((state) => ({
+          combat: {
+            ...state.combat,
+            actionQueue: [...state.combat.actionQueue, action]
+          }
+        }));
+      },
+
+      selectCombatTarget: (targetId) => {
+        set((state) => ({
+          combat: {
+            ...state.combat,
+            selectedEnemy: targetId
+          }
+        }));
+      },
+
+      // Equipment Actions
+      equipItem: (heroId, equipmentId, slot) => {
+        set((state) => ({
+          equipment: state.equipment.map(eq => 
+            eq.id === equipmentId 
+              ? { ...eq, isEquipped: true, equippedBy: heroId }
+              : eq.slot === slot && eq.equippedBy === heroId
+              ? { ...eq, isEquipped: false, equippedBy: undefined }
+              : eq
+          )
+        }));
+      },
+
+      unequipItem: (heroId, slot) => {
+        set((state) => ({
+          equipment: state.equipment.map(eq => 
+            eq.slot === slot && eq.equippedBy === heroId
+              ? { ...eq, isEquipped: false, equippedBy: undefined }
+              : eq
+          )
+        }));
+      },
+
+      upgradeEquipment: (equipmentId, materials) => {
+        set((state) => ({
+          equipment: state.equipment.map(eq => 
+            eq.id === equipmentId 
+              ? { ...eq, level: eq.level + 1 }
+              : eq
+          )
+        }));
+      },
+
+      craftEquipment: (recipeId, materials) => {
+        console.log('Crafting equipment:', recipeId, materials);
+      },
+
+      // Mission Actions
+      updateMissionObjective: (missionId, objectiveId, progress) => {
+        set((state) => ({
+          missions: state.missions.map(m => 
+            m.id === missionId 
+              ? { 
+                  ...m, 
+                  objectives: m.objectives.map(obj => 
+                    obj.id === objectiveId 
+                      ? { ...obj, progress }
+                      : obj
+                  )
+                }
+              : m
+          )
+        }));
+      },
+
+      // UI Actions
+      showNotification: (notification) => {
+        set((state) => ({
+          ui: {
+            ...state.ui,
+            notifications: [...state.ui.notifications, notification]
+          }
+        }));
+      },
+
+      hideNotification: (notificationId) => {
+        set((state) => ({
+          ui: {
+            ...state.ui,
+            notifications: state.ui.notifications.filter(n => n.id !== notificationId)
+          }
+        }));
+      },
+
+      showModal: (modal) => {
+        set((state) => ({
+          ui: {
+            ...state.ui,
+            modals: [...state.ui.modals, modal]
+          }
+        }));
+      },
+
+      hideModal: (modalId) => {
+        set((state) => ({
+          ui: {
+            ...state.ui,
+            modals: state.ui.modals.filter(m => m.id !== modalId)
+          }
+        }));
+      },
+
+      startAnimation: (animation) => {
+        set((state) => ({
+          ui: {
+            ...state.ui,
+            animations: [...state.ui.animations, animation]
+          }
+        }));
+      },
+
+      stopAnimation: (animationId) => {
+        set((state) => ({
+          ui: {
+            ...state.ui,
+            animations: state.ui.animations.filter(a => a.id !== animationId)
+          }
+        }));
+      },
+
+      // Audio Actions
+      playMusic: (trackId) => {
+        set((state) => ({
+          audio: {
+            ...state.audio,
+            currentTrack: trackId,
+            isPlaying: true
+          }
+        }));
+      },
+
+      stopMusic: () => {
+        set((state) => ({
+          audio: {
+            ...state.audio,
+            currentTrack: null,
+            isPlaying: false
+          }
+        }));
+      },
+
+      playSoundEffect: (effectId) => {
+        console.log('Playing sound effect:', effectId);
+      },
+
+      playVoiceLine: (lineId) => {
+        console.log('Playing voice line:', lineId);
+      },
+
+      setAudioVolume: (type, volume) => {
+        set((state) => ({
+          audio: {
+            ...state.audio,
+            volume: {
+              ...state.audio.volume,
+              [type]: volume
+            }
+          }
+        }));
+      },
+
+      // Social Actions
+      addFriend: (userId) => {
+        set((state) => ({
+          social: {
+            ...state.social,
+            friends: [...state.social.friends, {
+              id: userId,
+              username: `user_${userId}`,
+              displayName: `User ${userId}`,
+              avatar: '',
+              level: 1,
+              isOnline: false,
+              lastSeen: new Date(),
+              status: { type: 'offline', message: '', lastSeen: new Date() },
+              relationship: {
+                level: 1,
+                experience: 0,
+                maxExperience: 100,
+                gifts: [],
+                sharedAchievements: [],
+                playTime: 0,
+                lastInteraction: new Date()
+              },
+              mutualFriends: 0,
+              sharedGuilds: [],
+              isBlocked: false,
+              isMuted: false,
+              notes: '',
+              addedDate: new Date()
+            }]
+          }
+        }));
+      },
+
+      removeFriend: (userId) => {
+        set((state) => ({
+          social: {
+            ...state.social,
+            friends: state.social.friends.filter(f => f.id !== userId)
+          }
+        }));
+      },
+
+      joinGuild: (guildId) => {
+        set((state) => ({
+          social: {
+            ...state.social,
+            guilds: [...state.social.guilds, {
+              id: guildId,
+              name: `Guild ${guildId}`,
+              tag: `G${guildId}`,
+              description: '',
+              icon: '',
+              banner: '',
+              level: 1,
+              experience: 0,
+              maxExperience: 100,
+              members: [],
+              maxMembers: 50,
+              requirements: {
+                minLevel: 1,
+                minReputation: 0,
+                requiredAchievements: [],
+                applicationRequired: false,
+                autoAccept: true
+              },
+              perks: [],
+              activities: [],
+              isPublic: true,
+              isRecruiting: true,
+              createdDate: new Date(),
+              leaderId: '',
+              officers: []
+            }]
+          }
+        }));
+      },
+
+      leaveGuild: (guildId) => {
+        set((state) => ({
+          social: {
+            ...state.social,
+            guilds: state.social.guilds.filter(g => g.id !== guildId)
+          }
+        }));
+      },
+
+      sendChatMessage: (roomId, message) => {
+        set((state) => ({
+          social: {
+            ...state.social,
+            chatRooms: state.social.chatRooms.map(room => 
+              room.id === roomId 
+                ? {
+                    ...room,
+                    messages: [...room.messages, {
+                      id: `msg_${Date.now()}`,
+                      userId: 'current_user',
+                      username: 'You',
+                      displayName: 'You',
+                      avatar: '',
+                      content: message,
+                      type: 'text',
+                      timestamp: new Date(),
+                      isEdited: false,
+                      isDeleted: false,
+                      reactions: [],
+                      mentions: [],
+                      attachments: []
+                    }]
+                  }
+                : room
+            )
+          }
+        }));
+      },
+
+      // Cloud Actions
+      syncToCloud: () => {
+        set((state) => ({
+          cloud: {
+            ...state.cloud,
+            isSyncing: true,
+            syncStatus: {
+              ...state.cloud.syncStatus,
+              isActive: true,
+              progress: 0,
+              currentOperation: 'Syncing to cloud...',
+              totalOperations: 10,
+              completedOperations: 0,
+              failedOperations: 0,
+              estimatedTimeRemaining: 30
+            }
+          }
+        }));
+      },
+
+      restoreFromCloud: (backupId) => {
+        set((state) => ({
+          cloud: {
+            ...state.cloud,
+            isSyncing: true,
+            syncStatus: {
+              ...state.cloud.syncStatus,
+              isActive: true,
+              progress: 0,
+              currentOperation: 'Restoring from cloud...',
+              totalOperations: 5,
+              completedOperations: 0,
+              failedOperations: 0,
+              estimatedTimeRemaining: 15
+            }
+          }
+        }));
+      },
+
+      createBackup: (name, description) => {
+        set((state) => ({
+          cloud: {
+            ...state.cloud,
+            backups: [...state.cloud.backups, {
+              id: `backup_${Date.now()}`,
+              name,
+              description,
+              timestamp: new Date(),
+              size: 1024 * 1024,
+              type: 'manual',
+              retention: {
+                maxBackups: 10,
+                maxAge: 30,
+                autoDelete: true,
+                keepForever: false
+              },
+              isEncrypted: false,
+              isCompressed: true,
+              checksum: 'abc123',
+              deviceId: 'local',
+              deviceName: 'Local Device',
+              isRestorable: true
+            }]
+          }
+        }));
+      },
+
+      resolveCloudConflict: (conflictId, resolution) => {
+        set((state) => ({
+          cloud: {
+            ...state.cloud,
+            conflicts: state.cloud.conflicts.filter(c => c.id !== conflictId)
+          }
+        }));
       },
 
       saveGame: () => {
