@@ -86,7 +86,7 @@ const RecruitmentEventScreen = () => {
     let interviewScore = 0;
     
     Object.entries(personalityTraits).forEach(([trait, value]) => {
-      const candidateValue = (candidatePersonality as any)[trait] || 5;
+      const candidateValue = (candidatePersonality as Record<string, number>)[trait] || 5;
       const alignment = Math.abs(value - candidateValue);
       interviewScore += Math.max(0, 10 - alignment);
     });
@@ -125,7 +125,6 @@ const RecruitmentEventScreen = () => {
     setCurrentEvent(null);
     setCurrentPhase('intro');
     setCurrentQuestion(0);
-    setSelectedAnswers({});
     setPersonalityTraits({});
     setInterviewScore(0);
     setPersonalityScore(0);
