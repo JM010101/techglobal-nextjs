@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import heroesData from '@/data/heroes.json';
 import { Relationship, AffinityEvent, SocialInteraction } from '@/lib/models/Relationship';
+import { StoryMission, StoryEvent, StoryBeat } from '@/lib/models/StoryMission';
 
 export interface Hero {
   id: string;
@@ -107,8 +108,17 @@ export interface GameState {
   currentTime: number; // 0-24 hours
   baseMaterials: number;
   
+  // Story & Narrative State
+  currentStoryMission: StoryMission | null;
+  activeStoryBeats: StoryBeat[];
+  storyProgress: number;
+  storyChoices: Record<string, string>;
+  storyBranches: string[];
+  triggeredEvents: string[];
+  storyUnlocks: string[];
+  
   // UI State
-  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event';
+  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event' | 'story';
   selectedHeroForDetail: string | null;
   
   // Actions
@@ -159,6 +169,16 @@ export interface GameState {
   getFacilityLevel: (facilityId: string) => number;
   getHeroNeeds: (heroId: string) => unknown;
   
+  // Story & Narrative Actions
+  startStoryMission: (missionId: string) => void;
+  completeStoryMission: (missionId: string) => void;
+  setCurrentStoryMission: (mission: StoryMission | null) => void;
+  triggerStoryEvent: (eventId: string) => void;
+  makeStoryChoice: (choiceId: string, consequence: unknown) => void;
+  unlockStoryBranch: (branchId: string) => void;
+  getAvailableMissions: () => StoryMission[];
+  getAvailableEvents: () => StoryEvent[];
+  
   saveGame: () => void;
   loadGame: () => void;
   resetGame: () => void;
@@ -205,6 +225,16 @@ const initialState = {
   currentDay: 1,
   currentTime: 6,
   baseMaterials: 1000,
+  
+  // Story & Narrative State
+  currentStoryMission: null,
+  activeStoryBeats: [],
+  storyProgress: 0,
+  storyChoices: {},
+  storyBranches: [],
+  triggeredEvents: [],
+  storyUnlocks: [],
+  
   currentScreen: 'home' as const,
   selectedHeroForDetail: null,
 };
@@ -630,6 +660,51 @@ export const useGameStore = create<GameState>()(
       getHeroNeeds: () => {
         // This would typically load from the hero needs data
         return null; // Placeholder
+      },
+
+      // Story & Narrative Actions
+      startStoryMission: (missionId) => {
+        // Implementation for starting a story mission
+        console.log('Starting story mission:', missionId);
+      },
+
+      completeStoryMission: (missionId) => {
+        set((state) => ({
+          completedMissions: [...state.completedMissions, missionId],
+          credits: state.credits + 1000, // Example reward
+        }));
+      },
+
+      setCurrentStoryMission: (mission) => {
+        set({ currentStoryMission: mission });
+      },
+
+      triggerStoryEvent: (eventId) => {
+        set((state) => ({
+          triggeredEvents: [...state.triggeredEvents, eventId],
+        }));
+      },
+
+      makeStoryChoice: (choiceId) => {
+        set((state) => ({
+          storyChoices: { ...state.storyChoices, [choiceId]: choiceId },
+        }));
+      },
+
+      unlockStoryBranch: (branchId) => {
+        set((state) => ({
+          storyBranches: [...state.storyBranches, branchId],
+        }));
+      },
+
+      getAvailableMissions: () => {
+        // This would filter missions based on requirements
+        return [];
+      },
+
+      getAvailableEvents: () => {
+        // This would filter events based on conditions
+        return [];
       },
 
       saveGame: () => {

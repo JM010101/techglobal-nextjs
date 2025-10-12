@@ -1,0 +1,166 @@
+[
+  {
+    "id": "hero_birthday",
+    "name": "Hero Birthday Celebration",
+    "description": "A special day to celebrate one of your heroes and strengthen your bond with them.",
+    "type": "celebration",
+    "participants": ["selected_hero", "squad_members"],
+    "location": "base_recreation",
+    "storyBeats": [
+      {
+        "id": "birthday_intro",
+        "type": "cutscene",
+        "character": "selected_hero",
+        "text": "I never expected anyone to remember my birthday... thank you.",
+        "emotion": "happy",
+        "background": "recreation_room",
+        "music": "celebratory",
+        "duration": 3
+      },
+      {
+        "id": "birthday_gift",
+        "type": "choice",
+        "text": "What gift do you give?",
+        "choices": [
+          {
+            "id": "personal_gift",
+            "text": "Give a personal, meaningful gift",
+            "consequences": {
+              "relationshipChange": 20,
+              "characterDevelopment": 2
+            }
+          },
+          {
+            "id": "practical_gift",
+            "text": "Give a practical, useful gift",
+            "consequences": {
+              "relationshipChange": 10,
+              "characterDevelopment": 1
+            }
+          },
+          {
+            "id": "surprise_gift",
+            "text": "Give a surprise gift",
+            "consequences": {
+              "relationshipChange": 15,
+              "characterDevelopment": 1
+            }
+          }
+        ]
+      }
+    ],
+    "consequences": [],
+    "unlockConditions": ["hero_relationship_level_3"],
+    "isRepeatable": true,
+    "frequency": "monthly"
+  },
+  {
+    "id": "team_conflict",
+    "name": "Team Conflict Resolution",
+    "description": "A disagreement between team members threatens to split the squad. Your intervention is needed.",
+    "type": "conflict",
+    "participants": ["conflicting_heroes", "commander"],
+    "location": "base_common_area",
+    "storyBeats": [
+      {
+        "id": "conflict_intro",
+        "type": "cutscene",
+        "text": "Tensions are running high as two of your heroes have a heated argument.",
+        "emotion": "angry",
+        "background": "common_area",
+        "music": "tense",
+        "duration": 4
+      },
+      {
+        "id": "conflict_choice",
+        "type": "choice",
+        "text": "How do you handle the conflict?",
+        "choices": [
+          {
+            "id": "mediate",
+            "text": "Mediate and find a compromise",
+            "consequences": {
+              "relationshipChange": 5,
+              "characterDevelopment": 1
+            }
+          },
+          {
+            "id": "take_side",
+            "text": "Take a side in the conflict",
+            "consequences": {
+              "relationshipChange": -10,
+              "characterDevelopment": 0
+            }
+          },
+          {
+            "id": "let_resolve",
+            "text": "Let them resolve it themselves",
+            "consequences": {
+              "relationshipChange": 0,
+              "characterDevelopment": 2
+            }
+          }
+        ]
+      }
+    ],
+    "consequences": [],
+    "unlockConditions": ["multiple_heroes_unlocked"],
+    "isRepeatable": true,
+    "frequency": "random"
+  },
+  {
+    "id": "mystery_discovery",
+    "name": "Mysterious Discovery",
+    "description": "A strange artifact or piece of information is discovered that could change everything.",
+    "type": "mystery",
+    "participants": ["discovering_hero", "commander"],
+    "location": "base_laboratory",
+    "storyBeats": [
+      {
+        "id": "discovery_intro",
+        "type": "cutscene",
+        "character": "discovering_hero",
+        "text": "Commander, you need to see this. I've never seen anything like it before.",
+        "emotion": "excited",
+        "background": "laboratory",
+        "music": "mysterious",
+        "duration": 3
+      },
+      {
+        "id": "discovery_choice",
+        "type": "choice",
+        "text": "How do you investigate the discovery?",
+        "choices": [
+          {
+            "id": "thorough_investigation",
+            "text": "Conduct a thorough investigation",
+            "consequences": {
+              "characterDevelopment": 3,
+              "unlockMission": "deep_mystery"
+            }
+          },
+          {
+            "id": "cautious_approach",
+            "text": "Take a cautious approach",
+            "consequences": {
+              "characterDevelopment": 1,
+              "unlockMission": "safe_mystery"
+            }
+          },
+          {
+            "id": "immediate_action",
+            "text": "Take immediate action",
+            "consequences": {
+              "characterDevelopment": 2,
+              "unlockMission": "urgent_mystery"
+            }
+          }
+        ]
+      }
+    ],
+    "consequences": [],
+    "unlockConditions": ["base_facility_laboratory"],
+    "isRepeatable": true,
+    "frequency": "random"
+  }
+]

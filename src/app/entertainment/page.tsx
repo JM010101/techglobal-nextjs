@@ -40,7 +40,7 @@ const games: Game[] = [
     title: 'Aegis Protocol: Tactical Horizon',
     description: 'A 2D tactical sci-fi RPG with hero collection. Command elite squads in grid-based combat against autonomous Warminds!',
     icon: Trophy,
-    image: 'https://picsum.photos/800/600?random=2',
+    image: '/images/game/Aegis Protocol/dashboard.jpg',
     difficulty: 'Medium',
     category: 'Tactical RPG'
   },

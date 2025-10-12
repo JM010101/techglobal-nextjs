@@ -224,6 +224,14 @@ const HomeScreen = () => {
           </button>
           
           <button
+            onClick={() => setCurrentScreen('story')}
+            className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-2 border-purple-600/50 rounded-2xl p-6 hover:border-purple-500 transition-all duration-300"
+          >
+            <BookOpen className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+            <p className="text-white font-bold">Story</p>
+          </button>
+          
+          <button
             onClick={() => alert('Shop coming soon!')}
             className="bg-gradient-to-r from-orange-900/50 to-red-900/50 border-2 border-orange-600/50 rounded-2xl p-6 hover:border-orange-500 transition-all duration-300"
           >

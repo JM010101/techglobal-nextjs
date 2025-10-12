@@ -1,0 +1,255 @@
+[
+  {
+    "id": "rift_awakening",
+    "title": "RIFT's Awakening",
+    "description": "Discover the truth behind RIFT's mysterious past and the events that led to their current state.",
+    "type": "character_story",
+    "chapter": 1,
+    "section": 1,
+    "requirements": {
+      "heroLevel": 5,
+      "characterDevelopment": 1
+    },
+    "rewards": {
+      "experience": 1000,
+      "credits": 500,
+      "materials": 100,
+      "characterDevelopment": 2,
+      "unlockHero": "RIFT"
+    },
+    "storyBeats": [
+      {
+        "id": "rift_intro",
+        "type": "cutscene",
+        "character": "RIFT",
+        "text": "The memories come in fragments... flashes of light, the sound of alarms, and a voice calling my name.",
+        "emotion": "confused",
+        "background": "laboratory",
+        "music": "mysterious",
+        "duration": 3
+      },
+      {
+        "id": "rift_memory_1",
+        "type": "dialogue",
+        "character": "RIFT",
+        "text": "I remember... I was part of something bigger. A project. But what happened to it?",
+        "emotion": "worried",
+        "nextBeatId": "rift_choice_1"
+      },
+      {
+        "id": "rift_choice_1",
+        "type": "choice",
+        "text": "What do you want to do?",
+        "choices": [
+          {
+            "id": "comfort_rift",
+            "text": "Comfort RIFT and reassure them",
+            "consequences": {
+              "relationshipChange": 10,
+              "characterDevelopment": 1
+            }
+          },
+          {
+            "id": "push_rift",
+            "text": "Push RIFT to remember more",
+            "consequences": {
+              "relationshipChange": -5,
+              "characterDevelopment": 2
+            }
+          },
+          {
+            "id": "distract_rift",
+            "text": "Change the subject to something lighter",
+            "consequences": {
+              "relationshipChange": 5,
+              "characterDevelopment": 0
+            }
+          }
+        ]
+      }
+    ],
+    "choices": [],
+    "consequences": [],
+    "unlockConditions": ["rift_character_unlocked"],
+    "isRepeatable": false,
+    "difficulty": "medium",
+    "estimatedDuration": 15
+  },
+  {
+    "id": "haven_healing_touch",
+    "title": "HAVEN's Healing Touch",
+    "description": "Explore HAVEN's unique abilities and the emotional burden of being a healer in a world of conflict.",
+    "type": "character_story",
+    "chapter": 1,
+    "section": 2,
+    "requirements": {
+      "heroLevel": 3,
+      "relationshipLevel": 2
+    },
+    "rewards": {
+      "experience": 800,
+      "credits": 400,
+      "materials": 80,
+      "relationshipPoints": 15,
+      "characterDevelopment": 1
+    },
+    "storyBeats": [
+      {
+        "id": "haven_intro",
+        "type": "cutscene",
+        "character": "HAVEN",
+        "text": "Every life I save, I feel the weight of those I couldn't reach in time.",
+        "emotion": "sad",
+        "background": "medical_bay",
+        "music": "melancholic",
+        "duration": 4
+      },
+      {
+        "id": "haven_confession",
+        "type": "dialogue",
+        "character": "HAVEN",
+        "text": "Sometimes I wonder if my gift is a blessing or a curse. The responsibility never ends.",
+        "emotion": "worried",
+        "nextBeatId": "haven_choice_1"
+      }
+    ],
+    "choices": [],
+    "consequences": [],
+    "unlockConditions": ["haven_character_unlocked"],
+    "isRepeatable": false,
+    "difficulty": "easy",
+    "estimatedDuration": 12
+  },
+  {
+    "id": "ember_temper",
+    "title": "EMBER's Fiery Temper",
+    "description": "Navigate EMBER's explosive personality and discover what lies beneath the anger.",
+    "type": "character_story",
+    "chapter": 1,
+    "section": 3,
+    "requirements": {
+      "heroLevel": 4,
+      "characterDevelopment": 1
+    },
+    "rewards": {
+      "experience": 900,
+      "credits": 450,
+      "materials": 90,
+      "characterDevelopment": 2
+    },
+    "storyBeats": [
+      {
+        "id": "ember_intro",
+        "type": "cutscene",
+        "character": "EMBER",
+        "text": "I don't need your pity! I can handle myself just fine!",
+        "emotion": "angry",
+        "background": "training_room",
+        "music": "intense",
+        "duration": 3
+      },
+      {
+        "id": "ember_vulnerability",
+        "type": "dialogue",
+        "character": "EMBER",
+        "text": "I... I'm not always this angry. It's just... easier than showing weakness.",
+        "emotion": "confused",
+        "nextBeatId": "ember_choice_1"
+      }
+    ],
+    "choices": [],
+    "consequences": [],
+    "unlockConditions": ["ember_character_unlocked"],
+    "isRepeatable": false,
+    "difficulty": "medium",
+    "estimatedDuration": 18
+  },
+  {
+    "id": "glint_precision",
+    "title": "GLINT's Perfect Aim",
+    "description": "Understand GLINT's need for perfection and the pressure of being the team's precision specialist.",
+    "type": "character_story",
+    "chapter": 1,
+    "section": 4,
+    "requirements": {
+      "heroLevel": 6,
+      "characterDevelopment": 2
+    },
+    "rewards": {
+      "experience": 1200,
+      "credits": 600,
+      "materials": 120,
+      "characterDevelopment": 3
+    },
+    "storyBeats": [
+      {
+        "id": "glint_intro",
+        "type": "cutscene",
+        "character": "GLINT",
+        "text": "Every shot must be perfect. There's no room for error when lives are on the line.",
+        "emotion": "determined",
+        "background": "shooting_range",
+        "music": "focused",
+        "duration": 3
+      },
+      {
+        "id": "glint_pressure",
+        "type": "dialogue",
+        "character": "GLINT",
+        "text": "The weight of responsibility... sometimes it feels like the whole mission depends on my next shot.",
+        "emotion": "worried",
+        "nextBeatId": "glint_choice_1"
+      }
+    ],
+    "choices": [],
+    "consequences": [],
+    "unlockConditions": ["glint_character_unlocked"],
+    "isRepeatable": false,
+    "difficulty": "hard",
+    "estimatedDuration": 20
+  },
+  {
+    "id": "kite_control",
+    "title": "KITE's Need for Control",
+    "description": "Explore KITE's complex relationship with control and the fear of losing it.",
+    "type": "character_story",
+    "chapter": 1,
+    "section": 5,
+    "requirements": {
+      "heroLevel": 7,
+      "characterDevelopment": 3
+    },
+    "rewards": {
+      "experience": 1500,
+      "credits": 750,
+      "materials": 150,
+      "characterDevelopment": 4
+    },
+    "storyBeats": [
+      {
+        "id": "kite_intro",
+        "type": "cutscene",
+        "character": "KITE",
+        "text": "Control is everything. Without it, everything falls apart. I can't let that happen again.",
+        "emotion": "determined",
+        "background": "command_center",
+        "music": "tense",
+        "duration": 4
+      },
+      {
+        "id": "kite_fear",
+        "type": "dialogue",
+        "character": "KITE",
+        "text": "I've seen what happens when control is lost. I won't let it happen to us.",
+        "emotion": "worried",
+        "nextBeatId": "kite_choice_1"
+      }
+    ],
+    "choices": [],
+    "consequences": [],
+    "unlockConditions": ["kite_character_unlocked"],
+    "isRepeatable": false,
+    "difficulty": "extreme",
+    "estimatedDuration": 25
+  }
+]
