@@ -10,6 +10,8 @@ import HeroDetailScreen from './components/HeroDetailScreen';
 import DialogueScreen from './components/DialogueScreen';
 import SocialHubScreen from './components/SocialHubScreen';
 import CharacterDevelopmentScreen from './components/CharacterDevelopmentScreen';
+import BaseManagementScreen from './components/BaseManagementScreen';
+import RecruitmentEventScreen from './components/RecruitmentEventScreen';
 
 const AegisProtocolGame = () => {
   const currentScreen = useGameStore((state) => state.currentScreen);
@@ -42,6 +44,8 @@ const AegisProtocolGame = () => {
         {currentScreen === 'dialogue' && <DialogueScreen />}
         {currentScreen === 'social' && <SocialHubScreen />}
         {currentScreen === 'character-development' && <CharacterDevelopmentScreen />}
+        {currentScreen === 'base-management' && <BaseManagementScreen />}
+        {currentScreen === 'recruitment-event' && <RecruitmentEventScreen />}
       </div>
     </div>
   );

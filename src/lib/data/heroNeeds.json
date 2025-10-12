@@ -1,0 +1,197 @@
+[
+  {
+    "heroId": "hero_rift",
+    "needs": {
+      "morale": {
+        "current": 80,
+        "max": 100,
+        "decayRate": 2,
+        "recoveryRate": 5
+      },
+      "health": {
+        "current": 95,
+        "max": 100,
+        "decayRate": 1,
+        "recoveryRate": 8
+      },
+      "stress": {
+        "current": 20,
+        "max": 100,
+        "decayRate": 3,
+        "recoveryRate": 4
+      },
+      "social": {
+        "current": 70,
+        "max": 100,
+        "decayRate": 1,
+        "recoveryRate": 6
+      }
+    },
+    "preferences": {
+      "favoriteActivities": ["combat_training", "team_training", "meal_time"],
+      "dislikedActivities": ["therapy_session"],
+      "socialPreferences": ["leadership_roles", "mentoring_others"],
+      "restRequirements": {
+        "dailyRest": 8,
+        "preferredRestTime": "night",
+        "sleepQuality": "good"
+      }
+    }
+  },
+  {
+    "heroId": "hero_haven",
+    "needs": {
+      "morale": {
+        "current": 85,
+        "max": 100,
+        "decayRate": 1,
+        "recoveryRate": 6
+      },
+      "health": {
+        "current": 90,
+        "max": 100,
+        "decayRate": 1,
+        "recoveryRate": 10
+      },
+      "stress": {
+        "current": 15,
+        "max": 100,
+        "decayRate": 2,
+        "recoveryRate": 5
+      },
+      "social": {
+        "current": 90,
+        "max": 100,
+        "decayRate": 1,
+        "recoveryRate": 8
+      }
+    },
+    "preferences": {
+      "favoriteActivities": ["cooking_together", "therapy_session", "meal_time"],
+      "dislikedActivities": ["combat_training"],
+      "socialPreferences": ["helping_others", "emotional_support"],
+      "restRequirements": {
+        "dailyRest": 7,
+        "preferredRestTime": "night",
+        "sleepQuality": "excellent"
+      }
+    }
+  },
+  {
+    "heroId": "hero_ember",
+    "needs": {
+      "morale": {
+        "current": 75,
+        "max": 100,
+        "decayRate": 3,
+        "recoveryRate": 4
+      },
+      "health": {
+        "current": 85,
+        "max": 100,
+        "decayRate": 2,
+        "recoveryRate": 6
+      },
+      "stress": {
+        "current": 30,
+        "max": 100,
+        "decayRate": 4,
+        "recoveryRate": 3
+      },
+      "social": {
+        "current": 60,
+        "max": 100,
+        "decayRate": 2,
+        "recoveryRate": 5
+      }
+    },
+    "preferences": {
+      "favoriteActivities": ["gaming", "combat_training", "movie_night"],
+      "dislikedActivities": ["therapy_session", "medical_checkup"],
+      "socialPreferences": ["casual_friendship", "shared_activities"],
+      "restRequirements": {
+        "dailyRest": 6,
+        "preferredRestTime": "late_night",
+        "sleepQuality": "fair"
+      }
+    }
+  },
+  {
+    "heroId": "hero_glint",
+    "needs": {
+      "morale": {
+        "current": 70,
+        "max": 100,
+        "decayRate": 2,
+        "recoveryRate": 4
+      },
+      "health": {
+        "current": 88,
+        "max": 100,
+        "decayRate": 1,
+        "recoveryRate": 7
+      },
+      "stress": {
+        "current": 25,
+        "max": 100,
+        "decayRate": 3,
+        "recoveryRate": 4
+      },
+      "social": {
+        "current": 50,
+        "max": 100,
+        "decayRate": 3,
+        "recoveryRate": 3
+      }
+    },
+    "preferences": {
+      "favoriteActivities": ["combat_training", "personal_time", "medical_checkup"],
+      "dislikedActivities": ["cooking_together", "movie_night"],
+      "socialPreferences": ["intellectual_discussion", "quiet_company"],
+      "restRequirements": {
+        "dailyRest": 8,
+        "preferredRestTime": "night",
+        "sleepQuality": "good"
+      }
+    }
+  },
+  {
+    "heroId": "hero_kite",
+    "needs": {
+      "morale": {
+        "current": 80,
+        "max": 100,
+        "decayRate": 2,
+        "recoveryRate": 5
+      },
+      "health": {
+        "current": 92,
+        "max": 100,
+        "decayRate": 1,
+        "recoveryRate": 8
+      },
+      "stress": {
+        "current": 18,
+        "max": 100,
+        "decayRate": 2,
+        "recoveryRate": 5
+      },
+      "social": {
+        "current": 75,
+        "max": 100,
+        "decayRate": 1,
+        "recoveryRate": 6
+      }
+    },
+    "preferences": {
+      "favoriteActivities": ["gaming", "cooking_together", "team_training"],
+      "dislikedActivities": ["combat_training"],
+      "socialPreferences": ["tech_discussion", "collaborative_work"],
+      "restRequirements": {
+        "dailyRest": 7,
+        "preferredRestTime": "night",
+        "sleepQuality": "good"
+      }
+    }
+  }
+]

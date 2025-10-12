@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
-import { Zap, Users, Trophy, ShoppingBag, X, Sword, Heart, Shield, MessageCircle, BookOpen } from 'lucide-react';
+import { Zap, Users, Trophy, ShoppingBag, X, Sword, Heart, Shield, MessageCircle, BookOpen, Home, UserPlus } from 'lucide-react';
 import chaptersData from '@/data/chapters.json';
 
 const HomeScreen = () => {
@@ -173,7 +173,7 @@ const HomeScreen = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-5 gap-4"
+          className="grid grid-cols-7 gap-4"
         >
           <button
             onClick={() => setCurrentScreen('squad')}
@@ -205,6 +205,22 @@ const HomeScreen = () => {
           >
             <BookOpen className="w-8 h-8 text-indigo-400 mx-auto mb-2" />
             <p className="text-white font-bold">Development</p>
+          </button>
+          
+          <button
+            onClick={() => setCurrentScreen('base-management')}
+            className="bg-gradient-to-r from-green-900/50 to-emerald-900/50 border-2 border-green-600/50 rounded-2xl p-6 hover:border-green-500 transition-all duration-300"
+          >
+            <Home className="w-8 h-8 text-green-400 mx-auto mb-2" />
+            <p className="text-white font-bold">Base</p>
+          </button>
+          
+          <button
+            onClick={() => setCurrentScreen('recruitment-event')}
+            className="bg-gradient-to-r from-yellow-900/50 to-orange-900/50 border-2 border-yellow-600/50 rounded-2xl p-6 hover:border-yellow-500 transition-all duration-300"
+          >
+            <UserPlus className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
+            <p className="text-white font-bold">Recruit</p>
           </button>
           
           <button

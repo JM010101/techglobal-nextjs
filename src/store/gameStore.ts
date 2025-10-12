@@ -94,8 +94,21 @@ export interface GameState {
   completedPersonalQuests: string[];
   characterDevelopmentStage: Record<string, number>;
   
+  // Base Management & Daily Life
+  baseFacilities: Record<string, number>; // facilityId -> level
+  heroNeeds: Record<string, {
+    morale: { current: number; max: number };
+    health: { current: number; max: number };
+    stress: { current: number; max: number };
+    social: { current: number; max: number };
+  }>;
+  dailyRoutines: Record<string, string[]>; // heroId -> routine activities
+  currentDay: number;
+  currentTime: number; // 0-24 hours
+  baseMaterials: number;
+  
   // UI State
-  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development';
+  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event';
   selectedHeroForDetail: string | null;
   
   // Actions
@@ -133,6 +146,19 @@ export interface GameState {
   getPersonalQuests: (heroId: string) => unknown[];
   getCharacterDevelopmentArc: (heroId: string) => unknown;
   
+  // Base Management Actions
+  upgradeFacility: (facilityId: string) => boolean;
+  assignHeroToActivity: (heroId: string, activityId: string) => void;
+  updateHeroNeeds: (heroId: string, needs: Partial<{
+    morale: { current: number; max: number };
+    health: { current: number; max: number };
+    stress: { current: number; max: number };
+    social: { current: number; max: number };
+  }>) => void;
+  advanceTime: (hours: number) => void;
+  getFacilityLevel: (facilityId: string) => number;
+  getHeroNeeds: (heroId: string) => unknown;
+  
   saveGame: () => void;
   loadGame: () => void;
   resetGame: () => void;
@@ -167,6 +193,18 @@ const initialState = {
   unlockedBackstories: [],
   completedPersonalQuests: [],
   characterDevelopmentStage: {},
+  baseFacilities: {
+    barracks: 1,
+    mess_hall: 1,
+    training_room: 1,
+    recreation: 1,
+    medical_bay: 1
+  },
+  heroNeeds: {},
+  dailyRoutines: {},
+  currentDay: 1,
+  currentTime: 6,
+  baseMaterials: 1000,
   currentScreen: 'home' as const,
   selectedHeroForDetail: null,
 };
@@ -521,6 +559,76 @@ export const useGameStore = create<GameState>()(
 
       getCharacterDevelopmentArc: () => {
         // This would typically load from the development arcs data
+        return null; // Placeholder
+      },
+
+      // Base Management Actions
+      upgradeFacility: (facilityId) => {
+        const state = get();
+        const currentLevel = state.baseFacilities[facilityId] || 1;
+        const maxLevel = 5;
+        
+        if (currentLevel >= maxLevel) return false;
+        
+        // Check if player has enough resources (simplified)
+        const upgradeCost = 1000 * currentLevel; // Simplified cost calculation
+        if (state.credits < upgradeCost || state.baseMaterials < upgradeCost) {
+          return false;
+        }
+        
+        set((state) => ({
+          baseFacilities: {
+            ...state.baseFacilities,
+            [facilityId]: currentLevel + 1
+          },
+          credits: state.credits - upgradeCost,
+          baseMaterials: state.baseMaterials - upgradeCost
+        }));
+        
+        return true;
+      },
+
+      assignHeroToActivity: (heroId, activityId) => {
+        set((state) => ({
+          dailyRoutines: {
+            ...state.dailyRoutines,
+            [heroId]: [...(state.dailyRoutines[heroId] || []), activityId]
+          }
+        }));
+      },
+
+      updateHeroNeeds: (heroId, needs) => {
+        set((state) => ({
+          heroNeeds: {
+            ...state.heroNeeds,
+            [heroId]: {
+              ...state.heroNeeds[heroId],
+              ...needs
+            }
+          }
+        }));
+      },
+
+      advanceTime: (hours) => {
+        set((state) => {
+          const newTime = state.currentTime + hours;
+          const newDay = state.currentDay + Math.floor(newTime / 24);
+          const finalTime = newTime % 24;
+          
+          return {
+            currentTime: finalTime,
+            currentDay: newDay
+          };
+        });
+      },
+
+      getFacilityLevel: (facilityId) => {
+        const state = get();
+        return state.baseFacilities[facilityId] || 1;
+      },
+
+      getHeroNeeds: () => {
+        // This would typically load from the hero needs data
         return null; // Placeholder
       },
 

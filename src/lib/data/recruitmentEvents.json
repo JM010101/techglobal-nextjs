@@ -1,0 +1,410 @@
+[
+  {
+    "id": "recruitment_event_001",
+    "name": "The Mysterious Stranger",
+    "description": "A lone figure approaches the base perimeter, claiming to be a former Aegis operative seeking to rejoin the fight.",
+    "type": "interview",
+    "difficulty": "medium",
+    "requirements": {
+      "baseLevel": 2,
+      "completedMissions": 5
+    },
+    "candidate": {
+      "name": "Nova",
+      "codename": "NOVA",
+      "role": "Assault",
+      "rarity": "SR",
+      "personality": {
+        "openness": 7,
+        "conscientiousness": 8,
+        "extraversion": 6,
+        "agreeableness": 7,
+        "neuroticism": 4
+      },
+      "background": "Former Aegis operative who went rogue after disagreeing with command decisions. Now seeks redemption.",
+      "motivation": "Wants to prove herself worthy of the Aegis name again."
+    },
+    "interviewQuestions": [
+      {
+        "id": "q1",
+        "question": "Why did you leave the Aegis Corps originally?",
+        "options": [
+          {
+            "text": "I disagreed with their methods",
+            "personalityImpact": { "conscientiousness": 2, "agreeableness": -1 },
+            "response": "I couldn't stand by while they made decisions that put civilians at risk."
+          },
+          {
+            "text": "I was framed for something I didn't do",
+            "personalityImpact": { "neuroticism": 1, "conscientiousness": -1 },
+            "response": "The evidence was planted. I've been trying to clear my name ever since."
+          },
+          {
+            "text": "I needed to find my own path",
+            "personalityImpact": { "openness": 2, "extraversion": 1 },
+            "response": "I had to discover who I really was outside of the military structure."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "question": "How do you handle conflict within a team?",
+        "options": [
+          {
+            "text": "I address it directly and honestly",
+            "personalityImpact": { "extraversion": 2, "agreeableness": 1 },
+            "response": "I believe in open communication. Problems fester when left unaddressed."
+          },
+          {
+            "text": "I try to find a compromise",
+            "personalityImpact": { "agreeableness": 2, "conscientiousness": 1 },
+            "response": "There's usually a middle ground that satisfies everyone's needs."
+          },
+          {
+            "text": "I focus on the mission first",
+            "personalityImpact": { "conscientiousness": 2, "extraversion": -1 },
+            "response": "Personal conflicts can wait. The mission is what matters most."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "question": "What's your greatest fear?",
+        "options": [
+          {
+            "text": "Failing my team",
+            "personalityImpact": { "conscientiousness": 2, "neuroticism": 1 },
+            "response": "I couldn't live with myself if my mistakes cost someone their life."
+          },
+          {
+            "text": "Being alone",
+            "personalityImpact": { "extraversion": 2, "neuroticism": 2 },
+            "response": "I need people around me. Isolation terrifies me."
+          },
+          {
+            "text": "Not being true to myself",
+            "personalityImpact": { "openness": 2, "conscientiousness": -1 },
+            "response": "I'd rather be authentic and face the consequences than live a lie."
+          }
+        ]
+      }
+    ],
+    "personalityTest": {
+      "questions": [
+        {
+          "id": "pt1",
+          "question": "You're in a high-stress situation. What's your first instinct?",
+          "options": [
+            { "text": "Take charge and give orders", "traits": ["leadership", "assertiveness"] },
+            { "text": "Assess the situation carefully", "traits": ["analytical", "cautious"] },
+            { "text": "Check on your teammates first", "traits": ["empathy", "teamwork"] },
+            { "text": "Look for the quickest solution", "traits": ["efficiency", "pragmatism"] }
+          ]
+        },
+        {
+          "id": "pt2",
+          "question": "How do you prefer to spend your downtime?",
+          "options": [
+            { "text": "Training and self-improvement", "traits": ["discipline", "ambition"] },
+            { "text": "Socializing with others", "traits": ["sociability", "extroversion"] },
+            { "text": "Reading or studying", "traits": ["intellectual", "curiosity"] },
+            { "text": "Relaxing alone", "traits": ["introversion", "independence"] }
+          ]
+        },
+        {
+          "id": "pt3",
+          "question": "What motivates you most?",
+          "options": [
+            { "text": "Protecting others", "traits": ["altruism", "responsibility"] },
+            { "text": "Personal achievement", "traits": ["ambition", "competitiveness"] },
+            { "text": "Learning new things", "traits": ["curiosity", "growth"] },
+            { "text": "Making a difference", "traits": ["purpose", "impact"] }
+          ]
+        }
+      ]
+    },
+    "rewards": {
+      "success": {
+        "hero": "Nova",
+        "credits": 5000,
+        "materials": 200
+      },
+      "failure": {
+        "credits": 1000,
+        "materials": 50
+      }
+    }
+  },
+  {
+    "id": "recruitment_event_002",
+    "name": "The Prodigy",
+    "description": "A young genius with incredible technical skills but questionable social abilities wants to join the team.",
+    "type": "interview",
+    "difficulty": "hard",
+    "requirements": {
+      "baseLevel": 3,
+      "completedMissions": 10
+    },
+    "candidate": {
+      "name": "Echo",
+      "codename": "ECHO",
+      "role": "Support",
+      "rarity": "SSR",
+      "personality": {
+        "openness": 9,
+        "conscientiousness": 8,
+        "extraversion": 3,
+        "agreeableness": 6,
+        "neuroticism": 5
+      },
+      "background": "Child prodigy who developed advanced AI systems. Struggles with social interaction but has revolutionary ideas.",
+      "motivation": "Wants to use technology to save lives and make the world better."
+    },
+    "interviewQuestions": [
+      {
+        "id": "q1",
+        "question": "How do you handle criticism of your work?",
+        "options": [
+          {
+            "text": "I analyze it objectively",
+            "personalityImpact": { "conscientiousness": 2, "neuroticism": -1 },
+            "response": "Criticism is data. I use it to improve my systems."
+          },
+          {
+            "text": "I get defensive initially",
+            "personalityImpact": { "neuroticism": 2, "agreeableness": -1 },
+            "response": "It's hard not to take it personally when you've poured your heart into something."
+          },
+          {
+            "text": "I ask for specific examples",
+            "personalityImpact": { "openness": 2, "conscientiousness": 1 },
+            "response": "I need to understand exactly what's wrong to fix it properly."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "question": "What's your approach to teamwork?",
+        "options": [
+          {
+            "text": "I prefer to work independently",
+            "personalityImpact": { "extraversion": -2, "conscientiousness": 1 },
+            "response": "I work best when I can focus without distractions."
+          },
+          {
+            "text": "I try to find my role in the group",
+            "personalityImpact": { "agreeableness": 2, "extraversion": 1 },
+            "response": "I look for ways to contribute that play to my strengths."
+          },
+          {
+            "text": "I adapt to the team's needs",
+            "personalityImpact": { "openness": 2, "agreeableness": 1 },
+            "response": "Every team is different. I adjust my approach accordingly."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "question": "How do you deal with failure?",
+        "options": [
+          {
+            "text": "I analyze what went wrong",
+            "personalityImpact": { "conscientiousness": 2, "openness": 1 },
+            "response": "Failure is just incomplete data. I need to understand the failure mode."
+          },
+          {
+            "text": "I get frustrated but keep trying",
+            "personalityImpact": { "neuroticism": 2, "conscientiousness": 1 },
+            "response": "It's frustrating, but I can't give up. The problem has a solution."
+          },
+          {
+            "text": "I seek help from others",
+            "personalityImpact": { "agreeableness": 2, "extraversion": 1 },
+            "response": "Sometimes you need a fresh perspective to see what you're missing."
+          }
+        ]
+      }
+    ],
+    "personalityTest": {
+      "questions": [
+        {
+          "id": "pt1",
+          "question": "You're working on a complex problem. What's your approach?",
+          "options": [
+            { "text": "Break it down into smaller parts", "traits": ["analytical", "systematic"] },
+            { "text": "Try multiple approaches simultaneously", "traits": ["creative", "experimental"] },
+            { "text": "Research similar problems first", "traits": ["methodical", "thorough"] },
+            { "text": "Start with the most obvious solution", "traits": ["pragmatic", "efficient"] }
+          ]
+        },
+        {
+          "id": "pt2",
+          "question": "How do you handle social situations?",
+          "options": [
+            { "text": "I prefer one-on-one conversations", "traits": ["introverted", "intimate"] },
+            { "text": "I observe before participating", "traits": ["cautious", "analytical"] },
+            { "text": "I try to find common ground", "traits": ["diplomatic", "empathetic"] },
+            { "text": "I avoid them when possible", "traits": ["introverted", "independent"] }
+          ]
+        },
+        {
+          "id": "pt3",
+          "question": "What's your ideal work environment?",
+          "options": [
+            { "text": "Quiet and focused", "traits": ["introverted", "concentrated"] },
+            { "text": "Collaborative and dynamic", "traits": ["extroverted", "team-oriented"] },
+            { "text": "Flexible and adaptable", "traits": ["open", "versatile"] },
+            { "text": "Structured and organized", "traits": ["methodical", "systematic"] }
+          ]
+        }
+      ]
+    },
+    "rewards": {
+      "success": {
+        "hero": "Echo",
+        "credits": 10000,
+        "materials": 500
+      },
+      "failure": {
+        "credits": 2000,
+        "materials": 100
+      }
+    }
+  },
+  {
+    "id": "recruitment_event_003",
+    "name": "The Veteran",
+    "description": "An experienced warrior from the old wars seeks to pass on their knowledge to the next generation.",
+    "type": "interview",
+    "difficulty": "easy",
+    "requirements": {
+      "baseLevel": 1,
+      "completedMissions": 3
+    },
+    "candidate": {
+      "name": "Sage",
+      "codename": "SAGE",
+      "role": "Tank",
+      "rarity": "SR",
+      "personality": {
+        "openness": 6,
+        "conscientiousness": 9,
+        "extraversion": 7,
+        "agreeableness": 8,
+        "neuroticism": 3
+      },
+      "background": "Veteran of multiple conflicts who now seeks to mentor younger operatives.",
+      "motivation": "Wants to ensure the next generation is prepared for the challenges ahead."
+    },
+    "interviewQuestions": [
+      {
+        "id": "q1",
+        "question": "What's the most important lesson you've learned in combat?",
+        "options": [
+          {
+            "text": "Trust your instincts",
+            "personalityImpact": { "conscientiousness": 1, "openness": 1 },
+            "response": "Your gut feeling is often right. Don't second-guess yourself in the field."
+          },
+          {
+            "text": "Protect your team",
+            "personalityImpact": { "agreeableness": 2, "conscientiousness": 1 },
+            "response": "No mission is worth losing a teammate. We fight together or not at all."
+          },
+          {
+            "text": "Stay adaptable",
+            "personalityImpact": { "openness": 2, "conscientiousness": 1 },
+            "response": "Plans change. The ability to adapt quickly can mean the difference between life and death."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "question": "How do you handle leadership responsibilities?",
+        "options": [
+          {
+            "text": "I lead by example",
+            "personalityImpact": { "conscientiousness": 2, "extraversion": 1 },
+            "response": "Actions speak louder than words. I show others what needs to be done."
+          },
+          {
+            "text": "I delegate based on strengths",
+            "personalityImpact": { "agreeableness": 2, "conscientiousness": 1 },
+            "response": "Everyone has unique talents. I put people where they can excel."
+          },
+          {
+            "text": "I make decisions quickly",
+            "personalityImpact": { "conscientiousness": 2, "neuroticism": -1 },
+            "response": "In combat, hesitation gets people killed. I make the call and live with the consequences."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "question": "What's your philosophy on training?",
+        "options": [
+          {
+            "text": "Train hard, fight easy",
+            "personalityImpact": { "conscientiousness": 2, "neuroticism": -1 },
+            "response": "The more you sweat in training, the less you bleed in combat."
+          },
+          {
+            "text": "Focus on fundamentals",
+            "personalityImpact": { "conscientiousness": 2, "openness": -1 },
+            "response": "Master the basics first. Everything else builds on that foundation."
+          },
+          {
+            "text": "Learn from mistakes",
+            "personalityImpact": { "openness": 2, "conscientiousness": 1 },
+            "response": "Every failure is a lesson. The key is not repeating the same mistakes."
+          }
+        ]
+      }
+    ],
+    "personalityTest": {
+      "questions": [
+        {
+          "id": "pt1",
+          "question": "What's your approach to mentoring others?",
+          "options": [
+            { "text": "I show them the right way", "traits": ["authoritative", "experienced"] },
+            { "text": "I guide them to find their own path", "traits": ["supportive", "patient"] },
+            { "text": "I challenge them to improve", "traits": ["demanding", "motivating"] },
+            { "text": "I share my experiences", "traits": ["wise", "storyteller"] }
+          ]
+        },
+        {
+          "id": "pt2",
+          "question": "How do you handle pressure?",
+          "options": [
+            { "text": "I thrive under pressure", "traits": ["resilient", "confident"] },
+            { "text": "I focus on what I can control", "traits": ["pragmatic", "centered"] },
+            { "text": "I rely on my training", "traits": ["prepared", "disciplined"] },
+            { "text": "I stay calm and think clearly", "traits": ["composed", "analytical"] }
+          ]
+        },
+        {
+          "id": "pt3",
+          "question": "What's most important in a team?",
+          "options": [
+            { "text": "Trust and communication", "traits": ["collaborative", "empathetic"] },
+            { "text": "Skill and competence", "traits": ["competitive", "excellence"] },
+            { "text": "Loyalty and commitment", "traits": ["dedicated", "loyal"] },
+            { "text": "Diversity and perspective", "traits": ["inclusive", "open-minded"] }
+          ]
+        }
+      ]
+    },
+    "rewards": {
+      "success": {
+        "hero": "Sage",
+        "credits": 8000,
+        "materials": 300
+      },
+      "failure": {
+        "credits": 1500,
+        "materials": 75
+      }
+    }
+  }
+]

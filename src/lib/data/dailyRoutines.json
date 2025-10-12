@@ -1,0 +1,148 @@
+[
+  {
+    "id": "morning_routine",
+    "name": "Morning Routine",
+    "time": "06:00-09:00",
+    "activities": [
+      {
+        "id": "wake_up",
+        "name": "Wake Up",
+        "duration": 30,
+        "benefits": {
+          "moraleRecovery": 5,
+          "healthRecovery": 3
+        }
+      },
+      {
+        "id": "morning_exercise",
+        "name": "Morning Exercise",
+        "duration": 60,
+        "benefits": {
+          "healthRecovery": 10,
+          "moraleRecovery": 8,
+          "stressReduction": 5
+        }
+      },
+      {
+        "id": "breakfast",
+        "name": "Breakfast",
+        "duration": 30,
+        "benefits": {
+          "healthRecovery": 8,
+          "moraleRecovery": 5,
+          "socialInteraction": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "work_routine",
+    "name": "Work Routine",
+    "time": "09:00-17:00",
+    "activities": [
+      {
+        "id": "mission_briefing",
+        "name": "Mission Briefing",
+        "duration": 60,
+        "benefits": {
+          "moraleRecovery": 5,
+          "stressReduction": 3
+        }
+      },
+      {
+        "id": "training_session",
+        "name": "Training Session",
+        "duration": 120,
+        "benefits": {
+          "xpGain": 50,
+          "skillImprovement": 10,
+          "moraleRecovery": 8
+        }
+      },
+      {
+        "id": "lunch_break",
+        "name": "Lunch Break",
+        "duration": 60,
+        "benefits": {
+          "healthRecovery": 10,
+          "moraleRecovery": 8,
+          "socialInteraction": 5
+        }
+      },
+      {
+        "id": "afternoon_training",
+        "name": "Afternoon Training",
+        "duration": 120,
+        "benefits": {
+          "xpGain": 40,
+          "skillImprovement": 8,
+          "teamSynergy": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "evening_routine",
+    "name": "Evening Routine",
+    "time": "17:00-22:00",
+    "activities": [
+      {
+        "id": "dinner",
+        "name": "Dinner",
+        "duration": 90,
+        "benefits": {
+          "healthRecovery": 15,
+          "moraleRecovery": 12,
+          "socialInteraction": 10
+        }
+      },
+      {
+        "id": "recreation_time",
+        "name": "Recreation Time",
+        "duration": 120,
+        "benefits": {
+          "stressReduction": 20,
+          "moraleRecovery": 15,
+          "socialInteraction": 8
+        }
+      },
+      {
+        "id": "personal_time",
+        "name": "Personal Time",
+        "duration": 60,
+        "benefits": {
+          "stressReduction": 15,
+          "moraleRecovery": 10,
+          "mentalHealth": 8
+        }
+      }
+    ]
+  },
+  {
+    "id": "night_routine",
+    "name": "Night Routine",
+    "time": "22:00-06:00",
+    "activities": [
+      {
+        "id": "wind_down",
+        "name": "Wind Down",
+        "duration": 60,
+        "benefits": {
+          "stressReduction": 10,
+          "moraleRecovery": 5
+        }
+      },
+      {
+        "id": "sleep",
+        "name": "Sleep",
+        "duration": 480,
+        "benefits": {
+          "healthRecovery": 40,
+          "moraleRecovery": 30,
+          "stressReduction": 25,
+          "mentalHealth": 20
+        }
+      }
+    ]
+  }
+]

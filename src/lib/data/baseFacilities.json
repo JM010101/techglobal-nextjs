@@ -1,0 +1,212 @@
+[
+  {
+    "id": "barracks",
+    "name": "Barracks",
+    "description": "Living quarters for heroes. Upgrading improves rest quality and morale recovery.",
+    "level": 1,
+    "maxLevel": 5,
+    "upgradeCost": {
+      "level2": { "credits": 5000, "materials": 100 },
+      "level3": { "credits": 10000, "materials": 200 },
+      "level4": { "credits": 20000, "materials": 400 },
+      "level5": { "credits": 40000, "materials": 800 }
+    },
+    "benefits": {
+      "moraleRecovery": [10, 15, 20, 25, 30],
+      "restEfficiency": [1.0, 1.2, 1.4, 1.6, 1.8],
+      "heroCapacity": [3, 4, 5, 6, 8]
+    },
+    "activities": [
+      {
+        "id": "rest",
+        "name": "Rest",
+        "description": "Heroes recover health and morale",
+        "duration": 8,
+        "benefits": {
+          "healthRecovery": 50,
+          "moraleRecovery": 20,
+          "stressReduction": 30
+        }
+      },
+      {
+        "id": "personal_time",
+        "name": "Personal Time",
+        "description": "Heroes engage in personal activities",
+        "duration": 4,
+        "benefits": {
+          "moraleRecovery": 15,
+          "stressReduction": 20,
+          "relationshipBonus": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "mess_hall",
+    "name": "Mess Hall",
+    "description": "Dining facility where heroes gather for meals and social interaction.",
+    "level": 1,
+    "maxLevel": 5,
+    "upgradeCost": {
+      "level2": { "credits": 3000, "materials": 75 },
+      "level3": { "credits": 6000, "materials": 150 },
+      "level4": { "credits": 12000, "materials": 300 },
+      "level5": { "credits": 24000, "materials": 600 }
+    },
+    "benefits": {
+      "moraleBonus": [5, 10, 15, 20, 25],
+      "socialInteraction": [1.0, 1.3, 1.6, 1.9, 2.2],
+      "healthBonus": [5, 10, 15, 20, 25]
+    },
+    "activities": [
+      {
+        "id": "meal_time",
+        "name": "Meal Time",
+        "description": "Heroes gather for meals and conversation",
+        "duration": 2,
+        "benefits": {
+          "moraleRecovery": 10,
+          "relationshipBonus": 8,
+          "healthRecovery": 15
+        }
+      },
+      {
+        "id": "cooking_together",
+        "name": "Cooking Together",
+        "description": "Heroes prepare meals together",
+        "duration": 3,
+        "benefits": {
+          "moraleRecovery": 20,
+          "relationshipBonus": 15,
+          "stressReduction": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "training_room",
+    "name": "Training Room",
+    "description": "Combat training facility for skill development and physical conditioning.",
+    "level": 1,
+    "maxLevel": 5,
+    "upgradeCost": {
+      "level2": { "credits": 8000, "materials": 150 },
+      "level3": { "credits": 16000, "materials": 300 },
+      "level4": { "credits": 32000, "materials": 600 },
+      "level5": { "credits": 64000, "materials": 1200 }
+    },
+    "benefits": {
+      "xpBonus": [10, 20, 30, 40, 50],
+      "skillDevelopment": [1.0, 1.25, 1.5, 1.75, 2.0],
+      "physicalConditioning": [5, 10, 15, 20, 25]
+    },
+    "activities": [
+      {
+        "id": "combat_training",
+        "name": "Combat Training",
+        "description": "Practice combat skills and techniques",
+        "duration": 4,
+        "benefits": {
+          "xpGain": 100,
+          "skillImprovement": 15,
+          "moraleRecovery": 5
+        }
+      },
+      {
+        "id": "team_training",
+        "name": "Team Training",
+        "description": "Train together to improve coordination",
+        "duration": 6,
+        "benefits": {
+          "xpGain": 150,
+          "relationshipBonus": 10,
+          "teamSynergy": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "recreation",
+    "name": "Recreation Center",
+    "description": "Entertainment and relaxation facility for heroes to unwind and socialize.",
+    "level": 1,
+    "maxLevel": 5,
+    "upgradeCost": {
+      "level2": { "credits": 4000, "materials": 100 },
+      "level3": { "credits": 8000, "materials": 200 },
+      "level4": { "credits": 16000, "materials": 400 },
+      "level5": { "credits": 32000, "materials": 800 }
+    },
+    "benefits": {
+      "stressReduction": [20, 30, 40, 50, 60],
+      "moraleBonus": [10, 15, 20, 25, 30],
+      "socialInteraction": [1.2, 1.5, 1.8, 2.1, 2.4]
+    },
+    "activities": [
+      {
+        "id": "gaming",
+        "name": "Gaming",
+        "description": "Play video games and board games",
+        "duration": 3,
+        "benefits": {
+          "stressReduction": 25,
+          "moraleRecovery": 15,
+          "relationshipBonus": 8
+        }
+      },
+      {
+        "id": "movie_night",
+        "name": "Movie Night",
+        "description": "Watch movies together",
+        "duration": 4,
+        "benefits": {
+          "stressReduction": 30,
+          "moraleRecovery": 20,
+          "relationshipBonus": 12
+        }
+      }
+    ]
+  },
+  {
+    "id": "medical_bay",
+    "name": "Medical Bay",
+    "description": "Advanced medical facility for healing and health monitoring.",
+    "level": 1,
+    "maxLevel": 5,
+    "upgradeCost": {
+      "level2": { "credits": 10000, "materials": 200 },
+      "level3": { "credits": 20000, "materials": 400 },
+      "level4": { "credits": 40000, "materials": 800 },
+      "level5": { "credits": 80000, "materials": 1600 }
+    },
+    "benefits": {
+      "healingEfficiency": [1.0, 1.3, 1.6, 1.9, 2.2],
+      "healthRecovery": [20, 30, 40, 50, 60],
+      "injuryPrevention": [10, 20, 30, 40, 50]
+    },
+    "activities": [
+      {
+        "id": "medical_checkup",
+        "name": "Medical Checkup",
+        "description": "Routine health examination",
+        "duration": 2,
+        "benefits": {
+          "healthRecovery": 30,
+          "stressReduction": 15,
+          "moraleRecovery": 10
+        }
+      },
+      {
+        "id": "therapy_session",
+        "name": "Therapy Session",
+        "description": "Mental health and stress counseling",
+        "duration": 3,
+        "benefits": {
+          "stressReduction": 40,
+          "moraleRecovery": 25,
+          "mentalHealth": 30
+        }
+      }
+    ]
+  }
+]
