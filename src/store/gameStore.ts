@@ -2247,7 +2247,7 @@ export const useGameStore = create<GameState>()(
         set((state) => ({
           renderer: {
             ...state.renderer,
-            type: type as any,
+            type: type as 'forward' | 'deferred' | 'clustered' | 'tiled',
             lastUpdate: new Date()
           }
         }));
@@ -2298,7 +2298,7 @@ export const useGameStore = create<GameState>()(
           materials: [...state.materials, {
             id: `material_${Date.now()}`,
             name,
-            type: type as any,
+            type: type as 'standard' | 'pbr' | 'unlit' | 'transparent' | 'cutout',
             shader: '',
             properties: [],
             textures: [],
@@ -2323,7 +2323,7 @@ export const useGameStore = create<GameState>()(
           cameras: [...state.cameras, {
             id: `camera_${Date.now()}`,
             name,
-            type: type as any,
+            type: type as 'perspective' | 'orthographic' | 'fisheye' | 'panoramic',
             position: { x: 0, y: 0, z: 0 },
             rotation: { x: 0, y: 0, z: 0 },
             target: { x: 0, y: 0, z: 0 },
@@ -2362,7 +2362,7 @@ export const useGameStore = create<GameState>()(
         set((state) => ({
           cameras: state.cameras.map(camera => 
             camera.id === cameraId 
-              ? { ...camera, position: position as any, lastUpdate: new Date() }
+              ? { ...camera, position: position as { x: number; y: number; z: number }, lastUpdate: new Date() }
               : camera
           )
         }));
@@ -2373,7 +2373,7 @@ export const useGameStore = create<GameState>()(
         set((state) => ({
           cameras: state.cameras.map(camera => 
             camera.id === cameraId 
-              ? { ...camera, rotation: rotation as any, lastUpdate: new Date() }
+              ? { ...camera, rotation: rotation as { x: number; y: number; z: number }, lastUpdate: new Date() }
               : camera
           )
         }));
@@ -2397,7 +2397,7 @@ export const useGameStore = create<GameState>()(
           lights: [...state.lights, {
             id: `light_${Date.now()}`,
             name,
-            type: type as any,
+            type: type as 'directional' | 'point' | 'spot' | 'area' | 'ambient',
             position: { x: 0, y: 0, z: 0 },
             direction: { x: 0, y: -1, z: 0 },
             color: { x: 1, y: 1, z: 1 },
@@ -2442,7 +2442,7 @@ export const useGameStore = create<GameState>()(
         set((state) => ({
           lights: state.lights.map(light => 
             light.id === lightId 
-              ? { ...light, color: color as any, lastUpdate: new Date() }
+              ? { ...light, color: color as { x: number; y: number; z: number }, lastUpdate: new Date() }
               : light
           )
         }));
@@ -2466,7 +2466,7 @@ export const useGameStore = create<GameState>()(
           particleSystems: [...state.particleSystems, {
             id: `particle_system_${Date.now()}`,
             name,
-            type: type as any,
+            type: type as 'explosion' | 'smoke' | 'fire' | 'spark' | 'dust' | 'rain' | 'snow' | 'magic',
             emitter: {
               id: `emitter_${Date.now()}`,
               name: `${name} Emitter`,
@@ -2475,11 +2475,11 @@ export const useGameStore = create<GameState>()(
               direction: { x: 0, y: 1, z: 0 },
               spread: 0.1,
               speed: 3,
-              rate: { particlesPerSecond: 10, burst: [], isActive: true },
-              lifetime: { min: 1, max: 3, curve: { type: 'linear' as const, keys: [], isActive: true }, isActive: true },
-              size: { start: 0.1, end: 0.05, curve: { type: 'linear' as const, keys: [], isActive: true }, isActive: true },
-              color: { start: { r: 1, g: 1, b: 1, a: 1 }, end: { r: 1, g: 0, b: 0, a: 0 }, curve: { type: 'linear' as const, keys: [], isActive: true }, isActive: true },
-              rotation: { start: 0, end: 360, curve: { type: 'linear' as const, keys: [], isActive: true }, isActive: true },
+              rate: 10,
+              lifetime: 2,
+              size: 0.1,
+              color: { x: 1, y: 1, z: 1 },
+              rotation: 0,
               isActive: true
             },
             particles: [],
@@ -2529,7 +2529,7 @@ export const useGameStore = create<GameState>()(
           visualEffects: [...state.visualEffects, {
             id: `visual_effect_${Date.now()}`,
             name,
-            type: type as any,
+            type: type as 'screen_shake' | 'slow_motion' | 'fade' | 'flash' | 'blur' | 'distortion',
             duration: 1,
             intensity: 1,
             parameters: {},
@@ -2561,7 +2561,7 @@ export const useGameStore = create<GameState>()(
           postProcessors: [...state.postProcessors, {
             id: `post_processor_${Date.now()}`,
             name,
-            type: type as any,
+            type: type as 'bloom' | 'ssao' | 'hdr' | 'dof' | 'motion_blur' | 'chromatic_aberration' | 'vignette' | 'color_grading',
             enabled: true,
             intensity: 1,
             parameters: {},
@@ -2599,7 +2599,7 @@ export const useGameStore = create<GameState>()(
         set((state) => ({
           lighting: {
             ...state.lighting,
-            type: type as any,
+            type: type as 'forward' | 'deferred' | 'clustered' | 'tiled',
             lastUpdate: new Date()
           }
         }));
@@ -2621,7 +2621,7 @@ export const useGameStore = create<GameState>()(
             ...state.lighting,
             ambient: {
               ...state.lighting.ambient,
-              color: color as any,
+              color: color as { r: number; g: number; b: number; a: number },
               intensity
             }
           }

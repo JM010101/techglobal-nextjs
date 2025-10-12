@@ -12,7 +12,6 @@ const GraphicsManagementScreen: React.FC = () => {
     materials,
     cameras,
     lights,
-    meshes,
     particleSystems,
     visualEffects,
     postProcessors,
@@ -142,7 +141,7 @@ const GraphicsManagementScreen: React.FC = () => {
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as 'graphics' | 'renderer' | 'shaders' | 'materials' | 'cameras' | 'lights' | 'particles' | 'effects' | 'post' | 'lighting' | 'performance')}
+              onClick={() => setActiveTab(tab.id as 'graphics' | 'renderer' | 'shaders' | 'materials' | 'cameras' | 'lights' | 'particles' | 'effects' | 'postprocessing' | 'lighting' | 'performance')}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white'

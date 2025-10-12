@@ -2,13 +2,12 @@
 
 import React, { useState } from 'react';
 import { useGameStore } from '@/store/gameStore';
-import { Brain, Cpu, Network, Zap, Settings, BarChart3, Users, Target, Shield, Activity } from 'lucide-react';
+import { Brain, Cpu, Zap, BarChart3, Users, Target } from 'lucide-react';
 
 const AIManagementScreen: React.FC = () => {
   const {
     ai,
     enemyAI,
-    machineLearning,
     contentGeneration,
     multiAgent,
     playerBehavior,
@@ -16,10 +15,7 @@ const AIManagementScreen: React.FC = () => {
     predictiveAnalytics,
     initializeAI,
     updateAI,
-    addBehaviorTree,
-    removeBehaviorTree,
     createEnemyAI,
-    updateEnemyAI,
     setEnemyBehavior,
     trainMLModel,
     predictPlayerBehavior,
@@ -29,7 +25,6 @@ const AIManagementScreen: React.FC = () => {
   } = useGameStore();
 
   const [activeTab, setActiveTab] = useState<'ai' | 'enemies' | 'learning' | 'content' | 'agents' | 'analytics'>('ai');
-  const [selectedEnemy, setSelectedEnemy] = useState<string | null>(null);
 
   const handleInitializeAI = () => {
     initializeAI();
@@ -209,7 +204,7 @@ const AIManagementScreen: React.FC = () => {
                   
                   <div className="flex space-x-2">
                     <button
-                      onClick={() => setSelectedEnemy(enemy.id)}
+                      onClick={() => console.log('Configure enemy:', enemy.id)}
                       className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm transition-colors"
                     >
                       Configure

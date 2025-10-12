@@ -127,7 +127,7 @@ export interface GraphicsPerformance {
 export interface Renderer {
   id: string;
   name: string;
-  type: 'forward' | 'deferred' | 'clustered';
+  type: 'forward' | 'deferred' | 'clustered' | 'tiled';
   capabilities: RendererCapabilities;
   settings: RendererSettings;
   isActive: boolean;
@@ -264,7 +264,7 @@ export interface Transform {
 export interface Camera {
   id: string;
   name: string;
-  type: 'perspective' | 'orthographic';
+  type: 'perspective' | 'orthographic' | 'fisheye' | 'panoramic';
   position: Vector3;
   rotation: Vector3;
   fov: number;
@@ -278,7 +278,7 @@ export interface Camera {
 export interface Light {
   id: string;
   name: string;
-  type: 'directional' | 'point' | 'spot' | 'ambient';
+  type: 'directional' | 'point' | 'spot' | 'area' | 'ambient';
   position: Vector3;
   direction: Vector3;
   color: Vector3;
