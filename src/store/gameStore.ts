@@ -10,6 +10,11 @@ import { UIState, Notification, Modal, Animation } from '@/lib/models/UI';
 import { AudioState, AudioTrack, SoundEffect, VoiceLine } from '@/lib/models/Audio';
 import { SocialState, Friend, Guild, ChatRoom, Achievement } from '@/lib/models/Social';
 import { CloudState, CloudAccount, CloudBackup, CloudSync } from '@/lib/models/Cloud';
+import { AISystem, BehaviorTree, LearningModel, DecisionEngine, AdaptationSystem } from '@/lib/models/AI';
+import { EnemyAI, EnemyPersonality, CombatStyle, Tactic } from '@/lib/models/EnemyAI';
+import { MLSystem, PlayerBehaviorAnalysis, AdaptiveContentGeneration, PredictiveAnalytics } from '@/lib/models/MachineLearning';
+import { ContentGenerationSystem, ProceduralMission, ProceduralStory, ProceduralDialogue } from '@/lib/models/ContentGeneration';
+import { MultiAgentSystem, SocialNetwork, EconomicSystem, PoliticalSystem, EnvironmentalSystem } from '@/lib/models/MultiAgent';
 
 export interface Hero {
   id: string;
@@ -134,8 +139,18 @@ export interface GameState {
   social: SocialState;
   cloud: CloudState;
   
+  // Phase 5: Advanced AI & Enemy Behaviors
+  ai: AISystem;
+  enemyAI: EnemyAI[];
+  machineLearning: MLSystem[];
+  contentGeneration: ContentGenerationSystem;
+  multiAgent: MultiAgentSystem[];
+  playerBehavior: PlayerBehaviorAnalysis;
+  adaptiveContent: AdaptiveContentGeneration;
+  predictiveAnalytics: PredictiveAnalytics;
+  
   // UI State
-  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event' | 'story';
+  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event' | 'story' | 'ai-management';
   selectedHeroForDetail: string | null;
   
   // Actions
@@ -238,6 +253,40 @@ export interface GameState {
   restoreFromCloud: (backupId: string) => void;
   createBackup: (name: string, description: string) => void;
   resolveCloudConflict: (conflictId: string, resolution: string) => void;
+  
+  // Phase 5: Advanced AI & Enemy Behaviors Actions
+  // AI System Actions
+  initializeAI: () => void;
+  updateAI: (deltaTime: number) => void;
+  addBehaviorTree: (tree: BehaviorTree) => void;
+  removeBehaviorTree: (treeId: string) => void;
+  executeBehaviorTree: (treeId: string, context: unknown) => void;
+  
+  // Enemy AI Actions
+  createEnemyAI: (enemyId: string, personality: EnemyPersonality) => void;
+  updateEnemyAI: (enemyId: string, deltaTime: number) => void;
+  setEnemyBehavior: (enemyId: string, behavior: string) => void;
+  addEnemyTactic: (enemyId: string, tactic: Tactic) => void;
+  removeEnemyTactic: (enemyId: string, tacticId: string) => void;
+  
+  // Machine Learning Actions
+  trainMLModel: (modelId: string, data: unknown[]) => void;
+  predictPlayerBehavior: (playerId: string) => void;
+  generateAdaptiveContent: (type: string, parameters: Record<string, unknown>) => void;
+  updatePredictiveAnalytics: () => void;
+  
+  // Content Generation Actions
+  generateProceduralMission: (parameters: Record<string, unknown>) => void;
+  generateProceduralStory: (parameters: Record<string, unknown>) => void;
+  generateProceduralDialogue: (parameters: Record<string, unknown>) => void;
+  validateGeneratedContent: (contentId: string) => void;
+  
+  // Multi-Agent Actions
+  createMultiAgentSystem: (type: string, agents: string[]) => void;
+  updateMultiAgentSystem: (systemId: string, deltaTime: number) => void;
+  addAgentToSystem: (systemId: string, agentId: string) => void;
+  removeAgentFromSystem: (systemId: string, agentId: string) => void;
+  processAgentInteraction: (agent1: string, agent2: string, interaction: unknown) => void;
   
   saveGame: () => void;
   loadGame: () => void;
@@ -540,6 +589,133 @@ const initialState = {
       isCompressed: false,
       lastUpdated: new Date()
     }
+  },
+  
+  // Phase 5: Advanced AI & Enemy Behaviors Initial State
+  ai: {
+    behaviorTrees: [],
+    learningModels: [],
+    decisionEngine: {
+      id: 'main_decision_engine',
+      name: 'Main Decision Engine',
+      strategies: [],
+      currentStrategy: '',
+      confidence: 0,
+      lastDecision: new Date(),
+      decisionHistory: [],
+      isActive: true
+    },
+    adaptationSystem: {
+      id: 'main_adaptation_system',
+      name: 'Main Adaptation System',
+      adaptationRules: [],
+      learningRate: 0.1,
+      adaptationThreshold: 0.5,
+      isActive: true,
+      lastAdaptation: new Date(),
+      adaptationCount: 0
+    },
+    performanceMetrics: {
+      totalDecisions: 0,
+      successfulDecisions: 0,
+      averageDecisionTime: 0,
+      learningProgress: 0,
+      adaptationCount: 0,
+      performanceScore: 0,
+      lastOptimization: new Date()
+    },
+    isActive: true,
+    lastUpdate: new Date()
+  },
+  enemyAI: [],
+  machineLearning: [],
+  contentGeneration: {
+    id: 'main_content_generator',
+    name: 'Main Content Generator',
+    type: 'hybrid' as const,
+    generators: [],
+    templates: [],
+    constraints: [],
+    isActive: true,
+    lastGenerated: new Date()
+  },
+  multiAgent: [],
+  playerBehavior: {
+    id: 'main_player_behavior',
+    playerId: 'current_player',
+    behaviorPatterns: [],
+    preferences: [],
+    playstyle: {
+      id: 'default_playstyle',
+      name: 'Balanced',
+      type: 'tactical' as const,
+      characteristics: [],
+      isActive: true,
+      confidence: 50
+    },
+    skillLevel: {
+      id: 'default_skill_level',
+      overall: 50,
+      combat: 50,
+      strategy: 50,
+      social: 50,
+      technical: 50,
+      isActive: true,
+      lastAssessed: new Date()
+    },
+    engagement: {
+      id: 'default_engagement',
+      level: 50,
+      factors: [],
+      isActive: true,
+      lastMeasured: new Date()
+    },
+    isActive: true,
+    lastAnalysis: new Date()
+  },
+  adaptiveContent: {
+    id: 'main_adaptive_content',
+    name: 'Main Adaptive Content Generator',
+    type: 'mission' as const,
+    generator: {
+      id: 'main_generator',
+      name: 'Main Generator',
+      type: 'hybrid' as const,
+      algorithm: 'procedural',
+      parameters: {},
+      isActive: true
+    },
+    constraints: [],
+    isActive: true,
+    lastGenerated: new Date()
+  },
+  predictiveAnalytics: {
+    id: 'main_predictive_analytics',
+    name: 'Main Predictive Analytics',
+    type: 'engagement' as const,
+    model: {
+      id: 'main_model',
+      name: 'Main Model',
+      type: 'classification' as const,
+      architecture: {
+        inputLayer: { id: 'input', name: 'Input Layer', type: 'input' as const, size: 10, activation: 'relu', isActive: true },
+        hiddenLayers: [],
+        outputLayer: { id: 'output', name: 'Output Layer', type: 'output' as const, size: 1, activation: 'sigmoid', isActive: true },
+        connections: [],
+        activationFunctions: []
+      },
+      weights: { id: 'main_weights', weights: [], lastUpdated: new Date(), version: '1.0' },
+      biases: { id: 'main_biases', biases: [], lastUpdated: new Date(), version: '1.0' },
+      isActive: true,
+      version: '1.0',
+      lastTrained: new Date(),
+      accuracy: 0,
+      loss: 0
+    },
+    predictions: [],
+    accuracy: 0,
+    isActive: true,
+    lastPrediction: new Date()
   },
   
   currentScreen: 'home' as const,
@@ -1413,6 +1589,245 @@ export const useGameStore = create<GameState>()(
             conflicts: state.cloud.conflicts.filter(c => c.id !== conflictId)
           }
         }));
+      },
+
+      // Phase 5: Advanced AI & Enemy Behaviors Action Implementations
+      // AI System Actions
+      initializeAI: () => {
+        set((state) => ({
+          ai: {
+            ...state.ai,
+            isActive: true,
+            lastUpdate: new Date()
+          }
+        }));
+      },
+
+      updateAI: (deltaTime) => {
+        set((state) => ({
+          ai: {
+            ...state.ai,
+            lastUpdate: new Date(),
+            performanceMetrics: {
+              ...state.ai.performanceMetrics,
+              totalDecisions: state.ai.performanceMetrics.totalDecisions + 1
+            }
+          }
+        }));
+      },
+
+      addBehaviorTree: (tree) => {
+        set((state) => ({
+          ai: {
+            ...state.ai,
+            behaviorTrees: [...state.ai.behaviorTrees, tree]
+          }
+        }));
+      },
+
+      removeBehaviorTree: (treeId) => {
+        set((state) => ({
+          ai: {
+            ...state.ai,
+            behaviorTrees: state.ai.behaviorTrees.filter(t => t.id !== treeId)
+          }
+        }));
+      },
+
+      executeBehaviorTree: (treeId, context) => {
+        console.log('Executing behavior tree:', treeId, context);
+      },
+
+      // Enemy AI Actions
+      createEnemyAI: (enemyId, personality) => {
+        set((state) => ({
+          enemyAI: [...state.enemyAI, {
+            id: enemyId,
+            name: `Enemy ${enemyId}`,
+            type: 'grunt',
+            personality,
+            behaviorTree: {
+              id: `tree_${enemyId}`,
+              name: `Behavior Tree ${enemyId}`,
+              root: { id: 'root', type: 'selector', children: [], successThreshold: 0.5, failureThreshold: 0.5, timeout: 0, isRunning: false, lastResult: 'success' },
+              conditions: [],
+              actions: [],
+              learning: { id: `learning_${enemyId}`, type: 'reinforcement', learningRate: 0.1, experience: [], knowledge: [], skills: [], isActive: true },
+              priority: 1,
+              isActive: true,
+              successRate: 0,
+              lastUsed: new Date()
+            },
+            learningState: {
+              id: `learning_state_${enemyId}`,
+              type: 'reinforcement',
+              learningRate: 0.1,
+              experience: [],
+              knowledge: [],
+              skills: [],
+              isActive: true,
+              lastLearning: new Date(),
+              learningProgress: 0
+            },
+            socialConnections: [],
+            environmentalAwareness: {
+              id: `env_awareness_${enemyId}`,
+              name: `Environmental Awareness ${enemyId}`,
+              type: 'combat',
+              conditions: [],
+              hazards: [],
+              resources: [],
+              cover: [],
+              lighting: { type: 'normal', intensity: 50, color: '#ffffff', shadows: true, effects: [] },
+              weather: { type: 'clear', intensity: 50, effects: [], duration: 0, isActive: true },
+              timeOfDay: 'day',
+              isActive: true,
+              lastUpdate: new Date()
+            },
+            combatStyle: {
+              id: `combat_style_${enemyId}`,
+              name: `Combat Style ${enemyId}`,
+              description: 'Default combat style',
+              type: 'aggressive',
+              characteristics: [],
+              preferredWeapons: [],
+              preferredTactics: [],
+              isActive: true
+            },
+            tactics: [],
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+      },
+
+      updateEnemyAI: (enemyId, deltaTime) => {
+        set((state) => ({
+          enemyAI: state.enemyAI.map(enemy => 
+            enemy.id === enemyId 
+              ? { ...enemy, lastUpdate: new Date() }
+              : enemy
+          )
+        }));
+      },
+
+      setEnemyBehavior: (enemyId, behavior) => {
+        set((state) => ({
+          enemyAI: state.enemyAI.map(enemy => 
+            enemy.id === enemyId 
+              ? { ...enemy, combatStyle: { ...enemy.combatStyle, type: behavior as 'aggressive' | 'defensive' | 'tactical' | 'stealth' | 'support' } }
+              : enemy
+          )
+        }));
+      },
+
+      addEnemyTactic: (enemyId, tactic) => {
+        set((state) => ({
+          enemyAI: state.enemyAI.map(enemy => 
+            enemy.id === enemyId 
+              ? { ...enemy, tactics: [...enemy.tactics, tactic] }
+              : enemy
+          )
+        }));
+      },
+
+      removeEnemyTactic: (enemyId, tacticId) => {
+        set((state) => ({
+          enemyAI: state.enemyAI.map(enemy => 
+            enemy.id === enemyId 
+              ? { ...enemy, tactics: enemy.tactics.filter(t => t.id !== tacticId) }
+              : enemy
+          )
+        }));
+      },
+
+      // Machine Learning Actions
+      trainMLModel: (modelId, data) => {
+        console.log('Training ML model:', modelId, data);
+      },
+
+      predictPlayerBehavior: (playerId) => {
+        console.log('Predicting player behavior for:', playerId);
+      },
+
+      generateAdaptiveContent: (type, parameters) => {
+        console.log('Generating adaptive content:', type, parameters);
+      },
+
+      updatePredictiveAnalytics: () => {
+        set((state) => ({
+          predictiveAnalytics: {
+            ...state.predictiveAnalytics,
+            lastPrediction: new Date()
+          }
+        }));
+      },
+
+      // Content Generation Actions
+      generateProceduralMission: (parameters) => {
+        console.log('Generating procedural mission:', parameters);
+      },
+
+      generateProceduralStory: (parameters) => {
+        console.log('Generating procedural story:', parameters);
+      },
+
+      generateProceduralDialogue: (parameters) => {
+        console.log('Generating procedural dialogue:', parameters);
+      },
+
+      validateGeneratedContent: (contentId) => {
+        console.log('Validating generated content:', contentId);
+      },
+
+      // Multi-Agent Actions
+      createMultiAgentSystem: (type, agents) => {
+        set((state) => ({
+          multiAgent: [...state.multiAgent, {
+            id: `multi_agent_${Date.now()}`,
+            name: `Multi-Agent System ${type}`,
+            type: type as 'social' | 'economic' | 'political' | 'environmental',
+            agents: agents.map(agentId => ({ id: agentId, name: `Agent ${agentId}`, type: 'npc', personality: { id: `personality_${agentId}`, name: `Personality ${agentId}`, traits: [], motivations: [], fears: [], preferences: [], isActive: true }, state: { id: `state_${agentId}`, health: 100, energy: 100, morale: 50, stress: 0, position: { x: 0, y: 0, z: 0 }, orientation: 0, velocity: { x: 0, y: 0, z: 0 }, isAlive: true, isActive: true, lastUpdate: new Date() }, capabilities: [], goals: [], memory: [], isActive: true, lastUpdate: new Date() })),
+            relationships: [],
+            interactions: [],
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+      },
+
+      updateMultiAgentSystem: (systemId, deltaTime) => {
+        set((state) => ({
+          multiAgent: state.multiAgent.map(system => 
+            system.id === systemId 
+              ? { ...system, lastUpdate: new Date() }
+              : system
+          )
+        }));
+      },
+
+      addAgentToSystem: (systemId, agentId) => {
+        set((state) => ({
+          multiAgent: state.multiAgent.map(system => 
+            system.id === systemId 
+              ? { ...system, agents: [...system.agents, { id: agentId, name: `Agent ${agentId}`, type: 'npc', personality: { id: `personality_${agentId}`, name: `Personality ${agentId}`, traits: [], motivations: [], fears: [], preferences: [], isActive: true }, state: { id: `state_${agentId}`, health: 100, energy: 100, morale: 50, stress: 0, position: { x: 0, y: 0, z: 0 }, orientation: 0, velocity: { x: 0, y: 0, z: 0 }, isAlive: true, isActive: true, lastUpdate: new Date() }, capabilities: [], goals: [], memory: [], isActive: true, lastUpdate: new Date() }] }
+              : system
+          )
+        }));
+      },
+
+      removeAgentFromSystem: (systemId, agentId) => {
+        set((state) => ({
+          multiAgent: state.multiAgent.map(system => 
+            system.id === systemId 
+              ? { ...system, agents: system.agents.filter(a => a.id !== agentId) }
+              : system
+          )
+        }));
+      },
+
+      processAgentInteraction: (agent1, agent2, interaction) => {
+        console.log('Processing agent interaction:', agent1, agent2, interaction);
       },
 
       saveGame: () => {

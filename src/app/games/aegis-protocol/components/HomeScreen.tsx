@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useGameStore } from '@/store/gameStore';
-import { Zap, Users, Trophy, ShoppingBag, X, MessageCircle, BookOpen, Home, UserPlus } from 'lucide-react';
+import { Zap, Users, Trophy, ShoppingBag, X, MessageCircle, BookOpen, Home, UserPlus, Brain } from 'lucide-react';
 import chaptersData from '@/data/chapters.json';
 
 const HomeScreen = () => {
@@ -173,7 +173,7 @@ const HomeScreen = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-7 gap-4"
+          className="grid grid-cols-8 gap-4"
         >
           <button
             onClick={() => setCurrentScreen('squad')}
@@ -229,6 +229,14 @@ const HomeScreen = () => {
           >
             <BookOpen className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <p className="text-white font-bold">Story</p>
+          </button>
+          
+          <button
+            onClick={() => setCurrentScreen('ai-management')}
+            className="bg-gradient-to-r from-slate-900/50 to-gray-900/50 border-2 border-slate-600/50 rounded-2xl p-6 hover:border-slate-500 transition-all duration-300"
+          >
+            <Brain className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+            <p className="text-white font-bold">AI</p>
           </button>
           
           <button
