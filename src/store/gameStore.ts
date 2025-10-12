@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import heroesData from '@/data/heroes.json';
+import { Relationship, AffinityEvent, SocialInteraction } from '@/lib/models/Relationship';
 
 export interface Hero {
   id: string;
@@ -79,8 +80,22 @@ export interface GameState {
   gachaPityCounter: number;
   gachaHistory: Array<{ heroId: string; timestamp: number; rarity: string }>;
   
+  // Relationships & Social
+  relationships: Relationship[];
+  affinityEvents: AffinityEvent[];
+  socialInteractions: SocialInteraction[];
+  currentSocialInteraction: SocialInteraction | null;
+  
+  // Character Development
+  characterBackstories: Record<string, unknown>;
+  personalQuests: Record<string, unknown>;
+  characterDevelopmentArcs: Record<string, unknown>;
+  unlockedBackstories: string[];
+  completedPersonalQuests: string[];
+  characterDevelopmentStage: Record<string, number>;
+  
   // UI State
-  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue';
+  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development';
   selectedHeroForDetail: string | null;
   
   // Actions
@@ -101,6 +116,22 @@ export interface GameState {
   completeMission: (rewards: Record<string, unknown>) => void;
   
   performGacha: () => Hero | null;
+  
+  // Relationship Actions
+  updateRelationship: (hero1Id: string, hero2Id: string, changes: Partial<Relationship>) => void;
+  addAffinityEvent: (event: AffinityEvent) => void;
+  startSocialInteraction: (interaction: SocialInteraction) => void;
+  completeSocialInteraction: (choice: number) => void;
+  getRelationship: (hero1Id: string, hero2Id: string) => Relationship | null;
+  getHeroRelationships: (heroId: string) => Relationship[];
+  
+  // Character Development Actions
+  unlockBackstory: (heroId: string, chapter: number) => void;
+  completePersonalQuest: (heroId: string, questId: string) => void;
+  advanceCharacterDevelopment: (heroId: string, stage: number) => void;
+  getCharacterBackstory: (heroId: string) => unknown;
+  getPersonalQuests: (heroId: string) => unknown[];
+  getCharacterDevelopmentArc: (heroId: string) => unknown;
   
   saveGame: () => void;
   loadGame: () => void;
@@ -126,6 +157,16 @@ const initialState = {
   selectedUnit: null,
   gachaPityCounter: 0,
   gachaHistory: [],
+  relationships: [],
+  affinityEvents: [],
+  socialInteractions: [],
+  currentSocialInteraction: null,
+  characterBackstories: {},
+  personalQuests: {},
+  characterDevelopmentArcs: {},
+  unlockedBackstories: [],
+  completedPersonalQuests: [],
+  characterDevelopmentStage: {},
   currentScreen: 'home' as const,
   selectedHeroForDetail: null,
 };
@@ -334,6 +375,153 @@ export const useGameStore = create<GameState>()(
         }
         
         return null;
+      },
+
+      // Relationship Management
+      updateRelationship: (hero1Id, hero2Id, changes) => {
+        set((state) => {
+          const existingIndex = state.relationships.findIndex(
+            r => (r.hero1Id === hero1Id && r.hero2Id === hero2Id) || 
+                 (r.hero1Id === hero2Id && r.hero2Id === hero1Id)
+          );
+          
+          if (existingIndex >= 0) {
+            const updatedRelationships = [...state.relationships];
+            updatedRelationships[existingIndex] = {
+              ...updatedRelationships[existingIndex],
+              ...changes,
+              lastInteraction: new Date()
+            };
+            return { relationships: updatedRelationships };
+          } else {
+            const newRelationship: Relationship = {
+              id: `${hero1Id}_${hero2Id}`,
+              hero1Id,
+              hero2Id,
+              affinity: 0,
+              relationshipType: 'neutral',
+              trust: 50,
+              respect: 50,
+              attraction: 0,
+              sharedExperiences: [],
+              lastInteraction: new Date(),
+              relationshipLevel: 'stranger',
+              ...changes
+            };
+            return { relationships: [...state.relationships, newRelationship] };
+          }
+        });
+      },
+
+      addAffinityEvent: (event) => {
+        set((state) => ({
+          affinityEvents: [event, ...state.affinityEvents].slice(0, 1000)
+        }));
+      },
+
+      startSocialInteraction: (interaction) => {
+        set({ currentSocialInteraction: interaction });
+      },
+
+      completeSocialInteraction: (choice) => {
+        const state = get();
+        if (!state.currentSocialInteraction) return;
+        
+        const interaction = state.currentSocialInteraction;
+        const consequences = interaction.consequences;
+        
+        // Apply relationship changes
+        get().updateRelationship(
+          interaction.hero1Id,
+          interaction.hero2Id,
+          {
+            affinity: Math.max(-100, Math.min(100, 
+              (get().getRelationship(interaction.hero1Id, interaction.hero2Id)?.affinity || 0) + 
+              consequences.affinityChange[choice - 1]
+            )),
+            trust: Math.max(0, Math.min(100,
+              (get().getRelationship(interaction.hero1Id, interaction.hero2Id)?.trust || 50) + 
+              consequences.trustChange[choice - 1]
+            )),
+            respect: Math.max(0, Math.min(100,
+              (get().getRelationship(interaction.hero1Id, interaction.hero2Id)?.respect || 50) + 
+              consequences.respectChange[choice - 1]
+            )),
+            attraction: Math.max(0, Math.min(100,
+              (get().getRelationship(interaction.hero1Id, interaction.hero2Id)?.attraction || 0) + 
+              consequences.attractionChange[choice - 1]
+            ))
+          }
+        );
+        
+        // Record the event
+        get().addAffinityEvent({
+          id: `event_${Date.now()}`,
+          hero1Id: interaction.hero1Id,
+          hero2Id: interaction.hero2Id,
+          eventType: interaction.interactionType as 'mission_together' | 'training_session' | 'personal_talk' | 'conflict' | 'support' | 'celebration',
+          affinityChange: consequences.affinityChange[choice - 1],
+          trustChange: consequences.trustChange[choice - 1],
+          respectChange: consequences.respectChange[choice - 1],
+          attractionChange: consequences.attractionChange[choice - 1],
+          description: `Social interaction: ${interaction.topic}`,
+          timestamp: new Date()
+        });
+        
+        set({ currentSocialInteraction: null });
+      },
+
+      getRelationship: (hero1Id, hero2Id) => {
+        const state = get();
+        return state.relationships.find(
+          r => (r.hero1Id === hero1Id && r.hero2Id === hero2Id) || 
+               (r.hero1Id === hero2Id && r.hero2Id === hero1Id)
+        ) || null;
+      },
+
+      getHeroRelationships: (heroId) => {
+        const state = get();
+        return state.relationships.filter(
+          r => r.hero1Id === heroId || r.hero2Id === heroId
+        );
+      },
+
+      // Character Development Actions
+      unlockBackstory: (heroId, chapter) => {
+        const backstoryKey = `${heroId}_backstory_chapter_${chapter}`;
+        set((state) => ({
+          unlockedBackstories: [...state.unlockedBackstories, backstoryKey]
+        }));
+      },
+
+      completePersonalQuest: (heroId, questId) => {
+        set((state) => ({
+          completedPersonalQuests: [...state.completedPersonalQuests, questId]
+        }));
+      },
+
+      advanceCharacterDevelopment: (heroId, stage) => {
+        set((state) => ({
+          characterDevelopmentStage: {
+            ...state.characterDevelopmentStage,
+            [heroId]: stage
+          }
+        }));
+      },
+
+      getCharacterBackstory: () => {
+        // This would typically load from the backstories data
+        return null; // Placeholder
+      },
+
+      getPersonalQuests: () => {
+        // This would typically load from the personal quests data
+        return []; // Placeholder
+      },
+
+      getCharacterDevelopmentArc: () => {
+        // This would typically load from the development arcs data
+        return null; // Placeholder
       },
 
       saveGame: () => {

@@ -1,0 +1,257 @@
+[
+  {
+    "heroId": "hero_rift",
+    "quests": [
+      {
+        "id": "rift_leadership_trial",
+        "title": "The Weight of Command",
+        "description": "RIFT must prove he can lead without losing his team. Complete 3 missions without any squad member falling below 25% health.",
+        "objectives": [
+          "Complete 3 missions with full squad health",
+          "Use leadership abilities 5 times",
+          "Achieve 80%+ mission success rate"
+        ],
+        "rewards": {
+          "xp": 500,
+          "credits": 2000,
+          "unlockAbility": "inspiring_leadership",
+          "relationshipBonus": {
+            "hero_haven": 20,
+            "hero_ember": 15,
+            "hero_glint": 25,
+            "hero_kite": 10
+          }
+        },
+        "unlockCondition": "Complete Chapter 1, Section 4",
+        "prerequisites": ["rift_backstory_chapter_2"]
+      },
+      {
+        "id": "rift_protective_instinct",
+        "title": "Shield of the Squad",
+        "description": "RIFT learns to channel his protective instincts into a powerful defensive ability that shields his entire team.",
+        "objectives": [
+          "Use protective abilities 10 times",
+          "Prevent 5 critical hits on allies",
+          "Complete a mission with 0 squad damage"
+        ],
+        "rewards": {
+          "xp": 750,
+          "credits": 3000,
+          "unlockAbility": "squad_shield",
+          "relationshipBonus": {
+            "hero_haven": 30,
+            "hero_ember": 20,
+            "hero_glint": 30,
+            "hero_kite": 25
+          }
+        },
+        "unlockCondition": "Complete Chapter 2, Section 2",
+        "prerequisites": ["rift_leadership_trial"]
+      }
+    ]
+  },
+  {
+    "heroId": "hero_haven",
+    "quests": [
+      {
+        "id": "haven_healing_mastery",
+        "title": "The Art of Healing",
+        "description": "HAVEN must perfect her healing techniques to save lives in the most critical situations.",
+        "objectives": [
+          "Heal 1000+ total damage",
+          "Use healing abilities 15 times",
+          "Save a squad member from critical health"
+        ],
+        "rewards": {
+          "xp": 500,
+          "credits": 2000,
+          "unlockAbility": "emergency_healing",
+          "relationshipBonus": {
+            "hero_rift": 25,
+            "hero_ember": 15,
+            "hero_glint": 20,
+            "hero_kite": 30
+          }
+        },
+        "unlockCondition": "Complete Chapter 1, Section 3",
+        "prerequisites": ["haven_backstory_chapter_2"]
+      },
+      {
+        "id": "haven_trauma_specialist",
+        "title": "Healing the Wounded Soul",
+        "description": "HAVEN learns to heal not just physical wounds, but emotional trauma as well.",
+        "objectives": [
+          "Use support abilities 20 times",
+          "Help 3 different heroes with personal issues",
+          "Complete a mission with maximum squad morale"
+        ],
+        "rewards": {
+          "xp": 750,
+          "credits": 3000,
+          "unlockAbility": "emotional_healing",
+          "relationshipBonus": {
+            "hero_rift": 35,
+            "hero_ember": 25,
+            "hero_glint": 30,
+            "hero_kite": 40
+          }
+        },
+        "unlockCondition": "Complete Chapter 2, Section 1",
+        "prerequisites": ["haven_healing_mastery"]
+      }
+    ]
+  },
+  {
+    "heroId": "hero_ember",
+    "quests": [
+      {
+        "id": "ember_explosive_mastery",
+        "title": "Master of Chaos",
+        "description": "EMBER must prove she can control her destructive power and use it strategically.",
+        "objectives": [
+          "Use explosive abilities 20 times",
+          "Deal 2000+ explosive damage",
+          "Complete a mission using only explosive attacks"
+        ],
+        "rewards": {
+          "xp": 500,
+          "credits": 2000,
+          "unlockAbility": "controlled_chaos",
+          "relationshipBonus": {
+            "hero_rift": 20,
+            "hero_haven": 15,
+            "hero_glint": 10,
+            "hero_kite": 25
+          }
+        },
+        "unlockCondition": "Complete Chapter 1, Section 4",
+        "prerequisites": ["ember_backstory_chapter_1"]
+      },
+      {
+        "id": "ember_team_player",
+        "title": "Learning to Trust",
+        "description": "EMBER must learn to work as part of a team and trust her squadmates.",
+        "objectives": [
+          "Complete 5 missions with full squad",
+          "Use team-based abilities 10 times",
+          "Achieve 90%+ team synergy rating"
+        ],
+        "rewards": {
+          "xp": 750,
+          "credits": 3000,
+          "unlockAbility": "team_explosives",
+          "relationshipBonus": {
+            "hero_rift": 30,
+            "hero_haven": 25,
+            "hero_glint": 20,
+            "hero_kite": 35
+          }
+        },
+        "unlockCondition": "Complete Chapter 2, Section 3",
+        "prerequisites": ["ember_explosive_mastery"]
+      }
+    ]
+  },
+  {
+    "heroId": "hero_glint",
+    "quests": [
+      {
+        "id": "glint_precision_mastery",
+        "title": "The Perfect Shot",
+        "description": "GLINT must achieve perfect accuracy and teach others the importance of precision.",
+        "objectives": [
+          "Achieve 95%+ accuracy rate",
+          "Land 10 critical hits",
+          "Complete a mission with 100% accuracy"
+        ],
+        "rewards": {
+          "xp": 500,
+          "credits": 2000,
+          "unlockAbility": "perfect_shot",
+          "relationshipBonus": {
+            "hero_rift": 25,
+            "hero_haven": 20,
+            "hero_ember": 15,
+            "hero_kite": 30
+          }
+        },
+        "unlockCondition": "Complete Chapter 1, Section 3",
+        "prerequisites": ["glint_backstory_chapter_1"]
+      },
+      {
+        "id": "glint_mentor_guidance",
+        "title": "Teaching the Next Generation",
+        "description": "GLINT must become a mentor to younger heroes and share his wisdom.",
+        "objectives": [
+          "Complete 3 missions with rookie heroes",
+          "Use mentor abilities 10 times",
+          "Help 2 different heroes improve their skills"
+        ],
+        "rewards": {
+          "xp": 750,
+          "credits": 3000,
+          "unlockAbility": "mentor_guidance",
+          "relationshipBonus": {
+            "hero_rift": 35,
+            "hero_haven": 30,
+            "hero_ember": 25,
+            "hero_kite": 40
+          }
+        },
+        "unlockCondition": "Complete Chapter 3, Section 1",
+        "prerequisites": ["glint_precision_mastery"]
+      }
+    ]
+  },
+  {
+    "heroId": "hero_kite",
+    "quests": [
+      {
+        "id": "kite_tech_mastery",
+        "title": "Digital Domination",
+        "description": "KITE must master advanced technology and use it to protect humanity.",
+        "objectives": [
+          "Use tech abilities 25 times",
+          "Hack 5 enemy systems",
+          "Complete a mission using only tech attacks"
+        ],
+        "rewards": {
+          "xp": 500,
+          "credits": 2000,
+          "unlockAbility": "tech_mastery",
+          "relationshipBonus": {
+            "hero_rift": 20,
+            "hero_haven": 25,
+            "hero_ember": 30,
+            "hero_glint": 35
+          }
+        },
+        "unlockCondition": "Complete Chapter 1, Section 2",
+        "prerequisites": ["kite_backstory_chapter_1"]
+      },
+      {
+        "id": "kite_human_connection",
+        "title": "Bridging the Gap",
+        "description": "KITE must learn to connect with others and use technology to bring people together.",
+        "objectives": [
+          "Use support abilities 15 times",
+          "Help 3 different heroes with tech issues",
+          "Complete a mission with maximum team coordination"
+        ],
+        "rewards": {
+          "xp": 750,
+          "credits": 3000,
+          "unlockAbility": "tech_empathy",
+          "relationshipBonus": {
+            "hero_rift": 30,
+            "hero_haven": 35,
+            "hero_ember": 40,
+            "hero_glint": 45
+          }
+        },
+        "unlockCondition": "Complete Chapter 3, Section 2",
+        "prerequisites": ["kite_tech_mastery"]
+      }
+    ]
+  }
+]

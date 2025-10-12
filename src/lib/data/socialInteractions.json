@@ -1,0 +1,92 @@
+[
+  {
+    "id": "rift_haven_training",
+    "hero1Id": "hero_rift",
+    "hero2Id": "hero_haven",
+    "interactionType": "activity",
+    "topic": "Training Session",
+    "choices": {
+      "option1": "Push HAVEN harder to improve her combat skills",
+      "option2": "Focus on teamwork and communication",
+      "option3": "Take a break and have a friendly chat"
+    },
+    "consequences": {
+      "affinityChange": [5, 15, 10],
+      "trustChange": [0, 10, 5],
+      "respectChange": [5, 15, 5],
+      "attractionChange": [0, 5, 5]
+    }
+  },
+  {
+    "id": "ember_glint_philosophy",
+    "hero1Id": "hero_ember",
+    "hero2Id": "hero_glint",
+    "interactionType": "conversation",
+    "topic": "Philosophical Discussion",
+    "choices": {
+      "option1": "Argue about the nature of precision vs. power",
+      "option2": "Find common ground in their approaches",
+      "option3": "Agree to disagree and change the subject"
+    },
+    "consequences": {
+      "affinityChange": [-5, 10, 0],
+      "trustChange": [-2, 8, 2],
+      "respectChange": [0, 12, 3],
+      "attractionChange": [0, 3, 1]
+    }
+  },
+  {
+    "id": "kite_haven_tech_support",
+    "hero1Id": "hero_kite",
+    "hero2Id": "hero_haven",
+    "interactionType": "support",
+    "topic": "Technical Support",
+    "choices": {
+      "option1": "Offer to upgrade HAVEN's medical equipment",
+      "option2": "Teach HAVEN basic tech troubleshooting",
+      "option3": "Just fix the problem quickly and move on"
+    },
+    "consequences": {
+      "affinityChange": [12, 8, 5],
+      "trustChange": [10, 6, 3],
+      "respectChange": [8, 10, 2],
+      "attractionChange": [3, 5, 1]
+    }
+  },
+  {
+    "id": "rift_glint_leadership",
+    "hero1Id": "hero_rift",
+    "hero2Id": "hero_glint",
+    "interactionType": "conversation",
+    "topic": "Leadership Styles",
+    "choices": {
+      "option1": "Ask GLINT for tactical advice",
+      "option2": "Discuss different leadership approaches",
+      "option3": "Share personal leadership challenges"
+    },
+    "consequences": {
+      "affinityChange": [8, 12, 15],
+      "trustChange": [5, 8, 12],
+      "respectChange": [10, 15, 18],
+      "attractionChange": [2, 4, 6]
+    }
+  },
+  {
+    "id": "ember_kite_celebration",
+    "hero1Id": "hero_ember",
+    "hero2Id": "hero_kite",
+    "interactionType": "celebration",
+    "topic": "Mission Success Party",
+    "choices": {
+      "option1": "Suggest going out for drinks together",
+      "option2": "Organize a team game night",
+      "option3": "Just enjoy the moment quietly"
+    },
+    "consequences": {
+      "affinityChange": [10, 15, 5],
+      "trustChange": [8, 12, 3],
+      "respectChange": [5, 10, 2],
+      "attractionChange": [5, 8, 2]
+    }
+  }
+]

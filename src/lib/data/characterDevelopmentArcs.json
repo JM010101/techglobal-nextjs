@@ -1,0 +1,292 @@
+[
+  {
+    "heroId": "hero_rift",
+    "arcName": "The Reluctant Leader's Journey",
+    "description": "RIFT's journey from a guilt-ridden former commander to a confident leader who learns to trust himself and his team.",
+    "stages": [
+      {
+        "stage": 1,
+        "title": "The Broken Commander",
+        "description": "RIFT struggles with the guilt of his past failures and fears leading others into danger.",
+        "unlockCondition": "Complete Chapter 1",
+        "characterChanges": {
+          "personalityTraits": {
+            "conscientiousness": -10,
+            "neuroticism": +15
+          },
+          "newAbilities": ["guilt_burden"],
+          "relationshipModifiers": {
+            "trust": -20,
+            "respect": -10
+          }
+        }
+      },
+      {
+        "stage": 2,
+        "title": "The Healing Process",
+        "description": "RIFT begins to heal through small victories and the support of his new team.",
+        "unlockCondition": "Complete Chapter 2",
+        "characterChanges": {
+          "personalityTraits": {
+            "conscientiousness": +5,
+            "neuroticism": -10
+          },
+          "newAbilities": ["healing_leadership"],
+          "relationshipModifiers": {
+            "trust": +15,
+            "respect": +10
+          }
+        }
+      },
+      {
+        "stage": 3,
+        "title": "The Confident Leader",
+        "description": "RIFT fully embraces his role as a leader, using his past experiences to guide others.",
+        "unlockCondition": "Complete Chapter 3",
+        "characterChanges": {
+          "personalityTraits": {
+            "conscientiousness": +15,
+            "neuroticism": -20
+          },
+          "newAbilities": ["inspiring_leadership", "protective_instinct"],
+          "relationshipModifiers": {
+            "trust": +25,
+            "respect": +20
+          }
+        }
+      }
+    ]
+  },
+  {
+    "heroId": "hero_haven",
+    "arcName": "The Healer's Redemption",
+    "description": "HAVEN's journey from a traumatized civilian doctor to a confident healer who finds a new family in her squad.",
+    "stages": [
+      {
+        "stage": 1,
+        "title": "The Traumatized Healer",
+        "description": "HAVEN struggles with the loss of her family and questions her ability to heal others.",
+        "unlockCondition": "Complete Chapter 1",
+        "characterChanges": {
+          "personalityTraits": {
+            "agreeableness": -15,
+            "neuroticism": +20
+          },
+          "newAbilities": ["trauma_healing"],
+          "relationshipModifiers": {
+            "trust": -15,
+            "respect": +5
+          }
+        }
+      },
+      {
+        "stage": 2,
+        "title": "Finding New Purpose",
+        "description": "HAVEN begins to find purpose in healing her new squadmates and protecting them.",
+        "unlockCondition": "Complete Chapter 2",
+        "characterChanges": {
+          "personalityTraits": {
+            "agreeableness": +10,
+            "neuroticism": -15
+          },
+          "newAbilities": ["squad_healing"],
+          "relationshipModifiers": {
+            "trust": +20,
+            "respect": +15
+          }
+        }
+      },
+      {
+        "stage": 3,
+        "title": "The Squad's Guardian",
+        "description": "HAVEN becomes the emotional and physical guardian of her squad, finding a new family.",
+        "unlockCondition": "Complete Chapter 3",
+        "characterChanges": {
+          "personalityTraits": {
+            "agreeableness": +20,
+            "neuroticism": -25
+          },
+          "newAbilities": ["emotional_healing", "squad_protection"],
+          "relationshipModifiers": {
+            "trust": +30,
+            "respect": +25
+          }
+        }
+      }
+    ]
+  },
+  {
+    "heroId": "hero_ember",
+    "arcName": "The Wild Spirit's Taming",
+    "description": "EMBER's journey from a reckless individualist to a team player who learns the value of cooperation.",
+    "stages": [
+      {
+        "stage": 1,
+        "title": "The Lone Wolf",
+        "description": "EMBER operates independently, distrusting others and relying only on herself.",
+        "unlockCondition": "Complete Chapter 1",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": -10,
+            "agreeableness": -20
+          },
+          "newAbilities": ["lone_wolf"],
+          "relationshipModifiers": {
+            "trust": -25,
+            "respect": -15
+          }
+        }
+      },
+      {
+        "stage": 2,
+        "title": "Learning to Trust",
+        "description": "EMBER begins to trust her squadmates and learns the value of teamwork.",
+        "unlockCondition": "Complete Chapter 2",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": +15,
+            "agreeableness": +10
+          },
+          "newAbilities": ["team_explosives"],
+          "relationshipModifiers": {
+            "trust": +20,
+            "respect": +15
+          }
+        }
+      },
+      {
+        "stage": 3,
+        "title": "The Team Player",
+        "description": "EMBER fully embraces teamwork while maintaining her unique personality and skills.",
+        "unlockCondition": "Complete Chapter 3",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": +20,
+            "agreeableness": +25
+          },
+          "newAbilities": ["controlled_chaos", "team_synergy"],
+          "relationshipModifiers": {
+            "trust": +30,
+            "respect": +25
+          }
+        }
+      }
+    ]
+  },
+  {
+    "heroId": "hero_glint",
+    "arcName": "The Philosopher's Wisdom",
+    "description": "GLINT's journey from a detached sniper to a wise mentor who teaches others the deeper meaning of their actions.",
+    "stages": [
+      {
+        "stage": 1,
+        "title": "The Detached Sniper",
+        "description": "GLINT maintains emotional distance from others, focusing only on precision and efficiency.",
+        "unlockCondition": "Complete Chapter 1",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": -20,
+            "agreeableness": -10
+          },
+          "newAbilities": ["emotional_distance"],
+          "relationshipModifiers": {
+            "trust": -20,
+            "respect": +10
+          }
+        }
+      },
+      {
+        "stage": 2,
+        "title": "The Awakening",
+        "description": "GLINT begins to question his detachment and seeks deeper connections with others.",
+        "unlockCondition": "Complete Chapter 2",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": +10,
+            "agreeableness": +15
+          },
+          "newAbilities": ["tactical_insight"],
+          "relationshipModifiers": {
+            "trust": +15,
+            "respect": +20
+          }
+        }
+      },
+      {
+        "stage": 3,
+        "title": "The Wise Mentor",
+        "description": "GLINT becomes a mentor to others, sharing his wisdom and helping them grow.",
+        "unlockCondition": "Complete Chapter 3",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": +15,
+            "agreeableness": +25
+          },
+          "newAbilities": ["mentor_guidance", "philosophical_insight"],
+          "relationshipModifiers": {
+            "trust": +25,
+            "respect": +30
+          }
+        }
+      }
+    ]
+  },
+  {
+    "heroId": "hero_kite",
+    "arcName": "The Tech Genius's Humanity",
+    "description": "KITE's journey from a technology-obsessed hacker to a balanced individual who uses tech to connect with others.",
+    "stages": [
+      {
+        "stage": 1,
+        "title": "The Tech Obsessed",
+        "description": "KITE is completely focused on technology, often neglecting human connections.",
+        "unlockCondition": "Complete Chapter 1",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": -15,
+            "agreeableness": -10
+          },
+          "newAbilities": ["tech_obsession"],
+          "relationshipModifiers": {
+            "trust": -15,
+            "respect": +5
+          }
+        }
+      },
+      {
+        "stage": 2,
+        "title": "The Human Connection",
+        "description": "KITE begins to see the value in human relationships and starts to balance tech with empathy.",
+        "unlockCondition": "Complete Chapter 2",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": +20,
+            "agreeableness": +15
+          },
+          "newAbilities": ["tech_empathy"],
+          "relationshipModifiers": {
+            "trust": +20,
+            "respect": +15
+          }
+        }
+      },
+      {
+        "stage": 3,
+        "title": "The Bridge Builder",
+        "description": "KITE becomes a bridge between technology and humanity, using tech to bring people together.",
+        "unlockCondition": "Complete Chapter 3",
+        "characterChanges": {
+          "personalityTraits": {
+            "extraversion": +25,
+            "agreeableness": +20
+          },
+          "newAbilities": ["human_tech_bridge", "connection_mastery"],
+          "relationshipModifiers": {
+            "trust": +30,
+            "respect": +25
+          }
+        }
+      }
+    ]
+  }
+]

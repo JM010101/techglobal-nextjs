@@ -1,0 +1,77 @@
+[
+  {
+    "heroId": "hero_rift",
+    "traits": {
+      "openness": 75,
+      "conscientiousness": 90,
+      "extraversion": 60,
+      "agreeableness": 70,
+      "neuroticism": 30
+    },
+    "interests": ["tactical_strategy", "military_history", "leadership", "coffee", "classical_music"],
+    "fears": ["failing_his_team", "losing_control", "civilian_casualties"],
+    "goals": ["protect_humanity", "become_better_leader", "find_peace"],
+    "values": ["honor", "duty", "loyalty", "justice"],
+    "communicationStyle": "direct"
+  },
+  {
+    "heroId": "hero_haven",
+    "traits": {
+      "openness": 85,
+      "conscientiousness": 95,
+      "extraversion": 80,
+      "agreeableness": 95,
+      "neuroticism": 40
+    },
+    "interests": ["healing", "medical_research", "helping_others", "gardening", "cooking"],
+    "fears": ["losing_patients", "medical_errors", "isolation"],
+    "goals": ["save_everyone", "advance_medical_tech", "create_peace"],
+    "values": ["compassion", "healing", "empathy", "life"],
+    "communicationStyle": "empathetic"
+  },
+  {
+    "heroId": "hero_ember",
+    "traits": {
+      "openness": 70,
+      "conscientiousness": 80,
+      "extraversion": 85,
+      "agreeableness": 60,
+      "neuroticism": 50
+    },
+    "interests": ["explosives", "mechanical_engineering", "adrenaline_sports", "rock_music", "motorcycles"],
+    "fears": ["being_controlled", "boring_life", "weakness"],
+    "goals": ["master_explosives", "freedom", "protect_friends"],
+    "values": ["freedom", "strength", "loyalty", "adventure"],
+    "communicationStyle": "humorous"
+  },
+  {
+    "heroId": "hero_glint",
+    "traits": {
+      "openness": 90,
+      "conscientiousness": 85,
+      "extraversion": 40,
+      "agreeableness": 75,
+      "neuroticism": 35
+    },
+    "interests": ["precision_shooting", "mathematics", "philosophy", "chess", "stargazing"],
+    "fears": ["missing_shot", "chaos", "emotional_decisions"],
+    "goals": ["perfect_accuracy", "understand_universe", "find_balance"],
+    "values": ["precision", "wisdom", "patience", "truth"],
+    "communicationStyle": "analytical"
+  },
+  {
+    "heroId": "hero_kite",
+    "traits": {
+      "openness": 80,
+      "conscientiousness": 70,
+      "extraversion": 70,
+      "agreeableness": 80,
+      "neuroticism": 45
+    },
+    "interests": ["technology", "puzzles", "teamwork", "video_games", "hacking"],
+    "fears": ["system_failure", "letting_team_down", "isolation"],
+    "goals": ["master_technology", "protect_team", "create_connections"],
+    "values": ["innovation", "cooperation", "intelligence", "friendship"],
+    "communicationStyle": "diplomatic"
+  }
+]

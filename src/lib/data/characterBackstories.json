@@ -1,0 +1,212 @@
+[
+  {
+    "heroId": "hero_rift",
+    "backstory": {
+      "title": "The Reluctant Leader",
+      "summary": "Once a promising cadet who lost his entire squad in a failed mission, RIFT carries the weight of command and the fear of losing those he leads.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Academy Days",
+          "content": "RIFT excelled at the Aegis Academy, showing natural leadership abilities. His tactical mind and charisma made him a favorite among instructors and cadets alike.",
+          "unlockCondition": "Complete Chapter 1, Section 1",
+          "rewards": {
+            "xp": 100,
+            "credits": 500,
+            "unlockAbility": "leadership_boost"
+          }
+        },
+        {
+          "chapter": 2,
+          "title": "The Failed Mission",
+          "content": "During his first command, RIFT's squad was ambushed by Warmind forces. Despite his orders, three of his closest friends died. The guilt still haunts him.",
+          "unlockCondition": "Complete Chapter 1, Section 4",
+          "rewards": {
+            "xp": 200,
+            "credits": 1000,
+            "unlockAbility": "protective_instinct"
+          }
+        },
+        {
+          "chapter": 3,
+          "title": "The Redemption",
+          "content": "RIFT's journey to overcome his fear of leadership and learn to trust his instincts again. He discovers that true leadership means accepting both victory and loss.",
+          "unlockCondition": "Complete Chapter 2, Section 2",
+          "rewards": {
+            "xp": 300,
+            "credits": 1500,
+            "unlockAbility": "inspiring_presence"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "heroId": "hero_haven",
+    "backstory": {
+      "title": "The Healing Heart",
+      "summary": "A former civilian doctor who joined Aegis after losing her family to a Warmind attack, HAVEN dedicates her life to saving others.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Medical Prodigy",
+          "content": "HAVEN was a brilliant medical student who specialized in emergency trauma care. Her innovative techniques saved countless lives in civilian hospitals.",
+          "unlockCondition": "Complete Chapter 1, Section 2",
+          "rewards": {
+            "xp": 100,
+            "credits": 500,
+            "unlockAbility": "advanced_healing"
+          }
+        },
+        {
+          "chapter": 2,
+          "title": "The Loss",
+          "content": "When Warmind forces attacked her city, HAVEN watched her family die despite her medical expertise. This tragedy drove her to join Aegis Corps.",
+          "unlockCondition": "Complete Chapter 1, Section 3",
+          "rewards": {
+            "xp": 200,
+            "credits": 1000,
+            "unlockAbility": "trauma_specialist"
+          }
+        },
+        {
+          "chapter": 3,
+          "title": "The New Family",
+          "content": "HAVEN finds a new family in her Aegis squadmates, learning to balance her desire to save everyone with the harsh realities of war.",
+          "unlockCondition": "Complete Chapter 2, Section 1",
+          "rewards": {
+            "xp": 300,
+            "credits": 1500,
+            "unlockAbility": "squad_healing"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "heroId": "hero_ember",
+    "backstory": {
+      "title": "The Wild Spirit",
+      "summary": "A former street racer and demolition expert who joined Aegis for the thrill and freedom, EMBER brings chaos and destruction to the battlefield.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Street Racer",
+          "content": "EMBER grew up in the underground racing circuits, mastering explosives and high-speed combat. Her reckless nature made her both feared and respected.",
+          "unlockCondition": "Complete Chapter 1, Section 4",
+          "rewards": {
+            "xp": 100,
+            "credits": 500,
+            "unlockAbility": "explosive_expertise"
+          }
+        },
+        {
+          "chapter": 2,
+          "title": "The Underground",
+          "content": "EMBER's knowledge of the city's underground networks and her connections with the Freeholders make her invaluable for covert operations.",
+          "unlockCondition": "Complete Chapter 2, Section 1",
+          "rewards": {
+            "xp": 200,
+            "credits": 1000,
+            "unlockAbility": "underground_contacts"
+          }
+        },
+        {
+          "chapter": 3,
+          "title": "The Team Player",
+          "content": "Despite her independent nature, EMBER learns the value of teamwork and begins to care deeply for her squadmates, even if she won't admit it.",
+          "unlockCondition": "Complete Chapter 2, Section 3",
+          "rewards": {
+            "xp": 300,
+            "credits": 1500,
+            "unlockAbility": "team_explosives"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "heroId": "hero_glint",
+    "backstory": {
+      "title": "The Precision Mind",
+      "summary": "A former sniper from a elite military unit, GLINT brings unmatched precision and tactical thinking to the Aegis Corps.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Elite Sniper",
+          "content": "GLINT served in an elite military unit, known for his perfect accuracy and calm under pressure. His philosophical nature often puzzled his comrades.",
+          "unlockCondition": "Complete Chapter 1, Section 3",
+          "rewards": {
+            "xp": 100,
+            "credits": 500,
+            "unlockAbility": "perfect_aim"
+          }
+        },
+        {
+          "chapter": 2,
+          "title": "The Philosopher",
+          "content": "GLINT's deep thinking about the nature of war and violence led him to question his role as a soldier, eventually joining Aegis for a greater purpose.",
+          "unlockCondition": "Complete Chapter 2, Section 2",
+          "rewards": {
+            "xp": 200,
+            "credits": 1000,
+            "unlockAbility": "tactical_insight"
+          }
+        },
+        {
+          "chapter": 3,
+          "title": "The Mentor",
+          "content": "GLINT becomes a mentor to younger heroes, teaching them the importance of precision, patience, and understanding the true cost of war.",
+          "unlockCondition": "Complete Chapter 3, Section 1",
+          "rewards": {
+            "xp": 300,
+            "credits": 1500,
+            "unlockAbility": "mentor_guidance"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "heroId": "hero_kite",
+    "backstory": {
+      "title": "The Tech Genius",
+      "summary": "A brilliant hacker and tech specialist who joined Aegis to protect the digital infrastructure of humanity, KITE brings cutting-edge technology to the battlefield.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Digital Prodigy",
+          "content": "KITE was a child prodigy in computer science, hacking into corporate systems for fun. Their skills caught the attention of Aegis Corps recruiters.",
+          "unlockCondition": "Complete Chapter 1, Section 2",
+          "rewards": {
+            "xp": 100,
+            "credits": 500,
+            "unlockAbility": "hacking_mastery"
+          }
+        },
+        {
+          "chapter": 2,
+          "title": "The Cyber Warrior",
+          "content": "KITE's expertise in cyber warfare and their ability to control battlefield technology makes them a crucial asset in the fight against Warmind AI.",
+          "unlockCondition": "Complete Chapter 2, Section 1",
+          "rewards": {
+            "xp": 200,
+            "credits": 1000,
+            "unlockAbility": "ai_countermeasures"
+          }
+        },
+        {
+          "chapter": 3,
+          "title": "The Bridge Builder",
+          "content": "KITE learns to bridge the gap between technology and humanity, using their skills to protect rather than exploit, and teaching others the responsible use of technology.",
+          "unlockCondition": "Complete Chapter 3, Section 2",
+          "rewards": {
+            "xp": 300,
+            "credits": 1500,
+            "unlockAbility": "tech_empathy"
+          }
+        }
+      ]
+    }
+  }
+]
