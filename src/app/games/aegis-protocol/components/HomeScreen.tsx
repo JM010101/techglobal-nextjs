@@ -11,9 +11,6 @@ const HomeScreen = () => {
 
   const squadHeroes = ownedHeroes.filter(h => currentSquad.includes(h.id));
   const currentChapterData = chaptersData[0]; // Chapter 1 for now
-  const availableSections = currentChapterData.sections.filter((_, index) => 
-    index === 0 || completedMissions.includes(`${currentChapter}_${index}`)
-  );
 
   return (
     <div className="flex flex-col h-full">

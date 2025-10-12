@@ -2,26 +2,20 @@
 
 import { motion } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
-import { ArrowLeft, Home, Utensils, Dumbbell, Gamepad2, Heart, Clock, Users, Wrench } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowLeft, Home, Utensils, Dumbbell, Gamepad2, Heart, Clock, Wrench } from 'lucide-react';
 
 const BaseManagementScreen = () => {
   const { 
-    baseFacilities, 
     heroNeeds, 
     currentTime, 
     currentDay, 
     baseMaterials,
     upgradeFacility,
-    assignHeroToActivity,
-    updateHeroNeeds,
     advanceTime,
     getFacilityLevel,
     setCurrentScreen 
   } = useGameStore();
   
-  const [selectedFacility, setSelectedFacility] = useState<string | null>(null);
-  const [selectedHero, setSelectedHero] = useState<string | null>(null);
 
   const facilities = [
     {
@@ -72,16 +66,6 @@ const BaseManagementScreen = () => {
     return colors[color as keyof typeof colors] || 'from-gray-600 to-gray-700';
   };
 
-  const getFacilityIconColor = (color: string) => {
-    const colors = {
-      blue: 'text-blue-400',
-      green: 'text-green-400',
-      red: 'text-red-400',
-      purple: 'text-purple-400',
-      pink: 'text-pink-400'
-    };
-    return colors[color as keyof typeof colors] || 'text-gray-400';
-  };
 
   const formatTime = (time: number) => {
     const hours = Math.floor(time);

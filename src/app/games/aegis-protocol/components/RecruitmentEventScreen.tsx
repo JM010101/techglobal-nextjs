@@ -5,14 +5,11 @@ import { useGameStore } from '@/store/gameStore';
 import { ArrowLeft, User, Brain, MessageCircle, CheckCircle, XCircle, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import recruitmentEventsData from '@/lib/data/recruitmentEvents.json';
-import { RecruitmentEvent, InterviewOption, PersonalityOption } from '@/lib/models/RecruitmentEvent';
 
 const RecruitmentEventScreen = () => {
   const { 
     setCurrentScreen, 
     addCredits, 
-    addSignalKeys,
-    ownedHeroes,
     baseFacilities,
     completedMissions 
   } = useGameStore();
@@ -20,7 +17,6 @@ const RecruitmentEventScreen = () => {
   const [currentEvent, setCurrentEvent] = useState<any>(null);
   const [currentPhase, setCurrentPhase] = useState<'intro' | 'interview' | 'personality' | 'result'>('intro');
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, InterviewOption | PersonalityOption>>({});
   const [personalityTraits, setPersonalityTraits] = useState<Record<string, number>>({});
   const [interviewScore, setInterviewScore] = useState(0);
   const [personalityScore, setPersonalityScore] = useState(0);
@@ -123,10 +119,6 @@ const RecruitmentEventScreen = () => {
     setCurrentQuestion(0);
   };
 
-  const startPersonalityTest = () => {
-    setCurrentPhase('personality');
-    setCurrentQuestion(0);
-  };
 
   const resetEvent = () => {
     setCurrentEvent(null);
