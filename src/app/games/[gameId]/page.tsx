@@ -9,7 +9,20 @@ import RobloxGame from './components/RobloxGame';
 import MarioKartGame from './components/MarioKartGame';
 import SimsGame from './components/SimsGame';
 import LoveNikkiGame from './components/LoveNikkiGame';
-import AegisProtocolGame from '../aegis-protocol/page';
+// Import Aegis Protocol components
+import { useEffect } from 'react';
+import { useGameStore } from '@/store/gameStore';
+import HomeScreen from '../aegis-protocol/components/HomeScreen';
+import SquadScreen from '../aegis-protocol/components/SquadScreen';
+import BattleScreen from '../aegis-protocol/components/BattleScreen';
+import RecruitmentScreen from '../aegis-protocol/components/RecruitmentScreen';
+import HeroDetailScreen from '../aegis-protocol/components/HeroDetailScreen';
+import DialogueScreen from '../aegis-protocol/components/DialogueScreen';
+import SocialHubScreen from '../aegis-protocol/components/SocialHubScreen';
+import CharacterDevelopmentScreen from '../aegis-protocol/components/CharacterDevelopmentScreen';
+import BaseManagementScreen from '../aegis-protocol/components/BaseManagementScreen';
+import RecruitmentEventScreen from '../aegis-protocol/components/RecruitmentEventScreen';
+import StoryScreen from '../aegis-protocol/components/StoryScreen';
 
 const GamePage = () => {
   const params = useParams();
@@ -52,7 +65,7 @@ const GamePage = () => {
       case 'love-nikki':
         return <LoveNikkiGame onClose={handleClose} onScoreUpdate={handleScoreUpdate} />;
       case 'aegis-protocol':
-        return <AegisProtocolGame />;
+        return <AegisProtocolGameComponent />;
       default:
         return (
           <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-100 flex items-center justify-center">
@@ -74,6 +87,46 @@ const GamePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-100">
       {renderGame()}
+    </div>
+  );
+};
+
+// Aegis Protocol Game Component
+const AegisProtocolGameComponent = () => {
+  const currentScreen = useGameStore((state) => state.currentScreen);
+  const loadGame = useGameStore((state) => state.loadGame);
+
+  useEffect(() => {
+    loadGame();
+  }, [loadGame]);
+
+  return (
+    <div 
+      className="fixed inset-0 overflow-hidden"
+      style={{
+        backgroundImage: 'url(/images/game/Aegis Protocol/dashboard.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Screen Router */}
+      <div className="relative z-10 w-full h-full">
+        {currentScreen === 'home' && <HomeScreen />}
+        {currentScreen === 'squad' && <SquadScreen />}
+        {currentScreen === 'battle' && <BattleScreen />}
+        {currentScreen === 'recruitment' && <RecruitmentScreen />}
+        {currentScreen === 'hero-detail' && <HeroDetailScreen />}
+        {currentScreen === 'dialogue' && <DialogueScreen />}
+        {currentScreen === 'social' && <SocialHubScreen />}
+        {currentScreen === 'character-development' && <CharacterDevelopmentScreen />}
+        {currentScreen === 'base-management' && <BaseManagementScreen />}
+        {currentScreen === 'recruitment-event' && <RecruitmentEventScreen />}
+        {currentScreen === 'story' && <StoryScreen />}
+      </div>
     </div>
   );
 };
