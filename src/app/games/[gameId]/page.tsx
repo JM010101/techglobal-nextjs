@@ -24,6 +24,7 @@ import BaseManagementScreen from '../aegis-protocol/components/BaseManagementScr
 import RecruitmentEventScreen from '../aegis-protocol/components/RecruitmentEventScreen';
 import StoryScreen from '../aegis-protocol/components/StoryScreen';
 import AIManagementScreen from '../aegis-protocol/components/AIManagementScreen';
+import GraphicsManagementScreen from '../aegis-protocol/components/GraphicsManagementScreen';
 
 const GamePage = () => {
   const params = useParams();
@@ -130,8 +131,9 @@ const AegisProtocolGameComponent = () => {
         {currentScreen === 'character-development' && <CharacterDevelopmentScreen />}
         {currentScreen === 'base-management' && <BaseManagementScreen />}
         {currentScreen === 'recruitment-event' && <RecruitmentEventScreen />}
-               {currentScreen === 'story' && <StoryScreen />}
-               {currentScreen === 'ai-management' && <AIManagementScreen />}
+        {currentScreen === 'story' && <StoryScreen />}
+        {currentScreen === 'ai-management' && <AIManagementScreen />}
+        {currentScreen === 'graphics-management' && <GraphicsManagementScreen />}
       </div>
     </div>
   );

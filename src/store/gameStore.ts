@@ -15,6 +15,10 @@ import { EnemyAI, EnemyPersonality, CombatStyle, Tactic } from '@/lib/models/Ene
 import { MLSystem, PlayerBehaviorAnalysis, AdaptiveContentGeneration, PredictiveAnalytics } from '@/lib/models/MachineLearning';
 import { ContentGenerationSystem, ProceduralMission, ProceduralStory, ProceduralDialogue } from '@/lib/models/ContentGeneration';
 import { MultiAgentSystem, SocialNetwork, EconomicSystem, PoliticalSystem, EnvironmentalSystem } from '@/lib/models/MultiAgent';
+import { GraphicsSystem, Renderer, Shader, Material, Camera, Light, Mesh, ParticleSystem, VisualEffect, PostProcessor } from '@/lib/models/Graphics';
+import { ParticleSystem as ParticleSystemModel, ParticleEmitter, ParticleEffect, ParticlePreset } from '@/lib/models/Particles';
+import { LightingSystem, Light as LightModel, ShadowSystem, AmbientLighting, VolumetricLighting, GodRays } from '@/lib/models/Lighting';
+import { CameraSystem, Camera as CameraModel, CameraController, CameraTransition, CameraPath, CameraCutscene } from '@/lib/models/Camera';
 
 export interface Hero {
   id: string;
@@ -149,8 +153,22 @@ export interface GameState {
   adaptiveContent: AdaptiveContentGeneration;
   predictiveAnalytics: PredictiveAnalytics;
   
+  // Phase 6: Advanced Graphics & Visual Effects
+  graphics: GraphicsSystem;
+  renderer: Renderer;
+  shaders: Shader[];
+  materials: Material[];
+  cameras: Camera[];
+  lights: Light[];
+  meshes: Mesh[];
+  particleSystems: ParticleSystem[];
+  visualEffects: VisualEffect[];
+  postProcessors: PostProcessor[];
+  lighting: LightingSystem;
+  cameraSystem: CameraSystem;
+  
   // UI State
-  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event' | 'story' | 'ai-management';
+  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event' | 'story' | 'ai-management' | 'graphics-management';
   selectedHeroForDetail: string | null;
   
   // Actions
@@ -287,6 +305,71 @@ export interface GameState {
   addAgentToSystem: (systemId: string, agentId: string) => void;
   removeAgentFromSystem: (systemId: string, agentId: string) => void;
   processAgentInteraction: (agent1: string, agent2: string, interaction: unknown) => void;
+  
+  // Phase 6: Advanced Graphics & Visual Effects Actions
+  // Graphics System Actions
+  initializeGraphics: () => void;
+  updateGraphics: (deltaTime: number) => void;
+  setGraphicsQuality: (quality: 'low' | 'medium' | 'high' | 'ultra') => void;
+  toggleAntiAliasing: (enabled: boolean) => void;
+  toggleShadows: (enabled: boolean) => void;
+  
+  // Renderer Actions
+  createRenderer: (type: 'forward' | 'deferred' | 'clustered' | 'tiled') => void;
+  updateRenderer: (deltaTime: number) => void;
+  setRendererSettings: (settings: unknown) => void;
+  
+  // Shader Actions
+  createShader: (name: string, type: 'vertex' | 'fragment' | 'compute' | 'geometry', source: string) => void;
+  compileShader: (shaderId: string) => void;
+  updateShaderUniform: (shaderId: string, uniformName: string, value: unknown) => void;
+  
+  // Material Actions
+  createMaterial: (name: string, type: 'standard' | 'pbr' | 'unlit' | 'transparent' | 'cutout') => void;
+  updateMaterialProperty: (materialId: string, propertyName: string, value: unknown) => void;
+  setMaterialTexture: (materialId: string, textureSlot: string, textureId: string) => void;
+  
+  // Camera Actions
+  createCamera: (name: string, type: 'perspective' | 'orthographic' | 'fisheye' | 'panoramic') => void;
+  setActiveCamera: (cameraId: string) => void;
+  moveCamera: (cameraId: string, position: unknown) => void;
+  rotateCamera: (cameraId: string, rotation: unknown) => void;
+  zoomCamera: (cameraId: string, zoom: number) => void;
+  
+  // Light Actions
+  createLight: (name: string, type: 'directional' | 'point' | 'spot' | 'area' | 'ambient') => void;
+  updateLight: (lightId: string, properties: unknown) => void;
+  setLightIntensity: (lightId: string, intensity: number) => void;
+  setLightColor: (lightId: string, color: unknown) => void;
+  toggleLightShadow: (lightId: string, enabled: boolean) => void;
+  
+  // Particle System Actions
+  createParticleSystem: (name: string, type: 'explosion' | 'smoke' | 'fire' | 'spark' | 'dust' | 'rain' | 'snow' | 'magic') => void;
+  updateParticleSystem: (systemId: string, deltaTime: number) => void;
+  emitParticles: (systemId: string, count: number) => void;
+  stopParticleSystem: (systemId: string) => void;
+  
+  // Visual Effect Actions
+  createVisualEffect: (name: string, type: 'screen_shake' | 'slow_motion' | 'fade' | 'flash' | 'blur' | 'distortion') => void;
+  playVisualEffect: (effectId: string, intensity: number, duration: number) => void;
+  stopVisualEffect: (effectId: string) => void;
+  
+  // Post-Processing Actions
+  createPostProcessor: (name: string, type: 'bloom' | 'ssao' | 'hdr' | 'dof' | 'motion_blur' | 'chromatic_aberration' | 'vignette' | 'color_grading') => void;
+  togglePostProcessor: (processorId: string, enabled: boolean) => void;
+  setPostProcessorIntensity: (processorId: string, intensity: number) => void;
+  
+  // Lighting Actions
+  createLightingSystem: (type: 'forward' | 'deferred' | 'clustered' | 'tiled') => void;
+  updateLighting: (deltaTime: number) => void;
+  setAmbientLighting: (color: unknown, intensity: number) => void;
+  setGlobalIllumination: (enabled: boolean, quality: 'low' | 'medium' | 'high' | 'ultra') => void;
+  
+  // Camera System Actions
+  createCameraSystem: () => void;
+  updateCameraSystem: (deltaTime: number) => void;
+  createCameraController: (cameraId: string, type: 'free' | 'orbit' | 'first_person' | 'third_person' | 'cinematic' | 'follow') => void;
+  createCameraTransition: (fromCamera: string, toCamera: string, duration: number) => void;
   
   saveGame: () => void;
   loadGame: () => void;
@@ -716,6 +799,259 @@ const initialState = {
     accuracy: 0,
     isActive: true,
     lastPrediction: new Date()
+  },
+  
+  // Phase 6: Advanced Graphics & Visual Effects Initial State
+  graphics: {
+    id: 'main_graphics_system',
+    name: 'Main Graphics System',
+    type: 'webgl' as const,
+    version: '2.0',
+    capabilities: {
+      id: 'main_capabilities',
+      maxTextureSize: 4096,
+      maxVertexAttribs: 16,
+      maxVaryingVectors: 8,
+      maxFragmentUniforms: 16,
+      maxVertexUniforms: 16,
+      maxTextureImageUnits: 8,
+      maxVertexTextureImageUnits: 4,
+      maxCombinedTextureImageUnits: 8,
+      maxCubeMapTextureSize: 1024,
+      maxRenderBufferSize: 4096,
+      maxViewportDims: [4096, 4096],
+      aliasedLineWidthRange: [1, 1],
+      aliasedPointSizeRange: [1, 64],
+      maxAnisotropy: 16,
+      maxSamples: 4,
+      extensions: [],
+      isActive: true
+    },
+    settings: {
+      id: 'main_graphics_settings',
+      resolution: {
+        width: 1920,
+        height: 1080,
+        aspectRatio: 16/9,
+        pixelRatio: 1,
+        isActive: true
+      },
+      quality: {
+        level: 'high' as const,
+        textureQuality: 'high' as const,
+        modelQuality: 'high' as const,
+        effectQuality: 'high' as const,
+        isActive: true
+      },
+      antiAliasing: {
+        enabled: true,
+        type: 'msaa' as const,
+        samples: 4,
+        quality: 'high' as const,
+        isActive: true
+      },
+      shadows: {
+        enabled: true,
+        type: 'soft' as const,
+        resolution: 2048,
+        bias: 0.001,
+        normalBias: 0.02,
+        distance: 100,
+        isActive: true
+      },
+      lighting: {
+        enabled: true,
+        type: 'forward' as const,
+        maxLights: 8,
+        ambientIntensity: 0.3,
+        directionalIntensity: 1.0,
+        isActive: true
+      },
+      postProcessing: {
+        enabled: true,
+        effects: [],
+        isActive: true
+      },
+      particles: {
+        enabled: true,
+        maxParticles: 1000,
+        quality: 'high' as const,
+        isActive: true
+      },
+      isActive: true
+    },
+    performance: {
+      id: 'main_graphics_performance',
+      fps: 60,
+      frameTime: 16.67,
+      drawCalls: 0,
+      triangles: 0,
+      vertices: 0,
+      textures: 0,
+      memoryUsage: 0,
+      gpuUsage: 0,
+      cpuUsage: 0,
+      isActive: true,
+      lastUpdate: new Date()
+    },
+    isActive: true,
+    lastUpdate: new Date()
+  },
+  renderer: {
+    id: 'main_renderer',
+    name: 'Main Renderer',
+    type: 'forward' as const,
+    capabilities: {
+      id: 'main_renderer_capabilities',
+      maxLights: 8,
+      maxShadows: 4,
+      maxParticles: 1000,
+      maxTextures: 16,
+      maxMaterials: 32,
+      isActive: true
+    },
+    settings: {
+      id: 'main_renderer_settings',
+      culling: {
+        enabled: true,
+        frustumCulling: true,
+        occlusionCulling: false,
+        distanceCulling: true,
+        isActive: true
+      },
+      lod: {
+        enabled: true,
+        distances: [50, 100, 200],
+        qualities: ['high', 'medium', 'low'],
+        isActive: true
+      },
+      batching: {
+        enabled: true,
+        maxBatchSize: 100,
+        isActive: true
+      },
+      isActive: true
+    },
+    isActive: true,
+    lastUpdate: new Date()
+  },
+  shaders: [],
+  materials: [],
+  cameras: [],
+  lights: [],
+  meshes: [],
+  particleSystems: [],
+  visualEffects: [],
+  postProcessors: [],
+  lighting: {
+    id: 'main_lighting_system',
+    name: 'Main Lighting System',
+    type: 'forward' as const,
+    lights: [],
+    shadows: {
+      id: 'main_shadow_system',
+      name: 'Main Shadow System',
+      type: 'cascaded' as const,
+      cascades: 4,
+      splitDistance: 50,
+      fadeDistance: 100,
+      fadeRange: 20,
+      isActive: true
+    },
+    ambient: {
+      id: 'main_ambient_lighting',
+      name: 'Main Ambient Lighting',
+      type: 'constant' as const,
+      color: { r: 0.2, g: 0.2, b: 0.3, a: 1.0 },
+      intensity: 0.3,
+      skyColor: { r: 0.5, g: 0.7, b: 1.0, a: 1.0 },
+      groundColor: { r: 0.2, g: 0.2, b: 0.2, a: 1.0 },
+      isActive: true
+    },
+    settings: {
+      id: 'main_lighting_settings',
+      maxLights: 8,
+      maxShadows: 4,
+      shadowDistance: 100,
+      shadowFadeDistance: 80,
+      ambientIntensity: 0.3,
+      directionalIntensity: 1.0,
+      isActive: true
+    },
+    performance: {
+      id: 'main_lighting_performance',
+      totalLights: 0,
+      activeLights: 0,
+      shadowCasters: 0,
+      drawCalls: 0,
+      memoryUsage: 0,
+      fps: 60,
+      isActive: true,
+      lastUpdate: new Date()
+    },
+    isActive: true,
+    lastUpdate: new Date()
+  },
+  cameraSystem: {
+    id: 'main_camera_system',
+    name: 'Main Camera System',
+    cameras: [],
+    activeCamera: '',
+    settings: {
+      id: 'main_camera_settings',
+      movement: {
+        enabled: true,
+        speed: 10,
+        acceleration: 5,
+        deceleration: 5,
+        smoothing: 0.1,
+        isActive: true
+      },
+      rotation: {
+        enabled: true,
+        speed: 5,
+        smoothing: 0.1,
+        limits: {
+          enabled: true,
+          minPitch: -80,
+          maxPitch: 80,
+          minYaw: -180,
+          maxYaw: 180,
+          isActive: true
+        },
+        isActive: true
+      },
+      zoom: {
+        enabled: true,
+        speed: 2,
+        min: 0.1,
+        max: 10,
+        smoothing: 0.1,
+        isActive: true
+      },
+      shake: {
+        enabled: true,
+        intensity: 1,
+        frequency: 10,
+        duration: 0.5,
+        decay: 0.9,
+        isActive: true
+      },
+      effects: [],
+      isActive: true
+    },
+    performance: {
+      id: 'main_camera_performance',
+      fps: 60,
+      frameTime: 16.67,
+      cullingTime: 0,
+      frustumCulling: true,
+      occlusionCulling: false,
+      isActive: true,
+      lastUpdate: new Date()
+    },
+    isActive: true,
+    lastUpdate: new Date()
   },
   
   currentScreen: 'home' as const,
@@ -1828,6 +2164,502 @@ export const useGameStore = create<GameState>()(
 
       processAgentInteraction: (agent1, agent2, interaction) => {
         console.log('Processing agent interaction:', agent1, agent2, interaction);
+      },
+
+      // Phase 6: Advanced Graphics & Visual Effects Action Implementations
+      // Graphics System Actions
+      initializeGraphics: () => {
+        set((state) => ({
+          graphics: {
+            ...state.graphics,
+            isActive: true,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Graphics System Initialized!');
+      },
+
+      updateGraphics: (deltaTime) => {
+        set((state) => ({
+          graphics: {
+            ...state.graphics,
+            lastUpdate: new Date(),
+            performance: {
+              ...state.graphics.performance,
+              fps: Math.round(1000 / deltaTime),
+              frameTime: deltaTime,
+              lastUpdate: new Date()
+            }
+          }
+        }));
+      },
+
+      setGraphicsQuality: (quality) => {
+        set((state) => ({
+          graphics: {
+            ...state.graphics,
+            settings: {
+              ...state.graphics.settings,
+              quality: {
+                ...state.graphics.settings.quality,
+                level: quality
+              }
+            }
+          }
+        }));
+        console.log('Graphics quality set to:', quality);
+      },
+
+      toggleAntiAliasing: (enabled) => {
+        set((state) => ({
+          graphics: {
+            ...state.graphics,
+            settings: {
+              ...state.graphics.settings,
+              antiAliasing: {
+                ...state.graphics.settings.antiAliasing,
+                enabled
+              }
+            }
+          }
+        }));
+        console.log('Anti-aliasing toggled:', enabled);
+      },
+
+      toggleShadows: (enabled) => {
+        set((state) => ({
+          graphics: {
+            ...state.graphics,
+            settings: {
+              ...state.graphics.settings,
+              shadows: {
+                ...state.graphics.settings.shadows,
+                enabled
+              }
+            }
+          }
+        }));
+        console.log('Shadows toggled:', enabled);
+      },
+
+      // Renderer Actions
+      createRenderer: (type) => {
+        set((state) => ({
+          renderer: {
+            ...state.renderer,
+            type: type as any,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Renderer created:', type);
+      },
+
+      updateRenderer: (deltaTime) => {
+        set((state) => ({
+          renderer: {
+            ...state.renderer,
+            lastUpdate: new Date()
+          }
+        }));
+      },
+
+      setRendererSettings: (settings) => {
+        console.log('Renderer settings updated:', settings);
+      },
+
+      // Shader Actions
+      createShader: (name, type, source) => {
+        set((state) => ({
+          shaders: [...state.shaders, {
+            id: `shader_${Date.now()}`,
+            name,
+            type,
+            source,
+            uniforms: [],
+            attributes: [],
+            isActive: true,
+            lastCompiled: new Date()
+          }]
+        }));
+        console.log('Shader created:', name, type);
+      },
+
+      compileShader: (shaderId) => {
+        console.log('Compiling shader:', shaderId);
+      },
+
+      updateShaderUniform: (shaderId, uniformName, value) => {
+        console.log('Updating shader uniform:', shaderId, uniformName, value);
+      },
+
+      // Material Actions
+      createMaterial: (name, type) => {
+        set((state) => ({
+          materials: [...state.materials, {
+            id: `material_${Date.now()}`,
+            name,
+            type: type as any,
+            shader: '',
+            properties: [],
+            textures: [],
+            isActive: true,
+            lastUpdated: new Date()
+          }]
+        }));
+        console.log('Material created:', name, type);
+      },
+
+      updateMaterialProperty: (materialId, propertyName, value) => {
+        console.log('Updating material property:', materialId, propertyName, value);
+      },
+
+      setMaterialTexture: (materialId, textureSlot, textureId) => {
+        console.log('Setting material texture:', materialId, textureSlot, textureId);
+      },
+
+      // Camera Actions
+      createCamera: (name, type) => {
+        set((state) => ({
+          cameras: [...state.cameras, {
+            id: `camera_${Date.now()}`,
+            name,
+            type: type as any,
+            position: { x: 0, y: 0, z: 0 },
+            rotation: { x: 0, y: 0, z: 0 },
+            target: { x: 0, y: 0, z: 0 },
+            fov: 75,
+            near: 0.1,
+            far: 1000,
+            aspect: 16/9,
+            zoom: 1,
+            settings: {
+              id: `camera_settings_${Date.now()}`,
+              movement: { enabled: true, speed: 10, acceleration: 5, deceleration: 5, smoothing: 0.1, isActive: true },
+              rotation: { enabled: true, speed: 5, smoothing: 0.1, limits: { enabled: true, minPitch: -80, maxPitch: 80, minYaw: -180, maxYaw: 180, isActive: true }, isActive: true },
+              zoom: { enabled: true, speed: 2, min: 0.1, max: 10, smoothing: 0.1, isActive: true },
+              shake: { enabled: true, intensity: 1, frequency: 10, duration: 0.5, decay: 0.9, isActive: true },
+              effects: [],
+              isActive: true
+            },
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Camera created:', name, type);
+      },
+
+      setActiveCamera: (cameraId) => {
+        set((state) => ({
+          cameraSystem: {
+            ...state.cameraSystem,
+            activeCamera: cameraId
+          }
+        }));
+        console.log('Active camera set to:', cameraId);
+      },
+
+      moveCamera: (cameraId, position) => {
+        set((state) => ({
+          cameras: state.cameras.map(camera => 
+            camera.id === cameraId 
+              ? { ...camera, position: position as any, lastUpdate: new Date() }
+              : camera
+          )
+        }));
+        console.log('Camera moved:', cameraId, position);
+      },
+
+      rotateCamera: (cameraId, rotation) => {
+        set((state) => ({
+          cameras: state.cameras.map(camera => 
+            camera.id === cameraId 
+              ? { ...camera, rotation: rotation as any, lastUpdate: new Date() }
+              : camera
+          )
+        }));
+        console.log('Camera rotated:', cameraId, rotation);
+      },
+
+      zoomCamera: (cameraId, zoom) => {
+        set((state) => ({
+          cameras: state.cameras.map(camera => 
+            camera.id === cameraId 
+              ? { ...camera, zoom, lastUpdate: new Date() }
+              : camera
+          )
+        }));
+        console.log('Camera zoomed:', cameraId, zoom);
+      },
+
+      // Light Actions
+      createLight: (name, type) => {
+        set((state) => ({
+          lights: [...state.lights, {
+            id: `light_${Date.now()}`,
+            name,
+            type: type as any,
+            position: { x: 0, y: 0, z: 0 },
+            direction: { x: 0, y: -1, z: 0 },
+            color: { x: 1, y: 1, z: 1 },
+            intensity: 1,
+            range: 10,
+            angle: 45,
+            penumbra: 0.1,
+            decay: 2,
+            castShadow: true,
+            shadowSettings: {
+              enabled: true,
+              type: 'soft' as const,
+              resolution: 2048,
+              bias: 0.001,
+              normalBias: 0.02,
+              distance: 100,
+              isActive: true
+            },
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Light created:', name, type);
+      },
+
+      updateLight: (lightId, properties) => {
+        console.log('Light updated:', lightId, properties);
+      },
+
+      setLightIntensity: (lightId, intensity) => {
+        set((state) => ({
+          lights: state.lights.map(light => 
+            light.id === lightId 
+              ? { ...light, intensity, lastUpdate: new Date() }
+              : light
+          )
+        }));
+        console.log('Light intensity set:', lightId, intensity);
+      },
+
+      setLightColor: (lightId, color) => {
+        set((state) => ({
+          lights: state.lights.map(light => 
+            light.id === lightId 
+              ? { ...light, color: color as any, lastUpdate: new Date() }
+              : light
+          )
+        }));
+        console.log('Light color set:', lightId, color);
+      },
+
+      toggleLightShadow: (lightId, enabled) => {
+        set((state) => ({
+          lights: state.lights.map(light => 
+            light.id === lightId 
+              ? { ...light, castShadow: enabled, lastUpdate: new Date() }
+              : light
+          )
+        }));
+        console.log('Light shadow toggled:', lightId, enabled);
+      },
+
+      // Particle System Actions
+      createParticleSystem: (name, type) => {
+        set((state) => ({
+          particleSystems: [...state.particleSystems, {
+            id: `particle_system_${Date.now()}`,
+            name,
+            type: type as any,
+            emitter: {
+              id: `emitter_${Date.now()}`,
+              name: `${name} Emitter`,
+              type: 'point' as const,
+              position: { x: 0, y: 0, z: 0 },
+              direction: { x: 0, y: 1, z: 0 },
+              spread: 0.1,
+              speed: 3,
+              rate: { particlesPerSecond: 10, burst: [], isActive: true },
+              lifetime: { min: 1, max: 3, curve: { type: 'linear' as const, keys: [], isActive: true }, isActive: true },
+              size: { start: 0.1, end: 0.05, curve: { type: 'linear' as const, keys: [], isActive: true }, isActive: true },
+              color: { start: { r: 1, g: 1, b: 1, a: 1 }, end: { r: 1, g: 0, b: 0, a: 0 }, curve: { type: 'linear' as const, keys: [], isActive: true }, isActive: true },
+              rotation: { start: 0, end: 360, curve: { type: 'linear' as const, keys: [], isActive: true }, isActive: true },
+              isActive: true
+            },
+            particles: [],
+            settings: {
+              id: `particle_settings_${Date.now()}`,
+              maxParticles: 100,
+              sorting: { enabled: true, type: 'distance' as const, isActive: true },
+              blending: { enabled: true, type: 'additive' as const, isActive: true },
+              culling: { enabled: true, frustum: true, distance: true, isActive: true },
+              isActive: true
+            },
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Particle system created:', name, type);
+      },
+
+      updateParticleSystem: (systemId, deltaTime) => {
+        set((state) => ({
+          particleSystems: state.particleSystems.map(system => 
+            system.id === systemId 
+              ? { ...system, lastUpdate: new Date() }
+              : system
+          )
+        }));
+      },
+
+      emitParticles: (systemId, count) => {
+        console.log('Emitting particles:', systemId, count);
+      },
+
+      stopParticleSystem: (systemId) => {
+        set((state) => ({
+          particleSystems: state.particleSystems.map(system => 
+            system.id === systemId 
+              ? { ...system, isActive: false, lastUpdate: new Date() }
+              : system
+          )
+        }));
+        console.log('Particle system stopped:', systemId);
+      },
+
+      // Visual Effect Actions
+      createVisualEffect: (name, type) => {
+        set((state) => ({
+          visualEffects: [...state.visualEffects, {
+            id: `visual_effect_${Date.now()}`,
+            name,
+            type: type as any,
+            duration: 1,
+            intensity: 1,
+            parameters: {},
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Visual effect created:', name, type);
+      },
+
+      playVisualEffect: (effectId, intensity, duration) => {
+        console.log('Playing visual effect:', effectId, intensity, duration);
+      },
+
+      stopVisualEffect: (effectId) => {
+        set((state) => ({
+          visualEffects: state.visualEffects.map(effect => 
+            effect.id === effectId 
+              ? { ...effect, isActive: false, lastUpdate: new Date() }
+              : effect
+          )
+        }));
+        console.log('Visual effect stopped:', effectId);
+      },
+
+      // Post-Processing Actions
+      createPostProcessor: (name, type) => {
+        set((state) => ({
+          postProcessors: [...state.postProcessors, {
+            id: `post_processor_${Date.now()}`,
+            name,
+            type: type as any,
+            enabled: true,
+            intensity: 1,
+            parameters: {},
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Post-processor created:', name, type);
+      },
+
+      togglePostProcessor: (processorId, enabled) => {
+        set((state) => ({
+          postProcessors: state.postProcessors.map(processor => 
+            processor.id === processorId 
+              ? { ...processor, enabled, lastUpdate: new Date() }
+              : processor
+          )
+        }));
+        console.log('Post-processor toggled:', processorId, enabled);
+      },
+
+      setPostProcessorIntensity: (processorId, intensity) => {
+        set((state) => ({
+          postProcessors: state.postProcessors.map(processor => 
+            processor.id === processorId 
+              ? { ...processor, intensity, lastUpdate: new Date() }
+              : processor
+          )
+        }));
+        console.log('Post-processor intensity set:', processorId, intensity);
+      },
+
+      // Lighting Actions
+      createLightingSystem: (type) => {
+        set((state) => ({
+          lighting: {
+            ...state.lighting,
+            type: type as any,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Lighting system created:', type);
+      },
+
+      updateLighting: (deltaTime) => {
+        set((state) => ({
+          lighting: {
+            ...state.lighting,
+            lastUpdate: new Date()
+          }
+        }));
+      },
+
+      setAmbientLighting: (color, intensity) => {
+        set((state) => ({
+          lighting: {
+            ...state.lighting,
+            ambient: {
+              ...state.lighting.ambient,
+              color: color as any,
+              intensity
+            }
+          }
+        }));
+        console.log('Ambient lighting set:', color, intensity);
+      },
+
+      setGlobalIllumination: (enabled, quality) => {
+        console.log('Global illumination set:', enabled, quality);
+      },
+
+      // Camera System Actions
+      createCameraSystem: () => {
+        set((state) => ({
+          cameraSystem: {
+            ...state.cameraSystem,
+            isActive: true,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Camera system created');
+      },
+
+      updateCameraSystem: (deltaTime) => {
+        set((state) => ({
+          cameraSystem: {
+            ...state.cameraSystem,
+            lastUpdate: new Date()
+          }
+        }));
+      },
+
+      createCameraController: (cameraId, type) => {
+        console.log('Camera controller created:', cameraId, type);
+      },
+
+      createCameraTransition: (fromCamera, toCamera, duration) => {
+        console.log('Camera transition created:', fromCamera, toCamera, duration);
       },
 
       saveGame: () => {
