@@ -9,6 +9,7 @@ import RobloxGame from './components/RobloxGame';
 import MarioKartGame from './components/MarioKartGame';
 import SimsGame from './components/SimsGame';
 import LoveNikkiGame from './components/LoveNikkiGame';
+import AegisProtocolGame from '../aegis-protocol/page';
 
 const GamePage = () => {
   const params = useParams();
@@ -50,6 +51,8 @@ const GamePage = () => {
         return <SimsGame onClose={handleClose} onScoreUpdate={handleScoreUpdate} />;
       case 'love-nikki':
         return <LoveNikkiGame onClose={handleClose} onScoreUpdate={handleScoreUpdate} />;
+      case 'aegis-protocol':
+        return <AegisProtocolGame />;
       default:
         return (
           <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-100 flex items-center justify-center">
