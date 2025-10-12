@@ -93,7 +93,13 @@ const RecruitmentScreen = () => {
               animate={{ scale: 1, opacity: 1 }}
               className={`bg-gradient-to-br ${getRarityColor(drawnHero.rarity)} rounded-3xl p-8 border-4 border-white/50 text-center max-w-md`}
             >
-              <div className="text-6xl mb-4">👤</div>
+              <div className="w-32 h-32 rounded-2xl overflow-hidden mx-auto mb-4 border-4 border-white/50">
+                <img 
+                  src={`/images/game/Aegis Protocol/${drawnHero.codename.toUpperCase()}.${drawnHero.codename === 'HAVEN' || drawnHero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
+                  alt={drawnHero.codename}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h2 className="text-3xl font-black text-white mb-2">{drawnHero.codename}</h2>
               <p className="text-xl text-white/90 mb-4">{drawnHero.role}</p>
               <div className="bg-black/30 rounded-2xl p-4 mb-4">

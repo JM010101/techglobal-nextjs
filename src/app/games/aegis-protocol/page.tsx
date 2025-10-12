@@ -18,12 +18,17 @@ const AegisProtocolGame = () => {
   }, [loadGame]);
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
+    <div 
+      className="fixed inset-0 overflow-hidden"
+      style={{
+        backgroundImage: 'url(/images/game/Aegis Protocol/dashboard.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Screen Router */}
       <div className="relative z-10 w-full h-full">

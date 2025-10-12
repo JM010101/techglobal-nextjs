@@ -50,8 +50,12 @@ const HeroDetailScreen = () => {
           {/* Hero Card */}
           <div className="bg-gradient-to-br from-cyan-900/50 to-blue-900/50 rounded-3xl p-8 border-2 border-cyan-500/50">
             <div className="flex gap-8">
-              <div className="w-48 h-48 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center">
-                <span className="text-8xl">👤</span>
+              <div className="w-48 h-48 rounded-2xl overflow-hidden border-4 border-cyan-500/50">
+                <img 
+                  src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
+                  alt={hero.codename}
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               <div className="flex-1">

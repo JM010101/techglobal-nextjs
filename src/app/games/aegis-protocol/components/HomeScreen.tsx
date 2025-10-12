@@ -81,12 +81,12 @@ const HomeScreen = () => {
                 >
                   {hero ? (
                     <>
-                      <div className="text-4xl mb-2">
-                        {hero.role === 'Assault' && <Sword className="w-12 h-12 text-cyan-400" />}
-                        {hero.role === 'Support' && <Heart className="w-12 h-12 text-pink-400" />}
-                        {hero.role === 'Demolition' && <Zap className="w-12 h-12 text-orange-400" />}
-                        {hero.role === 'Marksman' && <Trophy className="w-12 h-12 text-purple-400" />}
-                        {hero.role === 'Controller' && <Shield className="w-12 h-12 text-green-400" />}
+                      <div className="w-16 h-16 rounded-xl overflow-hidden mb-2 border-2 border-cyan-500/50">
+                        <img 
+                          src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
+                          alt={hero.codename}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <h3 className="text-lg font-bold text-white mb-1">{hero.codename}</h3>
                       <p className="text-sm text-gray-400">{hero.role}</p>

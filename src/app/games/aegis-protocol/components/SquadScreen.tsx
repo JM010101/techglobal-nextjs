@@ -59,7 +59,13 @@ const SquadScreen = () => {
                       >
                         <X className="w-4 h-4" />
                       </button>
-                      <div className="text-4xl mb-2">👤</div>
+                      <div className="w-16 h-16 rounded-xl overflow-hidden mb-2 border-2 border-cyan-500/50">
+                        <img 
+                          src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
+                          alt={hero.codename}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                       <h3 className="text-lg font-bold text-white">{hero.codename}</h3>
                       <p className="text-sm text-gray-400">{hero.role}</p>
                       <p className="text-xs text-cyan-400 mt-1">Lv.{hero.level}</p>
@@ -92,7 +98,13 @@ const SquadScreen = () => {
                       : 'bg-gray-800/50 border-gray-600 hover:border-cyan-500'
                   }`}
                 >
-                  <div className="text-3xl mb-2">👤</div>
+                  <div className="w-12 h-12 rounded-lg overflow-hidden mb-2 border border-gray-500/50">
+                    <img 
+                      src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
+                      alt={hero.codename}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <h3 className="text-sm font-bold text-white">{hero.codename}</h3>
                   <p className="text-xs text-gray-400">{hero.role}</p>
                   <p className="text-xs text-cyan-400">Lv.{hero.level}</p>
