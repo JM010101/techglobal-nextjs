@@ -98,7 +98,9 @@ const AegisProtocolGameComponent = () => {
 
   useEffect(() => {
     loadGame();
-  }, [loadGame]);
+    console.log('Aegis Protocol Game Component loaded!');
+    console.log('Current screen:', currentScreen);
+  }, [loadGame, currentScreen]);
 
   return (
     <div 
@@ -126,6 +128,11 @@ const AegisProtocolGameComponent = () => {
         {currentScreen === 'base-management' && <BaseManagementScreen />}
         {currentScreen === 'recruitment-event' && <RecruitmentEventScreen />}
         {currentScreen === 'story' && <StoryScreen />}
+        
+        {/* Debug info */}
+        <div className="absolute top-4 left-4 bg-black/50 text-white p-2 rounded text-xs">
+          Debug: Current Screen = {currentScreen}
+        </div>
       </div>
     </div>
   );
