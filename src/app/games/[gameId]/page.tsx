@@ -95,12 +95,14 @@ const GamePage = () => {
 const AegisProtocolGameComponent = () => {
   const currentScreen = useGameStore((state) => state.currentScreen);
   const loadGame = useGameStore((state) => state.loadGame);
+  const setCurrentScreen = useGameStore((state) => state.setCurrentScreen);
 
   useEffect(() => {
     loadGame();
+    // Force reset to home screen when Aegis Protocol game loads
+    setCurrentScreen('home');
     console.log('Aegis Protocol Game Component loaded!');
-    console.log('Current screen:', currentScreen);
-  }, [loadGame, currentScreen]);
+  }, [loadGame, setCurrentScreen]);
 
   return (
     <div 
@@ -128,11 +130,6 @@ const AegisProtocolGameComponent = () => {
         {currentScreen === 'base-management' && <BaseManagementScreen />}
         {currentScreen === 'recruitment-event' && <RecruitmentEventScreen />}
         {currentScreen === 'story' && <StoryScreen />}
-        
-        {/* Debug info */}
-        <div className="absolute top-4 left-4 bg-black/50 text-white p-2 rounded text-xs">
-          Debug: Current Screen = {currentScreen}
-        </div>
       </div>
     </div>
   );
