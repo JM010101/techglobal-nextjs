@@ -5,6 +5,7 @@ import { useGameStore } from '@/store/gameStore';
 import { ArrowLeft, User, Brain, MessageCircle, CheckCircle, XCircle, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import recruitmentEventsData from '@/lib/data/recruitmentEvents.json';
+import { RecruitmentEvent, InterviewOption, PersonalityOption } from '@/lib/models/RecruitmentEvent';
 
 const RecruitmentEventScreen = () => {
   const { 
@@ -14,7 +15,7 @@ const RecruitmentEventScreen = () => {
     completedMissions 
   } = useGameStore();
   
-  const [currentEvent, setCurrentEvent] = useState<any>(null);
+  const [currentEvent, setCurrentEvent] = useState<RecruitmentEvent | null>(null);
   const [currentPhase, setCurrentPhase] = useState<'intro' | 'interview' | 'personality' | 'result'>('intro');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [personalityTraits, setPersonalityTraits] = useState<Record<string, number>>({});
@@ -32,12 +33,11 @@ const RecruitmentEventScreen = () => {
     
     if (availableEvents.length > 0) {
       const randomEvent = availableEvents[Math.floor(Math.random() * availableEvents.length)];
-      setCurrentEvent(randomEvent);
+      setCurrentEvent(randomEvent as unknown as RecruitmentEvent);
     }
   }, [baseFacilities, completedMissions]);
 
-  const handleInterviewAnswer = (questionId: string, answer: any) => {
-    setSelectedAnswers(prev => ({ ...prev, [questionId]: answer }));
+  const handleInterviewAnswer = (questionId: string, answer: InterviewOption) => {
     
     // Calculate personality impact
     const impact = answer.personalityImpact || {};
@@ -50,7 +50,7 @@ const RecruitmentEventScreen = () => {
     });
     
     // Move to next question or phase
-    if (currentQuestion < currentEvent.interviewQuestions.length - 1) {
+    if (currentEvent && currentQuestion < currentEvent.interviewQuestions.length - 1) {
       setCurrentQuestion(prev => prev + 1);
     } else {
       setCurrentPhase('personality');
@@ -58,8 +58,7 @@ const RecruitmentEventScreen = () => {
     }
   };
 
-  const handlePersonalityAnswer = (questionId: string, answer: any) => {
-    setSelectedAnswers(prev => ({ ...prev, [questionId]: answer }));
+  const handlePersonalityAnswer = (questionId: string, answer: PersonalityOption) => {
     
     // Update personality traits based on answer
     const traits = answer.traits || [];
@@ -72,7 +71,7 @@ const RecruitmentEventScreen = () => {
     });
     
     // Move to next question or result
-    if (currentQuestion < currentEvent.personalityTest.questions.length - 1) {
+    if (currentEvent && currentQuestion < currentEvent.personalityTest.questions.length - 1) {
       setCurrentQuestion(prev => prev + 1);
     } else {
       calculateResults();
@@ -80,12 +79,14 @@ const RecruitmentEventScreen = () => {
   };
 
   const calculateResults = () => {
+    if (!currentEvent) return;
+    
     // Calculate interview score based on personality alignment
     const candidatePersonality = currentEvent.candidate.personality;
     let interviewScore = 0;
     
     Object.entries(personalityTraits).forEach(([trait, value]) => {
-      const candidateValue = candidatePersonality[trait] || 5;
+      const candidateValue = (candidatePersonality as any)[trait] || 5;
       const alignment = Math.abs(value - candidateValue);
       interviewScore += Math.max(0, 10 - alignment);
     });
@@ -270,7 +271,7 @@ const RecruitmentEventScreen = () => {
                   </h3>
                   
                   <div className="space-y-3">
-                    {currentEvent.interviewQuestions[currentQuestion].options.map((option: any, index: number) => (
+                    {currentEvent.interviewQuestions[currentQuestion].options.map((option: InterviewOption, index: number) => (
                       <button
                         key={index}
                         onClick={() => handleInterviewAnswer(
@@ -313,7 +314,7 @@ const RecruitmentEventScreen = () => {
                   </h3>
                   
                   <div className="space-y-3">
-                    {currentEvent.personalityTest.questions[currentQuestion].options.map((option: any, index: number) => (
+                    {currentEvent.personalityTest.questions[currentQuestion].options.map((option: PersonalityOption, index: number) => (
                       <button
                         key={index}
                         onClick={() => handlePersonalityAnswer(
