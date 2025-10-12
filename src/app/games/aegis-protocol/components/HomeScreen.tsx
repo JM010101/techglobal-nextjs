@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useGameStore } from '@/store/gameStore';
-import { Zap, Users, Trophy, ShoppingBag, X, Sword, Heart, Shield, MessageCircle, BookOpen, Home, UserPlus } from 'lucide-react';
+import { Zap, Users, Trophy, ShoppingBag, X, MessageCircle, BookOpen, Home, UserPlus } from 'lucide-react';
 import chaptersData from '@/data/chapters.json';
 
 const HomeScreen = () => {
@@ -82,10 +83,12 @@ const HomeScreen = () => {
                   {hero ? (
                     <>
                       <div className="w-16 h-16 rounded-xl overflow-hidden mb-2 border-2 border-cyan-500/50">
-                        <img 
+                        <Image 
                           src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
                           alt={hero.codename}
-                          className="w-full h-full object-cover"
+                          width={64}
+                          height={64}
+                          className="object-cover"
                         />
                       </div>
                       <h3 className="text-lg font-bold text-white mb-1">{hero.codename}</h3>

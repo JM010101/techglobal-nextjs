@@ -1,13 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { 
-  Timer, 
-  Play, 
-  Trophy, 
-  Users, 
-  Target,
   X,
 } from 'lucide-react';
 
@@ -313,7 +308,7 @@ const GridTacticsGame = () => {
     setCurrentTurn(newTurn);
   };
 
-  const checkGameOver = () => {
+  const checkGameOver = useCallback(() => {
     const maleAlive = cards.filter(c => c.team === 'male' && !c.isDead).length;
     const femaleAlive = cards.filter(c => c.team === 'female' && !c.isDead).length;
 
@@ -330,7 +325,7 @@ const GridTacticsGame = () => {
       setWinner('male');
       setScore(score + 200);
     }
-  };
+  }, [cards, score]);
 
   // Debug: Log game over state changes
   useEffect(() => {
@@ -345,7 +340,7 @@ const GridTacticsGame = () => {
       console.log('Cards changed, checking game over...');
       checkGameOver();
     }
-  }, [cards, gameStarted, gameOver]);
+  }, [cards, gameStarted, gameOver, checkGameOver]);
 
   const getCellContent = (row: number, col: number) => {
     const cardId = grid[row][col];
@@ -360,20 +355,16 @@ const GridTacticsGame = () => {
       // Closed card - show shield image with matching background
       return (
         <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center relative overflow-hidden">
-          <img 
+          <Image 
             src="/images/game/grid_tactical/shield.jpg" 
             alt="Shield" 
-            className="w-full h-full object-cover opacity-90"
+            fill
+            className="object-cover opacity-90"
           />
         </div>
       );
     } else {
       // Open card - show character image with stats
-      const getHealthColor = (health: number) => {
-        if (health >= 6) return 'text-green-400';
-        if (health >= 4) return 'text-yellow-400';
-        return 'text-red-400';
-      };
 
       const getAttackColor = (attack: number) => {
         if (attack >= 3) return 'text-red-400';
@@ -387,10 +378,11 @@ const GridTacticsGame = () => {
 
       return (
         <div className={`w-full h-full flex flex-col items-center justify-center ${getTeamColor(card.team)} rounded-lg relative overflow-hidden`}>
-          <img 
+          <Image 
             src={`/images/game/grid_tactical/${card.team}/${String(card.imageIndex).padStart(5, '0')}.jpg`}
             alt={`${card.team} character`}
-            className="w-full h-full object-cover opacity-90"
+            fill
+            className="object-cover opacity-90"
           />
           {/* Team Logo in top left corner */}
           <div className="absolute top-1 left-1 bg-black bg-opacity-80 rounded-full p-1">

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useGameStore } from '@/store/gameStore';
 import { ArrowLeft, Plus, X } from 'lucide-react';
 
@@ -60,10 +61,12 @@ const SquadScreen = () => {
                         <X className="w-4 h-4" />
                       </button>
                       <div className="w-16 h-16 rounded-xl overflow-hidden mb-2 border-2 border-cyan-500/50">
-                        <img 
+                        <Image 
                           src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
                           alt={hero.codename}
-                          className="w-full h-full object-cover"
+                          width={64}
+                          height={64}
+                          className="object-cover"
                         />
                       </div>
                       <h3 className="text-lg font-bold text-white">{hero.codename}</h3>
@@ -99,10 +102,12 @@ const SquadScreen = () => {
                   }`}
                 >
                   <div className="w-12 h-12 rounded-lg overflow-hidden mb-2 border border-gray-500/50">
-                    <img 
+                    <Image 
                       src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
                       alt={hero.codename}
-                      className="w-full h-full object-cover"
+                      width={48}
+                      height={48}
+                      className="object-cover"
                     />
                   </div>
                   <h3 className="text-sm font-bold text-white">{hero.codename}</h3>

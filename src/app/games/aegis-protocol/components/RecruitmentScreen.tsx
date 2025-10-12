@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { useGameStore } from '@/store/gameStore';
 import { ArrowLeft, Zap, Sparkles } from 'lucide-react';
 
@@ -94,10 +95,12 @@ const RecruitmentScreen = () => {
               className={`bg-gradient-to-br ${getRarityColor(drawnHero.rarity)} rounded-3xl p-8 border-4 border-white/50 text-center max-w-md`}
             >
               <div className="w-32 h-32 rounded-2xl overflow-hidden mx-auto mb-4 border-4 border-white/50">
-                <img 
+                <Image 
                   src={`/images/game/Aegis Protocol/${drawnHero.codename.toUpperCase()}.${drawnHero.codename === 'HAVEN' || drawnHero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
                   alt={drawnHero.codename}
-                  className="w-full h-full object-cover"
+                  width={128}
+                  height={128}
+                  className="object-cover"
                 />
               </div>
               <h2 className="text-3xl font-black text-white mb-2">{drawnHero.codename}</h2>

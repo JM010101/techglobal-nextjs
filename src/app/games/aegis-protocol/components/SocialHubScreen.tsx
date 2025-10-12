@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useGameStore } from '@/store/gameStore';
-import { ArrowLeft, Heart, Users, MessageCircle, Activity } from 'lucide-react';
+import { ArrowLeft, Users, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
 const SocialHubScreen = () => {
@@ -85,10 +86,12 @@ const SocialHubScreen = () => {
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-pink-500/50">
-                      <img 
+                      <Image 
                         src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
                         alt={hero.codename}
-                        className="w-full h-full object-cover"
+                        width={64}
+                        height={64}
+                        className="object-cover"
                       />
                     </div>
                     <div className="text-left">
@@ -122,10 +125,12 @@ const SocialHubScreen = () => {
               </button>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl overflow-hidden border-2 border-pink-500/50">
-                  <img 
+                  <Image 
                     src={`/images/game/Aegis Protocol/${ownedHeroes.find(h => h.id === selectedHero)?.codename.toUpperCase()}.${ownedHeroes.find(h => h.id === selectedHero)?.codename === 'HAVEN' || ownedHeroes.find(h => h.id === selectedHero)?.codename === 'EMBER' ? 'webp' : 'jpg'}`}
-                    alt={ownedHeroes.find(h => h.id === selectedHero)?.codename}
-                    className="w-full h-full object-cover"
+                    alt={ownedHeroes.find(h => h.id === selectedHero)?.codename || 'Hero'}
+                    width={48}
+                    height={48}
+                    className="object-cover"
                   />
                 </div>
                 <div>
@@ -160,10 +165,12 @@ const SocialHubScreen = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 rounded-xl overflow-hidden border-2 border-gray-500/50">
-                            <img 
+                            <Image 
                               src={`/images/game/Aegis Protocol/${otherHero.codename.toUpperCase()}.${otherHero.codename === 'HAVEN' || otherHero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
                               alt={otherHero.codename}
-                              className="w-full h-full object-cover"
+                              width={48}
+                              height={48}
+                              className="object-cover"
                             />
                           </div>
                           <div>

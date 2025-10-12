@@ -723,15 +723,15 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     setDragOffset(0);
   };
 
-  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleDragMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return;
     
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
     const diff = clientX - startX;
     setDragOffset(diff);
-  };
+  }, [isDragging, startX]);
 
-  const handleDragEnd = () => {
+  const handleDragEnd = useCallback(() => {
     if (!isDragging) return;
     
     setIsDragging(false);
@@ -748,7 +748,7 @@ const Portfolio = ({ limit }: PortfolioProps) => {
     }
     
     setDragOffset(0);
-  };
+  }, [isDragging, dragOffset, currentIndex, maxIndex]);
 
   // Mouse events
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
@@ -763,17 +763,17 @@ const Portfolio = ({ limit }: PortfolioProps) => {
       clientX: e.clientX
     } as unknown as React.MouseEvent;
     handleDragMove(syntheticEvent);
-  }, [isDragging, startX, handleDragMove]);
+  }, [handleDragMove]);
 
   const handleMouseUp = useCallback(() => {
     handleDragEnd();
-  }, [isDragging, dragOffset, currentIndex, maxIndex, handleDragEnd]);
+  }, [handleDragEnd]);
 
   const handleMouseLeave = useCallback(() => {
     if (isDragging) {
       handleDragEnd();
     }
-  }, [isDragging, dragOffset, currentIndex, maxIndex, handleDragEnd]);
+  }, [isDragging, handleDragEnd]);
 
   // Touch events
   const handleTouchStart = (e: React.TouchEvent) => {

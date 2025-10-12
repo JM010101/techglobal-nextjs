@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useGameStore } from '@/store/gameStore';
-import { ArrowLeft, BookOpen, Target, TrendingUp, Heart, Users, Zap } from 'lucide-react';
+import { ArrowLeft, BookOpen, Target, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 
 const CharacterDevelopmentScreen = () => {
@@ -88,10 +89,12 @@ const CharacterDevelopmentScreen = () => {
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-purple-500/50">
-                        <img 
+                        <Image 
                           src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
                           alt={hero.codename}
-                          className="w-full h-full object-cover"
+                          width={64}
+                          height={64}
+                          className="object-cover"
                         />
                       </div>
                       <div className="text-left flex-1">
@@ -141,10 +144,12 @@ const CharacterDevelopmentScreen = () => {
               </button>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl overflow-hidden border-2 border-purple-500/50">
-                  <img 
+                  <Image 
                     src={`/images/game/Aegis Protocol/${ownedHeroes.find(h => h.id === selectedHero)?.codename.toUpperCase()}.${ownedHeroes.find(h => h.id === selectedHero)?.codename === 'HAVEN' || ownedHeroes.find(h => h.id === selectedHero)?.codename === 'EMBER' ? 'webp' : 'jpg'}`}
-                    alt={ownedHeroes.find(h => h.id === selectedHero)?.codename}
-                    className="w-full h-full object-cover"
+                    alt={ownedHeroes.find(h => h.id === selectedHero)?.codename || 'Hero'}
+                    width={48}
+                    height={48}
+                    className="object-cover"
                   />
                 </div>
                 <div>

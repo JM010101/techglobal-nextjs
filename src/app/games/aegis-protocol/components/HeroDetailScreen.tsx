@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useGameStore } from '@/store/gameStore';
 import { ArrowLeft, Heart, Sword, Shield, Zap } from 'lucide-react';
 
@@ -51,10 +52,12 @@ const HeroDetailScreen = () => {
           <div className="bg-gradient-to-br from-cyan-900/50 to-blue-900/50 rounded-3xl p-8 border-2 border-cyan-500/50">
             <div className="flex gap-8">
               <div className="w-48 h-48 rounded-2xl overflow-hidden border-4 border-cyan-500/50">
-                <img 
+                <Image 
                   src={`/images/game/Aegis Protocol/${hero.codename.toUpperCase()}.${hero.codename === 'HAVEN' || hero.codename === 'EMBER' ? 'webp' : 'jpg'}`}
                   alt={hero.codename}
-                  className="w-full h-full object-cover"
+                  width={192}
+                  height={192}
+                  className="object-cover"
                 />
               </div>
               
