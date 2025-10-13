@@ -7,7 +7,6 @@ import { CombatState, CombatAction, CoverPosition, BattlefieldTile } from '@/lib
 import { Equipment, Weapon, Armor, Mod } from '@/lib/models/Equipment';
 import { Mission, CampaignChapter, MissionObjective } from '@/lib/models/Mission';
 import { UIState, Notification, Modal, Animation } from '@/lib/models/UI';
-import { AudioState, AudioTrack, SoundEffect, VoiceLine } from '@/lib/models/Audio';
 import { SocialState, Friend, Guild, ChatRoom, Achievement } from '@/lib/models/Social';
 import { CloudState, CloudAccount, CloudBackup, CloudSync } from '@/lib/models/Cloud';
 import { AISystem, BehaviorTree, LearningModel, DecisionEngine, AdaptationSystem } from '@/lib/models/AI';
@@ -19,6 +18,7 @@ import { GraphicsSystem, Renderer, Shader, Material, Camera, Light, Mesh, Partic
 import { ParticleSystem as ParticleSystemModel, ParticleEmitter, ParticleEffect, ParticlePreset } from '@/lib/models/Particles';
 import { LightingSystem, Light as LightModel, ShadowSystem, AmbientLighting, VolumetricLighting, GodRays } from '@/lib/models/Lighting';
 import { CameraSystem, Camera as CameraModel, CameraController, CameraTransition, CameraPath, CameraCutscene } from '@/lib/models/Camera';
+import { AudioSystem, AudioState, AudioSettings, AudioTrack, SoundEffect, AmbientSound, VoiceLine, AudioEvent, AudioAnalytics, EqualizerSettings, Playlist } from '@/lib/models/Audio';
 
 export interface Hero {
   id: string;
@@ -139,7 +139,6 @@ export interface GameState {
   missions: Mission[];
   campaign: CampaignChapter[];
   ui: UIState;
-  audio: AudioState;
   social: SocialState;
   cloud: CloudState;
   
@@ -167,8 +166,21 @@ export interface GameState {
   lighting: LightingSystem;
   cameraSystem: CameraSystem;
   
+  // Phase 7: Advanced Audio & Music Systems
+  audio: AudioSystem;
+  audioStates: AudioState[];
+  audioSettings: AudioSettings;
+  audioTracks: AudioTrack[];
+  soundEffects: SoundEffect[];
+  ambientSounds: AmbientSound[];
+  voiceLines: VoiceLine[];
+  audioEvents: AudioEvent[];
+  audioAnalytics: AudioAnalytics[];
+  equalizer: EqualizerSettings;
+  playlists: Playlist[];
+  
   // UI State
-  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event' | 'story' | 'ai-management' | 'graphics-management';
+  currentScreen: 'home' | 'squad' | 'battle' | 'recruitment' | 'hero-detail' | 'shop' | 'dialogue' | 'social' | 'character-development' | 'base-management' | 'recruitment-event' | 'story' | 'ai-management' | 'graphics-management' | 'audio-management';
   selectedHeroForDetail: string | null;
   
   // Actions
@@ -255,8 +267,6 @@ export interface GameState {
   // Audio Actions
   playMusic: (trackId: string) => void;
   stopMusic: () => void;
-  playSoundEffect: (effectId: string) => void;
-  playVoiceLine: (lineId: string) => void;
   setAudioVolume: (type: string, volume: number) => void;
   
   // Social Actions
@@ -370,6 +380,53 @@ export interface GameState {
   updateCameraSystem: (deltaTime: number) => void;
   createCameraController: (cameraId: string, type: 'free' | 'orbit' | 'first_person' | 'third_person' | 'cinematic' | 'follow') => void;
   createCameraTransition: (fromCamera: string, toCamera: string, duration: number) => void;
+  
+  // Phase 7: Advanced Audio & Music Systems Actions
+  initializeAudio: () => void;
+  updateAudio: (deltaTime: number) => void;
+  setMasterVolume: (volume: number) => void;
+  setMusicVolume: (volume: number) => void;
+  setSFXVolume: (volume: number) => void;
+  setVoiceVolume: (volume: number) => void;
+  setAmbientVolume: (volume: number) => void;
+  setUIVolume: (volume: number) => void;
+  setAudioQuality: (quality: 'low' | 'medium' | 'high' | 'ultra') => void;
+  toggleSpatialAudio: (enabled: boolean) => void;
+  toggleReverb: (enabled: boolean) => void;
+  createAudioTrack: (name: string, artist: string, filePath: string) => void;
+  playAudioTrack: (trackId: string) => void;
+  pauseAudioTrack: (trackId: string) => void;
+  stopAudioTrack: (trackId: string) => void;
+  setTrackVolume: (trackId: string, volume: number) => void;
+  setTrackPitch: (trackId: string, pitch: number) => void;
+  setTrackPan: (trackId: string, pan: number) => void;
+  toggleTrackLoop: (trackId: string, loop: boolean) => void;
+  createPlaylist: (name: string, description: string) => void;
+  addTrackToPlaylist: (playlistId: string, trackId: string) => void;
+  removeTrackFromPlaylist: (playlistId: string, trackId: string) => void;
+  setPlaylistShuffle: (playlistId: string, shuffle: boolean) => void;
+  setPlaylistRepeat: (playlistId: string, repeat: 'none' | 'one' | 'all') => void;
+  playPlaylist: (playlistId: string) => void;
+  createSoundEffect: (name: string, category: string, filePath: string) => void;
+  playSoundEffect: (effectId: string, volume?: number, pitch?: number) => void;
+  stopSoundEffect: (effectId: string) => void;
+  setSoundEffectVolume: (effectId: string, volume: number) => void;
+  setSoundEffectPitch: (effectId: string, pitch: number) => void;
+  createAmbientSound: (name: string, category: string, filePath: string) => void;
+  playAmbientSound: (soundId: string, volume?: number) => void;
+  stopAmbientSound: (soundId: string) => void;
+  setAmbientSoundVolume: (soundId: string, volume: number) => void;
+  createVoiceLine: (characterId: string, text: string, emotion: string, context: string) => void;
+  playVoiceLine: (voiceId: string, volume?: number) => void;
+  stopVoiceLine: (voiceId: string) => void;
+  setVoiceLineVolume: (voiceId: string, volume: number) => void;
+  createAudioEvent: (name: string, type: string, target: string, parameters: Record<string, unknown>) => void;
+  triggerAudioEvent: (eventId: string) => void;
+  setEqualizerPreset: (presetId: string) => void;
+  setEqualizerBand: (bandId: string, gain: number) => void;
+  createEqualizerPreset: (name: string, description: string, bands: unknown[]) => void;
+  setAudioAnalytics: (enabled: boolean) => void;
+  recordAudioEvent: (event: string, audioId: string, action: string, duration: number) => void;
   
   saveGame: () => void;
   loadGame: () => void;
@@ -519,28 +576,6 @@ const initialState = {
       frameRateLimit: 60,
       memoryLimit: 1024
     }
-  },
-  audio: {
-    isPlaying: false,
-    currentTrack: null,
-    volume: { master: 80, music: 70, sfx: 80, voice: 90, ambient: 60 },
-    settings: {
-      quality: 'high' as const,
-      compression: true,
-      spatialAudio: false,
-      reverb: false,
-      equalizer: { enabled: false, presets: [], currentPreset: 'flat', custom: [] },
-      crossfade: true,
-      fadeTime: 2000,
-      loopMusic: true,
-      randomPlay: false
-    },
-    playlists: [],
-    soundEffects: [],
-    ambientSounds: [],
-    voiceLines: [],
-    isMuted: false,
-    isPaused: false
   },
   social: {
     friends: [],
@@ -1053,6 +1088,96 @@ const initialState = {
     isActive: true,
     lastUpdate: new Date()
   },
+  
+  // Phase 7: Advanced Audio & Music Systems
+  audio: {
+    id: 'audio_system_1',
+    name: 'Main Audio System',
+    version: '1.0.0',
+    managers: [],
+    globalSettings: {
+      masterVolume: 0.8,
+      musicVolume: 0.7,
+      sfxVolume: 0.8,
+      voiceVolume: 0.9,
+      ambientVolume: 0.6,
+      uiVolume: 0.7,
+      quality: 'high' as const,
+      sampleRate: 44100,
+      bitDepth: 16,
+      channels: 2,
+      compression: true,
+      spatialAudio: true,
+      reverb: true,
+      equalizer: {
+        id: 'equalizer_1',
+        name: 'Main Equalizer',
+        presets: [],
+        activePreset: '',
+        customBands: [],
+        isActive: true,
+        lastUpdate: new Date()
+      },
+      isActive: true,
+      lastUpdate: new Date()
+    },
+    equalizer: {
+      id: 'equalizer_1',
+      name: 'Main Equalizer',
+      presets: [],
+      activePreset: '',
+      customBands: [],
+      isActive: true,
+      lastUpdate: new Date()
+    },
+    playlists: [],
+    analytics: [],
+    isActive: true,
+    lastUpdate: new Date()
+  },
+  audioStates: [],
+  audioSettings: {
+    masterVolume: 0.8,
+    musicVolume: 0.7,
+    sfxVolume: 0.8,
+    voiceVolume: 0.9,
+    ambientVolume: 0.6,
+    uiVolume: 0.7,
+    quality: 'high' as const,
+    sampleRate: 44100,
+    bitDepth: 16,
+    channels: 2,
+    compression: true,
+    spatialAudio: true,
+    reverb: true,
+    equalizer: {
+      id: 'equalizer_1',
+      name: 'Main Equalizer',
+      presets: [],
+      activePreset: '',
+      customBands: [],
+      isActive: true,
+      lastUpdate: new Date()
+    },
+    isActive: true,
+    lastUpdate: new Date()
+  },
+  audioTracks: [],
+  soundEffects: [],
+  ambientSounds: [],
+  voiceLines: [],
+  audioEvents: [],
+  audioAnalytics: [],
+  equalizer: {
+    id: 'equalizer_1',
+    name: 'Main Equalizer',
+    presets: [],
+    activePreset: '',
+    customBands: [],
+    isActive: true,
+    lastUpdate: new Date()
+  },
+  playlists: [],
   
   currentScreen: 'home' as const,
   selectedHeroForDetail: null,
@@ -1714,22 +1839,12 @@ export const useGameStore = create<GameState>()(
         }));
       },
 
-      playSoundEffect: (effectId) => {
-        console.log('Playing sound effect:', effectId);
-      },
-
-      playVoiceLine: (lineId) => {
-        console.log('Playing voice line:', lineId);
-      },
 
       setAudioVolume: (type, volume) => {
         set((state) => ({
-          audio: {
-            ...state.audio,
-            volume: {
-              ...state.audio.volume,
-              [type]: volume
-            }
+          audioSettings: {
+            ...state.audioSettings,
+            [type]: volume
           }
         }));
       },
@@ -2660,6 +2775,372 @@ export const useGameStore = create<GameState>()(
 
       createCameraTransition: (fromCamera, toCamera, duration) => {
         console.log('Camera transition created:', fromCamera, toCamera, duration);
+      },
+      
+      // Phase 7: Advanced Audio & Music Systems Actions
+      initializeAudio: () => {
+        console.log('Audio system initialized');
+      },
+      
+      updateAudio: (deltaTime) => {
+        console.log('Audio system updated:', deltaTime);
+      },
+      
+      setMasterVolume: (volume) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            masterVolume: volume,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Master volume set:', volume);
+      },
+      
+      setMusicVolume: (volume) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            musicVolume: volume,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Music volume set:', volume);
+      },
+      
+      setSFXVolume: (volume) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            sfxVolume: volume,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('SFX volume set:', volume);
+      },
+      
+      setVoiceVolume: (volume) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            voiceVolume: volume,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Voice volume set:', volume);
+      },
+      
+      setAmbientVolume: (volume) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            ambientVolume: volume,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Ambient volume set:', volume);
+      },
+      
+      setUIVolume: (volume) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            uiVolume: volume,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('UI volume set:', volume);
+      },
+      
+      setAudioQuality: (quality) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            quality: quality as 'low' | 'medium' | 'high' | 'ultra',
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Audio quality set:', quality);
+      },
+      
+      toggleSpatialAudio: (enabled) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            spatialAudio: enabled,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Spatial audio toggled:', enabled);
+      },
+      
+      toggleReverb: (enabled) => {
+        set((state) => ({
+          audioSettings: {
+            ...state.audioSettings,
+            reverb: enabled,
+            lastUpdate: new Date()
+          }
+        }));
+        console.log('Reverb toggled:', enabled);
+      },
+      
+      createAudioTrack: (name, artist, filePath) => {
+        set((state) => ({
+          audioTracks: [...state.audioTracks, {
+            id: `track_${Date.now()}`,
+            name,
+            artist,
+            album: '',
+            duration: 0,
+            genre: '',
+            mood: '',
+            intensity: 0,
+            bpm: 0,
+            key: '',
+            tags: [],
+            filePath,
+            format: 'mp3' as const,
+            bitrate: 320,
+            sampleRate: 44100,
+            channels: 2,
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Audio track created:', name, artist, filePath);
+      },
+      
+      playAudioTrack: (trackId) => {
+        console.log('Playing audio track:', trackId);
+      },
+      
+      pauseAudioTrack: (trackId) => {
+        console.log('Pausing audio track:', trackId);
+      },
+      
+      stopAudioTrack: (trackId) => {
+        console.log('Stopping audio track:', trackId);
+      },
+      
+      setTrackVolume: (trackId, volume) => {
+        console.log('Track volume set:', trackId, volume);
+      },
+      
+      setTrackPitch: (trackId, pitch) => {
+        console.log('Track pitch set:', trackId, pitch);
+      },
+      
+      setTrackPan: (trackId, pan) => {
+        console.log('Track pan set:', trackId, pan);
+      },
+      
+      toggleTrackLoop: (trackId, loop) => {
+        console.log('Track loop toggled:', trackId, loop);
+      },
+      
+      createPlaylist: (name, description) => {
+        set((state) => ({
+          playlists: [...state.playlists, {
+            id: `playlist_${Date.now()}`,
+            name,
+            description,
+            tracks: [],
+            shuffle: false,
+            repeat: 'none' as const,
+            currentTrack: 0,
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Playlist created:', name, description);
+      },
+      
+      addTrackToPlaylist: (playlistId, trackId) => {
+        console.log('Track added to playlist:', playlistId, trackId);
+      },
+      
+      removeTrackFromPlaylist: (playlistId, trackId) => {
+        console.log('Track removed from playlist:', playlistId, trackId);
+      },
+      
+      setPlaylistShuffle: (playlistId, shuffle) => {
+        console.log('Playlist shuffle set:', playlistId, shuffle);
+      },
+      
+      setPlaylistRepeat: (playlistId, repeat) => {
+        console.log('Playlist repeat set:', playlistId, repeat);
+      },
+      
+      playPlaylist: (playlistId) => {
+        console.log('Playing playlist:', playlistId);
+      },
+      
+      createSoundEffect: (name, category, filePath) => {
+        set((state) => ({
+          soundEffects: [...state.soundEffects, {
+            id: `sfx_${Date.now()}`,
+            name,
+            category: category as 'weapon' | 'explosion' | 'impact' | 'movement' | 'ui' | 'environment' | 'character',
+            subcategory: '',
+            intensity: 1,
+            distance: 10,
+            direction: { x: 0, y: 0, z: 0 },
+            reverb: false,
+            echo: false,
+            distortion: false,
+            filters: [],
+            triggers: [],
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Sound effect created:', name, category, filePath);
+      },
+      
+      playSoundEffect: (effectId: string, volume?: number, pitch?: number) => {
+        console.log('Playing sound effect:', effectId, volume, pitch);
+      },
+      
+      stopSoundEffect: (effectId) => {
+        console.log('Stopping sound effect:', effectId);
+      },
+      
+      setSoundEffectVolume: (effectId, volume) => {
+        console.log('Sound effect volume set:', effectId, volume);
+      },
+      
+      setSoundEffectPitch: (effectId, pitch) => {
+        console.log('Sound effect pitch set:', effectId, pitch);
+      },
+      
+      createAmbientSound: (name, category, filePath) => {
+        set((state) => ({
+          ambientSounds: [...state.ambientSounds, {
+            id: `ambient_${Date.now()}`,
+            name,
+            category: category as 'nature' | 'urban' | 'industrial' | 'space' | 'fantasy' | 'sci-fi',
+            intensity: 1,
+            radius: 20,
+            falloff: 1,
+            loop: true,
+            randomize: false,
+            layers: [],
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Ambient sound created:', name, category, filePath);
+      },
+      
+      playAmbientSound: (soundId, volume) => {
+        console.log('Playing ambient sound:', soundId, volume);
+      },
+      
+      stopAmbientSound: (soundId) => {
+        console.log('Stopping ambient sound:', soundId);
+      },
+      
+      setAmbientSoundVolume: (soundId, volume) => {
+        console.log('Ambient sound volume set:', soundId, volume);
+      },
+      
+      createVoiceLine: (characterId, text, emotion, context) => {
+        set((state) => ({
+          voiceLines: [...state.voiceLines, {
+            id: `voice_${Date.now()}`,
+            characterId,
+            characterName: '',
+            text,
+            emotion: emotion as 'neutral' | 'happy' | 'sad' | 'angry' | 'excited' | 'worried' | 'confident' | 'surprised',
+            context: context as 'combat' | 'dialogue' | 'idle' | 'victory' | 'defeat' | 'discovery' | 'warning',
+            priority: 1,
+            cooldown: 0,
+            conditions: [],
+            audioFile: '',
+            duration: 0,
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Voice line created:', characterId, text, emotion, context);
+      },
+      
+      playVoiceLine: (voiceId: string, volume?: number) => {
+        console.log('Playing voice line:', voiceId, volume);
+      },
+      
+      stopVoiceLine: (voiceId) => {
+        console.log('Stopping voice line:', voiceId);
+      },
+      
+      setVoiceLineVolume: (voiceId, volume) => {
+        console.log('Voice line volume set:', voiceId, volume);
+      },
+      
+      createAudioEvent: (name, type, target, parameters) => {
+        set((state) => ({
+          audioEvents: [...state.audioEvents, {
+            id: `event_${Date.now()}`,
+            name,
+            type: type as 'play' | 'stop' | 'pause' | 'resume' | 'fade_in' | 'fade_out' | 'crossfade' | 'loop' | 'random',
+            target,
+            parameters,
+            delay: 0,
+            duration: 0,
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Audio event created:', name, type, target, parameters);
+      },
+      
+      triggerAudioEvent: (eventId) => {
+        console.log('Audio event triggered:', eventId);
+      },
+      
+      setEqualizerPreset: (presetId) => {
+        console.log('Equalizer preset set:', presetId);
+      },
+      
+      setEqualizerBand: (bandId, gain) => {
+        console.log('Equalizer band set:', bandId, gain);
+      },
+      
+      createEqualizerPreset: (name, description, bands) => {
+        console.log('Equalizer preset created:', name, description, bands);
+      },
+      
+      setAudioAnalytics: (enabled) => {
+        console.log('Audio analytics set:', enabled);
+      },
+      
+      recordAudioEvent: (event, audioId, action, duration) => {
+        set((state) => ({
+          audioAnalytics: [...state.audioAnalytics, {
+            id: `analytics_${Date.now()}`,
+            sessionId: 'session_1',
+            event,
+            audioId,
+            action: action as 'play' | 'stop' | 'pause' | 'resume' | 'skip' | 'volume_change',
+            timestamp: new Date(),
+            duration,
+            volume: 1,
+            userAgent: navigator.userAgent,
+            deviceInfo: {
+              type: 'desktop' as const,
+              os: 'Windows',
+              browser: 'Chrome',
+              audioCodec: 'mp3',
+              maxChannels: 2,
+              sampleRate: 44100,
+              bitDepth: 16
+            },
+            isActive: true,
+            lastUpdate: new Date()
+          }]
+        }));
+        console.log('Audio event recorded:', event, audioId, action, duration);
       },
 
       saveGame: () => {

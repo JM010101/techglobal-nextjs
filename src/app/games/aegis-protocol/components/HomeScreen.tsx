@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useGameStore } from '@/store/gameStore';
-import { Zap, Users, Trophy, ShoppingBag, X, MessageCircle, BookOpen, Home, UserPlus, Brain, Monitor } from 'lucide-react';
+import { Zap, Users, Trophy, ShoppingBag, X, MessageCircle, BookOpen, Home, UserPlus, Brain, Monitor, Volume2 } from 'lucide-react';
 import chaptersData from '@/data/chapters.json';
 
 const HomeScreen = () => {
@@ -173,7 +173,7 @@ const HomeScreen = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-9 gap-4"
+          className="grid grid-cols-10 gap-4"
         >
           <button
             onClick={() => setCurrentScreen('squad')}
@@ -245,6 +245,14 @@ const HomeScreen = () => {
           >
             <Monitor className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <p className="text-white font-bold">Graphics</p>
+          </button>
+          
+          <button
+            onClick={() => setCurrentScreen('audio-management')}
+            className="bg-gradient-to-r from-emerald-900/50 to-teal-900/50 border-2 border-emerald-600/50 rounded-2xl p-6 hover:border-emerald-500 transition-all duration-300"
+          >
+            <Volume2 className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
+            <p className="text-white font-bold">Audio</p>
           </button>
           
           <button
